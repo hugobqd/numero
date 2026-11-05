@@ -377,12 +377,12 @@
   {
     "id": "physique-vitesse-liberation-terre",
     "enonce": "À quelle vitesse faut-il lancer un objet pour qu'il échappe à l'attraction de la Terre ?",
-    "valeur": 11200,
-    "valeur_a_retenir": 11200,
+    "valeur": 40320,
+    "valeur_a_retenir": 40300,
     "precision": 100,
-    "unite": "m/s",
-    "perimetre": "vitesse de libération depuis la surface terrestre, sans frottement de l'air (11,2 km/s)",
-    "ancrage": "Soit 40 320 km/h : Paris-Marseille en moins de 70 secondes.",
+    "unite": "km/h",
+    "perimetre": "vitesse de libération depuis la surface terrestre, sans frottement de l'air (11,2 km/s, soit 40 320 km/h)",
+    "ancrage": "11,2 km par seconde : Paris-Marseille en moins de 70 secondes.",
     "source": {
       "url": "https://fr.wikipedia.org/wiki/Vitesse_de_lib%C3%A9ration",
       "consulte_le": "2026-11-05"
@@ -390,30 +390,30 @@
     "thematique": "Physique",
     "leurres": [
       {
-        "valeur": 7900,
+        "valeur": 28400,
         "type": "erreur_frequente",
-        "note": "vitesse minimale de satellisation (7,9 km/s) : suffit pour rester en orbite, pas pour s'échapper"
+        "note": "vitesse minimale de satellisation (7,9 km/s ≈ 28 440 km/h) : suffit pour rester en orbite, pas pour s'échapper"
       },
       {
-        "valeur": 16600,
+        "valeur": 59800,
         "type": "autre_perimetre",
-        "note": "vitesse pour quitter le système solaire depuis l'orbite terrestre : 16,6 km/s (référentiel géocentrique)"
+        "note": "vitesse pour quitter le système solaire depuis l'orbite terrestre : 16,6 km/s ≈ 59 760 km/h (référentiel géocentrique)"
       },
       {
-        "valeur": 2400,
+        "valeur": 8600,
         "type": "autre_perimetre",
-        "note": "vitesse de libération de la Lune : 2,4 km/s ; leurre éloigné"
+        "note": "vitesse de libération de la Lune : 2,4 km/s ≈ 8 640 km/h ; leurre éloigné"
       },
       {
-        "valeur": 10400,
+        "valeur": 37400,
         "type": "proche"
       },
       {
-        "valeur": 12100,
+        "valeur": 43600,
         "type": "proche"
       },
       {
-        "valeur": 9700,
+        "valeur": 34900,
         "type": "proche"
       }
     ],
