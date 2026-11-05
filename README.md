@@ -27,6 +27,8 @@ Consignes des agents de contenu : `docs/agents/`.
 
 ## Mise en ligne
 
+Le numéro de version affiché en bas de page vaut `majeur.mineur.<nombre de commits> · <commit>` (par exemple `v0.1.45 · 20598f2`) : il change tout seul à chaque commit et donc à chaque publication. Pour changer de version majeure ou mineure, modifier `version` dans `package.json`.
+
 Le site est publié sur GitHub Pages par `.github/workflows/deploy.yml` à chaque push sur `main` : contrôle des fiches, build, puis déploiement. Le build utilise des chemins relatifs (`base: './'`) et fonctionne donc dans le sous-dossier `/numero/`. Les données des joueurs restent dans leur navigateur.
 
 ## Direction artistique
