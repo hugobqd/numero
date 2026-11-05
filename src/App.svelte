@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Question, ResultatQuestion } from './lib/types';
-  import { defisParCycle, numeroDefi, questionsDuDefi, questionsJouables } from './lib/daily';
+  import { defisParCycle, questionsDuDefi, questionsJouables } from './lib/daily';
   import { avecUnite } from './lib/format';
   import { lireParametres, MECAS, VARIANTES } from './lib/params';
   import { effacerPartie, effacerStats, ecrirePartie, enregistrerFin, lirePartie, lireStats, type PartieDuJour } from './lib/storage';
@@ -15,9 +15,23 @@
   } from './lib/collection';
   import Jeu from './lib/Jeu.svelte';
   import CollectionVue from './lib/CollectionVue.svelte';
+  import JoueursVue from './lib/JoueursVue.svelte';
+  import {
+    choisirJoueur,
+    creerJoueur,
+    joueurActif,
+    lireJoueurs,
+    majJoueur,
+    nettoyerAnciennesDonnees,
+    supprimerJoueur,
+  } from './lib/joueurs';
 
   const params = lireParametres();
-  const numero = params.jour ?? numeroDefi();
+  nettoyerAnciennesDonnees();
+  // Comptes simulés : le défi du jour est le jour simulé du joueur actif.
+  const joueur = joueurActif();
+  const joueurs = lireJoueurs();
+  const numero = joueur?.jour ?? 1;
   if (params.reset) effacerPartie(numero);
 
   // Toutes les fiches de src/data/*.json (un fichier par thématique ou par lot).
@@ -35,8 +49,28 @@
   let partie = $state<PartieDuJour>(
     reprise ?? { numero, meca: params.meca, variante: params.variante, resultats: [], terminee: false },
   );
-  type Ecran = 'accueil' | 'defi' | 'bilan' | 'collection' | 'revision' | 'bilanRevision';
-  let ecran = $state<Ecran>(reprise?.terminee ? 'bilan' : reprise?.resultats.length ? 'defi' : 'accueil');
+  type Ecran =
+    | 'joueurs'
+    | 'tutoIntro'
+    | 'tuto'
+    | 'tutoBilan'
+    | 'accueil'
+    | 'defi'
+    | 'bilan'
+    | 'collection'
+    | 'revision'
+    | 'bilanRevision';
+  let ecran = $state<Ecran>(
+    !joueur
+      ? 'joueurs'
+      : !joueur.tutoFait
+        ? 'tutoIntro'
+        : reprise?.terminee
+          ? 'bilan'
+          : reprise?.resultats.length
+            ? 'defi'
+            : 'accueil',
+  );
   let stats = $state(lireStats());
   let messagePartage = $state('');
 
@@ -60,6 +94,47 @@
     ecrirePartie($state.snapshot(partie));
     stats = enregistrerFin(numero);
     ecran = 'bilan';
+  }
+
+  // Tuto : un premier défi offert de 3 questions, avec le mode d'emploi, avant le défi du jour.
+  const TUTO = ['corps-os-adulte', 'terre-everest', 'astro-terre-lune'];
+  const questionsTuto = TUTO.map((id) => stock.find((q) => q.id === id)).filter((q): q is Question => !!q);
+  let tuto = $state<{ resultats: ResultatQuestion[] }>({ resultats: [] });
+
+  function resultatTuto(res: ResultatQuestion) {
+    tuto.resultats.push(res);
+    // Fiches offertes : défi n°0.
+    gagnerFiche(res.id, 0, res.gagne);
+    collection = lireCollection();
+  }
+
+  function finTuto() {
+    if (joueur) majJoueur(joueur.id, { tutoFait: true });
+    ecran = 'tutoBilan';
+  }
+
+  // Joueurs et jours simulés : chaque changement recharge la page avec les données du joueur.
+  const recharger = () => location.assign(lien());
+  function nouveauJoueur(pseudo: string) {
+    creerJoueur(pseudo, 1);
+    recharger();
+  }
+  function changerJoueur(id: string) {
+    choisirJoueur(id);
+    recharger();
+  }
+  function retirerJoueur(id: string) {
+    supprimerJoueur(id);
+    recharger();
+  }
+  function allerAuJour(n: number) {
+    if (!joueur || n < 1) return;
+    majJoueur(joueur.id, { jour: n });
+    recharger();
+  }
+  function rejouerDefi() {
+    effacerPartie(numero);
+    recharger();
   }
 
   // Révision : 5 fiches de la collection, propositions tirées au hasard à chaque séance.
@@ -90,12 +165,9 @@
   );
   const aRevoir = $derived(nouvellesFiches.filter((id) => !partie.resultats.find((r) => r.id === id)?.gagne).length);
 
-  const aujourdhui = numeroDefi();
-
-  /** Lien de test : relance un défi (efface la partie enregistrée) avec les réglages voulus. */
-  function lien({ meca = partie.meca, score = partie.variante, jour = numero, brouillons = params.brouillons } = {}) {
-    const j = jour === aujourdhui ? '' : `&jour=${jour}`;
-    return `?meca=${meca}&score=${score}&reset=1${j}${brouillons ? '' : '&brouillons=0'}`;
+  /** Lien de test avec les réglages voulus (le jour vient du joueur actif). */
+  function lien({ meca = partie.meca, score = partie.variante, brouillons = params.brouillons, reset = false } = {}) {
+    return `?meca=${meca}&score=${score}${reset ? '&reset=1' : ''}${brouillons ? '' : '&brouillons=0'}`;
   }
 
   function reinitialiserStats() {
@@ -115,16 +187,59 @@
   <header>
     <h1>Numero</h1>
     <nav class="haut">
-      {#if ecran !== 'collection' && ecran !== 'revision'}
+      {#if joueur}
+        <button type="button" class="lien" onclick={() => (ecran = 'joueurs')}>👤 {joueur.pseudo}</button>
+      {/if}
+      {#if joueur?.tutoFait && ecran !== 'collection' && ecran !== 'revision'}
         <button type="button" class="lien" onclick={() => (ecran = 'collection')}>
           Collection <strong>{possedees.length}</strong>
         </button>
       {/if}
-      <span class="numero">#{numero}</span>
+      {#if joueur}<span class="numero">jour {numero}</span>{/if}
     </nav>
   </header>
 
-  {#if ecran === 'accueil'}
+  {#if ecran === 'joueurs'}
+    <JoueursVue
+      {joueurs}
+      actifId={joueur?.id ?? null}
+      oncreer={nouveauJoueur}
+      onchoisir={changerJoueur}
+      onsupprimer={retirerJoueur}
+      onretour={joueur ? () => (ecran = joueur.tutoFait ? 'accueil' : 'tutoIntro') : undefined}
+    />
+  {:else if ecran === 'tutoIntro' && joueur}
+    <section class="accueil">
+      <h2>Bienvenue {joueur.pseudo} !</h2>
+      <p>Numero, c'est <strong>5 nombres par jour</strong> à retenir <strong>au chiffre près</strong> : la distance Terre-Lune, le nombre d'os du corps humain, l'âge de la Terre…</p>
+      <p>Chaque question jouée devient une <strong>fiche de ta collection</strong>. Celles que tu rates sont « à revoir » : tu les retravailles en révision jusqu'à les maîtriser (★★★).</p>
+      <p>Pour commencer, voici un <strong>défi offert</strong> de 3 questions, avec le mode d'emploi.</p>
+      <button type="button" class="principal" onclick={() => (ecran = 'tuto')}>C'est parti</button>
+    </section>
+  {:else if ecran === 'tuto'}
+    <Jeu
+      questions={questionsTuto}
+      meca={partie.meca}
+      variante={partie.variante}
+      graine={0}
+      resultats={tuto.resultats}
+      etiquette="Défi offert"
+      aide
+      onresultat={resultatTuto}
+      onfin={finTuto}
+    />
+  {:else if ecran === 'tutoBilan'}
+    <section class="bilan">
+      <h2>Défi offert terminé</h2>
+      <p class="score">{tuto.resultats.filter((r) => r.gagne).length} / {questionsTuto.length}</p>
+      <div class="gain">
+        <p>🎁 <strong>{questionsTuto.length} fiches offertes</strong> dans ta collection.</p>
+        <p class="conseil">Les fiches ratées sont « à revoir » : elles passeront en premier dans tes révisions.</p>
+      </div>
+      <button type="button" class="principal" onclick={() => (ecran = 'defi')}>Jouer le défi du jour</button>
+      <button type="button" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
+    </section>
+  {:else if ecran === 'accueil'}
     <section class="accueil">
       <p class="pitch">5 nombres qui régissent le monde. Retiens-les au chiffre près.</p>
       <button type="button" class="principal" onclick={() => (ecran = 'defi')}>Jouer le défi du jour</button>
@@ -184,7 +299,10 @@
         <div><dt>Record</dt><dd>{stats.meilleureSerie}</dd></div>
       </dl>
       <p class="demain">Prochain défi demain à minuit (heure de Paris).</p>
-      <a class="rejouer" href={lien()}>↻ Rejouer ce défi (test)</a>
+      <div class="actions centre">
+        <button type="button" onclick={() => allerAuJour(numero + 1)}>Simuler le jour suivant →</button>
+        <button type="button" onclick={rejouerDefi}>↻ Rejouer ce défi (test)</button>
+      </div>
     </section>
   {:else if ecran === 'collection'}
     <CollectionVue
@@ -225,20 +343,26 @@
   {/if}
 
   <details class="dev" open>
-    <summary>Réglages de test · défi #{numero} · {partie.meca} / {partie.variante}</summary>
+    <summary>Réglages de test · {joueur?.pseudo ?? 'aucun joueur'} · jour {numero} · {partie.meca} / {partie.variante}</summary>
     <p class="stock">
       {jouables.length} questions jouables ({nbBrouillons} en brouillon) · {defisParCycle(jouables)} défis différents
       avant répétition ·
       <a href={lien({ brouillons: !params.brouillons })}>{params.brouillons ? 'exclure' : 'inclure'} les brouillons</a>
     </p>
-    <nav class="defis">
-      {#if numero > 1}<a href={lien({ jour: numero - 1 })}>← #{numero - 1}</a>{/if}
-      <a href={lien()}>↻ Rejouer #{numero}</a>
-      <a href={lien({ jour: numero + 1 })}>#{numero + 1} →</a>
-      {#if numero !== aujourdhui}<a href={lien({ jour: aujourdhui })}>Aujourd'hui</a>{/if}
-      <button type="button" onclick={reinitialiserStats}>Effacer les stats</button>
-      <button type="button" onclick={viderCollection}>Vider la collection</button>
-    </nav>
+    {#if joueur}
+      <nav class="defis">
+        <span>Jour simulé :</span>
+        <button type="button" onclick={() => allerAuJour(numero - 1)} disabled={numero <= 1}>← jour {numero - 1}</button>
+        <button type="button" onclick={() => allerAuJour(numero + 1)}>jour {numero + 1} →</button>
+        <button type="button" onclick={rejouerDefi}>↻ Rejouer le jour {numero}</button>
+      </nav>
+      <nav class="defis">
+        <button type="button" onclick={() => (ecran = 'joueurs')}>Changer de joueur</button>
+        <button type="button" onclick={() => { majJoueur(joueur.id, { tutoFait: false }); recharger(); }}>Revoir le tuto</button>
+        <button type="button" onclick={reinitialiserStats}>Effacer les stats</button>
+        <button type="button" onclick={viderCollection}>Vider la collection</button>
+      </nav>
+    {/if}
     <table>
       <thead><tr><th></th>{#each VARIANTES as v}<th>{v}</th>{/each}</tr></thead>
       <tbody>
@@ -246,7 +370,7 @@
           <tr>
             <th>{m}</th>
             {#each VARIANTES as v}
-              <td><a href={lien({ meca: m, score: v })} class:actif={m === partie.meca && v === partie.variante}>jouer</a></td>
+              <td><a href={lien({ meca: m, score: v, reset: true })} class:actif={m === partie.meca && v === partie.variante}>jouer</a></td>
             {/each}
           </tr>
         {/each}
@@ -398,9 +522,17 @@
     margin: 0;
     text-align: center;
   }
-  .rejouer {
-    text-align: center;
-    color: var(--accent);
+  .centre {
+    justify-content: center;
+  }
+  .defis button:disabled {
+    opacity: 0.4;
+  }
+  .accueil h2 {
+    margin: 0;
+  }
+  .accueil p {
+    margin: 0;
   }
   .defis {
     display: flex;

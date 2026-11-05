@@ -18,6 +18,7 @@
     graine,
     resultats,
     etiquette = '',
+    aide = false,
     onresultat,
     onfin,
   }: {
@@ -28,11 +29,21 @@
     graine: number;
     resultats: ResultatQuestion[];
     etiquette?: string;
+    /** Affiche le mode d'emploi de la mécanique sous la question (tuto). */
+    aide?: boolean;
     onresultat: (r: ResultatQuestion, q: Question) => void;
     onfin: () => void;
   } = $props();
 
   let enRevelation = $state(false);
+
+  const AIDES: Record<Mecanique, string> = {
+    slider: 'Fais glisser le curseur, puis ajuste au chiffre près avec les boutons − et +. Valide quand tu es sûr.',
+    palier: 'Choisis un cran sur le curseur (ou touche une valeur), puis valide.',
+    qcm: 'Touche la valeur qui te semble juste.',
+    plusmoins:
+      'Le jeu propose une valeur : dis si la bonne est plus grande ou plus petite. 3 coups au plus, et une seule erreur fait perdre la question.',
+  };
 
   const index = $derived(enRevelation ? resultats.length - 1 : resultats.length);
   const courante = $derived(questions[index]);
@@ -67,6 +78,7 @@
     </p>
     <h2>{courante.enonce}</h2>
     <p class="unite-attendue">Réponse en <strong>{courante.unite}</strong></p>
+    {#if aide}<p class="aide">💡 {AIDES[meca]}</p>{/if}
     {#key courante.id}
       {#if meca === 'slider'}
         <Slider question={courante} onrepondre={repondre} />
@@ -96,6 +108,13 @@
     margin: 0;
     font-size: 1.5rem;
     line-height: 1.25;
+  }
+  .aide {
+    margin: 0;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.5rem;
+    background: var(--surface);
+    font-size: 0.9rem;
   }
   .badge {
     margin-left: 0.4rem;

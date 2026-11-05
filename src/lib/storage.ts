@@ -1,4 +1,5 @@
 import type { Mecanique, ResultatQuestion, VarianteScore } from './types';
+import { cleJoueur } from './joueurs';
 
 export interface PartieDuJour {
   numero: number;
@@ -15,8 +16,9 @@ export interface Stats {
   dernierNumero: number | null;
 }
 
-const CLE_PARTIE = (n: number) => `numero:partie:${n}`;
-const CLE_STATS = 'numero:stats';
+// Les clés dépendent du joueur actif (comptes simulés) : on les calcule à chaque appel.
+const CLE_PARTIE = (n: number) => cleJoueur(`partie:${n}`);
+const cleStats = () => cleJoueur('stats');
 
 function lire<T>(cle: string): T | null {
   try {
@@ -48,14 +50,14 @@ export function effacerPartie(n: number): void {
 
 export function effacerStats(): void {
   try {
-    localStorage.removeItem(CLE_STATS);
+    localStorage.removeItem(cleStats());
   } catch {
     /* rien */
   }
 }
 
 export function lireStats(): Stats {
-  return lire<Stats>(CLE_STATS) ?? { jouees: 0, serie: 0, meilleureSerie: 0, dernierNumero: null };
+  return lire<Stats>(cleStats()) ?? { jouees: 0, serie: 0, meilleureSerie: 0, dernierNumero: null };
 }
 
 /** À appeler une seule fois, quand le défi du jour est terminé. */
@@ -69,6 +71,6 @@ export function enregistrerFin(numero: number): Stats {
     meilleureSerie: Math.max(s.meilleureSerie, serie),
     dernierNumero: numero,
   };
-  ecrire(CLE_STATS, maj);
+  ecrire(cleStats(), maj);
   return maj;
 }

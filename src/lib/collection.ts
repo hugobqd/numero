@@ -1,4 +1,5 @@
 import type { Question } from './types';
+import { cleJoueur } from './joueurs';
 
 /**
  * Collection du joueur : toutes les fiches jouées en défi, réussies ou non, qu'il peut ensuite réviser.
@@ -19,13 +20,14 @@ export interface EntreeCollection {
 
 export type Collection = Record<string, EntreeCollection>;
 
-const CLE = 'numero:collection';
+// Clé propre au joueur actif (comptes simulés).
+const cle = () => cleJoueur('collection');
 export const MAITRISE_MAX = 3;
 export const FICHES_PAR_REVISION = 5;
 
 export function lireCollection(): Collection {
   try {
-    return JSON.parse(localStorage.getItem(CLE) ?? '{}') as Collection;
+    return JSON.parse(localStorage.getItem(cle()) ?? '{}') as Collection;
   } catch {
     return {};
   }
@@ -33,7 +35,7 @@ export function lireCollection(): Collection {
 
 function ecrire(c: Collection): void {
   try {
-    localStorage.setItem(CLE, JSON.stringify(c));
+    localStorage.setItem(cle(), JSON.stringify(c));
   } catch {
     // stockage indisponible : la collection ne sera pas conservée
   }
@@ -41,7 +43,7 @@ function ecrire(c: Collection): void {
 
 export function effacerCollection(): void {
   try {
-    localStorage.removeItem(CLE);
+    localStorage.removeItem(cle());
   } catch {
     /* rien */
   }
