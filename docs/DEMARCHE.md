@@ -4,6 +4,12 @@ Ce document est le **fil conducteur entre les sessions de travail**. Chaque nouv
 
 Point de départ (2026-11-05) : un prototype jouable en ligne (https://hugobqd.github.io/numero/), 60 questions en brouillon, décisions dans `docs/DECISIONS.md`, idées dans `docs/IDEES.md`.
 
+## Rôles
+
+- **Hugo dirige le produit.** Toute décision produit lui revient : public, contenu, mécaniques, gamification, direction artistique, wording, priorités de la roadmap, ce qui est publié.
+- **Claude accompagne la méthode et exécute.** Il guide le processus (quelle étape, quel outil, quand changer de session), prépare les options avec une recommandation argumentée, puis réalise ce qui a été décidé. Il ne tranche jamais une question produit à la place de Hugo : il la pose, avec ses options.
+- Les **agents** (rédaction de contenu, recherche, revue) produisent des propositions ; rien n'entre dans le jeu sans validation de Hugo (fiches en `brouillon` tant qu'il ne les a pas passées en `valide`).
+
 ## Principe
 
 Six chantiers, mais **pas six agents permanents** :
