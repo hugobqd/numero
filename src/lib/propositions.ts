@@ -71,83 +71,110 @@ export const NB_PROPOSITIONS = 6;
  * triées par ordre croissant. Le tirage dépend de la question **et du numéro du défi** :
  * identique pour tous les joueurs un jour donné, différent d'un défi à l'autre.
  *
- * Composition (bonne réponse comprise) :
- * 1. 1 leurre « piège » de la fiche (`erreur_frequente`, `autre_unite` ou `autre_perimetre`)
- * 2. 2 leurres tirés dans le reste de la fiche et une réserve de leurres générés proches (±3 à 15 %)
- * 3. 2 extrêmes générés (≈ ×0,4–0,6 sous le plus petit, ≈ ×1,7–2,5 au-dessus du plus grand)
+ * 1. On tire d'abord le **rang de la bonne réponse** (0 à 5, uniforme) : elle est la plus petite
+ *    1 fois sur 6 et la plus grande 1 fois sur 6, on ne peut donc pas éliminer d'office les extrémités.
+ *    Le piège est ensuite choisi parmi ceux qui ont de la place de leur côté.
+ * 2. On place ensuite r leurres en dessous et 5 − r au-dessus. De chaque côté, dans l'ordre :
+ *    - le piège de la fiche (`erreur_frequente`, `autre_unite`, `autre_perimetre`) s'il est de ce côté ;
+ *    - une valeur éloignée (≈ ×0,35–0,55 ou ≈ ×1,7–2,5, ou un leurre éloigné de la fiche) pour élargir le min ou le max ;
+ *    - des leurres proches, tirés dans la fiche et parmi des valeurs générées (±3 à 35 %).
  *
  * Tous les leurres sont mis à la forme de la bonne réponse (`aLaForme`). Les leurres générés
- * gardent un écart minimal de 2 % avec les autres propositions ; ceux de la fiche peuvent être
- * plus proches (8 848 m contre 8 849 m est un vrai piège).
+ * gardent un écart minimal de 2 % ; ceux de la fiche peuvent être plus proches (8 848 m contre 8 849 m).
  */
 export function propositions(q: Question, numero: number): number[] {
   const hasard = alea(hachage(q.id) ^ Math.imul(numero, 2654435761));
   const reponse = q.valeur_a_retenir;
   const pas = q.precision * 10 ** zerosFinaux(Math.round(reponse / q.precision));
   const ecartMin = Math.max(pas, reponse * 0.02);
+  const entre = (a: number, b: number) => a + hasard() * (b - a);
 
   const retenues = new Set([reponse]);
   const tropProche = (l: number) => [...retenues].some((r) => Math.abs(r - l) < ecartMin);
+  const duBonCote = (l: number, cote: -1 | 1) => (cote < 0 ? l < reponse && l > 0 : l > reponse);
 
-  /** Ajoute un leurre de la fiche s'il est distinct ; renvoie true s'il a été retenu. */
-  const ajouterFiche = (v: number) => {
+  /** Leurre de la fiche : retenu s'il est distinct et du bon côté. */
+  const ajouterFiche = (v: number, cote: -1 | 1) => {
     const l = aLaForme(v, q, hasard);
-    if (retenues.has(l)) return false;
+    if (retenues.has(l) || !duBonCote(l, cote)) return false;
     retenues.add(l);
     return true;
   };
-  /** Ajoute un leurre généré, en le re-tirant tant qu'il est trop proche d'une autre proposition. */
-  const ajouterGenere = (v: number) => {
-    let l = aLaForme(v, q, hasard);
-    for (let essai = 0; essai < 20 && tropProche(l); essai++) l = aLaForme(v * (1 + (hasard() * 2 - 1) * 0.1), q, hasard);
-    while (tropProche(l)) l += pas;
-    retenues.add(l);
+  /** Leurre généré à partir d'un rapport à la réponse, re-tiré tant qu'il est mal placé. */
+  const ajouterGenere = (ratioMin: number, ratioMax: number, cote: -1 | 1) => {
+    for (let essai = 0; essai < 40; essai++) {
+      const l = aLaForme(reponse * entre(ratioMin, ratioMax), q, hasard);
+      if (duBonCote(l, cote) && !tropProche(l)) {
+        retenues.add(l);
+        return true;
+      }
+    }
+    return false;
   };
 
-  // 1. Un piège de la fiche.
+  // 1. Rang de la bonne réponse, uniforme : 1 chance sur 6 d'être la plus petite, idem la plus grande.
+  const rang = Math.floor(hasard() * NB_PROPOSITIONS);
+
+  // Piège : tiré parmi ceux qui ont de la place de leur côté (aucun en dessous si la réponse est la plus petite).
   const fiche = melange(q.leurres, hasard);
-  const piege = fiche.find((l) => l.type !== 'proche');
-  if (piege) ajouterFiche(piege.valeur);
-
-  // 2. Deux leurres parmi le reste de la fiche et des leurres proches générés.
-  const reserve = melange(
-    [
-      ...fiche.filter((l) => l !== piege).map((l) => ({ v: l.valeur, fiche: true })),
-      ...Array.from({ length: 4 }, () => {
-        const sens = hasard() < 0.5 ? -1 : 1;
-        return { v: reponse * (1 + sens * (0.03 + hasard() * 0.12)), fiche: false };
-      }),
-    ],
-    hasard,
+  const piege = fiche.find(
+    (l) => l.type !== 'proche' && (l.valeur < reponse ? rang >= 1 : rang <= NB_PROPOSITIONS - 2),
   );
-  for (const r of reserve) {
-    if (retenues.size >= NB_PROPOSITIONS - 2) break;
-    // Les extrêmes viennent après : on écarte ici les valeurs très éloignées.
-    if (r.v < reponse * 0.5 || r.v > reponse * 2) continue;
-    if (r.fiche) ajouterFiche(r.v);
-    else ajouterGenere(r.v);
-  }
-  while (retenues.size < NB_PROPOSITIONS - 2) ajouterGenere(reponse * (1 + (hasard() * 2 - 1) * 0.15));
+  const cotePiege: -1 | 1 | 0 = !piege ? 0 : piege.valeur < reponse ? -1 : 1;
 
-  // 3. Deux extrêmes pour élargir le min et le max.
-  const valeurs = [...retenues];
-  ajouterGenere(Math.min(...valeurs) * (0.4 + hasard() * 0.2));
-  ajouterGenere(Math.max(...valeurs) * (1.7 + hasard() * 0.8));
+  // 2. Remplissage de chaque côté.
+  for (const [cote, nombre] of [[-1, rang], [1, NB_PROPOSITIONS - 1 - rang]] as [-1 | 1, number][]) {
+    const cible = retenues.size + nombre;
+    const restants = () => cible - retenues.size;
+    const loin = (v: number) => (cote < 0 ? v < reponse * 0.5 : v > reponse * 2);
+
+    if (piege && cotePiege === cote && restants() > 0) ajouterFiche(piege.valeur, cote);
+
+    if (restants() > 0) {
+      const lointainFiche = fiche.find((l) => l !== piege && loin(l.valeur) && duBonCote(l.valeur, cote));
+      if (!(lointainFiche && ajouterFiche(lointainFiche.valeur, cote))) {
+        if (cote < 0) ajouterGenere(0.35, 0.55, cote);
+        else ajouterGenere(1.7, 2.5, cote);
+      }
+    }
+
+    const proches = melange(
+      [
+        ...fiche
+          .filter((l) => l !== piege && !loin(l.valeur) && duBonCote(l.valeur, cote))
+          .map((l) => ({ fiche: l.valeur, min: 0, max: 0 })),
+        ...[0, 1, 2].map(() => (cote < 0 ? { fiche: 0, min: 0.85, max: 0.97 } : { fiche: 0, min: 1.03, max: 1.15 })),
+        cote < 0 ? { fiche: 0, min: 0.65, max: 0.8 } : { fiche: 0, min: 1.25, max: 1.5 },
+      ],
+      hasard,
+    );
+    for (const c of proches) {
+      if (restants() <= 0) break;
+      if (c.fiche) ajouterFiche(c.fiche, cote);
+      else ajouterGenere(c.min, c.max, cote);
+    }
+    // Filet de sécurité : on complète avec des valeurs plus dispersées.
+    for (let essai = 0; essai < 20 && restants() > 0; essai++) {
+      if (cote < 0) ajouterGenere(0.3, 0.97, cote);
+      else ajouterGenere(1.03, 3, cote);
+    }
+  }
 
   return [...retenues].sort((a, b) => a - b);
 }
 
 /**
- * Les 4 propositions du QCM : une fenêtre de 4 valeurs consécutives, prise dans les
- * propositions triées et contenant la bonne réponse. La fenêtre change avec le défi,
- * ce qui place la bonne réponse à des rangs variés, extrémités comprises.
+ * Les 4 propositions du QCM : la bonne réponse et 3 leurres tirés au hasard parmi les 5 du palier,
+ * triés. Comme le rang de la réponse parmi les 6 est uniforme, sa position parmi les 4 l'est aussi
+ * (1 chance sur 4 d'être en première ou en dernière position).
  */
 export function propositionsQcm(q: Question, numero: number, nombre = 4): number[] {
   const toutes = propositions(q, numero);
   if (toutes.length <= nombre) return toutes;
-  const rang = toutes.indexOf(q.valeur_a_retenir);
-  const debutMin = Math.max(0, rang - nombre + 1);
-  const debutMax = Math.min(rang, toutes.length - nombre);
-  const debut = debutMin + (((hachage(q.id) ^ numero) >>> 0) % (debutMax - debutMin + 1));
-  return toutes.slice(debut, debut + nombre);
+  const hasard = alea((hachage(q.id) ^ Math.imul(numero, 40503)) + 1);
+  const leurres = melange(
+    toutes.filter((v) => v !== q.valeur_a_retenir),
+    hasard,
+  ).slice(0, nombre - 1);
+  return [q.valeur_a_retenir, ...leurres].sort((a, b) => a - b);
 }
