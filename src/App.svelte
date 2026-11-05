@@ -371,6 +371,8 @@
 
 </main>
 
+<footer class="version">v{__VERSION__} · {__COMMIT__}</footer>
+
 <!-- Outils de test : repliés derrière un petit ⚙ en bas à droite ; panneau latéral (ou en bas sur mobile). -->
 <button
   type="button"
@@ -460,6 +462,14 @@
     align-content: start;
   }
 
+  .version {
+    padding: 0 1rem 1.25rem;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--muted);
+    opacity: 0.6;
+    font-variant-numeric: tabular-nums;
+  }
   /* Outils de test : un petit ⚙ discret, qui ouvre un panneau par-dessus le jeu. */
   .dev-bouton {
     position: fixed;
