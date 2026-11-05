@@ -2,6 +2,7 @@
   import type { Question } from './types';
   import { MAITRISE_MAX, maitrise, type Collection } from './collection';
   import { grand } from './format';
+  import { illustration } from './themes';
 
   let {
     collection,
@@ -10,16 +11,7 @@
     onretour,
   }: { collection: Collection; stock: Question[]; onreviser: () => void; onretour: () => void } = $props();
 
-  /** Illustration de chaque thématique (emoji par défaut pour un thème nouveau). */
-  const ICONES: Record<string, string> = {
-    Astronomie: '🔭',
-    'Corps humain': '🫀',
-    'Terre et géologie': '🌋',
-    Physique: '⚛️',
-    Animaux: '🐋',
-    Humanité: '🌍',
-  };
-  const icone = (theme: string) => ICONES[theme] ?? '📘';
+  // Chaque thème est illustré (src/assets/themes, prompt dans le README).
 
   const themes = $derived(
     [...new Set(stock.map((q) => q.thematique))].sort().map((theme) => {
@@ -76,8 +68,12 @@
   {/if}
 
   {#if detail}
+    {@const ill = illustration(detail.theme)}
     <div class="theme">
-      <h3><span class="icone-titre">{icone(detail.theme)}</span> {detail.theme} <span class="compte">{detail.possedees.length} / {detail.total}</span></h3>
+      <div class="bandeau">
+        {#if ill}<img src={ill.src} alt={ill.alt} width="600" height="600" />{/if}
+        <h3>{detail.theme} <span class="compte">{detail.possedees.length} / {detail.total}</span></h3>
+      </div>
       {#if detail.possedees.length}
         <ul class="fiches">
           {#each detail.possedees as q}
@@ -95,7 +91,7 @@
                 <div class="detail">
                   <p class="perimetre">{q.perimetre}</p>
                   <p>{q.ancrage}</p>
-                  {#if q.mnemo}<p>💡 {q.mnemo}</p>{/if}
+                  {#if q.mnemo}<p><strong>Astuce :</strong> {q.mnemo}</p>{/if}
                   <p class="meta">
                     {e.obtenueAuDefi === 0 ? 'Obtenue au premier défi' : `Obtenue au défi #${e.obtenueAuDefi}`} · {e.revisions} révision{e.revisions > 1 ? 's' : ''}
                   </p>
@@ -112,9 +108,10 @@
   {:else}
     <ul class="cartes">
       {#each themesCommences as t}
+        {@const ill = illustration(t.theme)}
         <li>
           <button type="button" class="carte" onclick={() => (themeOuvert = t.theme)}>
-            <span class="icone" aria-hidden="true">{icone(t.theme)}</span>
+            {#if ill}<img class="illustration" src={ill.src} alt="" width="600" height="600" loading="lazy" />{/if}
             <span class="nom">{t.theme}</span>
             <span class="quantite"><strong>{t.possedees.length}</strong> / {t.total} fiches</span>
             <span class="jauge" aria-hidden="true"><span style:width="{(100 * t.possedees.length) / t.total}%"></span></span>
@@ -136,7 +133,7 @@
         {#if themesADecouvrir.length}
           <p>
             Continue à jouer pour découvrir aussi
-            {#each themesADecouvrir as t, i}<strong class="theme-nom">{`${icone(t.theme)} ${t.theme}`}</strong>{i < themesADecouvrir.length - 2 ? ', ' : i === themesADecouvrir.length - 2 ? ' et ' : ''}{/each}.
+            {#each themesADecouvrir as t, i}<strong class="theme-nom">{t.theme}</strong>{i < themesADecouvrir.length - 2 ? ', ' : i === themesADecouvrir.length - 2 ? ' et ' : ''}{/each}.
           </p>
         {:else}
           <p>Continue à jouer pour compléter tes thèmes : encore <strong>{nbAObtenir} fiches</strong> à obtenir.</p>
@@ -160,7 +157,9 @@
   }
   h2 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2.6rem;
+    font-weight: 900;
+    line-height: 0.95;
   }
   .compteur {
     margin: 0;
@@ -169,7 +168,9 @@
   }
   .compteur strong {
     color: var(--fg);
-    font-size: 1.25rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    font-stretch: 72%;
   }
   .vide {
     margin: 0;
@@ -181,23 +182,43 @@
     padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
-    gap: 0.6rem;
+    gap: 0.75rem;
   }
+  /* Carte de thème : l'illustration en grand, puis le nom, la quantité et la maîtrise. */
   .carte {
     width: 100%;
     height: 100%;
     display: grid;
-    gap: 0.35rem;
+    grid-template-rows: auto auto auto auto auto;
+    align-content: start;
+    gap: 0.4rem;
     justify-items: start;
     text-align: left;
-    padding: 0.9rem;
-    border-radius: 0.8rem;
+    padding: 0 0 0.9rem;
     background: var(--surface);
+    overflow: hidden;
+  }
+  .carte > :not(.illustration) {
+    margin-inline: 0.8rem;
+  }
+  .carte:hover .illustration {
+    transform: scale(1.04);
+  }
+  .illustration {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 0.35rem;
+    transition: transform 0.4s ease;
+  }
+  .carte > .jauge {
+    width: calc(100% - 1.6rem);
   }
   .encouragement {
-    padding: 0.9rem 1rem;
-    border: 1px dashed var(--border);
-    border-radius: 0.8rem;
+    padding: 1rem 1.1rem;
+    background: var(--surface);
     color: var(--muted);
   }
   .encouragement p {
@@ -211,12 +232,11 @@
   .theme-nom {
     white-space: nowrap;
   }
-  .icone {
-    font-size: 1.75rem;
-    line-height: 1;
-  }
   .nom {
-    font-weight: 700;
+    font-size: 1.15rem;
+    font-weight: 800;
+    font-stretch: 72%;
+    line-height: 1.1;
   }
   .quantite {
     font-size: 0.85rem;
@@ -228,8 +248,7 @@
   }
   .jauge {
     width: 100%;
-    height: 0.3rem;
-    border-radius: 1rem;
+    height: 0.35rem;
     background: var(--border);
     overflow: hidden;
   }
@@ -260,8 +279,23 @@
     width: var(--plein);
     overflow: hidden;
   }
-  .icone-titre {
-    font-size: 1.2rem;
+  .bandeau {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  .bandeau img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    display: block;
+  }
+  .bandeau h3 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    font-stretch: 72%;
+    line-height: 1;
   }
   .theme {
     display: grid;
@@ -286,8 +320,7 @@
   }
   details {
     background: var(--surface);
-    border-left: 3px solid var(--accent);
-    border-radius: 0.3rem;
+    border-left: 4px solid var(--accent);
   }
   summary {
     display: grid;
@@ -309,7 +342,9 @@
     font-variant-numeric: tabular-nums;
   }
   .valeur strong {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-stretch: 72%;
   }
   .revoir details {
     border-left-color: var(--perdu);

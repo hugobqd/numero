@@ -21,7 +21,7 @@
         <span class="enonce">{q.enonce}</span>
         <strong class="valeur">{avecUnite(q.valeur_a_retenir, q.unite, q.precision)}</strong>
         <span class="verdict">
-          {r.gagne ? '✓' : r.points > 0 ? '≈' : '✗'} {verdict(q, r)}{#if afficherPoints}{` · ${r.points} pts`}{/if}
+          {verdict(q, r)}{#if afficherPoints}{` · ${r.points} pts`}{/if}
         </span>
       </li>
     {/if}
@@ -42,14 +42,13 @@
     gap: 0.15rem 0.75rem;
     padding: 0.55rem 0.75rem;
     border-left: 3px solid var(--perdu);
-    border-radius: 0.3rem;
     background: var(--surface);
   }
   li.gagne {
     border-left-color: var(--gagne);
   }
   li.presque {
-    border-left-color: #d4a017;
+    border-left-color: var(--presque);
   }
   .enonce {
     grid-column: 1 / -1;
@@ -68,7 +67,13 @@
   .gagne .verdict {
     color: var(--gagne);
   }
+  /* L'ocre manque de contraste en texte sur la crème : le mot passe en brun technique, la marque reste ocre. */
   .presque .verdict {
-    color: #d4a017;
+    color: var(--brun);
+  }
+  @media (prefers-color-scheme: dark) {
+    .presque .verdict {
+      color: var(--ocre);
+    }
   }
 </style>

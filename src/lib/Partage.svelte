@@ -80,9 +80,7 @@
     display: grid;
     gap: 0.75rem;
     padding: 1.25rem;
-    border-radius: 1rem;
     background: var(--bg);
-    border: 1px solid var(--border);
     text-align: center;
     color: var(--fg);
     font-size: 1rem;
@@ -98,7 +96,6 @@
   /* Le QR reste noir sur blanc, même en mode sombre, pour être lisible par les appareils photo. */
   .qr {
     background: #fff;
-    border-radius: 0.5rem;
     padding: 0.5rem;
   }
   .qr :global(svg) {

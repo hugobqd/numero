@@ -1,5 +1,11 @@
 <script lang="ts">
   import { nbFichesDe, type Joueur } from './joueurs';
+  import { illustration } from './themes';
+
+  // Écran d'accueil d'un nouveau venu : les six thèmes en mosaïque.
+  const MOSAIQUE = ['Astronomie', 'Corps humain', 'Terre et géologie', 'Physique', 'Animaux', 'Humanité']
+    .map(illustration)
+    .filter((i) => i !== null);
 
   let {
     joueurs,
@@ -26,7 +32,15 @@
 </script>
 
 <section class="joueurs">
-  <h2>{joueurs.length ? 'Joueurs' : 'Bienvenue !'}</h2>
+  {#if !joueurs.length}
+    <div class="mosaique" aria-hidden="true">
+      {#each MOSAIQUE as ill}<img src={ill.src} alt="" width="600" height="600" />{/each}
+    </div>
+    <h2 class="titre-accueil">Les nombres qui régissent le monde</h2>
+    <p class="pitch">5 nombres par jour, à retenir au chiffre près. Chaque question jouée rejoint ta collection.</p>
+  {:else}
+    <h2>Joueurs</h2>
+  {/if}
   <p class="aide">Comptes simulés pour tester : chaque joueur a son jour, ses défis et sa collection.</p>
 
   <form onsubmit={creer}>
@@ -53,7 +67,7 @@
               type="button"
               class="supprimer"
               onclick={() => confirm(`Supprimer ${j.pseudo} et toutes ses données ?`) && onsupprimer(j.id)}
-              aria-label="Supprimer {j.pseudo}">✕</button
+              aria-label="Supprimer {j.pseudo}">Supprimer</button
             >
           </div>
         </li>
@@ -71,7 +85,30 @@
   }
   h2 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2.6rem;
+    font-weight: 900;
+    line-height: 0.95;
+  }
+  .titre-accueil {
+    margin-top: 0.75rem;
+    font-size: clamp(2.6rem, 12vw, 3.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .pitch {
+    margin: 0;
+    font-size: 1.15rem;
+  }
+  .mosaique {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+  .mosaique img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
   }
   .aide,
   .meta {
@@ -95,8 +132,8 @@
     font: inherit;
     color: var(--fg);
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 0.6rem;
+    border: none;
+    border-bottom: 2px solid var(--fg);
     padding: 0.75rem 1rem;
     min-width: 0;
   }
@@ -118,7 +155,6 @@
     gap: 0.5rem;
     padding: 0.6rem 0.75rem;
     background: var(--surface);
-    border-radius: 0.5rem;
     border-left: 3px solid transparent;
   }
   li.actif {

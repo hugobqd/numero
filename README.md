@@ -28,3 +28,32 @@ Consignes des agents de contenu : `docs/agents/`.
 ## Mise en ligne
 
 Le site est publié sur GitHub Pages par `.github/workflows/deploy.yml` à chaque push sur `main` : contrôle des fiches, build, puis déploiement. Le build utilise des chemins relatifs (`base: './'`) et fonctionne donc dans le sous-dossier `/numero/`. Les données des joueurs restent dans leur navigateur.
+
+## Direction artistique
+
+Style : International Typographic Style (Swiss Style), constructivisme et illustration éditoriale Mid-Century « Atomic Age ». Aplats de couleur, fines lignes techniques, trajectoires en pointillés, cercles concentriques, trames Ben-Day et rendu risographie sur papier ancien.
+
+### Prompt des illustrations de thématiques
+
+Les illustrations de `src/assets/themes/` ont été générées avec ce prompt, en remplaçant les trois éléments entre crochets :
+
+```text
+Square 2D graphic design illustration of [SUJET PRINCIPAL], accompanied by [ÉLÉMENT SECONDAIRE] and [ÉLÉMENT TERTIAIRE]. Style: International Typographic Style (Swiss Style), Constructivism, and 1950s Mid-Century Modern Atomic Age editorial art, inspired by Josef Müller-Brockmann, Saul Bass, and Charley Harper. Clean minimalist poster aesthetic with bold graphic silhouettes and sharp geometric cutouts. Visually structured with a mix of solid flat color blocks, fine thin technical diagram lines, delicate dashed trajectories, concentric circular rings, and coarse Ben-Day halftone screen-print dots. Limited muted retro palette: aged warm cream paper background, burnt terracotta orange, deep petrol teal, and mustard ochre. Balanced asymmetrical layout, generous negative space, textured risograph print finish, strictly 2D vector, no 3D rendering, no photorealism.
+```
+
+Sources d'origine en 2000 × 2000 px, réduites à 600 px (JPEG) pour le mobile.
+
+### Palette
+
+| Rôle | Hex | Nom | Usage |
+|---|---|---|---|
+| `color_bg_base` | `#F4EAD4` | Fond papier ivoire | Fond principal, teinte de papier rétro |
+| `color_bg_subtle` | `#ECE0C3` | Crème chaud | Zones claires secondaires, surfaces |
+| `color_dark_primary` | `#1D3540` | Bleu nuit / pétrole foncé | Remplace le noir : texte, traits fins, aplats profonds |
+| `color_dark_secondary` | `#2A535A` | Sarcelle profond | Sombre intermédiaire : trames, silhouettes secondaires |
+| `color_accent_terracotta` | `#C75936` | Orange brûlé / terracotta | Accent chaud principal, silhouettes dominantes |
+| `color_accent_rust` | `#A64023` | Rouille foncé | Variante dense : ombrages, texte d'accent |
+| `color_accent_ochre` | `#C88E3E` | Ocre moutarde | Accent lumineux : rayons, orbites, découpes |
+| `color_line_technical` | `#8A6B43` | Brun technique | Cercles concentriques, lignes fines, repères de diagramme |
+
+Les couleurs sont déclarées en variables CSS dans `src/app.css`.

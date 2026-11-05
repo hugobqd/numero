@@ -29,11 +29,13 @@
     gap: 0.6rem;
   }
   button {
-    padding: 1rem;
+    padding: 0.9rem 1rem;
     font-size: 1.25rem;
   }
   .chiffres {
-    font-weight: 700;
+    font-size: 1.9rem;
+    font-weight: 800;
+    line-height: 1;
     font-variant-numeric: tabular-nums;
   }
   .unite {

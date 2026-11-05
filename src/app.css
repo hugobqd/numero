@@ -1,28 +1,58 @@
+/*
+ * Numero — direction artistique rétro : Swiss Style, constructivisme, Mid-Century « Atomic Age ».
+ * Papier ivoire, aplats, lignes techniques fines, cercles concentriques, trames Ben-Day, grain risographie.
+ * Palette : voir README (« Direction artistique »). Typographie : Archivo (étroit en titres, normal en texte).
+ */
+
 :root {
-  --bg: #fbfaf7;
-  --fg: #161616;
-  --muted: #6b6b6b;
-  --surface: #f0eee8;
-  --border: #dedad0;
-  --accent: #3b4fd8;
-  --gagne: #1f8a4c;
-  --perdu: #c0392b;
+  /* Palette de marque */
+  --ivoire: #f4ead4;
+  --creme: #ece0c3;
+  --petrole: #1d3540;
+  --sarcelle: #2a535a;
+  --terracotta: #c75936;
+  --rouille: #a64023;
+  --ocre: #c88e3e;
+  --brun: #8a6b43;
+
+  /* Rôles */
+  --bg: var(--ivoire);
+  --surface: var(--creme);
+  --surface-2: #e2d3b0; /* un cran plus sombre que la crème, pour le survol et l'actif */
+  --fg: var(--petrole);
+  --muted: var(--sarcelle);
+  --ligne: var(--brun);
+  --border: #d6c49f;
+  --accent: var(--terracotta);
+  --accent-texte: var(--rouille); /* terracotta assez dense pour du texte sur l'ivoire */
+  --action: var(--petrole);
+  --action-texte: var(--ivoire);
+  --gagne: var(--sarcelle);
+  --presque: var(--ocre);
+  --perdu: var(--rouille);
+
+  --police: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
   color-scheme: light;
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--police);
   font-feature-settings: 'tnum' 1;
   line-height: 1.5;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121212;
-    --fg: #f1f1ee;
-    --muted: #9a9a96;
-    --surface: #1e1e1c;
-    --border: #2e2e2b;
-    --accent: #8c9bff;
-    --gagne: #4cc283;
-    --perdu: #ff7a6b;
+    --bg: var(--petrole);
+    --surface: var(--sarcelle);
+    --surface-2: #33646c;
+    --fg: var(--ivoire);
+    --muted: var(--creme);
+    --ligne: var(--ocre);
+    --border: #3a6a72;
+    --accent-texte: var(--ocre);
+    --action: var(--ivoire);
+    --action-texte: var(--petrole);
+    --gagne: #8cc0b4;
+    --perdu: #e88a68;
     color-scheme: dark;
   }
 }
@@ -33,34 +63,77 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  /* Grain de papier risographie, très léger. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.33 0 0 0 0 0.2 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
   color: var(--fg);
+}
+
+/* Titres et grands chiffres : étroits, gras, serrés, façon affiche. */
+h1,
+h2,
+.chiffres,
+.affiche {
+  font-family: var(--police);
+  font-stretch: 72%;
+  letter-spacing: -0.01em;
 }
 
 button {
   font: inherit;
   color: var(--fg);
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.6rem;
-  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0;
+  padding: 0.8rem 1rem;
   cursor: pointer;
+  transition:
+    background-color 0.15s,
+    transform 0.1s;
 }
 
 button:hover {
-  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 button.principal {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-  font-weight: 600;
+  background: var(--action);
+  color: var(--action-texte);
+  font-weight: 700;
+}
+
+button.principal:hover {
+  background: var(--sarcelle);
 }
 
 @media (prefers-color-scheme: dark) {
-  button.principal {
-    color: #0d0d0d;
+  button.principal:hover {
+    background: var(--creme);
+  }
+}
+
+a {
+  color: var(--accent-texte);
+}
+
+input[type='range'] {
+  accent-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
   }
 }
 

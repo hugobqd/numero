@@ -7,6 +7,7 @@
   import PlusMoins from './mechanics/PlusMoins.svelte';
   import Revelation from './Revelation.svelte';
   import type { Difficulte } from './propositions';
+  import { illustration } from './themes';
 
   /**
    * Déroulé d'une série de questions (défi du jour ou révision) : question, puis révélation,
@@ -83,16 +84,30 @@
     dernier={resultats.length >= questions.length}
   />
 {:else if courante}
+  {@const ill = illustration(courante.thematique)}
   <section class="question">
-    <p class="progression">
-      {#if etiquette}{`${etiquette} · `}{/if}Question {resultats.length + 1} / {questions.length} · {courante.thematique}
-      {#if courante.statut === 'brouillon'}<span class="badge">brouillon</span>{/if}
-      {#if difficulte(courante) !== 'normale' && meca !== 'slider'}
-        <span class="badge niveau">{difficulte(courante) === 'decouverte' ? 'niveau découverte' : 'niveau expert'}</span>
-      {/if}
-    </p>
+    <div class="entete">
+      {#if ill}<img class="vignette" src={ill.src} alt="" width="600" height="600" />{/if}
+      <div>
+        <p class="progression">
+          {#if etiquette}{`${etiquette} · `}{/if}Question {resultats.length + 1} / {questions.length} · {courante.thematique}
+        </p>
+        <!-- Avancement : un segment par question. -->
+        <ol class="segments" aria-hidden="true">
+          {#each questions as _, i}<li class:fait={i < resultats.length} class:courant={i === resultats.length}></li>{/each}
+        </ol>
+        {#if courante.statut === 'brouillon' || (difficulte(courante) !== 'normale' && meca !== 'slider')}
+          <p class="badges">
+            {#if courante.statut === 'brouillon'}<span class="badge">brouillon</span>{/if}
+            {#if difficulte(courante) !== 'normale' && meca !== 'slider'}
+              <span class="badge niveau">{difficulte(courante) === 'decouverte' ? 'niveau découverte' : 'niveau expert'}</span>
+            {/if}
+          </p>
+        {/if}
+      </div>
+    </div>
     <h2>{courante.enonce}</h2>
-    {#if aide}<p class="aide">💡 {AIDES[meca]}</p>{/if}
+    {#if aide}<p class="aide"><strong>Comment jouer :</strong> {AIDES[meca]}</p>{/if}
     {#key courante.id}
       {#if meca === 'slider'}
         <Slider question={courante} onrepondre={repondre} />
@@ -112,32 +127,74 @@
     display: grid;
     gap: 1rem;
   }
+  .entete {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 0.85rem;
+    align-items: center;
+  }
+  .vignette {
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: cover;
+    display: block;
+  }
   .progression {
     margin: 0;
     color: var(--muted);
     font-size: 0.9rem;
   }
+  .segments {
+    list-style: none;
+    margin: 0.4rem 0 0;
+    padding: 0;
+    display: flex;
+    gap: 0.25rem;
+  }
+  .segments li {
+    flex: 1;
+    height: 0.3rem;
+    background: var(--border);
+  }
+  .segments li.fait {
+    background: var(--petrole);
+  }
+  .segments li.courant {
+    background: var(--accent);
+  }
+  @media (prefers-color-scheme: dark) {
+    .segments li.fait {
+      background: var(--ivoire);
+    }
+  }
+  /* L'énoncé est une phrase : largeur normale, pas l'étroit des affiches. */
   h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    line-height: 1.25;
+    margin: 0.25rem 0 0;
+    font-size: 1.65rem;
+    font-weight: 800;
+    font-stretch: 100%;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
   }
   .aide {
     margin: 0;
-    padding: 0.6rem 0.8rem;
-    border-radius: 0.5rem;
+    padding: 0.75rem 0.9rem;
     background: var(--surface);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
-  .badge.niveau {
-    border-color: var(--accent);
-    color: var(--accent);
+  .badges {
+    margin: 0.35rem 0 0;
+    display: flex;
+    gap: 0.3rem;
   }
   .badge {
-    margin-left: 0.4rem;
-    padding: 0 0.4rem;
-    border: 1px solid var(--border);
-    border-radius: 0.3rem;
+    padding: 0.05rem 0.45rem;
+    background: var(--surface);
     font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .badge.niveau {
+    background: var(--ocre);
+    color: var(--petrole);
   }
 </style>

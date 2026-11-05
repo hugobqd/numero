@@ -23,7 +23,9 @@
 </script>
 
 <section class="revelation" class:gagne={resultat.gagne}>
-  <p class="verdict">{verdict}{#if afficherPoints}{` · ${resultat.points} pts`}{/if}</p>
+  <p class="verdict" class:presque={!resultat.gagne && resultat.points > 0}>
+    <span class="pastille">{verdict}</span>{#if afficherPoints}<span class="points">{resultat.points} pts</span>{/if}
+  </p>
 
   <div class="vraie">
     <span class="chiffres">{vraie.chiffres}</span>
@@ -46,7 +48,7 @@
   </p>
 
   <p class="ancrage">{question.ancrage}</p>
-  {#if question.mnemo}<p class="mnemo">💡 {question.mnemo}</p>{/if}
+  {#if question.mnemo}<p class="mnemo"><strong>Astuce :</strong> {question.mnemo}</p>{/if}
 
   <p class="source">
     Source : <a href={question.source.url} target="_blank" rel="noopener">{new URL(question.source.url).hostname}</a>
@@ -62,14 +64,34 @@
     display: grid;
     gap: 0.75rem;
   }
+  /* Verdict : un aplat de couleur (rouille, ocre ou sarcelle) en capitales étroites. */
   .verdict {
     margin: 0;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--perdu);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 800;
   }
-  .gagne .verdict {
-    color: var(--gagne);
+  .pastille {
+    padding: 0.3rem 0.7rem;
+    background: var(--perdu);
+    color: var(--ivoire);
+    font-size: 1.3rem;
+    font-stretch: 72%;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .presque .pastille {
+    background: var(--presque);
+    color: var(--petrole);
+  }
+  .gagne .pastille {
+    background: var(--gagne);
+    color: var(--ivoire);
+  }
+  .points {
+    font-size: 1.3rem;
+    font-stretch: 72%;
   }
   .vraie {
     display: flex;
@@ -78,10 +100,15 @@
     flex-wrap: wrap;
   }
   .vraie .chiffres {
-    font-size: clamp(2.5rem, 12vw, 4rem);
-    font-weight: 800;
+    font-size: clamp(3.5rem, 19vw, 5.5rem);
+    font-weight: 900;
     font-variant-numeric: tabular-nums;
-    line-height: 1;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+  .vraie .unite {
+    font-size: 1.2rem;
+    font-weight: 600;
   }
   .unite,
   .formes,
@@ -100,10 +127,11 @@
     font-variant-numeric: tabular-nums;
   }
   .ancrage {
-    margin: 0;
-    padding: 0.75rem 1rem;
-    border-left: 3px solid var(--accent);
+    margin: 0.25rem 0 0;
+    padding: 0.9rem 1rem;
+    border-left: 4px solid var(--accent);
     background: var(--surface);
+    font-size: 1.05rem;
   }
   .mnemo {
     margin: 0;
@@ -114,6 +142,9 @@
     color: var(--muted);
   }
   a {
-    color: var(--accent);
+    color: var(--accent-texte);
+  }
+  .principal {
+    margin-top: 0.75rem;
   }
 </style>

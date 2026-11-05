@@ -219,18 +219,28 @@
 
 </script>
 
+{#snippet marque()}
+  <!-- Marque : un « 0 » en cercles concentriques et le nom en capitales étroites. -->
+  <svg class="sigle" viewBox="0 0 32 32" aria-hidden="true">
+    <circle cx="16" cy="16" r="15" fill="var(--terracotta)" />
+    <circle cx="16" cy="16" r="10" fill="none" stroke="var(--ivoire)" stroke-width="1.4" />
+    <circle cx="16" cy="16" r="5.5" fill="none" stroke="var(--ivoire)" stroke-width="1.4" />
+    <circle cx="16" cy="16" r="1.8" fill="var(--ivoire)" />
+  </svg>
+  <span class="nom-marque">Numero</span>
+{/snippet}
+
 <main>
   <header>
     <h1>
       {#if joueur?.tutoFait}
-        <button type="button" class="titre" onclick={() => (ecran = 'accueil')}>Numero</button>
-      {:else}Numero{/if}
+        <button type="button" class="titre" onclick={() => (ecran = 'accueil')}>{@render marque()}</button>
+      {:else}{@render marque()}{/if}
     </h1>
     <nav class="haut">
       {#if joueur}
-        <button type="button" class="lien" onclick={() => (ecran = 'joueurs')}>👤 {joueur.pseudo}</button>
+        <button type="button" class="lien" onclick={() => (ecran = 'joueurs')}>{joueur.pseudo}</button>
       {/if}
-
     </nav>
   </header>
 
@@ -274,10 +284,10 @@
       </p>
       <Recap questions={questionsTuto} resultats={tuto.resultats} afficherPoints={partie.variante === 'progressif'} />
       <div class="gain">
-        <p>🎴 <strong>+{questionsTuto.length} fiches</strong> dans ta collection.</p>
+        <p><strong class="gain-nombre">+{questionsTuto.length}</strong> fiches dans ta collection.</p>
         <p class="conseil">Les fiches ratées sont « à revoir » : elles passeront en premier dans tes révisions.</p>
         <div class="actions">
-          <button type="button" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
+          <button type="button" class="secondaire" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
         </div>
       </div>
       <button type="button" class="principal" onclick={() => (ecran = 'defi')}>Jouer le défi du jour</button>
@@ -316,7 +326,7 @@
       <div class="gain">
         {#if nouvellesFiches.length}
           <p>
-            🎴 <strong>+{nouvellesFiches.length} fiche{nouvellesFiches.length > 1 ? 's' : ''}</strong>
+            <strong class="gain-nombre">+{nouvellesFiches.length}</strong> fiche{nouvellesFiches.length > 1 ? 's' : ''}
             dans ta collection ({possedees.length} / {stock.length})
             {#if aRevoir}· dont <strong>{aRevoir} à revoir</strong>{/if}
           </p>
@@ -325,8 +335,8 @@
           <p>Les fiches de ce défi sont dans ta collection ({possedees.length} / {stock.length}).</p>
         {/if}
         <div class="actions">
-          <button type="button" onclick={() => (ecran = 'collection')}>Ma collection</button>
-          {#if possedees.length}<button type="button" onclick={reviser}>Réviser</button>{/if}
+          {#if possedees.length}<button type="button" class="principal" onclick={reviser}>Réviser</button>{/if}
+          <button type="button" class="secondaire" onclick={() => (ecran = 'collection')}>Ma collection</button>
         </div>
       </div>
 
@@ -390,7 +400,7 @@
   onclick={basculerDev}
   aria-expanded={devOuvert}
   aria-controls="outils-test"
-  title="Outils de test">{devOuvert ? '✕ fermer' : '⚙ test'}</button
+  title="Outils de test">{devOuvert ? 'Fermer' : 'Test'}</button
 >
 {#if devOuvert}
 <aside class="dev" id="outils-test" aria-label="Outils de test">
@@ -495,11 +505,10 @@
     bottom: 0.75rem;
     z-index: 11;
     padding: 0.35rem 0.7rem;
-    border-radius: 999px;
     font-size: 0.75rem;
     line-height: 1;
     color: var(--muted);
-    opacity: 0.7;
+    opacity: 0.75;
   }
   .dev-bouton:hover,
   .dev-bouton.ouvert {
@@ -517,9 +526,8 @@
     font-size: 0.78rem;
     color: var(--muted);
     background: var(--bg);
-    border-left: 1px solid var(--border);
-    border-top: 1px solid var(--border);
-    box-shadow: 0 0 1.5rem rgb(0 0 0 / 0.15);
+    border-left: 2px solid var(--surface-2);
+    border-top: 2px solid var(--surface-2);
   }
   @media (min-width: 52rem) {
     .dev {
@@ -533,7 +541,6 @@
       width: auto;
       max-height: 70vh;
       border-left: none;
-      border-radius: 0.8rem 0.8rem 0 0;
     }
   }
   .dev-titre {
@@ -547,10 +554,9 @@
   }
   .dev h3 {
     margin: 0;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--fg);
   }
   .dev p {
     margin: 0;
@@ -563,7 +569,6 @@
   .dev button {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
-    border-radius: 0.4rem;
     color: var(--muted);
   }
   .dev button:hover {
@@ -593,15 +598,28 @@
   }
   header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.5rem;
+    padding: 0.25rem 0;
   }
   h1 {
     margin: 0;
-    font-size: 1.5rem;
-    letter-spacing: -0.02em;
+    font-size: 1.6rem;
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  h1,
+  .titre {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .sigle {
+    width: 1.9rem;
+    height: 1.9rem;
+    flex: none;
   }
   .accueil {
     display: grid;
@@ -626,8 +644,11 @@
   }
   .score {
     margin: 0;
-    font-size: 3rem;
-    font-weight: 800;
+    font-size: clamp(3.5rem, 18vw, 5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    font-stretch: 72%;
+    letter-spacing: -0.02em;
     font-variant-numeric: tabular-nums;
     text-align: center;
   }
@@ -649,8 +670,10 @@
   }
   .stats dd {
     margin: 0;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 2.2rem;
+    font-weight: 800;
+    font-stretch: 72%;
+    line-height: 1.05;
   }
   .haut {
     display: flex;
@@ -658,21 +681,33 @@
     gap: 1rem;
   }
   button.lien {
-    background: none;
-    border: none;
-    padding: 0;
-    color: var(--accent);
+    background: var(--surface);
+    padding: 0.35rem 0.75rem;
+    color: var(--fg);
     font-size: 0.9rem;
+    font-weight: 600;
+  }
+  button.lien:hover {
+    background: var(--surface-2);
   }
   .gain {
     display: grid;
     gap: 0.5rem;
-    padding: 0.75rem 1rem;
-    border: 1px dashed var(--accent);
-    border-radius: 0.6rem;
+    padding: 1rem 1.1rem;
+    background: var(--surface);
   }
   .gain p {
     margin: 0;
+  }
+  .gain .secondaire {
+    background: var(--surface-2);
+  }
+  .gain-nombre {
+    font-size: 1.8rem;
+    font-weight: 900;
+    font-stretch: 72%;
+    color: var(--accent-texte);
+    margin-right: 0.2rem;
   }
   .conseil {
     color: var(--muted);
