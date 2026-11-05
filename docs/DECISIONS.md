@@ -10,7 +10,7 @@ Jeu éducatif pour **retenir des nombres précis** qui régissent le monde (dist
 
 | Sujet | Décision |
 |---|---|
-| Public | Adultes curieux et grands ados |
+| Public | Adultes et adolescents curieux, à partir de 12 ans environ. *Révisé le 2026-11-06* : énoncés et ancrages compréhensibles par un collégien, aucun contenu inadapté aux mineurs. Pas de fonctions pour le public scolaire (élève, enseignant, classe) |
 | Support | Web, pensé d'abord pour le mobile. Site statique Vite + TypeScript + Svelte, sans backend |
 | Format | Défi de 5 questions, un par jour au plus. *Révisé le 2026-11-05 (ADR 0002)* : les défis forment un **parcours** fixe (#1, #2…), le même pour tous ; chaque joueur y avance à son rythme, son défi du jour est le prochain de son parcours. Deux joueurs qui jouent le #12 ont les mêmes questions. Dans le prototype, le jour est simulé par joueur |
 | Composition | Le stock est découpé en défis de 5 questions **sans répétition** : chaque cycle épuise toutes les questions jouables avant de recommencer dans un nouvel ordre. Chaque défi pioche dans des thématiques différentes (au moins 3), en privilégiant celles qui ont le plus de questions restantes. Ordre quelconque, **pas de niveau**. *À revoir (ticket de l'étape 4)* : le parcours doit monter en **difficulté** (propriété de la fiche : grand public → pointue), un joueur commence par des fiches faciles |
@@ -43,10 +43,18 @@ Seules les fiches `valide` entrent dans le défi quotidien. **Exception du proto
 
 ## Contenu
 
-Chaîne d'agents lancée à la main, consignes dans `docs/contenu/` :
-thématiques → sources (Wikipédia) → rédaction → simplification → relecture.
+*Révisé le 2026-11-06 (ticket « Plan de création du contenu », hugobqd/numero#5).*
+
+Chaîne d'agents lancée à la main, par **lots d'environ 25 fiches** :
+idées → vérification → rédaction → relecture. Plus de maillon « simplification » : style et ton rassurant sont dans la consigne de rédaction. Les consignes de `docs/contenu/` sont à réécrire selon ce plan (étape 7).
 **La relecture humaine est la seule porte vers `valide`.**
-Cible du prototype : environ 60 questions sur environ 6 thèmes.
+
+- **Cible** : 150 fiches validées au lancement (un mois de défis sans répétition), puis ajout régulier. Le premier lot reprend les 55 brouillons existants.
+- **Sources d'idées** : Wikipédia (ordres de grandeur, records), vulgarisation, organismes (INSEE, ESA, OMS, IGN…), listes de culture générale, programmes scolaires, erreurs entendues en tests. Chaque sujet note d'où il vient.
+- **Source de vérification** (citée dans la fiche) : la source primaire en priorité, Wikipédia si elle la cite ; une seconde source de recoupement notée pour la relecture.
+- **Difficulté** : 4 crans (tout public, grand public, curieux, pointu), repérés sur les programmes (primaire, collège, lycée, hors programme). La rédaction propose un cran avec une phrase de justification, la relecture le confirme. Répartition indicative : environ 25 / 40 / 20 / 15 %, la justesse de chaque fiche prime.
+- **Thèmes ouverts** : une liste de thèmes par fiche, le premier sert au jeu (album, composition). Un thème naît dès sa première fiche (2 ou 3 mots, réutiliser l'existant) et peut compter moins de 10 fiches.
+- **Exclusions v1** : pas de dates, de nombres négatifs ni de pourcentages.
 
 ## Plus tard
 
