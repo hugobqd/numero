@@ -173,7 +173,7 @@
   h2 {
     margin: 0.25rem 0 0;
     font-size: 1.65rem;
-    font-weight: 800;
+    font-weight: 600;
     font-stretch: 100%;
     line-height: 1.2;
     letter-spacing: -0.015em;

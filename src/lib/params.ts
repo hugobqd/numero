@@ -1,6 +1,6 @@
 import type { Mecanique, VarianteScore } from './types';
 
-const MECAS: Mecanique[] = ['slider', 'palier', 'qcm', 'plusmoins'];
+const MECAS: Mecanique[] = ['palier', 'slider', 'qcm', 'plusmoins'];
 const VARIANTES: VarianteScore[] = ['progressif', 'exact'];
 
 /**
@@ -13,7 +13,7 @@ export function lireParametres() {
   const meca = p.get('meca') as Mecanique | null;
   const score = p.get('score') as VarianteScore | null;
   return {
-    meca: meca && MECAS.includes(meca) ? meca : ('slider' as Mecanique),
+    meca: meca && MECAS.includes(meca) ? meca : ('palier' as Mecanique),
     variante: score && VARIANTES.includes(score) ? score : ('progressif' as VarianteScore),
     reset: p.has('reset'),
     brouillons: p.get('brouillons') !== '0',

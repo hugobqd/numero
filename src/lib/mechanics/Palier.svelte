@@ -64,13 +64,18 @@
     flex-wrap: wrap;
     gap: 0.5rem;
   }
+  /* La valeur en cours : le plus gros élément de l'écran. */
   .chiffres {
-    font-size: clamp(2rem, 9vw, 3rem);
-    font-weight: 700;
+    font-size: clamp(4rem, 22vw, 6rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
     font-variant-numeric: tabular-nums;
   }
   .unite {
     color: var(--muted);
+    font-size: 1.2rem;
+    font-weight: 600;
   }
   input[type='range'] {
     width: 100%;
