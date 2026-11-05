@@ -10,12 +10,37 @@
     onretour,
   }: { collection: Collection; stock: Question[]; onreviser: () => void; onretour: () => void } = $props();
 
+  /** Illustration de chaque thématique (emoji par défaut pour un thème nouveau). */
+  const ICONES: Record<string, string> = {
+    Astronomie: '🔭',
+    'Corps humain': '🫀',
+    'Terre et géologie': '🌋',
+    Physique: '⚛️',
+    Animaux: '🐋',
+    Humanité: '🌍',
+  };
+  const icone = (theme: string) => ICONES[theme] ?? '📘';
+
   const themes = $derived(
     [...new Set(stock.map((q) => q.thematique))].sort().map((theme) => {
       const toutes = stock.filter((q) => q.thematique === theme);
-      return { theme, total: toutes.length, possedees: toutes.filter((q) => collection[q.id]) };
+      const possedees = toutes.filter((q) => collection[q.id]);
+      const sommeEtoiles = possedees.reduce((s, q) => s + maitrise(collection[q.id]), 0);
+      return {
+        theme,
+        total: toutes.length,
+        possedees,
+        /** Moyenne des étoiles des fiches possédées (0 à 3). */
+        moyenne: possedees.length ? sommeEtoiles / possedees.length : 0,
+      };
     }),
   );
+
+  // Vue d'ensemble par thème ; un thème touché affiche le détail de ses fiches.
+  let themeOuvert = $state<string | null>(null);
+  const detail = $derived(themes.find((t) => t.theme === themeOuvert));
+
+  const moyenneLisible = (m: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 1 }).format(m);
   const nbPossedees = $derived(themes.reduce((s, t) => s + t.possedees.length, 0));
   const nbARevoir = $derived(stock.filter((q) => collection[q.id] && maitrise(collection[q.id]) === 0).length);
 
@@ -36,12 +61,12 @@
     </button>
   {/if}
 
-  {#each themes as t}
+  {#if detail}
     <div class="theme">
-      <h3>{t.theme} <span class="compte">{t.possedees.length} / {t.total}</span></h3>
-      {#if t.possedees.length}
+      <h3><span class="icone-titre">{icone(detail.theme)}</span> {detail.theme} <span class="compte">{detail.possedees.length} / {detail.total}</span></h3>
+      {#if detail.possedees.length}
         <ul class="fiches">
-          {#each t.possedees as q}
+          {#each detail.possedees as q}
             {@const g = grand(q.valeur_a_retenir, q.unite, q.precision)}
             {@const e = collection[q.id]}
             <li class:revoir={maitrise(e) === 0}>
@@ -65,11 +90,29 @@
             </li>
           {/each}
         </ul>
+      {:else}
+        <p class="vide">Aucune fiche de ce thème pour l'instant. Elles arrivent avec les défis du jour.</p>
       {/if}
     </div>
-  {/each}
-
-  <button type="button" onclick={onretour}>← Retour</button>
+    <button type="button" onclick={() => (themeOuvert = null)}>← Tous les thèmes</button>
+  {:else}
+    <ul class="cartes">
+      {#each themes as t}
+        <li>
+          <button type="button" class="carte" class:vide-theme={!t.possedees.length} onclick={() => (themeOuvert = t.theme)}>
+            <span class="icone" aria-hidden="true">{icone(t.theme)}</span>
+            <span class="nom">{t.theme}</span>
+            <span class="quantite"><strong>{t.possedees.length}</strong> / {t.total} fiches</span>
+            <span class="jauge" aria-hidden="true"><span style:width="{(100 * t.possedees.length) / t.total}%"></span></span>
+            <span class="maitrise" title="Moyenne des étoiles des fiches possédées">
+              ★ {moyenneLisible(t.moyenne)} <small>/ {MAITRISE_MAX}</small>
+            </span>
+          </button>
+        </li>
+      {/each}
+    </ul>
+    <button type="button" onclick={onretour}>← Retour</button>
+  {/if}
 </section>
 
 <style>
@@ -98,6 +141,66 @@
   .vide {
     margin: 0;
     color: var(--muted);
+  }
+  .cartes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: 0.6rem;
+  }
+  .carte {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 0.35rem;
+    justify-items: start;
+    text-align: left;
+    padding: 0.9rem;
+    border-radius: 0.8rem;
+    background: var(--surface);
+  }
+  .carte.vide-theme {
+    opacity: 0.6;
+  }
+  .icone {
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+  .nom {
+    font-weight: 700;
+  }
+  .quantite {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .quantite strong {
+    color: var(--fg);
+  }
+  .jauge {
+    width: 100%;
+    height: 0.3rem;
+    border-radius: 1rem;
+    background: var(--border);
+    overflow: hidden;
+  }
+  .jauge span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+  }
+  .maitrise {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .maitrise small {
+    color: var(--muted);
+  }
+  .icone-titre {
+    font-size: 1.2rem;
   }
   .theme {
     display: grid;
