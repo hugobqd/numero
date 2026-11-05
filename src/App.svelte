@@ -20,6 +20,7 @@
   import JoueursVue from './lib/JoueursVue.svelte';
   import Accueil from './lib/Accueil.svelte';
   import Recap from './lib/Recap.svelte';
+  import Inspecteur from './lib/Inspecteur.svelte';
   import {
     choisirJoueur,
     creerJoueur,
@@ -117,6 +118,9 @@
 
   // Joueurs et jours simulés : chaque changement recharge la page avec les données du joueur.
   const recharger = () => location.assign(lien());
+
+  // Question affichée (outils de test : inspecteur).
+  let enCours = $state<{ question: Question; graine: number } | null>(null);
 
   // Menu de test : fermé par défaut, état mémorisé dans ce navigateur.
   let devOuvert = $state(lireDevOuvert());
@@ -245,6 +249,7 @@
       aide
       onresultat={resultatTuto}
       onfin={finTuto}
+      bind:enCours
     />
   {:else if ecran === 'tutoBilan'}
     <section class="bilan">
@@ -288,6 +293,7 @@
       resultats={partie.resultats}
       onresultat={resultatDefi}
       onfin={finDefi}
+      bind:enCours
     />
   {:else if ecran === 'bilan'}
     <section class="bilan">
@@ -342,6 +348,7 @@
       etiquette="Révision"
       onresultat={resultatRevision}
       onfin={() => (ecran = 'bilanRevision')}
+      bind:enCours
     />
   {:else if ecran === 'bilanRevision' && revision}
     <section class="bilan">
@@ -418,6 +425,15 @@
           {/each}
         </tbody>
       </table>
+    </section>
+
+    <section>
+      <h3>Question en cours</h3>
+      {#if enCours && (ecran === 'defi' || ecran === 'tuto' || ecran === 'revision')}
+        <Inspecteur question={enCours.question} graine={enCours.graine} />
+      {:else}
+        <p>Aucune question affichée.</p>
+      {/if}
     </section>
 
     <section>

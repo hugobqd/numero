@@ -19,6 +19,7 @@
     resultats,
     etiquette = '',
     aide = false,
+    enCours = $bindable(null),
     onresultat,
     onfin,
   }: {
@@ -31,6 +32,8 @@
     etiquette?: string;
     /** Affiche le mode d'emploi de la mécanique sous la question (tuto). */
     aide?: boolean;
+    /** Question affichée et graine de ses propositions, exposées aux outils de test. */
+    enCours?: { question: Question; graine: number } | null;
     onresultat: (r: ResultatQuestion, q: Question) => void;
     onfin: () => void;
   } = $props();
@@ -47,6 +50,11 @@
 
   const index = $derived(enRevelation ? resultats.length - 1 : resultats.length);
   const courante = $derived(questions[index]);
+
+  $effect(() => {
+    enCours = courante ? { question: courante, graine } : null;
+    return () => (enCours = null);
+  });
   const dernierResultat = $derived(resultats[resultats.length - 1]);
 
   function repondre(r: Reponse) {
