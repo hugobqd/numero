@@ -77,7 +77,6 @@
       {#if courante.statut === 'brouillon'}<span class="badge">brouillon</span>{/if}
     </p>
     <h2>{courante.enonce}</h2>
-    <p class="unite-attendue">Réponse en <strong>{courante.unite}</strong></p>
     {#if aide}<p class="aide">💡 {AIDES[meca]}</p>{/if}
     {#key courante.id}
       {#if meca === 'slider'}
@@ -98,8 +97,7 @@
     display: grid;
     gap: 1rem;
   }
-  .progression,
-  .unite-attendue {
+  .progression {
     margin: 0;
     color: var(--muted);
     font-size: 0.9rem;

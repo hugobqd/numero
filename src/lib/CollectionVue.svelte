@@ -83,7 +83,7 @@
                   <p>{q.ancrage}</p>
                   {#if q.mnemo}<p>💡 {q.mnemo}</p>{/if}
                   <p class="meta">
-                    {e.obtenueAuDefi === 0 ? 'Offerte (tuto)' : `Obtenue au défi #${e.obtenueAuDefi}`} · {e.revisions} révision{e.revisions > 1 ? 's' : ''}
+                    {e.obtenueAuDefi === 0 ? 'Obtenue au premier défi' : `Obtenue au défi #${e.obtenueAuDefi}`} · {e.revisions} révision{e.revisions > 1 ? 's' : ''}
                   </p>
                 </div>
               </details>

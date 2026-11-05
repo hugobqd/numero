@@ -8,7 +8,7 @@ export interface Joueur {
   creeLe: string;
   /** Jour simulé : numéro du défi du jour pour ce joueur. */
   jour: number;
-  /** Le défi offert (tuto) a été joué. */
+  /** Le premier défi (tuto) a été joué. */
   tutoFait: boolean;
 }
 

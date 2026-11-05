@@ -20,4 +20,7 @@
     display: grid;
     gap: 1rem;
   }
+  .principal {
+    margin-top: 1rem;
+  }
 </style>

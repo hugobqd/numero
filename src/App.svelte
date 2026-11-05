@@ -97,14 +97,14 @@
     ecran = 'bilan';
   }
 
-  // Tuto : un premier défi offert de 3 questions, avec le mode d'emploi, avant le défi du jour.
-  const TUTO = ['corps-os-adulte', 'terre-everest', 'astro-terre-lune'];
+  // Premier défi (tuto) : 5 questions connues, avec le mode d'emploi, avant le défi du jour.
+  const TUTO = ['corps-os-adulte', 'terre-everest', 'astro-terre-lune', 'corps-dents-adulte', 'humanite-tour-eiffel-hauteur'];
   const questionsTuto = TUTO.map((id) => stock.find((q) => q.id === id)).filter((q): q is Question => !!q);
   let tuto = $state<{ resultats: ResultatQuestion[] }>({ resultats: [] });
 
   function resultatTuto(res: ResultatQuestion) {
     tuto.resultats.push(res);
-    // Fiches offertes : défi n°0.
+    // Fiches du premier défi : défi n°0.
     gagnerFiche(res.id, 0, res.gagne);
     collection = lireCollection();
   }
@@ -230,7 +230,7 @@
       <h2>Bienvenue {joueur.pseudo} !</h2>
       <p>Numero, c'est <strong>5 nombres par jour</strong> à retenir <strong>au chiffre près</strong> : la distance Terre-Lune, le nombre d'os du corps humain, l'âge de la Terre…</p>
       <p>Chaque question jouée devient une <strong>fiche de ta collection</strong>. Celles que tu rates sont « à revoir » : tu les retravailles en révision jusqu'à les maîtriser (★★★).</p>
-      <p>Pour commencer, voici un <strong>défi offert</strong> de 3 questions, avec le mode d'emploi.</p>
+      <p>Pour commencer, voici ton <strong>premier défi</strong> : {questionsTuto.length} questions, avec le mode d'emploi.</p>
       <button type="button" class="principal" onclick={() => (ecran = 'tuto')}>C'est parti</button>
     </section>
   {:else if ecran === 'tuto'}
@@ -240,17 +240,17 @@
       variante={partie.variante}
       graine={0}
       resultats={tuto.resultats}
-      etiquette="Défi offert"
+      etiquette="Premier défi"
       aide
       onresultat={resultatTuto}
       onfin={finTuto}
     />
   {:else if ecran === 'tutoBilan'}
     <section class="bilan">
-      <h2>Défi offert terminé</h2>
+      <h2>Premier défi terminé</h2>
       <p class="score">{tuto.resultats.filter((r) => r.gagne).length} / {questionsTuto.length}</p>
       <div class="gain">
-        <p>🎁 <strong>{questionsTuto.length} fiches offertes</strong> dans ta collection.</p>
+        <p>🎴 <strong>+{questionsTuto.length} fiches</strong> dans ta collection.</p>
         <p class="conseil">Les fiches ratées sont « à revoir » : elles passeront en premier dans tes révisions.</p>
       </div>
       <button type="button" class="principal" onclick={() => (ecran = 'defi')}>Jouer le défi du jour</button>

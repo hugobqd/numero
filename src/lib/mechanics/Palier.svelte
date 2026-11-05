@@ -96,6 +96,9 @@
     display: block;
     font-size: 0.65rem;
   }
+  .palier > .principal {
+    margin-top: 1rem;
+  }
   .crans button.actif {
     color: var(--fg);
     border-color: var(--accent);
