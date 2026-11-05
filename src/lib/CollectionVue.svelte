@@ -36,6 +36,10 @@
     }),
   );
 
+  // Seuls les thèmes commencés ont une carte ; les autres sont cités pour encourager à jouer.
+  const themesCommences = $derived(themes.filter((t) => t.possedees.length));
+  const themesADecouvrir = $derived(themes.filter((t) => !t.possedees.length));
+
   // Vue d'ensemble par thème ; un thème touché affiche le détail de ses fiches.
   let themeOuvert = $state<string | null>(null);
   const detail = $derived(themes.find((t) => t.theme === themeOuvert));
@@ -51,6 +55,7 @@
 
   const moyenneLisible = (m: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 1 }).format(m);
   const nbPossedees = $derived(themes.reduce((s, t) => s + t.possedees.length, 0));
+  const nbAObtenir = $derived(stock.length - nbPossedees);
   const nbARevoir = $derived(stock.filter((q) => collection[q.id] && maitrise(collection[q.id]) === 0).length);
 
   const etoiles = (n: number) => '★'.repeat(n) + '☆'.repeat(MAITRISE_MAX - n);
@@ -106,9 +111,9 @@
     <button type="button" onclick={() => (themeOuvert = null)}>← Tous les thèmes</button>
   {:else}
     <ul class="cartes">
-      {#each themes as t}
+      {#each themesCommences as t}
         <li>
-          <button type="button" class="carte" class:vide-theme={!t.possedees.length} onclick={() => (themeOuvert = t.theme)}>
+          <button type="button" class="carte" onclick={() => (themeOuvert = t.theme)}>
             <span class="icone" aria-hidden="true">{icone(t.theme)}</span>
             <span class="nom">{t.theme}</span>
             <span class="quantite"><strong>{t.possedees.length}</strong> / {t.total} fiches</span>
@@ -125,6 +130,20 @@
         </li>
       {/each}
     </ul>
+
+    {#if themesADecouvrir.length || nbAObtenir}
+      <div class="encouragement">
+        {#if themesADecouvrir.length}
+          <p>
+            Continue à jouer pour découvrir aussi
+            {#each themesADecouvrir as t, i}<strong class="theme-nom">{`${icone(t.theme)} ${t.theme}`}</strong>{i < themesADecouvrir.length - 2 ? ', ' : i === themesADecouvrir.length - 2 ? ' et ' : ''}{/each}.
+          </p>
+        {:else}
+          <p>Continue à jouer pour compléter tes thèmes : encore <strong>{nbAObtenir} fiches</strong> à obtenir.</p>
+        {/if}
+      </div>
+    {/if}
+
     <button type="button" onclick={onretour}>← Retour</button>
   {/if}
 </section>
@@ -175,8 +194,22 @@
     border-radius: 0.8rem;
     background: var(--surface);
   }
-  .carte.vide-theme {
-    opacity: 0.6;
+  .encouragement {
+    padding: 0.9rem 1rem;
+    border: 1px dashed var(--border);
+    border-radius: 0.8rem;
+    color: var(--muted);
+  }
+  .encouragement p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  .encouragement strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+  .theme-nom {
+    white-space: nowrap;
   }
   .icone {
     font-size: 1.75rem;
