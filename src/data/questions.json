@@ -9,9 +9,41 @@
     "perimetre": "distance moyenne, centre à centre",
     "ancrage": "C'est environ 30 fois le diamètre de la Terre : toutes les planètes du système solaire tiendraient côte à côte dans cet espace.",
     "mnemo": "384 400 : presque 400 000, moins 16 000.",
-    "source": { "url": "https://fr.wikipedia.org/wiki/Lune", "consulte_le": "2026-11-05" },
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Lune",
+      "consulte_le": "2026-11-05"
+    },
     "thematique": "Astronomie",
-    "leurres": [300000, 356500, 405500],
+    "leurres": [
+      {
+        "valeur": 356500,
+        "type": "autre_perimetre",
+        "note": "distance au périgée (la plus courte)"
+      },
+      {
+        "valeur": 406700,
+        "type": "autre_perimetre",
+        "note": "distance à l'apogée (la plus longue)"
+      },
+      {
+        "valeur": 238900,
+        "type": "autre_unite",
+        "note": "la distance moyenne en miles"
+      },
+      {
+        "valeur": 400000,
+        "type": "erreur_frequente",
+        "note": "arrondi courant"
+      },
+      {
+        "valeur": 363300,
+        "type": "proche"
+      },
+      {
+        "valeur": 372800,
+        "type": "proche"
+      }
+    ],
     "statut": "valide",
     "langue": "fr"
   },
@@ -24,9 +56,40 @@
     "unite": "os",
     "perimetre": "chez l'adulte (un nouveau-né en a environ 300, qui fusionnent en grandissant)",
     "ancrage": "Plus de la moitié sont dans les mains et les pieds : 54 dans les mains, 52 dans les pieds.",
-    "source": { "url": "https://fr.wikipedia.org/wiki/Squelette_humain", "consulte_le": "2026-11-05" },
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Squelette_humain",
+      "consulte_le": "2026-11-05"
+    },
     "thematique": "Corps humain",
-    "leurres": [200, 212, 300],
+    "leurres": [
+      {
+        "valeur": 300,
+        "type": "autre_perimetre",
+        "note": "≈ 300 os chez le nouveau-né, qui fusionnent ensuite"
+      },
+      {
+        "valeur": 212,
+        "type": "proche"
+      },
+      {
+        "valeur": 200,
+        "type": "erreur_frequente",
+        "note": "arrondi courant"
+      },
+      {
+        "valeur": 186,
+        "type": "proche"
+      },
+      {
+        "valeur": 226,
+        "type": "proche"
+      },
+      {
+        "valeur": 639,
+        "type": "autre_perimetre",
+        "note": "≈ 640 muscles squelettiques, confusion os / muscles"
+      }
+    ],
     "statut": "valide",
     "langue": "fr"
   },
@@ -39,9 +102,42 @@
     "unite": "années",
     "perimetre": "depuis la formation de la planète (± 50 millions d'années)",
     "ancrage": "C'est environ un tiers de l'âge de l'Univers (13,8 milliards d'années).",
-    "source": { "url": "https://fr.wikipedia.org/wiki/%C3%82ge_de_la_Terre", "consulte_le": "2026-11-05" },
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/%C3%82ge_de_la_Terre",
+      "consulte_le": "2026-11-05"
+    },
     "thematique": "Terre et géologie",
-    "leurres": [3800000000, 4200000000, 5200000000],
+    "leurres": [
+      {
+        "valeur": 4570000000,
+        "type": "autre_perimetre",
+        "note": "âge du système solaire (4,567 milliards d'années)"
+      },
+      {
+        "valeur": 4030000000,
+        "type": "autre_perimetre",
+        "note": "âge des plus vieilles roches connues (gneiss d'Acasta)"
+      },
+      {
+        "valeur": 4400000000,
+        "type": "autre_perimetre",
+        "note": "âge des plus vieux minéraux (zircons de Jack Hills)"
+      },
+      {
+        "valeur": 13800000000,
+        "type": "autre_perimetre",
+        "note": "âge de l'Univers"
+      },
+      {
+        "valeur": 3800000000,
+        "type": "erreur_frequente",
+        "note": "confusion avec l'apparition de la vie"
+      },
+      {
+        "valeur": 4880000000,
+        "type": "proche"
+      }
+    ],
     "statut": "valide",
     "langue": "fr"
   },
@@ -55,9 +151,41 @@
     "perimetre": "dans le vide (valeur exacte par définition du mètre)",
     "ancrage": "En une seconde, la lumière fait 7,5 fois le tour de la Terre. Elle met 1,3 s pour atteindre la Lune.",
     "mnemo": "299 792 : « 2-99-79-2 », presque 300 000 km/s.",
-    "source": { "url": "https://fr.wikipedia.org/wiki/Vitesse_de_la_lumi%C3%A8re", "consulte_le": "2026-11-05" },
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Vitesse_de_la_lumi%C3%A8re",
+      "consulte_le": "2026-11-05"
+    },
     "thematique": "Physique",
-    "leurres": [186282, 270000, 330000],
+    "leurres": [
+      {
+        "valeur": 186282,
+        "type": "autre_unite",
+        "note": "la même vitesse en miles par seconde"
+      },
+      {
+        "valeur": 225000,
+        "type": "autre_perimetre",
+        "note": "vitesse de la lumière dans l'eau"
+      },
+      {
+        "valeur": 200000,
+        "type": "autre_perimetre",
+        "note": "vitesse de la lumière dans le verre ou la fibre optique"
+      },
+      {
+        "valeur": 300000,
+        "type": "erreur_frequente",
+        "note": "arrondi courant"
+      },
+      {
+        "valeur": 289471,
+        "type": "proche"
+      },
+      {
+        "valeur": 311208,
+        "type": "proche"
+      }
+    ],
     "statut": "valide",
     "langue": "fr"
   },
@@ -70,9 +198,41 @@
     "unite": "m",
     "perimetre": "au-dessus du niveau de la mer (mesure sino-népalaise de 2020)",
     "ancrage": "Un avion de ligne vole vers 11 000 m : à peine 2 000 m au-dessus du sommet.",
-    "source": { "url": "https://fr.wikipedia.org/wiki/Everest", "consulte_le": "2026-11-05" },
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Everest",
+      "consulte_le": "2026-11-05"
+    },
     "thematique": "Terre et géologie",
-    "leurres": [8611, 8516, 9102],
+    "leurres": [
+      {
+        "valeur": 8848,
+        "type": "erreur_frequente",
+        "note": "ancienne mesure officielle (1955), encore très citée"
+      },
+      {
+        "valeur": 8611,
+        "type": "autre_perimetre",
+        "note": "altitude du K2, 2e sommet du monde"
+      },
+      {
+        "valeur": 8586,
+        "type": "autre_perimetre",
+        "note": "altitude du Kangchenjunga, 3e sommet"
+      },
+      {
+        "valeur": 8516,
+        "type": "autre_perimetre",
+        "note": "altitude du Lhotse, 4e sommet"
+      },
+      {
+        "valeur": 8882,
+        "type": "proche"
+      },
+      {
+        "valeur": 9014,
+        "type": "proche"
+      }
+    ],
     "statut": "valide",
     "langue": "fr"
   }

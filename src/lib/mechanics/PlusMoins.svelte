@@ -3,12 +3,16 @@
   import { avecUnite, grand } from '../format';
   import { arrondiSignificatif, propositions } from '../propositions';
 
-  let { question, onrepondre }: { question: Question; onrepondre: (r: Reponse) => void } = $props();
+  let {
+    question,
+    numero,
+    onrepondre,
+  }: { question: Question; numero: number; onrepondre: (r: Reponse) => void } = $props();
 
   // Recherche par dichotomie parmi les 6 propositions du palier (invisibles pour le joueur) :
   // 3 coups au plus. Le jeu demande « plus ou moins que X ? », X étant un seuil rond
   // placé entre deux propositions voisines ; la proposition restante est la réponse.
-  const candidats = propositions(question);
+  const candidats = propositions(question, numero);
   const COUPS_MAX = Math.ceil(Math.log2(candidats.length));
 
   let bas = $state(0);

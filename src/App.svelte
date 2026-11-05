@@ -100,11 +100,11 @@
         {#if partie.meca === 'slider'}
           <Slider question={courante} onrepondre={repondre} />
         {:else if partie.meca === 'palier'}
-          <Palier question={courante} onrepondre={repondre} />
+          <Palier question={courante} {numero} onrepondre={repondre} />
         {:else if partie.meca === 'qcm'}
-          <Qcm question={courante} onrepondre={repondre} />
+          <Qcm question={courante} {numero} onrepondre={repondre} />
         {:else}
-          <PlusMoins question={courante} onrepondre={repondre} />
+          <PlusMoins question={courante} {numero} onrepondre={repondre} />
         {/if}
       {/key}
     </section>

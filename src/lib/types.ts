@@ -1,5 +1,21 @@
 export type Statut = 'brouillon' | 'valide';
 
+/**
+ * Nature d'un leurre :
+ * - `erreur_frequente` : valeur que les gens donnent souvent (ancienne mesure, arrondi courant…)
+ * - `autre_unite` : la bonne grandeur exprimée dans une autre unité (miles au lieu de km…)
+ * - `autre_perimetre` : une grandeur voisine (périgée au lieu de distance moyenne, nouveau-né au lieu d'adulte…)
+ * - `proche` : simple valeur plausible, sans piège particulier
+ */
+export type TypeLeurre = 'erreur_frequente' | 'autre_unite' | 'autre_perimetre' | 'proche';
+
+export interface Leurre {
+  valeur: number;
+  type: TypeLeurre;
+  /** Pourquoi ce leurre est plausible (pour la relecture ; pas affiché en jeu). */
+  note?: string;
+}
+
 export interface Question {
   id: string;
   enonce: string;
@@ -18,8 +34,11 @@ export interface Question {
   mnemo?: string;
   source: { url: string; consulte_le: string };
   thematique: string;
-  /** Trois leurres proches et plausibles (QCM et palier, complétés par 2 extrêmes calculés). */
-  leurres: [number, number, number];
+  /**
+   * Réserve de leurres écrits à la main (6 à 8 visés, 3 au minimum). Le jeu en tire
+   * quelques-uns à chaque défi et complète avec des leurres générés (voir propositions.ts).
+   */
+  leurres: Leurre[];
   statut: Statut;
   langue: string;
 }

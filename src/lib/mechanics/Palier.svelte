@@ -3,10 +3,14 @@
   import { avecUnite, grand } from '../format';
   import { propositions } from '../propositions';
 
-  let { question, onrepondre }: { question: Question; onrepondre: (r: Reponse) => void } = $props();
+  let {
+    question,
+    numero,
+    onrepondre,
+  }: { question: Question; numero: number; onrepondre: (r: Reponse) => void } = $props();
 
   // Mêmes propositions que le QCM, présentées comme les crans d'un curseur.
-  const paliers = propositions(question);
+  const paliers = propositions(question, numero);
   let index = $state(Math.floor((paliers.length - 1) / 2));
 
   const affiche = $derived(grand(paliers[index], question.unite, question.precision));

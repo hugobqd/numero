@@ -16,7 +16,7 @@ Jeu éducatif pour **retenir des nombres précis** qui régissent le monde (dist
 | Composition | 5 questions tirées dans au moins 3 thématiques, ordre quelconque, **pas de niveau** |
 | Valeur cible | Chaque question définit `valeur_a_retenir` et `precision` (pas d'arrondi propre à la question) |
 | Mécaniques testées | `slider` : curseur unique, plage fixée par la question (décade de la valeur), le joueur ne choisit ni l'unité ni l'échelle · `palier` : curseur à crans posés sur les propositions du QCM · `qcm` : 4 propositions triées du plus petit au plus grand, fenêtre de 4 valeurs consécutives parmi les 6 propositions du palier, contenant la bonne réponse (fenêtre fixée par question, identique pour tous) · `plusmoins` : le jeu demande « plus grand ou plus petit que X ? » (deux boutons) ; X est un seuil rond placé entre deux des 6 propositions du palier ; dichotomie en **3 coups au plus**, la proposition restante devient la réponse |
-| Propositions (QCM, palier, plus/moins) | La bonne valeur, les 3 leurres de la fiche et 2 extrêmes calculés (≈ ×0,5 et ≈ ×2). **Tous les leurres prennent la forme de la bonne réponse** (même pas, même nombre de zéros finaux) pour qu'aucun ne se trahisse par son arrondi ; écart minimal de 2 % entre propositions ; tirage déterministe par question |
+| Propositions (QCM, palier, plus/moins) | 6 propositions **tirées à chaque défi** : la bonne valeur, 1 piège de la réserve de la fiche, 2 leurres tirés dans le reste de la réserve et parmi des leurres générés proches (±3 à 15 %), 2 extrêmes générés (≈ ×0,4–0,6 et ≈ ×1,7–2,5). Le tirage dépend de la question et du numéro du défi : identique pour tous un jour donné, différent d'un jour à l'autre. Le QCM en montre 4 consécutives. Tous les leurres prennent la forme de la bonne réponse (même pas, même nombre de zéros finaux) ; écart minimal de 2 % pour les leurres générés |
 | Scores testés | `tolerance` : gagné à ±5 % · `exact` : gagné si égal à `valeur_a_retenir` à `precision` près · `progressif` : 100 pts si exact, décroît jusqu'à 0 à ±50 %. QCM, palier et plus/moins : 100 ou 0 quelle que soit la variante |
 | Tests | Panneau « Réglages de test » : rejouer le défi, passer au défi précédent ou suivant, effacer les stats, choisir l'une des 12 combinaisons. Paramètres d'URL `?meca=slider\|palier\|qcm\|plusmoins&score=tolerance\|exact\|progressif`, tests de couloir, aucune mesure d'audience |
 | Révélation | Valeur exacte en grand, écart du joueur, ancrage, moyen mnémotechnique facultatif, source |
@@ -29,7 +29,9 @@ Jeu éducatif pour **retenir des nombres précis** qui régissent le monde (dist
 
 ## Fiche question
 
-Voir `src/lib/types.ts`. Champs : `id, enonce, valeur, valeur_a_retenir, precision, unite, perimetre, ancrage, mnemo?, source {url, consulte_le}, thematique, leurres[3], statut (brouillon|valide), langue`.
+Voir `src/lib/types.ts`. Champs : `id, enonce, valeur, valeur_a_retenir, precision, unite, perimetre, ancrage, mnemo?, source {url, consulte_le}, thematique, leurres[], statut (brouillon|valide), langue`.
+
+`leurres` est une réserve de 6 à 8 leurres typés (`erreur_frequente`, `autre_unite`, `autre_perimetre`, `proche`), avec une note ; au moins 3 pièges. Règles de rédaction : `docs/agents/03-redaction.md`.
 
 Seules les fiches `valide` entrent dans le défi quotidien.
 

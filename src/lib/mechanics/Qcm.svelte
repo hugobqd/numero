@@ -3,10 +3,14 @@
   import { grand } from '../format';
   import { propositionsQcm } from '../propositions';
 
-  let { question, onrepondre }: { question: Question; onrepondre: (r: Reponse) => void } = $props();
+  let {
+    question,
+    numero,
+    onrepondre,
+  }: { question: Question; numero: number; onrepondre: (r: Reponse) => void } = $props();
 
   // 4 propositions, triées du plus petit au plus grand.
-  const choix = propositionsQcm(question);
+  const choix = propositionsQcm(question, numero);
 </script>
 
 <div class="choix">
