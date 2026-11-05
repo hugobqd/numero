@@ -96,12 +96,10 @@
         <ol class="segments" aria-hidden="true">
           {#each questions as _, i}<li class:fait={i < resultats.length} class:courant={i === resultats.length}></li>{/each}
         </ol>
-        {#if courante.statut === 'brouillon' || (difficulte(courante) !== 'normale' && meca !== 'slider')}
+        <!-- Le statut brouillon n'est pas montré aux joueurs (il reste visible dans les outils de test). -->
+        {#if difficulte(courante) !== 'normale' && meca !== 'slider'}
           <p class="badges">
-            {#if courante.statut === 'brouillon'}<span class="badge">brouillon</span>{/if}
-            {#if difficulte(courante) !== 'normale' && meca !== 'slider'}
-              <span class="badge niveau">{difficulte(courante) === 'decouverte' ? 'niveau découverte' : 'niveau expert'}</span>
-            {/if}
+            <span class="badge niveau">{difficulte(courante) === 'decouverte' ? 'niveau découverte' : 'niveau expert'}</span>
           </p>
         {/if}
       </div>
