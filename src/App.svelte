@@ -496,7 +496,7 @@
     z-index: 10;
     right: 0;
     bottom: 0;
-    width: 16rem;
+    width: 21rem;
     max-height: 100vh;
     overflow-y: auto;
     padding: 1rem 1rem 3.5rem;
