@@ -48,7 +48,8 @@
   function resultatDefi(res: ResultatQuestion) {
     partie.resultats.push(res);
     ecrirePartie($state.snapshot(partie));
-    if (res.gagne && gagnerFiche(res.id, numero)) {
+    // Toutes les fiches jouées rejoignent la collection ; les ratées sont à revoir en priorité.
+    if (gagnerFiche(res.id, numero, res.gagne)) {
       nouvellesFiches.push(res.id);
       collection = lireCollection();
     }
@@ -87,7 +88,7 @@
       ? `${partie.resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100}`
       : `${partie.resultats.filter((r) => r.gagne).length} / ${questions.length}`,
   );
-  const fichesDuDefi = $derived(partie.resultats.filter((r) => r.gagne).map((r) => r.id));
+  const aRevoir = $derived(nouvellesFiches.filter((id) => !partie.resultats.find((r) => r.id === id)?.gagne).length);
 
   const aujourdhui = numeroDefi();
 
@@ -158,14 +159,16 @@
           <p>
             🎴 <strong>+{nouvellesFiches.length} fiche{nouvellesFiches.length > 1 ? 's' : ''}</strong>
             dans ta collection ({possedees.length} / {stock.length})
+            {#if aRevoir}· dont <strong>{aRevoir} à revoir</strong>{/if}
           </p>
           <ul>
-            {#each nouvellesFiches as id}<li>{enonce(id)?.enonce}</li>{/each}
+            {#each nouvellesFiches as id}
+              <li class:revoir={!partie.resultats.find((r) => r.id === id)?.gagne}>{enonce(id)?.enonce}</li>
+            {/each}
           </ul>
-        {:else if fichesDuDefi.length}
-          <p>Les fiches gagnées aujourd'hui sont dans ta collection ({possedees.length} / {stock.length}).</p>
+          {#if aRevoir}<p class="conseil">Les fiches ratées passent en premier dans tes révisions.</p>{/if}
         {:else}
-          <p>Aucune fiche gagnée aujourd'hui. Gagne une question pour l'ajouter à ta collection.</p>
+          <p>Les fiches de ce défi sont dans ta collection ({possedees.length} / {stock.length}).</p>
         {/if}
         <div class="actions">
           <button type="button" onclick={() => (ecran = 'collection')}>Ma collection</button>
@@ -377,6 +380,14 @@
     padding-left: 1.25rem;
     color: var(--muted);
     font-size: 0.9rem;
+  }
+  .gain li.revoir::marker {
+    content: '↻ ';
+    color: var(--perdu);
+  }
+  .conseil {
+    color: var(--muted);
+    font-size: 0.85rem;
   }
   .actions {
     display: flex;

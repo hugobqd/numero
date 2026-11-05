@@ -17,6 +17,7 @@
     }),
   );
   const nbPossedees = $derived(themes.reduce((s, t) => s + t.possedees.length, 0));
+  const nbARevoir = $derived(stock.filter((q) => collection[q.id] && maitrise(collection[q.id]) === 0).length);
 
   const etoiles = (n: number) => '★'.repeat(n) + '☆'.repeat(MAITRISE_MAX - n);
 </script>
@@ -28,9 +29,11 @@
   </div>
 
   {#if nbPossedees === 0}
-    <p class="vide">Gagne une question du défi du jour pour obtenir ta première fiche.</p>
+    <p class="vide">Joue le défi du jour : chaque question jouée, réussie ou non, rejoint ta collection.</p>
   {:else}
-    <button type="button" class="principal" onclick={onreviser}>Réviser mes fiches</button>
+    <button type="button" class="principal" onclick={onreviser}>
+      Réviser mes fiches{#if nbARevoir}{` · ${nbARevoir} à revoir`}{/if}
+    </button>
   {/if}
 
   {#each themes as t}
@@ -41,19 +44,21 @@
           {#each t.possedees as q}
             {@const g = grand(q.valeur_a_retenir, q.unite, q.precision)}
             {@const e = collection[q.id]}
-            <li>
+            <li class:revoir={maitrise(e) === 0}>
               <details>
                 <summary>
                   <span class="enonce">{q.enonce}</span>
                   <span class="valeur"><strong>{g.chiffres}</strong> {g.unite}</span>
-                  <span class="etoiles" title="Maîtrise {maitrise(e)} / {MAITRISE_MAX}">{etoiles(maitrise(e))}</span>
+                  <span class="etoiles" title="Maîtrise {maitrise(e)} / {MAITRISE_MAX}">
+                    {#if maitrise(e) === 0}<span class="a-revoir">à revoir</span>{/if}{etoiles(maitrise(e))}
+                  </span>
                 </summary>
                 <div class="detail">
                   <p class="perimetre">{q.perimetre}</p>
                   <p>{q.ancrage}</p>
                   {#if q.mnemo}<p>💡 {q.mnemo}</p>{/if}
                   <p class="meta">
-                    Gagnée au défi #{e.obtenueAuDefi} · {e.revisions} révision{e.revisions > 1 ? 's' : ''}
+                    Obtenue au défi #{e.obtenueAuDefi} · {e.revisions} révision{e.revisions > 1 ? 's' : ''}
                   </p>
                 </div>
               </details>
@@ -141,6 +146,15 @@
   }
   .valeur strong {
     font-size: 1.2rem;
+  }
+  .revoir details {
+    border-left-color: var(--perdu);
+  }
+  .a-revoir {
+    margin-right: 0.4rem;
+    color: var(--perdu);
+    font-size: 0.75rem;
+    letter-spacing: 0;
   }
   .etoiles {
     color: var(--accent);
