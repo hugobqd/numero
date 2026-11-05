@@ -26,7 +26,7 @@ Six chantiers, mais **pas six agents permanents** :
 ## Les étapes
 
 - [ ] **1. Tests de couloir** (toi, en parallèle de tout le reste). 3 tâches (premier défi, défi du jour, collection), 3 questions (« à quoi sert ce jeu ? », « quel nombre retiens-tu ? », « tu rejouerais demain ? »). Noter par personne : mécanique, score, 2 blocages, nombre retenu. Optionnel : `/to-questionnaire` pour un questionnaire propre.
-- [ ] **2. Configuration** — session dédiée : `/setup-matt-pocock-skills`. Issues GitHub de `hugobqd/numero` comme backlog, `GLOSSARY.md` + `docs/adr/` à la racine, bloc « Agent skills » dans un `CLAUDE.md` (à créer).
+- [x] **2. Configuration** — session dédiée : `/setup-matt-pocock-skills`. Issues GitHub de `hugobqd/numero` comme backlog, `GLOSSARY.md` + `docs/adr/` à la racine, bloc « Agent skills » dans un `CLAUDE.md` (à créer). *Fait le 2026-11-05 : `CLAUDE.md` créé (renvoi vers ce document + bloc « Agent skills »), configuration dans `docs/agents/`, labels de triage par défaut créés sur GitHub.*
 - [ ] **3. Vocabulaire et premières décisions** — session dédiée : `/grill-with-docs`. Produit `GLOSSARY.md` (fiche, leurre, piège, défi, palier, maîtrise, cycle, révision…) et des ADR pour ce qui est déjà tranché (site statique, données locales, palier par défaut, collection de toutes les fiches jouées…). Source : `docs/DECISIONS.md`.
 - [ ] **4. La carte** — session dédiée, après les premiers retours de tests : `/wayfinder`. Destination à formuler (proposition : « une v1 publiable : plan de contenu, boucle de jeu et de rétention, charte visuelle, choix techniques »). Les six chantiers deviennent des étiquettes ; `docs/IDEES.md` et les retours de tests fournissent les premiers tickets de décision.
 - [ ] **5. Résoudre les tickets de décision** — une session par ticket (ou deux tickets courts), en suivant la carte.
@@ -43,8 +43,10 @@ Six chantiers, mais **pas six agents permanents** :
 
 ## Prochaine étape
 
-**Étape 2 : configuration.** Ouvrir une nouvelle session dans `~/Sites/numero` et lancer :
+**Étape 3 : vocabulaire et premières décisions.** Ouvrir une nouvelle session dans `~/Sites/numero` et taper soi-même (la skill ne se lance qu'à la main) :
 
-> Lis docs/DEMARCHE.md, puis lance /setup-matt-pocock-skills.
+> /grill-with-docs
 
-En parallèle : commencer les tests de couloir (étape 1).
+en lui donnant comme point de départ : « Lis docs/DEMARCHE.md et docs/DECISIONS.md. Objectif : le GLOSSARY.md du jeu et les ADR de ce qui est déjà tranché. »
+
+En parallèle : continuer les tests de couloir (étape 1).
