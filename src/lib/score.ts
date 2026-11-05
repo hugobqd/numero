@@ -20,12 +20,12 @@ export function noter(
   const exact = estExact(q, r.valeur);
   const ecart = Math.abs(ecartRelatif(q, r.valeur));
 
-  // QCM et palier : on choisit parmi des propositions, seule la bonne compte.
-  if (meca === 'qcm' || meca === 'palier') {
+  // QCM, palier et plus/moins : la réponse est l'une des propositions, seule la bonne compte.
+  if (meca === 'qcm' || meca === 'palier' || meca === 'plusmoins') {
     return { points: exact ? 100 : 0, gagne: exact };
   }
 
-  // Curseur et plus/moins : une estimation libre, notée selon la variante.
+  // Curseur : une estimation libre, notée selon la variante.
   switch (variante) {
     case 'tolerance': {
       const gagne = exact || ecart <= TOLERANCE;
