@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Question, Reponse } from '../types';
-  import { entier, lisible } from '../format';
+  import { grand } from '../format';
   import { melanger } from '../daily';
 
   let { question, onrepondre }: { question: Question; onrepondre: (r: Reponse) => void } = $props();
@@ -10,8 +10,9 @@
 
 <div class="choix">
   {#each choix as c}
+    {@const g = grand(c, question.unite, question.precision)}
     <button type="button" onclick={() => onrepondre({ valeur: c, essai: 1 })}>
-      <span class="chiffres">{c >= 1e6 ? lisible(c) : entier(c)}</span> <span class="unite">{question.unite}</span>
+      <span class="chiffres">{g.chiffres}</span> <span class="unite">{g.unite}</span>
     </button>
   {/each}
 </div>

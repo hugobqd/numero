@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Question, ResultatQuestion } from './types';
   import { ecartRelatif, estExact } from './score';
-  import { entier, lisible, pourcentage, scientifique } from './format';
+  import { avecUnite, grand, pourcentage, scientifique } from './format';
 
   let {
     question,
@@ -17,6 +17,7 @@
     dernier: boolean;
   } = $props();
 
+  const vraie = $derived(grand(question.valeur_a_retenir, question.unite, question.precision));
   const ecart = $derived(ecartRelatif(question, resultat.reponse));
   const verdict = $derived(
     estExact(question, resultat.reponse)
@@ -34,16 +35,16 @@
   <p class="verdict">{verdict}{#if afficherPoints}{` · ${resultat.points} pts`}{/if}</p>
 
   <div class="vraie">
-    <span class="chiffres">{entier(question.valeur_a_retenir)}</span>
-    <span class="unite">{question.unite}</span>
+    <span class="chiffres">{vraie.chiffres}</span>
+    <span class="unite">{vraie.unite}</span>
   </div>
   {#if question.valeur_a_retenir >= 1e6}
-    <p class="formes">{lisible(question.valeur_a_retenir)} · {scientifique(question.valeur_a_retenir)}</p>
+    <p class="formes">{scientifique(question.valeur_a_retenir)} {question.unite}</p>
   {/if}
   <p class="perimetre">{question.perimetre}</p>
 
   <p class="toi">
-    Ta réponse : <strong>{entier(resultat.reponse)} {question.unite}</strong>
+    Ta réponse : <strong>{avecUnite(resultat.reponse, question.unite, question.precision)}</strong>
     {#if !estExact(question, resultat.reponse)}({pourcentage(ecart)}){/if}
   </p>
 

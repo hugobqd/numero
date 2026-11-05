@@ -46,6 +46,14 @@ export function effacerPartie(n: number): void {
   }
 }
 
+export function effacerStats(): void {
+  try {
+    localStorage.removeItem(CLE_STATS);
+  } catch {
+    /* rien */
+  }
+}
+
 export function lireStats(): Stats {
   return lire<Stats>(CLE_STATS) ?? { jouees: 0, serie: 0, meilleureSerie: 0, dernierNumero: null };
 }

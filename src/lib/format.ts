@@ -5,15 +5,38 @@ export function entier(n: number): string {
   return nf.format(n);
 }
 
-/** Forme lisible des grands nombres : 4540000000 → « 4,54 milliards ». */
-export function lisible(n: number): string {
-  const abs = Math.abs(n);
-  const court = (x: number, mot: string) =>
-    `${new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 2 }).format(x)} ${mot}`;
-  if (abs >= 1e12) return court(n / 1e12, n / 1e12 >= 2 ? 'billions' : 'billion');
-  if (abs >= 1e9) return court(n / 1e9, n / 1e9 >= 2 ? 'milliards' : 'milliard');
-  if (abs >= 1e6) return court(n / 1e6, n / 1e6 >= 2 ? 'millions' : 'million');
-  return entier(n);
+const GRANDS: [number, string, string][] = [
+  [1e12, 'billion', 'billions'],
+  [1e9, 'milliard', 'milliards'],
+  [1e6, 'million', 'millions'],
+];
+
+/** « de années » → « d'années ». */
+function de(unite: string): string {
+  return /^[aeiouyéèêàâîôûh]/i.test(unite) ? `d'${unite}` : `de ${unite}`;
+}
+
+/**
+ * Découpe un nombre pour l'affichage, en passant aux millions / milliards / billions
+ * dès 1 million : 4540000000 années → { chiffres: « 4,54 », unite: « milliards d'années » }.
+ * `precision` (le pas de la question) fixe le nombre de décimales utiles ;
+ * sans elle, on garde jusqu'à 2 décimales.
+ */
+export function grand(n: number, unite = '', precision?: number): { chiffres: string; unite: string } {
+  const g = GRANDS.find(([div]) => Math.abs(n) >= div);
+  if (!g) return { chiffres: entier(n), unite };
+  const [div, sing, plur] = g;
+  const x = n / div;
+  const decimales = precision ? Math.max(0, Math.min(6, Math.ceil(Math.log10(div / precision)))) : 2;
+  const chiffres = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: decimales }).format(x);
+  const mot = Math.abs(x) >= 2 ? plur : sing;
+  return { chiffres, unite: unite ? `${mot} ${de(unite)}` : mot };
+}
+
+/** Nombre et unité en une chaîne : « 4,54 milliards d'années », « 384 400 km ». */
+export function avecUnite(n: number, unite = '', precision?: number): string {
+  const g = grand(n, unite, precision);
+  return g.unite ? `${g.chiffres} ${g.unite}` : g.chiffres;
 }
 
 /** Notation scientifique : 4540000000 → « 4,54 × 10⁹ ». */

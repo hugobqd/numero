@@ -17,8 +17,9 @@ Jeu éducatif pour **retenir des nombres précis** qui régissent le monde (dist
 | Valeur cible | Chaque question définit `valeur_a_retenir` et `precision` (pas d'arrondi propre à la question) |
 | Mécaniques testées | `slider` : curseur unique, dont la plage est fixée par la question (décade de la valeur, ex. 100 000 → 1 000 000 km) ; le joueur ne choisit ni l'unité ni l'échelle · `qcm` : 4 choix, leurres proches et plausibles · `plusmoins` : ordre de grandeur révélé, puis 3 propositions avec indice plus/moins |
 | Scores testés | `tolerance` : gagné à ±5 % · `exact` : gagné si égal à `valeur_a_retenir` à `precision` près · `progressif` : 100 pts si exact, décroît jusqu'à 0 à ±50 % (plus/moins : 100/60/30 selon le coup ; QCM : 100 ou 0) |
-| Tests | Paramètres d'URL `?meca=slider\|qcm\|plusmoins&score=tolerance\|exact\|progressif`, tests de couloir, aucune mesure d'audience |
+| Tests | Panneau « Réglages de test » : rejouer le défi, passer au défi précédent ou suivant, effacer les stats, choisir l'une des 9 combinaisons. Paramètres d'URL `?meca=slider\|qcm\|plusmoins&score=tolerance\|exact\|progressif`, tests de couloir, aucune mesure d'audience |
 | Révélation | Valeur exacte en grand, écart du joueur, ancrage, moyen mnémotechnique facultatif, source |
+| Affichage des nombres | Dès 1 million, on passe à « millions / milliards / billions » avec l'unité : « 4,54 milliards d'années », jamais « 4 540 000 000 années » ; la notation scientifique reste en complément à la révélation |
 | Partage | `Numero #12 — 4/5` + emojis 🟩🟥 (🟩🟨🟥 en progressif), sans dévoiler les réponses |
 | Stockage | localStorage (résultat du jour, série, statistiques) |
 | Langue | Français, contenu prêt à être traduit (champ `langue`) |

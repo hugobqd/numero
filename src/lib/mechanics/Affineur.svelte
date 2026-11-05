@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { entier, lisible } from '../format';
+  import { avecUnite, grand } from '../format';
 
   let {
     min,
@@ -22,6 +22,8 @@
     return pas.reverse();
   });
 
+  const affiche = $derived(grand(Number(value), unite, step));
+
   function ajuster(delta: number) {
     const v = Math.round((Number(value) + delta) / step) * step;
     value = Math.min(max, Math.max(min, v));
@@ -30,10 +32,9 @@
 
 <div class="affineur">
   <output class="valeur" aria-live="polite">
-    <span class="chiffres">{entier(value)}</span>
-    <span class="unite">{unite}</span>
+    <span class="chiffres">{affiche.chiffres}</span>
+    <span class="unite">{affiche.unite}</span>
   </output>
-  {#if value >= 1e6}<div class="lisible">{lisible(value)}</div>{/if}
 
   <input
     type="range"
@@ -46,10 +47,10 @@
 
   <div class="boutons" style:grid-template-columns="repeat({pasBoutons.length}, 1fr)">
     {#each pasBoutons as p}
-      <button type="button" class="pas" onclick={() => ajuster(-p)}>−{entier(p)}</button>
+      <button type="button" class="pas" onclick={() => ajuster(-p)}>−{avecUnite(p)}</button>
     {/each}
     {#each [...pasBoutons].reverse() as p}
-      <button type="button" class="pas" onclick={() => ajuster(p)}>+{entier(p)}</button>
+      <button type="button" class="pas" onclick={() => ajuster(p)}>+{avecUnite(p)}</button>
     {/each}
   </div>
 </div>
@@ -63,6 +64,7 @@
     display: flex;
     align-items: baseline;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
   }
   .chiffres {
@@ -72,11 +74,6 @@
   }
   .unite {
     color: var(--muted);
-  }
-  .lisible {
-    text-align: center;
-    color: var(--muted);
-    margin-top: -0.5rem;
   }
   input[type='range'] {
     width: 100%;

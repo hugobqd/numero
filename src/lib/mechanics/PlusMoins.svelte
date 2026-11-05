@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Question, Reponse, VarianteScore } from '../types';
-  import { bornesQuestion, entier, nomDecade } from '../format';
+  import { avecUnite, bornesQuestion, nomDecade } from '../format';
   import { estTrouve } from '../score';
   import Affineur from './Affineur.svelte';
 
@@ -31,14 +31,14 @@
 <div class="plusmoins">
   <p class="indice-depart">
     Indice : c'est dans les <strong>{nomDecade(decade)}</strong>
-    (entre {entier(min)} et {entier(max)} {question.unite}).
+    (entre {avecUnite(min)} et {avecUnite(max, question.unite)}).
   </p>
 
   {#if historique.length}
     <ol class="historique">
       {#each historique as h}
         <li>
-          <span class="chiffres">{entier(h.valeur)}</span>
+          <span class="chiffres">{avecUnite(h.valeur, question.unite, question.precision)}</span>
           <span class="fleche">{h.indice === 'plus' ? '↑ C’est plus' : '↓ C’est moins'}</span>
         </li>
       {/each}

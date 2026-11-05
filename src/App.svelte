@@ -3,8 +3,9 @@
   import type { Question, Reponse, ResultatQuestion } from './lib/types';
   import { numeroDefi, questionsDuDefi } from './lib/daily';
   import { noter } from './lib/score';
+  import { avecUnite } from './lib/format';
   import { lireParametres, MECAS, VARIANTES } from './lib/params';
-  import { effacerPartie, ecrirePartie, enregistrerFin, lirePartie, lireStats, type PartieDuJour } from './lib/storage';
+  import { effacerPartie, effacerStats, ecrirePartie, enregistrerFin, lirePartie, lireStats, type PartieDuJour } from './lib/storage';
   import { partager, texteDePartage } from './lib/share';
   import Slider from './lib/mechanics/Slider.svelte';
   import Qcm from './lib/mechanics/Qcm.svelte';
@@ -64,8 +65,17 @@
       : `${partie.resultats.filter((r) => r.gagne).length} / ${questions.length}`,
   );
 
-  function lienVariante(meca: string, score: string) {
-    return `?meca=${meca}&score=${score}&reset=1${params.jour ? `&jour=${params.jour}` : ''}`;
+  const aujourdhui = numeroDefi();
+
+  /** Lien de test : relance un défi (efface la partie enregistrée) avec les réglages voulus. */
+  function lien({ meca = partie.meca, score = partie.variante, jour = numero } = {}) {
+    const j = jour === aujourdhui ? '' : `&jour=${jour}`;
+    return `?meca=${meca}&score=${score}&reset=1${j}`;
+  }
+
+  function reinitialiserStats() {
+    effacerStats();
+    stats = lireStats();
   }
 </script>
 
@@ -110,7 +120,7 @@
         {#each partie.resultats as r, i}
           <li class:gagne={r.gagne}>
             <span>{questions[i]?.enonce}</span>
-            <strong>{questions[i]?.valeur_a_retenir.toLocaleString('fr-FR')} {questions[i]?.unite}</strong>
+            <strong>{avecUnite(questions[i].valeur_a_retenir, questions[i].unite, questions[i].precision)}</strong>
           </li>
         {/each}
       </ul>
@@ -122,11 +132,19 @@
         <div><dt>Record</dt><dd>{stats.meilleureSerie}</dd></div>
       </dl>
       <p class="demain">Prochain défi demain à minuit (heure de Paris).</p>
+      <a class="rejouer" href={lien()}>↻ Rejouer ce défi (test)</a>
     </section>
   {/if}
 
   <details class="dev">
-    <summary>Réglages de test · {partie.meca} / {partie.variante}</summary>
+    <summary>Réglages de test · défi #{numero} · {partie.meca} / {partie.variante}</summary>
+    <nav class="defis">
+      {#if numero > 1}<a href={lien({ jour: numero - 1 })}>← #{numero - 1}</a>{/if}
+      <a href={lien()}>↻ Rejouer #{numero}</a>
+      <a href={lien({ jour: numero + 1 })}>#{numero + 1} →</a>
+      {#if numero !== aujourdhui}<a href={lien({ jour: aujourdhui })}>Aujourd'hui</a>{/if}
+      <button type="button" onclick={reinitialiserStats}>Effacer les stats</button>
+    </nav>
     <table>
       <thead><tr><th></th>{#each VARIANTES as v}<th>{v}</th>{/each}</tr></thead>
       <tbody>
@@ -134,7 +152,7 @@
           <tr>
             <th>{m}</th>
             {#each VARIANTES as v}
-              <td><a href={lienVariante(m, v)} class:actif={m === partie.meca && v === partie.variante}>jouer</a></td>
+              <td><a href={lien({ meca: m, score: v })} class:actif={m === partie.meca && v === partie.variante}>jouer</a></td>
             {/each}
           </tr>
         {/each}
@@ -247,6 +265,21 @@
     margin-top: 2rem;
     font-size: 0.8rem;
     color: var(--muted);
+  }
+  .rejouer {
+    text-align: center;
+    color: var(--accent);
+  }
+  .defis {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin-top: 0.75rem;
+  }
+  .defis button {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
   }
   .dev table {
     margin-top: 0.5rem;
