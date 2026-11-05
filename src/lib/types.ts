@@ -51,6 +51,8 @@ export interface Reponse {
   valeur: number;
   /** Nombre de coups joués (plus/moins) ; 1 sinon. */
   essai: number;
+  /** Propositions triées parmi lesquelles le joueur a choisi (QCM, palier, plus/moins). */
+  propositions?: number[];
 }
 
 export interface ResultatQuestion {

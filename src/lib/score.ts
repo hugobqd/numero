@@ -2,6 +2,8 @@ import type { Mecanique, Question, Reponse, VarianteScore } from './types';
 
 export const TOLERANCE = 0.05; // ±5 %
 export const ECART_NUL = 0.5; // progressif : 0 point à ±50 %
+/** Progressif, modes à propositions : points selon l'écart de rang (0 = bonne, 1 = voisine…). */
+export const POINTS_PAR_RANG = [100, 50, 20];
 
 export function ecartRelatif(q: Question, valeur: number): number {
   return (valeur - q.valeur_a_retenir) / q.valeur_a_retenir;
@@ -20,9 +22,25 @@ export function noter(
   const exact = estExact(q, r.valeur);
   const ecart = Math.abs(ecartRelatif(q, r.valeur));
 
-  // QCM, palier et plus/moins : la réponse est l'une des propositions, seule la bonne compte.
+  // QCM, palier et plus/moins : la réponse est l'une des propositions.
   if (meca === 'qcm' || meca === 'palier' || meca === 'plusmoins') {
-    return { points: exact ? 100 : 0, gagne: exact };
+    switch (variante) {
+      case 'exact':
+        return { points: exact ? 100 : 0, gagne: exact };
+      case 'tolerance': {
+        const gagne = exact || ecart <= TOLERANCE;
+        return { points: gagne ? 100 : 0, gagne };
+      }
+      case 'progressif': {
+        // Points selon le rang : bonne proposition 100, voisine 50, deux crans plus loin 20.
+        const props = r.propositions ?? [];
+        const iReponse = props.indexOf(r.valeur);
+        const iBonne = props.findIndex((p) => estExact(q, p));
+        const distance = iReponse < 0 || iBonne < 0 ? (exact ? 0 : Infinity) : Math.abs(iReponse - iBonne);
+        const points = POINTS_PAR_RANG[distance] ?? 0;
+        return { points, gagne: distance === 0 };
+      }
+    }
   }
 
   // Curseur : une estimation libre, notée selon la variante.

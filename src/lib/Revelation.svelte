@@ -24,6 +24,8 @@
       ? 'Pile !'
       : resultat.gagne
         ? 'Gagné'
+        : resultat.points > 0
+          ? 'Presque'
         : resultat.reponse <= 0 ||
             Math.abs(Math.log10(resultat.reponse / question.valeur_a_retenir)) >= 1
           ? 'Mauvaise échelle'

@@ -16,7 +16,7 @@
 <div class="choix">
   {#each choix as c}
     {@const g = grand(c, question.unite, question.precision)}
-    <button type="button" onclick={() => onrepondre({ valeur: c, essai: 1 })}>
+    <button type="button" onclick={() => onrepondre({ valeur: c, essai: 1, propositions: choix })}>
       <span class="chiffres">{g.chiffres}</span> <span class="unite">{g.unite}</span>
     </button>
   {/each}

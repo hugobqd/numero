@@ -37,7 +37,7 @@
     historique.push({ seuil, choix });
     if (choix === 'plus') bas = coupure;
     else haut = coupure - 1;
-    if (bas === haut) onrepondre({ valeur: candidats[bas], essai: historique.length });
+    if (bas === haut) onrepondre({ valeur: candidats[bas], essai: historique.length, propositions: candidats });
   }
 </script>
 

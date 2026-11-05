@@ -46,7 +46,7 @@
     {/each}
   </ol>
 
-  <button type="button" class="principal" onclick={() => onrepondre({ valeur: paliers[index], essai: 1 })}>
+  <button type="button" class="principal" onclick={() => onrepondre({ valeur: paliers[index], essai: 1, propositions: paliers })}>
     Valider
   </button>
 </div>
