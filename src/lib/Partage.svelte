@@ -1,8 +1,13 @@
 <script lang="ts">
   import QRCode from 'qrcode';
+  import type { Mecanique, VarianteScore } from './types';
 
   /** Adresse publique du prototype, à scanner pour jouer sur un autre téléphone. */
   const URL_SITE = 'https://hugobqd.github.io/numero/';
+
+  /** Le lien partagé reprend le réglage de test en cours (mécanique × score). */
+  let { meca, variante }: { meca: Mecanique; variante: VarianteScore } = $props();
+  const url = $derived(`${URL_SITE}?meca=${meca}&score=${variante}`);
 
   let ouvert = $state(false);
   let svg = $state('');
@@ -11,12 +16,12 @@
   async function ouvrir() {
     ouvert = true;
     message = '';
-    if (!svg) svg = await QRCode.toString(URL_SITE, { type: 'svg', margin: 1, errorCorrectionLevel: 'M' });
+    svg = await QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M' });
   }
 
   async function copier() {
     try {
-      await navigator.clipboard.writeText(URL_SITE);
+      await navigator.clipboard.writeText(url);
       message = 'Lien copié';
     } catch {
       message = 'Copie impossible';
@@ -38,8 +43,9 @@
     <div class="fenetre" role="dialog" aria-modal="true" aria-labelledby="titre-partage">
       <h2 id="titre-partage">Faire jouer quelqu'un</h2>
       <p>Scanne ce code avec l'appareil photo du téléphone :</p>
-      <div class="qr" aria-label="QR code vers {URL_SITE}" role="img">{@html svg}</div>
-      <p class="url">{URL_SITE}</p>
+      <div class="qr" aria-label="QR code vers {url}" role="img">{@html svg}</div>
+      <p class="url">{url}</p>
+      <p class="reglage">Réglage : <strong>{meca}</strong> · score <strong>{variante}</strong></p>
       <div class="actions">
         <button type="button" onclick={copier}>Copier le lien</button>
         <button type="button" class="principal" onclick={() => (ouvert = false)}>Fermer</button>
@@ -104,6 +110,11 @@
     font-size: 0.85rem;
     color: var(--muted);
     overflow-wrap: anywhere;
+  }
+  .reglage {
+    margin-top: -0.4rem;
+    font-size: 0.8rem;
+    color: var(--muted);
   }
   .actions {
     display: grid;

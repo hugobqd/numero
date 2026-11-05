@@ -380,7 +380,7 @@
 
 </main>
 
-<footer class="version"><Partage /> · v{__VERSION__} · {__COMMIT__}</footer>
+<footer class="version"><Partage meca={partie.meca} variante={partie.variante} /> · v{__VERSION__} · {__COMMIT__}</footer>
 
 <!-- Outils de test : repliés derrière un petit ⚙ en bas à droite ; panneau latéral (ou en bas sur mobile). -->
 <button
