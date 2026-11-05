@@ -38,7 +38,7 @@
   let enRevelation = $state(false);
 
   const AIDES: Record<Mecanique, string> = {
-    slider: 'Fais glisser le curseur, puis ajuste au chiffre près avec les boutons − et +. Valide quand tu es sûr.',
+    slider: 'Fais glisser le curseur jusqu’à la valeur voulue, au chiffre près, puis valide.',
     palier: 'Choisis un cran sur le curseur (ou touche une valeur), puis valide.',
     qcm: 'Touche la valeur qui te semble juste.',
     plusmoins:
