@@ -1,12 +1,12 @@
 <script lang="ts">
   import type { Question, Reponse } from '../types';
   import { grand } from '../format';
-  import { melanger } from '../daily';
   import { propositions } from '../propositions';
 
   let { question, onrepondre }: { question: Question; onrepondre: (r: Reponse) => void } = $props();
 
-  const choix = melanger(propositions(question), Math.random);
+  // Propositions triées du plus petit au plus grand.
+  const choix = propositions(question);
 </script>
 
 <div class="choix">
