@@ -40,6 +40,15 @@
   let themeOuvert = $state<string | null>(null);
   const detail = $derived(themes.find((t) => t.theme === themeOuvert));
 
+  /**
+   * Étoiles de la moyenne, arrondie à la demi-étoile inférieure : 1,7 → ★½☆ (1 pleine, 1 demie, 1 vide).
+   * Renvoie le remplissage de chaque étoile : 1, 0,5 ou 0.
+   */
+  const remplissage = (moyenne: number) => {
+    const arrondi = Math.floor(moyenne * 2) / 2;
+    return Array.from({ length: MAITRISE_MAX }, (_, i) => Math.max(0, Math.min(1, arrondi - i)));
+  };
+
   const moyenneLisible = (m: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 1 }).format(m);
   const nbPossedees = $derived(themes.reduce((s, t) => s + t.possedees.length, 0));
   const nbARevoir = $derived(stock.filter((q) => collection[q.id] && maitrise(collection[q.id]) === 0).length);
@@ -104,8 +113,13 @@
             <span class="nom">{t.theme}</span>
             <span class="quantite"><strong>{t.possedees.length}</strong> / {t.total} fiches</span>
             <span class="jauge" aria-hidden="true"><span style:width="{(100 * t.possedees.length) / t.total}%"></span></span>
-            <span class="maitrise" title="Moyenne des étoiles des fiches possédées">
-              ★ {moyenneLisible(t.moyenne)} <small>/ {MAITRISE_MAX}</small>
+            <span
+              class="maitrise"
+              role="img"
+              aria-label="Maîtrise moyenne : {moyenneLisible(t.moyenne)} étoile(s) sur {MAITRISE_MAX}"
+              title="Moyenne des étoiles des fiches possédées : {moyenneLisible(t.moyenne)} / {MAITRISE_MAX}"
+            >
+              {#each remplissage(t.moyenne) as r}<span class="etoile" style:--plein="{r * 100}%"></span>{/each}
             </span>
           </button>
         </li>
@@ -192,12 +206,26 @@
     background: var(--accent);
   }
   .maitrise {
-    font-size: 0.85rem;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
+    display: inline-flex;
+    gap: 0.1rem;
+    font-size: 1rem;
+    line-height: 1;
   }
-  .maitrise small {
-    color: var(--muted);
+  /* Étoile vide (☆) recouverte d'une étoile pleine (★) coupée à --plein : 0 %, 50 % ou 100 %. */
+  .etoile {
+    position: relative;
+    color: var(--accent);
+  }
+  .etoile::before {
+    content: '☆';
+  }
+  .etoile::after {
+    content: '★';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--plein);
+    overflow: hidden;
   }
   .icone-titre {
     font-size: 1.2rem;
