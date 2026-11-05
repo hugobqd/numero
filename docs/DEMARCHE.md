@@ -53,6 +53,13 @@ Questions laissées ouvertes à l'étape 3, à transformer en tickets de décisi
 - **Fiche → carte** : adopter « carte » pour encourager la collectionnite (voir `IDEES.md`, idée n° 3).
 - **Backend** : quand le déclencher (voir ADR 0001).
 
+Premiers retours de Hugo (2026-11-05), à verser dans la carte :
+
+- **Benchmark Quizlet** pour le côté apprentissage (révision, mémorisation).
+- **Benchmark WikiMaster** pour le côté savoir gamifié.
+- **Gagner des cartes en révisant** : de bons scores en révision rapportent des cartes (fiches), et pas seulement les défis. Rejoint l'idée n° 3 de `IDEES.md`.
+- **Ton rassurant** : hésiter ou se tromper n'a rien de honteux, une erreur n'est pas grave puisqu'on la révisera ensemble plus tard. Ce principe concerne le wording, la DA et la boucle de révision.
+
 Dette de vocabulaire dans le code, à corriger lors de la construction : `slider` / `Affineur` → curseur, `thematique` → thème, badge « niveau découverte » → exigence, logique du « jour simulé » → parcours.
 
 En parallèle : continuer les tests de couloir (étape 1).
