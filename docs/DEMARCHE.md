@@ -28,7 +28,7 @@ Six chantiers, mais **pas six agents permanents** :
 - [ ] **1. Tests de couloir** (toi, en parallèle de tout le reste). 3 tâches (premier défi, défi du jour, collection), 3 questions (« à quoi sert ce jeu ? », « quel nombre retiens-tu ? », « tu rejouerais demain ? »). Noter par personne : mécanique, score, 2 blocages, nombre retenu. Optionnel : `/to-questionnaire` pour un questionnaire propre.
 - [x] **2. Configuration** — session dédiée : `/setup-matt-pocock-skills`. Issues GitHub de `hugobqd/numero` comme backlog, `GLOSSARY.md` + `docs/adr/` à la racine, bloc « Agent skills » dans un `CLAUDE.md` (à créer). *Fait le 2026-11-05 : `CLAUDE.md` créé (renvoi vers ce document + bloc « Agent skills »), configuration dans `docs/agents/`, labels de triage par défaut créés sur GitHub.*
 - [x] **3. Vocabulaire et premières décisions** — session dédiée : `/grill-with-docs`. Produit `GLOSSARY.md` (fiche, leurre, piège, défi, palier, maîtrise, cycle, révision…) et des ADR pour ce qui est déjà tranché (site statique, données locales, palier par défaut, collection de toutes les fiches jouées…). Source : `docs/DECISIONS.md`. *Fait le 2026-11-05 : `GLOSSARY.md` (35 termes) et 6 ADR dans `docs/adr/`. Deux décisions révisées dans `DECISIONS.md` : les défis forment un **parcours** commun que chaque joueur suit à son rythme (ADR 0002), et la **difficulté** (propriété de la fiche, grand public → pointue) doit monter le long du parcours ; l'écart des leurres s'appelle désormais l'**exigence**.*
-- [ ] **4. La carte** — session dédiée, après les premiers retours de tests : `/wayfinder`. Destination à formuler (proposition : « une v1 publiable : plan de contenu, boucle de jeu et de rétention, charte visuelle, choix techniques »). Les six chantiers deviennent des étiquettes ; `docs/IDEES.md` et les retours de tests fournissent les premiers tickets de décision.
+- [x] **4. La carte** — session dédiée, après les premiers retours de tests : `/wayfinder`. Destination à formuler (proposition : « une v1 publiable : plan de contenu, boucle de jeu et de rétention, charte visuelle, choix techniques »). Les six chantiers deviennent des étiquettes ; `docs/IDEES.md` et les retours de tests fournissent les premiers tickets de décision. *Fait le 2026-11-06 : carte « [Carte : vers une v1 publique de Numero](https://github.com/hugobqd/numero/issues/1) » et 7 tickets. La destination n'est pas une version figée : on avance pas à pas et chaque décision constructible est livrée dès qu'elle est tranchée (étapes 5 et 6 entrelacées). Ton rassurant inscrit comme principe permanent dans les Notes de la carte.*
 - [ ] **5. Résoudre les tickets de décision** — une session par ticket (ou deux tickets courts), en suivant la carte.
 - [ ] **6. Construire** — quand une zone de la carte est claire : `/to-spec` → `/to-tickets` → `/implement` (une session par ticket, `/clear` entre deux).
 - [ ] **7. Industrialiser le contenu** — transformer `docs/contenu/` en agents (`.claude/agents/*.md`) : thématiques → sources → rédaction → relecture. Peut démarrer dès que la carte a tranché le découpage des séries (thèmes, niveaux).
@@ -43,22 +43,11 @@ Six chantiers, mais **pas six agents permanents** :
 
 ## Prochaine étape
 
-**Étape 4 : la carte**, de préférence après les premiers retours de tests de couloir (étape 1). Ouvrir une nouvelle session dans `~/Sites/numero` et lancer `/wayfinder`.
+**Étape 5 : résoudre les tickets de la carte**, un par session. Ouvrir une nouvelle session et lancer `/wayfinder https://github.com/hugobqd/numero/issues/1` : le prochain ticket libre est pris dans l'ordre de la carte.
 
-Questions laissées ouvertes à l'étape 3, à transformer en tickets de décision :
-
-- **Difficulté** : combien de crans, qui l'attribue (agent de rédaction, relecture), comment la rampe monte le long du parcours.
-- **Composition du parcours** : nouvelles règles de composition des défis et de cycle (la règle « pas de niveau » est à revoir), retour programmé des fiches (répétition espacée).
-- **Défi commun en bonus**, en plus du parcours personnel (viralité « tout le monde joue le même aujourd'hui »).
-- **Fiche → carte** : adopter « carte » pour encourager la collectionnite (voir `IDEES.md`, idée n° 3).
-- **Backend** : quand le déclencher (voir ADR 0001).
-
-Premiers retours de Hugo (2026-11-05), à verser dans la carte :
-
-- **Benchmark Quizlet** pour le côté apprentissage (révision, mémorisation).
-- **Benchmark WikiMaster** pour le côté savoir gamifié.
-- **Gagner des cartes en révisant** : de bons scores en révision rapportent des cartes (fiches), et pas seulement les défis. Rejoint l'idée n° 3 de `IDEES.md`.
-- **Ton rassurant** : hésiter ou se tromper n'a rien de honteux, une erreur n'est pas grave puisqu'on la révisera ensemble plus tard. Ce principe concerne le wording, la DA et la boucle de révision.
+- Les benchmarks Quizlet et WikiMaster sont des tâches de Hugo, sans Claude : noter les observations en commentaire du ticket, puis le fermer.
+- Ordre des tickets de grilling : Revue par des agents experts, Plan de création du contenu, puis Ton rassurant appliqué (prototype). Fiches gagnées en révision attend les deux benchmarks ; Composition du parcours attend le plan de contenu.
+- Dès qu'une décision est constructible : `/to-spec` → `/to-tickets` → `/implement`, livraison, test de couloir.
 
 Dette de vocabulaire dans le code, à corriger lors de la construction : `slider` / `Affineur` → curseur, `thematique` → thème, badge « niveau découverte » → exigence, logique du « jour simulé » → parcours.
 
