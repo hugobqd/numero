@@ -44,7 +44,7 @@ export interface Question {
 }
 
 export type Mecanique = 'slider' | 'palier' | 'qcm' | 'plusmoins';
-export type VarianteScore = 'tolerance' | 'exact' | 'progressif';
+export type VarianteScore = 'exact' | 'progressif';
 
 /** Ce qu'une mécanique remonte une fois la question jouée. */
 export interface Reponse {

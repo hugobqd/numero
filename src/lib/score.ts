@@ -1,6 +1,5 @@
 import type { Mecanique, Question, Reponse, VarianteScore } from './types';
 
-export const TOLERANCE = 0.05; // ±5 %
 export const ECART_NUL = 0.5; // progressif : 0 point à ±50 %
 /** Progressif, modes à propositions : points selon l'écart de rang (0 = bonne, 1 = voisine…). */
 export const POINTS_PAR_RANG = [100, 50, 20];
@@ -27,10 +26,6 @@ export function noter(
     switch (variante) {
       case 'exact':
         return { points: exact ? 100 : 0, gagne: exact };
-      case 'tolerance': {
-        const gagne = exact || ecart <= TOLERANCE;
-        return { points: gagne ? 100 : 0, gagne };
-      }
       case 'progressif': {
         // Points selon le rang : bonne proposition 100, voisine 50, deux crans plus loin 20.
         const props = r.propositions ?? [];
@@ -45,10 +40,6 @@ export function noter(
 
   // Curseur : une estimation libre, notée selon la variante.
   switch (variante) {
-    case 'tolerance': {
-      const gagne = exact || ecart <= TOLERANCE;
-      return { points: gagne ? 100 : 0, gagne };
-    }
     case 'exact':
       return { points: exact ? 100 : 0, gagne: exact };
     case 'progressif': {

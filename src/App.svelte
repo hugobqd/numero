@@ -19,7 +19,10 @@
 
   const questions: Question[] = questionsDuDefi(stock as Question[], numero);
 
-  const reprise = lirePartie(numero);
+  // Une partie enregistrée avec un réglage qui n'existe plus (ex. l'ancienne variante « tolerance ») est ignorée.
+  const enregistree = lirePartie(numero);
+  const reprise =
+    enregistree && MECAS.includes(enregistree.meca) && VARIANTES.includes(enregistree.variante) ? enregistree : null;
   // Une partie commencée garde ses réglages ; sinon on prend ceux de l'URL.
   let partie = $state<PartieDuJour>(
     reprise ?? { numero, meca: params.meca, variante: params.variante, resultats: [], terminee: false },

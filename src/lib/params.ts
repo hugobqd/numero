@@ -1,10 +1,10 @@
 import type { Mecanique, VarianteScore } from './types';
 
 const MECAS: Mecanique[] = ['slider', 'palier', 'qcm', 'plusmoins'];
-const VARIANTES: VarianteScore[] = ['tolerance', 'exact', 'progressif'];
+const VARIANTES: VarianteScore[] = ['progressif', 'exact'];
 
 /**
- * Réglages de test, lus dans l'URL : ?meca=slider|palier|qcm|plusmoins&score=tolerance|exact|progressif
+ * Réglages de test, lus dans l'URL : ?meca=slider|palier|qcm|plusmoins&score=progressif|exact
  * &reset=1 efface la partie du jour (tests de couloir).
  * &jour=N force le numéro du défi.
  */
@@ -15,7 +15,7 @@ export function lireParametres() {
   const jour = Number(p.get('jour'));
   return {
     meca: meca && MECAS.includes(meca) ? meca : ('slider' as Mecanique),
-    variante: score && VARIANTES.includes(score) ? score : ('tolerance' as VarianteScore),
+    variante: score && VARIANTES.includes(score) ? score : ('progressif' as VarianteScore),
     reset: p.has('reset'),
     jour: Number.isInteger(jour) && jour > 0 ? jour : null,
   };

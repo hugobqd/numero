@@ -10,8 +10,8 @@ npm run dev
 
 ## Réglages de test
 
-`?meca=slider|palier|qcm|plusmoins&score=tolerance|exact|progressif` — `&reset=1` efface la partie du jour, `&jour=N` force un numéro de défi.
-Le panneau « Réglages de test » en bas de page permet de rejouer le défi, de naviguer entre les jours (#N−1, #N+1), d'effacer les stats et de lancer les 12 combinaisons.
+`?meca=slider|palier|qcm|plusmoins&score=progressif|exact` — `&reset=1` efface la partie du jour, `&jour=N` force un numéro de défi.
+Le panneau « Réglages de test » en bas de page permet de rejouer le défi, de naviguer entre les jours (#N−1, #N+1), d'effacer les stats et de lancer les 8 combinaisons.
 
 ## Contenu
 
