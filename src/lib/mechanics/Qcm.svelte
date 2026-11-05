@@ -1,16 +1,17 @@
 <script lang="ts">
   import type { Question, Reponse } from '../types';
   import { grand } from '../format';
-  import { propositionsQcm } from '../propositions';
+  import { propositionsQcm, type Difficulte } from '../propositions';
 
   let {
     question,
     numero,
+    difficulte = 'normale',
     onrepondre,
-  }: { question: Question; numero: number; onrepondre: (r: Reponse) => void } = $props();
+  }: { question: Question; numero: number; difficulte?: Difficulte; onrepondre: (r: Reponse) => void } = $props();
 
   // 4 propositions, triées du plus petit au plus grand.
-  const choix = propositionsQcm(question, numero);
+  const choix = propositionsQcm(question, numero, difficulte);
 </script>
 
 <div class="choix">

@@ -1,13 +1,13 @@
 <script lang="ts">
   import type { Question } from './types';
   import { avecUnite } from './format';
-  import { propositions, propositionsQcm } from './propositions';
+  import { propositions, propositionsQcm, type Difficulte } from './propositions';
 
   /** Outils de test : tout ce qu'il faut savoir sur la question affichée. */
-  let { question, graine }: { question: Question; graine: number } = $props();
+  let { question, graine, difficulte }: { question: Question; graine: number; difficulte: Difficulte } = $props();
 
-  const props6 = $derived(propositions(question, graine));
-  const props4 = $derived(propositionsQcm(question, graine));
+  const props6 = $derived(propositions(question, graine, difficulte));
+  const props4 = $derived(propositionsQcm(question, graine, difficulte));
   const leurresTries = $derived([...question.leurres].sort((a, b) => a.valeur - b.valeur));
   const deLaFiche = $derived(new Set(question.leurres.map((l) => l.valeur)));
   const TYPES = {
@@ -41,7 +41,7 @@
     </ul>
   </dd>
 
-  <dt>Propositions du jour (graine {graine})</dt>
+  <dt>Propositions (graine {graine} · difficulté {difficulte})</dt>
   <dd>
     <span class="liste">
       {#each props6 as v}<span

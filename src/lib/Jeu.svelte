@@ -6,6 +6,7 @@
   import Palier from './mechanics/Palier.svelte';
   import PlusMoins from './mechanics/PlusMoins.svelte';
   import Revelation from './Revelation.svelte';
+  import type { Difficulte } from './propositions';
 
   /**
    * Déroulé d'une série de questions (défi du jour ou révision) : question, puis révélation,
@@ -19,6 +20,7 @@
     resultats,
     etiquette = '',
     aide = false,
+    difficulte = () => 'normale',
     enCours = $bindable(null),
     onresultat,
     onfin,
@@ -32,8 +34,10 @@
     etiquette?: string;
     /** Affiche le mode d'emploi de la mécanique sous la question (tuto). */
     aide?: boolean;
-    /** Question affichée et graine de ses propositions, exposées aux outils de test. */
-    enCours?: { question: Question; graine: number } | null;
+    /** Difficulté des propositions pour une question (révision : selon la maîtrise de la fiche). */
+    difficulte?: (q: Question) => Difficulte;
+    /** Question affichée, graine et difficulté de ses propositions, exposées aux outils de test. */
+    enCours?: { question: Question; graine: number; difficulte: Difficulte } | null;
     onresultat: (r: ResultatQuestion, q: Question) => void;
     onfin: () => void;
   } = $props();
@@ -52,7 +56,7 @@
   const courante = $derived(questions[index]);
 
   $effect(() => {
-    enCours = courante ? { question: courante, graine } : null;
+    enCours = courante ? { question: courante, graine, difficulte: difficulte(courante) } : null;
     return () => (enCours = null);
   });
   const dernierResultat = $derived(resultats[resultats.length - 1]);
@@ -83,6 +87,9 @@
     <p class="progression">
       {#if etiquette}{`${etiquette} · `}{/if}Question {resultats.length + 1} / {questions.length} · {courante.thematique}
       {#if courante.statut === 'brouillon'}<span class="badge">brouillon</span>{/if}
+      {#if difficulte(courante) !== 'normale' && meca !== 'slider'}
+        <span class="badge niveau">{difficulte(courante) === 'decouverte' ? 'niveau découverte' : 'niveau expert'}</span>
+      {/if}
     </p>
     <h2>{courante.enonce}</h2>
     {#if aide}<p class="aide">💡 {AIDES[meca]}</p>{/if}
@@ -90,11 +97,11 @@
       {#if meca === 'slider'}
         <Slider question={courante} onrepondre={repondre} />
       {:else if meca === 'palier'}
-        <Palier question={courante} numero={graine} onrepondre={repondre} />
+        <Palier question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
       {:else if meca === 'qcm'}
-        <Qcm question={courante} numero={graine} onrepondre={repondre} />
+        <Qcm question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
       {:else}
-        <PlusMoins question={courante} numero={graine} onrepondre={repondre} />
+        <PlusMoins question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
       {/if}
     {/key}
   </section>
@@ -121,6 +128,10 @@
     border-radius: 0.5rem;
     background: var(--surface);
     font-size: 0.9rem;
+  }
+  .badge.niveau {
+    border-color: var(--accent);
+    color: var(--accent);
   }
   .badge {
     margin-left: 0.4rem;

@@ -21,6 +21,7 @@
   import Accueil from './lib/Accueil.svelte';
   import Recap from './lib/Recap.svelte';
   import Inspecteur from './lib/Inspecteur.svelte';
+  import type { Difficulte } from './lib/propositions';
   import {
     choisirJoueur,
     creerJoueur,
@@ -120,7 +121,14 @@
   const recharger = () => location.assign(lien());
 
   // Question affichée (outils de test : inspecteur).
-  let enCours = $state<{ question: Question; graine: number } | null>(null);
+  let enCours = $state<{ question: Question; graine: number; difficulte: Difficulte } | null>(null);
+
+  /** Révision : la difficulté des propositions suit la maîtrise de la fiche (0 ★ découverte, 3 ★ experte). */
+  function difficulteRevision(q: Question): Difficulte {
+    const e = collection[q.id];
+    const m = e ? maitrise(e) : 1;
+    return m === 0 ? 'decouverte' : m >= MAITRISE_MAX ? 'experte' : 'normale';
+  }
 
   // Menu de test : fermé par défaut, état mémorisé dans ce navigateur.
   let devOuvert = $state(lireDevOuvert());
@@ -352,6 +360,7 @@
       etiquette="Révision"
       onresultat={resultatRevision}
       onfin={() => (ecran = 'bilanRevision')}
+      difficulte={difficulteRevision}
       bind:enCours
     />
   {:else if ecran === 'bilanRevision' && revision}
@@ -434,7 +443,7 @@
     <section>
       <h3>Question en cours</h3>
       {#if enCours && (ecran === 'defi' || ecran === 'tuto' || ecran === 'revision')}
-        <Inspecteur question={enCours.question} graine={enCours.graine} />
+        <Inspecteur question={enCours.question} graine={enCours.graine} difficulte={enCours.difficulte} />
       {:else}
         <p>Aucune question affichée.</p>
       {/if}

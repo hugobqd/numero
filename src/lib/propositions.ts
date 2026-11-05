@@ -82,7 +82,66 @@ export const NB_PROPOSITIONS = 6;
  * Tous les leurres sont mis à la forme de la bonne réponse (`aLaForme`). Les leurres générés
  * gardent un écart minimal de 2 % ; ceux de la fiche peuvent être plus proches (8 848 m contre 8 849 m).
  */
-export function propositions(q: Question, numero: number): number[] {
+/**
+ * Difficulté des propositions :
+ * - `decouverte` : 2 valeurs éloignées de chaque côté et des proches assez larges (±15 à 35 %),
+ *   pour ancrer d'abord l'ordre de grandeur (fiche à 0 étoile en révision) ;
+ * - `normale` : 1 valeur éloignée de chaque côté, le reste proche (défi du jour, fiches à 1–2 étoiles) ;
+ * - `experte` : aucune valeur éloignée, seulement des pièges et des proches serrés (±2 à 12 %),
+ *   pour viser le chiffre exact (fiches à 3 étoiles).
+ */
+export type Difficulte = 'decouverte' | 'normale' | 'experte';
+
+interface Profil {
+  /** Rapports [min, max] des valeurs éloignées, du moins au plus éloigné, sous / au-dessus de la réponse. */
+  lointains: { bas: [number, number]; haut: [number, number] }[];
+  /** Rapports des leurres proches générés. */
+  proches: { bas: [number, number]; haut: [number, number] }[];
+  /** Écart relatif maximal d'un leurre de la fiche pour être utilisé (Infinity : pas de limite). */
+  ecartFicheMax: number;
+  /** Plage du filet de sécurité. */
+  secours: { bas: [number, number]; haut: [number, number] };
+}
+
+const PROFILS: Record<Difficulte, Profil> = {
+  decouverte: {
+    lointains: [
+      { bas: [0.35, 0.55], haut: [1.7, 2.5] },
+      { bas: [0.15, 0.3], haut: [3, 5] },
+    ],
+    proches: [
+      { bas: [0.65, 0.85], haut: [1.15, 1.35] },
+      { bas: [0.65, 0.85], haut: [1.15, 1.35] },
+    ],
+    ecartFicheMax: Infinity,
+    secours: { bas: [0.2, 0.9], haut: [1.1, 4] },
+  },
+  normale: {
+    lointains: [{ bas: [0.35, 0.55], haut: [1.7, 2.5] }],
+    proches: [
+      { bas: [0.85, 0.97], haut: [1.03, 1.15] },
+      { bas: [0.85, 0.97], haut: [1.03, 1.15] },
+      { bas: [0.85, 0.97], haut: [1.03, 1.15] },
+      { bas: [0.65, 0.8], haut: [1.25, 1.5] },
+    ],
+    ecartFicheMax: Infinity,
+    secours: { bas: [0.3, 0.97], haut: [1.03, 3] },
+  },
+  experte: {
+    lointains: [],
+    proches: [
+      { bas: [0.88, 0.98], haut: [1.02, 1.12] },
+      { bas: [0.88, 0.98], haut: [1.02, 1.12] },
+      { bas: [0.88, 0.98], haut: [1.02, 1.12] },
+      { bas: [0.8, 0.9], haut: [1.1, 1.2] },
+    ],
+    ecartFicheMax: 0.25,
+    secours: { bas: [0.75, 0.98], haut: [1.02, 1.3] },
+  },
+};
+
+export function propositions(q: Question, numero: number, difficulte: Difficulte = 'normale'): number[] {
+  const profil = PROFILS[difficulte];
   const hasard = alea(hachage(q.id) ^ Math.imul(numero, 2654435761));
   const reponse = q.valeur_a_retenir;
   const pas = q.precision * 10 ** zerosFinaux(Math.round(reponse / q.precision));
@@ -119,7 +178,10 @@ export function propositions(q: Question, numero: number): number[] {
   const rang = Math.floor(hasard() * NB_PROPOSITIONS);
 
   // Piège : tiré parmi ceux qui ont de la place de leur côté (aucun en dessous si la réponse est la plus petite).
-  const fiche = melange(q.leurres, hasard);
+  // En difficulté experte, les leurres de la fiche trop éloignés (âge de l'Univers…) sont écartés.
+  const fiche = melange(q.leurres, hasard).filter(
+    (l) => Math.abs(l.valeur - reponse) / reponse <= profil.ecartFicheMax,
+  );
   const piege = fiche.find(
     (l) => l.type !== 'proche' && (l.valeur < reponse ? rang >= 1 : rang <= NB_PROPOSITIONS - 2),
   );
@@ -133,12 +195,13 @@ export function propositions(q: Question, numero: number): number[] {
 
     if (piege && cotePiege === cote && restants() > 0) ajouterFiche(piege.valeur, cote);
 
-    if (restants() > 0) {
-      const lointainFiche = fiche.find((l) => l !== piege && loin(l.valeur) && duBonCote(l.valeur, cote));
-      if (!(lointainFiche && ajouterFiche(lointainFiche.valeur, cote))) {
-        if (cote < 0) ajouterGenere(0.35, 0.55, cote);
-        else ajouterGenere(1.7, 2.5, cote);
-      }
+    // Valeurs éloignées : d'abord un leurre éloigné de la fiche s'il y en a, sinon générées.
+    const cle = cote < 0 ? 'bas' : 'haut';
+    const lointainsFiche = fiche.filter((l) => l !== piege && loin(l.valeur) && duBonCote(l.valeur, cote));
+    for (const [i, plage] of profil.lointains.entries()) {
+      if (restants() <= 0) break;
+      const f = lointainsFiche[i];
+      if (!(f && ajouterFiche(f.valeur, cote))) ajouterGenere(plage[cle][0], plage[cle][1], cote);
     }
 
     const proches = melange(
@@ -146,8 +209,7 @@ export function propositions(q: Question, numero: number): number[] {
         ...fiche
           .filter((l) => l !== piege && !loin(l.valeur) && duBonCote(l.valeur, cote))
           .map((l) => ({ fiche: l.valeur, min: 0, max: 0 })),
-        ...[0, 1, 2].map(() => (cote < 0 ? { fiche: 0, min: 0.85, max: 0.97 } : { fiche: 0, min: 1.03, max: 1.15 })),
-        cote < 0 ? { fiche: 0, min: 0.65, max: 0.8 } : { fiche: 0, min: 1.25, max: 1.5 },
+        ...profil.proches.map((plage) => ({ fiche: 0, min: plage[cle][0], max: plage[cle][1] })),
       ],
       hasard,
     );
@@ -156,10 +218,10 @@ export function propositions(q: Question, numero: number): number[] {
       if (c.fiche) ajouterFiche(c.fiche, cote);
       else ajouterGenere(c.min, c.max, cote);
     }
-    // Filet de sécurité : on complète avec des valeurs plus dispersées.
-    for (let essai = 0; essai < 20 && restants() > 0; essai++) {
-      if (cote < 0) ajouterGenere(0.3, 0.97, cote);
-      else ajouterGenere(1.03, 3, cote);
+    // Filet de sécurité : on complète avec des valeurs plus dispersées, en élargissant si besoin
+    // (petits nombres comme 7 vertèbres : peu de valeurs entières existent à ±20 %).
+    for (const plage of [profil.secours, PROFILS.normale.secours, { bas: [0.05, 0.99], haut: [1.01, 10] }] as const) {
+      for (let essai = 0; essai < 20 && restants() > 0; essai++) ajouterGenere(plage[cle][0], plage[cle][1], cote);
     }
   }
 
@@ -171,8 +233,13 @@ export function propositions(q: Question, numero: number): number[] {
  * triés. Comme le rang de la réponse parmi les 6 est uniforme, sa position parmi les 4 l'est aussi
  * (1 chance sur 4 d'être en première ou en dernière position).
  */
-export function propositionsQcm(q: Question, numero: number, nombre = 4): number[] {
-  const toutes = propositions(q, numero);
+export function propositionsQcm(
+  q: Question,
+  numero: number,
+  difficulte: Difficulte = 'normale',
+  nombre = 4,
+): number[] {
+  const toutes = propositions(q, numero, difficulte);
   if (toutes.length <= nombre) return toutes;
   const hasard = alea((hachage(q.id) ^ Math.imul(numero, 40503)) + 1);
   const leurres = melange(

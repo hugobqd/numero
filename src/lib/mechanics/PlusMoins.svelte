@@ -1,20 +1,21 @@
 <script lang="ts">
   import type { Question, Reponse } from '../types';
   import { avecUnite, grand } from '../format';
-  import { arrondiSignificatif, propositions } from '../propositions';
+  import { arrondiSignificatif, propositions, type Difficulte } from '../propositions';
 
   let {
     question,
     numero,
+    difficulte = 'normale',
     onrepondre,
-  }: { question: Question; numero: number; onrepondre: (r: Reponse) => void } = $props();
+  }: { question: Question; numero: number; difficulte?: Difficulte; onrepondre: (r: Reponse) => void } = $props();
 
   // Recherche par dichotomie parmi les 6 propositions du palier (invisibles pour le joueur) :
   // 3 coups au plus ; un seul mauvais choix fait perdre la question. Le jeu demande « plus ou moins que X ? », X étant un seuil rond
   // placé entre deux propositions voisines ; la proposition restante est la réponse.
   // Il faut au moins 2 pas d'écart entre deux candidats pour placer un seuil entier entre eux
   // (pas de « 205,5 os ») : on écarte les leurres trop proches d'un voisin, jamais la bonne réponse.
-  const candidats = propositions(question, numero).reduce<number[]>((garde, v) => {
+  const candidats = propositions(question, numero, difficulte).reduce<number[]>((garde, v) => {
     const precedent = garde[garde.length - 1];
     if (precedent === undefined || v - precedent >= 2 * question.precision) garde.push(v);
     else if (v === question.valeur_a_retenir) garde[garde.length - 1] = v;

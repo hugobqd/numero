@@ -1,16 +1,17 @@
 <script lang="ts">
   import type { Question, Reponse } from '../types';
   import { avecUnite, grand } from '../format';
-  import { propositions } from '../propositions';
+  import { propositions, type Difficulte } from '../propositions';
 
   let {
     question,
     numero,
+    difficulte = 'normale',
     onrepondre,
-  }: { question: Question; numero: number; onrepondre: (r: Reponse) => void } = $props();
+  }: { question: Question; numero: number; difficulte?: Difficulte; onrepondre: (r: Reponse) => void } = $props();
 
   // Mêmes propositions que le QCM, présentées comme les crans d'un curseur.
-  const paliers = propositions(question, numero);
+  const paliers = propositions(question, numero, difficulte);
   let index = $state(Math.floor((paliers.length - 1) / 2));
 
   const affiche = $derived(grand(paliers[index], question.unite, question.precision));
