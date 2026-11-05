@@ -3,6 +3,8 @@ import type { Mecanique, Question, Reponse, VarianteScore } from './types';
 export const ECART_NUL = 0.5; // progressif : 0 point à ±50 %
 /** Progressif, modes à propositions : points selon l'écart de rang (0 = bonne, 1 = voisine…). */
 export const POINTS_PAR_RANG = [100, 50, 20];
+/** Progressif, plus/moins : points si l'on perd au coup 1, 2 ou 3 (gagné = 100). */
+export const POINTS_PLUSMOINS_PERDU = [0, 20, 50];
 
 export function ecartRelatif(q: Question, valeur: number): number {
   return (valeur - q.valeur_a_retenir) / q.valeur_a_retenir;
@@ -18,8 +20,12 @@ export function noter(
   meca: Mecanique,
   variante: VarianteScore,
 ): { points: number; gagne: boolean } {
-  // Plus/moins : un mauvais choix fait perdre la question tout de suite.
-  if (r.erreur) return { points: 0, gagne: false };
+  // Plus/moins : un mauvais choix fait perdre la question tout de suite. En progressif,
+  // les étapes franchies avant l'erreur rapportent des points (perdu au coup 1 : 0, 2 : 20, 3 : 50).
+  if (r.erreur) {
+    const points = variante === 'progressif' ? (POINTS_PLUSMOINS_PERDU[r.essai - 1] ?? 0) : 0;
+    return { points, gagne: false };
+  }
 
   const exact = estExact(q, r.valeur);
   const ecart = Math.abs(ecartRelatif(q, r.valeur));
