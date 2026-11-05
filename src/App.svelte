@@ -1,16 +1,20 @@
 <script lang="ts">
-  import type { Question, Reponse, ResultatQuestion } from './lib/types';
+  import type { Question, ResultatQuestion } from './lib/types';
   import { defisParCycle, numeroDefi, questionsDuDefi, questionsJouables } from './lib/daily';
-  import { noter } from './lib/score';
   import { avecUnite } from './lib/format';
   import { lireParametres, MECAS, VARIANTES } from './lib/params';
   import { effacerPartie, effacerStats, ecrirePartie, enregistrerFin, lirePartie, lireStats, type PartieDuJour } from './lib/storage';
   import { partager, texteDePartage } from './lib/share';
-  import Slider from './lib/mechanics/Slider.svelte';
-  import Qcm from './lib/mechanics/Qcm.svelte';
-  import Palier from './lib/mechanics/Palier.svelte';
-  import PlusMoins from './lib/mechanics/PlusMoins.svelte';
-  import Revelation from './lib/Revelation.svelte';
+  import {
+    choisirRevision,
+    effacerCollection,
+    enregistrerRevision,
+    fichesPossedees,
+    gagnerFiche,
+    lireCollection,
+  } from './lib/collection';
+  import Jeu from './lib/Jeu.svelte';
+  import CollectionVue from './lib/CollectionVue.svelte';
 
   const params = lireParametres();
   const numero = params.jour ?? numeroDefi();
@@ -31,35 +35,46 @@
   let partie = $state<PartieDuJour>(
     reprise ?? { numero, meca: params.meca, variante: params.variante, resultats: [], terminee: false },
   );
-  let ecran = $state<'accueil' | 'question' | 'revelation' | 'bilan'>(
-    reprise?.terminee ? 'bilan' : reprise?.resultats.length ? 'question' : 'accueil',
-  );
+  type Ecran = 'accueil' | 'defi' | 'bilan' | 'collection' | 'revision' | 'bilanRevision';
+  let ecran = $state<Ecran>(reprise?.terminee ? 'bilan' : reprise?.resultats.length ? 'defi' : 'accueil');
   let stats = $state(lireStats());
   let messagePartage = $state('');
 
-  const index = $derived(Math.min(partie.resultats.length, questions.length - 1));
-  const courante = $derived(questions[ecran === 'revelation' ? partie.resultats.length - 1 : index]);
-  const dernierResultat = $derived(partie.resultats[partie.resultats.length - 1]);
-  const afficherPoints = $derived(partie.variante === 'progressif');
+  // Collection : fiches gagnées en défi, à réviser.
+  let collection = $state(lireCollection());
+  let nouvellesFiches = $state<string[]>([]);
+  const possedees = $derived(fichesPossedees(collection, stock));
 
-  function repondre(r: Reponse) {
-    const q = questions[partie.resultats.length];
-    const { points, gagne } = noter(q, r, partie.meca, partie.variante);
-    const res: ResultatQuestion = { id: q.id, reponse: r.valeur, points, gagne, erreur: r.erreur };
+  function resultatDefi(res: ResultatQuestion) {
     partie.resultats.push(res);
     ecrirePartie($state.snapshot(partie));
-    ecran = 'revelation';
+    if (res.gagne && gagnerFiche(res.id, numero)) {
+      nouvellesFiches.push(res.id);
+      collection = lireCollection();
+    }
   }
 
-  function suivante() {
-    if (partie.resultats.length >= questions.length) {
-      partie.terminee = true;
-      ecrirePartie($state.snapshot(partie));
-      stats = enregistrerFin(numero);
-      ecran = 'bilan';
-    } else {
-      ecran = 'question';
-    }
+  function finDefi() {
+    partie.terminee = true;
+    ecrirePartie($state.snapshot(partie));
+    stats = enregistrerFin(numero);
+    ecran = 'bilan';
+  }
+
+  // Révision : 5 fiches de la collection, propositions tirées au hasard à chaque séance.
+  let revision = $state<{ questions: Question[]; resultats: ResultatQuestion[]; graine: number } | null>(null);
+
+  function reviser() {
+    const qs = choisirRevision(collection, stock);
+    if (!qs.length) return;
+    revision = { questions: qs, resultats: [], graine: 1000 + Math.floor(Math.random() * 1_000_000) };
+    ecran = 'revision';
+  }
+
+  function resultatRevision(res: ResultatQuestion) {
+    revision?.resultats.push(res);
+    enregistrerRevision(res.id, res.gagne);
+    collection = lireCollection();
   }
 
   async function onPartager() {
@@ -68,10 +83,11 @@
   }
 
   const total = $derived(
-    afficherPoints
+    partie.variante === 'progressif'
       ? `${partie.resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100}`
       : `${partie.resultats.filter((r) => r.gagne).length} / ${questions.length}`,
   );
+  const fichesDuDefi = $derived(partie.resultats.filter((r) => r.gagne).map((r) => r.id));
 
   const aujourdhui = numeroDefi();
 
@@ -85,46 +101,45 @@
     effacerStats();
     stats = lireStats();
   }
+
+  function viderCollection() {
+    effacerCollection();
+    collection = lireCollection();
+  }
+
+  const enonce = (id: string) => stock.find((q) => q.id === id);
 </script>
 
 <main>
   <header>
     <h1>Numero</h1>
-    <span class="numero">#{numero}</span>
+    <nav class="haut">
+      {#if ecran !== 'collection' && ecran !== 'revision'}
+        <button type="button" class="lien" onclick={() => (ecran = 'collection')}>
+          Collection <strong>{possedees.length}</strong>
+        </button>
+      {/if}
+      <span class="numero">#{numero}</span>
+    </nav>
   </header>
 
   {#if ecran === 'accueil'}
     <section class="accueil">
       <p class="pitch">5 nombres qui régissent le monde. Retiens-les au chiffre près.</p>
-      <button type="button" class="principal" onclick={() => (ecran = 'question')}>Jouer le défi du jour</button>
+      <button type="button" class="principal" onclick={() => (ecran = 'defi')}>Jouer le défi du jour</button>
+      {#if possedees.length}
+        <button type="button" onclick={reviser}>Réviser ma collection ({possedees.length} fiches)</button>
+      {/if}
     </section>
-  {:else if ecran === 'question' && courante}
-    <section class="question">
-      <p class="progression">
-        Question {partie.resultats.length + 1} / {questions.length} · {courante.thematique}
-        {#if courante.statut === 'brouillon'}<span class="badge">brouillon</span>{/if}
-      </p>
-      <h2>{courante.enonce}</h2>
-      <p class="unite-attendue">Réponse en <strong>{courante.unite}</strong></p>
-      {#key courante.id}
-        {#if partie.meca === 'slider'}
-          <Slider question={courante} onrepondre={repondre} />
-        {:else if partie.meca === 'palier'}
-          <Palier question={courante} {numero} onrepondre={repondre} />
-        {:else if partie.meca === 'qcm'}
-          <Qcm question={courante} {numero} onrepondre={repondre} />
-        {:else}
-          <PlusMoins question={courante} {numero} onrepondre={repondre} />
-        {/if}
-      {/key}
-    </section>
-  {:else if ecran === 'revelation' && courante && dernierResultat}
-    <Revelation
-      question={courante}
-      resultat={dernierResultat}
-      {afficherPoints}
-      onsuivante={suivante}
-      dernier={partie.resultats.length >= questions.length}
+  {:else if ecran === 'defi'}
+    <Jeu
+      {questions}
+      meca={partie.meca}
+      variante={partie.variante}
+      graine={numero}
+      resultats={partie.resultats}
+      onresultat={resultatDefi}
+      onfin={finDefi}
     />
   {:else if ecran === 'bilan'}
     <section class="bilan">
@@ -137,6 +152,27 @@
           </li>
         {/each}
       </ul>
+
+      <div class="gain">
+        {#if nouvellesFiches.length}
+          <p>
+            🎴 <strong>+{nouvellesFiches.length} fiche{nouvellesFiches.length > 1 ? 's' : ''}</strong>
+            dans ta collection ({possedees.length} / {stock.length})
+          </p>
+          <ul>
+            {#each nouvellesFiches as id}<li>{enonce(id)?.enonce}</li>{/each}
+          </ul>
+        {:else if fichesDuDefi.length}
+          <p>Les fiches gagnées aujourd'hui sont dans ta collection ({possedees.length} / {stock.length}).</p>
+        {:else}
+          <p>Aucune fiche gagnée aujourd'hui. Gagne une question pour l'ajouter à ta collection.</p>
+        {/if}
+        <div class="actions">
+          <button type="button" onclick={() => (ecran = 'collection')}>Ma collection</button>
+          {#if possedees.length}<button type="button" onclick={reviser}>Réviser</button>{/if}
+        </div>
+      </div>
+
       <button type="button" class="principal" onclick={onPartager}>Partager mon résultat</button>
       {#if messagePartage}<p class="message">{messagePartage}</p>{/if}
       <dl class="stats">
@@ -146,6 +182,42 @@
       </dl>
       <p class="demain">Prochain défi demain à minuit (heure de Paris).</p>
       <a class="rejouer" href={lien()}>↻ Rejouer ce défi (test)</a>
+    </section>
+  {:else if ecran === 'collection'}
+    <CollectionVue
+      {collection}
+      {stock}
+      onreviser={reviser}
+      onretour={() => (ecran = partie.terminee ? 'bilan' : partie.resultats.length ? 'defi' : 'accueil')}
+    />
+  {:else if ecran === 'revision' && revision}
+    <Jeu
+      questions={revision.questions}
+      meca={partie.meca}
+      variante={partie.variante}
+      graine={revision.graine}
+      resultats={revision.resultats}
+      etiquette="Révision"
+      onresultat={resultatRevision}
+      onfin={() => (ecran = 'bilanRevision')}
+    />
+  {:else if ecran === 'bilanRevision' && revision}
+    <section class="bilan">
+      <h2>Révision terminée</h2>
+      <p class="score">{revision.resultats.filter((r) => r.gagne).length} / {revision.questions.length}</p>
+      <ul class="recap">
+        {#each revision.resultats as r, i}
+          <li class:gagne={r.gagne}>
+            <span>{revision.questions[i].enonce}</span>
+            <strong>{avecUnite(revision.questions[i].valeur_a_retenir, revision.questions[i].unite, revision.questions[i].precision)}</strong>
+          </li>
+        {/each}
+      </ul>
+      <p class="demain">Une fiche réussie gagne une étoile de maîtrise ; une erreur la ramène à une étoile.</p>
+      <div class="actions">
+        <button type="button" class="principal" onclick={reviser}>Encore une révision</button>
+        <button type="button" onclick={() => (ecran = 'collection')}>Ma collection</button>
+      </div>
     </section>
   {/if}
 
@@ -162,6 +234,7 @@
       <a href={lien({ jour: numero + 1 })}>#{numero + 1} →</a>
       {#if numero !== aujourdhui}<a href={lien({ jour: aujourdhui })}>Aujourd'hui</a>{/if}
       <button type="button" onclick={reinitialiserStats}>Effacer les stats</button>
+      <button type="button" onclick={viderCollection}>Vider la collection</button>
     </nav>
     <table>
       <thead><tr><th></th>{#each VARIANTES as v}<th>{v}</th>{/each}</tr></thead>
@@ -211,16 +284,6 @@
   .pitch {
     font-size: 1.4rem;
     margin: 0;
-  }
-  .question {
-    display: grid;
-    gap: 1rem;
-  }
-  .progression,
-  .unite-attendue {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.9rem;
   }
   h2 {
     margin: 0;
@@ -284,15 +347,45 @@
     font-size: 0.8rem;
     color: var(--muted);
   }
-  .badge {
-    margin-left: 0.4rem;
-    padding: 0 0.4rem;
-    border: 1px solid var(--border);
-    border-radius: 0.3rem;
-    font-size: 0.75rem;
-  }
   .stock {
     margin: 0.5rem 0 0;
+  }
+  .haut {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+  button.lien {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+  .gain {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px dashed var(--accent);
+    border-radius: 0.6rem;
+  }
+  .gain p,
+  .gain ul {
+    margin: 0;
+  }
+  .gain ul {
+    padding-left: 1.25rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .bilan h2 {
+    margin: 0;
+    text-align: center;
   }
   .rejouer {
     text-align: center;

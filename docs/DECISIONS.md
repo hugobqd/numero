@@ -22,7 +22,8 @@ Jeu éducatif pour **retenir des nombres précis** qui régissent le monde (dist
 | Révélation | Valeur exacte en grand, écart du joueur, ancrage, moyen mnémotechnique facultatif, source |
 | Affichage des nombres | Dès 1 million, on passe à « millions / milliards / billions » avec l'unité : « 4,54 milliards d'années », jamais « 4 540 000 000 années » ; la notation scientifique reste en complément à la révélation |
 | Partage | `Numero #12 — 4/5` + emojis 🟩🟥 (🟩🟨🟥 en progressif), sans dévoiler les réponses |
-| Stockage | localStorage (résultat du jour, série, statistiques) |
+| Collection | Chaque question **gagnée** en défi ajoute sa fiche à la collection du joueur (une fois). Écran « Ma collection » : fiches rangées par thème avec progression « x / 10 », valeur, ancrage, maîtrise en étoiles. **Révision** : 5 fiches de la collection, les moins maîtrisées et les moins récemment révisées d'abord, propositions tirées au hasard à chaque séance ; même mécanique et même score que le défi. **Maîtrise** : 1 étoile à l'obtention, +1 par révision réussie d'affilée (3 au plus), une erreur ramène à 1. La révision ne compte pas dans les stats du défi |
+| Stockage | localStorage (résultat du jour, série, statistiques, collection) |
 | Langue | Français, contenu prêt à être traduit (champ `langue`) |
 | Direction artistique | Sobre et typographique, chiffres tabulaires, une couleur d'accent, mode clair et sombre |
 | Dépôt | Git local uniquement, aucun envoi en ligne pour l'instant |

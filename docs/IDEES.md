@@ -25,3 +25,15 @@ Trouver une ou plusieurs sources d'actualité pour en tirer des nombres du momen
   - La fréquence : une question « actu » dans le défi du jour ? un défi spécial hebdomadaire ?
   - La durée de vie : un nombre d'actualité vieillit vite. Il faut le dater dans `perimetre` et le retirer ou le mettre à jour au bon moment.
   - L'automatisation : un agent de veille qui propose des fiches en `brouillon`, toujours validées par un humain.
+
+## 3. Collection à compléter, façon « looting » (noté le 2026-11-05)
+
+Prolongement de la collection de fiches, dont une première version existe : les fiches sont gagnées en défi, révisées et rangées par thème avec une progression « x / 10 ».
+
+- **Idée** : des **séries à compléter, comme un album Panini**, par exemple « les 10 cartes de la collection Histoire de la Chine, niveau 1 ». Le joueur veut finir sa série, ce qui le fait revenir. L'album pourrait montrer les emplacements vides des cartes manquantes, sans en dévoiler le nombre.
+- **À creuser** :
+  - Comment découper le contenu en séries (thème × sous-thème × niveau, en lien avec l'idée des programmes scolaires) ?
+  - Que gagne-t-on en finissant une série : un badge, un débloquage de la série suivante ou du niveau 2, un affichage spécial ?
+  - Rareté des fiches, et comment en obtenir une précise : le défi du jour distribue des fiches au hasard, il faudra peut-être des défis thématiques pour cibler une série.
+  - Doublons : que vaut une fiche déjà possédée (de l'expérience, de la maîtrise, une monnaie d'échange) ?
+  - Garder l'apprentissage au centre : une fiche n'est vraiment « acquise » qu'une fois maîtrisée (étoiles), pas seulement gagnée.
