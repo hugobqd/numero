@@ -138,6 +138,7 @@
     padding: 1.25rem 1.25rem 1.4rem;
     background-color: var(--terracotta);
     color: var(--ivoire);
+    border-radius: var(--rayon-carte);
     overflow: hidden;
   }
   .defi::after {
@@ -201,6 +202,7 @@
     gap: 0.75rem;
     padding: 1.1rem 1.2rem;
     background: var(--surface);
+    border-radius: var(--rayon-carte);
   }
   .revision .etat .chiffres {
     font-size: 1.8rem;

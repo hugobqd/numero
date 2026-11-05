@@ -616,6 +616,10 @@
     align-items: center;
     gap: 0.5rem;
   }
+  .dev-bouton,
+  .dev button {
+    border-radius: var(--rayon-petit);
+  }
   .sigle {
     width: 1.9rem;
     height: 1.9rem;
@@ -695,6 +699,7 @@
     gap: 0.5rem;
     padding: 1rem 1.1rem;
     background: var(--surface);
+    border-radius: var(--rayon-carte);
   }
   .gain p {
     margin: 0;

@@ -41,7 +41,8 @@
     grid-template-columns: 1fr auto;
     gap: 0.15rem 0.75rem;
     padding: 0.55rem 0.75rem;
-    border-left: 3px solid var(--perdu);
+    border-left: 4px solid var(--perdu);
+    border-radius: var(--rayon-petit);
     background: var(--surface);
   }
   li.gagne {

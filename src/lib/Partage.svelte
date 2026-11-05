@@ -81,6 +81,7 @@
     gap: 0.75rem;
     padding: 1.25rem;
     background: var(--bg);
+    border-radius: var(--rayon-carte);
     text-align: center;
     color: var(--fg);
     font-size: 1rem;
@@ -95,6 +96,7 @@
   }
   /* Le QR reste noir sur blanc, même en mode sombre, pour être lisible par les appareils photo. */
   .qr {
+    border-radius: var(--rayon-bouton);
     background: #fff;
     padding: 0.5rem;
   }

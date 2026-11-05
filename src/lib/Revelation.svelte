@@ -74,6 +74,7 @@
   }
   .pastille {
     padding: 0.3rem 0.7rem;
+    border-radius: var(--rayon-petit);
     background: var(--perdu);
     color: var(--ivoire);
     font-size: 1.3rem;
@@ -130,6 +131,7 @@
     margin: 0.25rem 0 0;
     padding: 0.9rem 1rem;
     border-left: 4px solid var(--accent);
+    border-radius: var(--rayon-petit);
     background: var(--surface);
     font-size: 1.05rem;
   }

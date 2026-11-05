@@ -134,6 +134,7 @@
     align-items: center;
   }
   .vignette {
+    border-radius: var(--rayon-petit);
     width: 3.5rem;
     height: 3.5rem;
     object-fit: cover;
@@ -154,6 +155,7 @@
   .segments li {
     flex: 1;
     height: 0.3rem;
+    border-radius: 1rem;
     background: var(--border);
   }
   .segments li.fait {
@@ -180,6 +182,7 @@
     margin: 0;
     padding: 0.75rem 0.9rem;
     background: var(--surface);
+    border-radius: var(--rayon-bouton);
     font-size: 0.95rem;
   }
   .badges {
@@ -189,6 +192,7 @@
   }
   .badge {
     padding: 0.05rem 0.45rem;
+    border-radius: var(--rayon-petit);
     background: var(--surface);
     font-size: 0.75rem;
     color: var(--muted);

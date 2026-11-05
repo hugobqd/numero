@@ -105,6 +105,7 @@
     gap: 0.4rem;
   }
   .mosaique img {
+    border-radius: var(--rayon-carte);
     display: block;
     width: 100%;
     height: auto;
@@ -134,6 +135,7 @@
     background: var(--surface);
     border: none;
     border-bottom: 2px solid var(--fg);
+    border-radius: var(--rayon-bouton) var(--rayon-bouton) 0 0;
     padding: 0.75rem 1rem;
     min-width: 0;
   }
@@ -155,7 +157,8 @@
     gap: 0.5rem;
     padding: 0.6rem 0.75rem;
     background: var(--surface);
-    border-left: 3px solid transparent;
+    border-radius: var(--rayon-bouton);
+    border-left: 4px solid transparent;
   }
   li.actif {
     border-left-color: var(--accent);

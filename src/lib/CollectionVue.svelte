@@ -196,6 +196,7 @@
     text-align: left;
     padding: 0 0 0.9rem;
     background: var(--surface);
+    border-radius: var(--rayon-carte);
     overflow: hidden;
   }
   .carte > :not(.illustration) {
@@ -219,6 +220,7 @@
   .encouragement {
     padding: 1rem 1.1rem;
     background: var(--surface);
+    border-radius: var(--rayon-carte);
     color: var(--muted);
   }
   .encouragement p {
@@ -249,6 +251,7 @@
   .jauge {
     width: 100%;
     height: 0.35rem;
+    border-radius: 1rem;
     background: var(--border);
     overflow: hidden;
   }
@@ -286,6 +289,7 @@
     gap: 1rem;
   }
   .bandeau img {
+    border-radius: var(--rayon-carte);
     width: 100%;
     height: auto;
     aspect-ratio: 1;
@@ -321,6 +325,7 @@
   details {
     background: var(--surface);
     border-left: 4px solid var(--accent);
+    border-radius: var(--rayon-petit);
   }
   summary {
     display: grid;

@@ -31,6 +31,11 @@
   --presque: var(--ocre);
   --perdu: var(--rouille);
 
+  /* Arrondis : les cartes un peu plus que les boutons. */
+  --rayon-carte: 14px;
+  --rayon-bouton: 10px;
+  --rayon-petit: 6px;
+
   --police: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   color-scheme: light;
@@ -84,7 +89,7 @@ button {
   color: var(--fg);
   background: var(--surface);
   border: none;
-  border-radius: 0;
+  border-radius: var(--rayon-bouton);
   padding: 0.8rem 1rem;
   cursor: pointer;
   transition:
