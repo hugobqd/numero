@@ -8,6 +8,8 @@
 
   const props6 = $derived(propositions(question, graine));
   const props4 = $derived(propositionsQcm(question, graine));
+  const leurresTries = $derived([...question.leurres].sort((a, b) => a.valeur - b.valeur));
+  const deLaFiche = $derived(new Set(question.leurres.map((l) => l.valeur)));
   const TYPES = {
     erreur_frequente: 'erreur fréquente',
     autre_unite: 'autre unité',
@@ -33,7 +35,7 @@
   <dt>Leurres de la fiche ({question.leurres.length})</dt>
   <dd>
     <ul>
-      {#each question.leurres as l}
+      {#each leurresTries as l}
         <li title={l.note ?? ''}>{f(l.valeur)} <em>{TYPES[l.type]}</em>{#if l.note}<br /><small>{l.note}</small>{/if}</li>
       {/each}
     </ul>
@@ -42,9 +44,13 @@
   <dt>Propositions du jour (graine {graine})</dt>
   <dd>
     <span class="liste">
-      {#each props6 as v}<span class:bonne={v === question.valeur_a_retenir} class:qcm={props4.includes(v)}>{f(v)}</span>{/each}
+      {#each props6 as v}<span
+          class:bonne={v === question.valeur_a_retenir}
+          class:fiche={deLaFiche.has(v)}
+          class:qcm={props4.includes(v)}>{f(v)}</span
+        >{/each}
     </span>
-    <small>palier et plus/moins : les 6 · QCM : soulignées</small>
+    <small>vert : bonne réponse · gras : leurre de la fiche · souligné : QCM</small>
   </dd>
 
   <dt>Source</dt>
@@ -88,6 +94,10 @@
   .bonne {
     color: var(--gagne);
     font-weight: 700;
+  }
+  .fiche {
+    font-weight: 700;
+    color: var(--fg);
   }
   .qcm {
     text-decoration: underline;
