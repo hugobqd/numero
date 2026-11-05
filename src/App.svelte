@@ -21,6 +21,7 @@
   import Accueil from './lib/Accueil.svelte';
   import Recap from './lib/Recap.svelte';
   import Inspecteur from './lib/Inspecteur.svelte';
+  import Partage from './lib/Partage.svelte';
   import type { Difficulte } from './lib/propositions';
   import {
     choisirJoueur,
@@ -379,7 +380,7 @@
 
 </main>
 
-<footer class="version">v{__VERSION__} · {__COMMIT__}</footer>
+<footer class="version"><Partage /> · v{__VERSION__} · {__COMMIT__}</footer>
 
 <!-- Outils de test : repliés derrière un petit ⚙ en bas à droite ; panneau latéral (ou en bas sur mobile). -->
 <button
@@ -483,8 +484,8 @@
     padding: 0 1rem 1.25rem;
     text-align: center;
     font-size: 0.7rem;
+    /* Discret par la couleur seulement : une opacité rendrait aussi transparente la fenêtre de partage. */
     color: var(--muted);
-    opacity: 0.6;
     font-variant-numeric: tabular-nums;
   }
   /* Outils de test : un petit ⚙ discret, qui ouvre un panneau par-dessus le jeu. */

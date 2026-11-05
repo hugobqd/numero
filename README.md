@@ -1,6 +1,9 @@
 # Numero
 
 Jeu éducatif : retenir au chiffre près les nombres qui régissent le monde.
+
+**À jouer en ligne : https://hugobqd.github.io/numero/** (prototype, données dans le navigateur).
+
 Décisions de conception : [docs/DECISIONS.md](docs/DECISIONS.md).
 
 ```bash
