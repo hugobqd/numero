@@ -139,7 +139,7 @@
     </section>
   {/if}
 
-  <details class="dev">
+  <details class="dev" open>
     <summary>Réglages de test · défi #{numero} · {partie.meca} / {partie.variante}</summary>
     <nav class="defis">
       {#if numero > 1}<a href={lien({ jour: numero - 1 })}>← #{numero - 1}</a>{/if}
