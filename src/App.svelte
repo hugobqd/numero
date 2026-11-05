@@ -199,7 +199,6 @@
     collection = lireCollection();
   }
 
-  const enonce = (id: string) => stock.find((q) => q.id === id);
 </script>
 
 <main>
@@ -301,11 +300,6 @@
             dans ta collection ({possedees.length} / {stock.length})
             {#if aRevoir}· dont <strong>{aRevoir} à revoir</strong>{/if}
           </p>
-          <ul>
-            {#each nouvellesFiches as id}
-              <li class:revoir={!partie.resultats.find((r) => r.id === id)?.gagne}>{enonce(id)?.enonce}</li>
-            {/each}
-          </ul>
           {#if aRevoir}<p class="conseil">Les fiches ratées passent en premier dans tes révisions.</p>{/if}
         {:else}
           <p>Les fiches de ce défi sont dans ta collection ({possedees.length} / {stock.length}).</p>
@@ -673,18 +667,8 @@
     border: 1px dashed var(--accent);
     border-radius: 0.6rem;
   }
-  .gain p,
-  .gain ul {
+  .gain p {
     margin: 0;
-  }
-  .gain ul {
-    padding-left: 1.25rem;
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-  .gain li.revoir::marker {
-    content: '↻ ';
-    color: var(--perdu);
   }
   .conseil {
     color: var(--muted);
