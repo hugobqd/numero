@@ -1,0 +1,379 @@
+[
+  {
+    "id": "terre-circonference-equateur",
+    "enonce": "Quelle est la circonférence de la Terre à l'équateur ?",
+    "valeur": 40075.017,
+    "valeur_a_retenir": 40075,
+    "precision": 1,
+    "unite": "km",
+    "perimetre": "le long de l'équateur (ellipsoïde de référence) ; un tour par les pôles est un peu plus court",
+    "ancrage": "En une seconde, la lumière ferait 7,5 fois ce tour de la Terre.",
+    "mnemo": "40 075 : 40 000 km, plus 75.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Terre",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Terre et géologie",
+    "leurres": [
+      {
+        "valeur": 40008,
+        "type": "autre_perimetre",
+        "note": "circonférence méridienne, par les pôles (40 007,864 km) : la Terre est aplatie"
+      },
+      {
+        "valeur": 24901,
+        "type": "autre_unite",
+        "note": "la circonférence équatoriale en miles (40 075,017 / 1,609344)"
+      },
+      {
+        "valeur": 12742,
+        "type": "erreur_frequente",
+        "note": "diamètre moyen de la Terre (≈ 12 742 km), confusion diamètre / circonférence"
+      },
+      {
+        "valeur": 38627,
+        "type": "proche"
+      },
+      {
+        "valeur": 41893,
+        "type": "proche"
+      },
+      {
+        "valeur": 42316,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-rayon-moyen",
+    "enonce": "Quel est le rayon moyen de la Terre ?",
+    "valeur": 6371.008,
+    "valeur_a_retenir": 6371,
+    "precision": 1,
+    "unite": "km",
+    "perimetre": "rayon moyen volumétrique (la Terre est légèrement aplatie aux pôles)",
+    "ancrage": "La Terre est aplatie : son rayon à l'équateur (6 378 km) dépasse son rayon polaire (6 357 km) de 21 km, à peine 0,3 %.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Terre",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Terre et géologie",
+    "leurres": [
+      {
+        "valeur": 6378,
+        "type": "autre_perimetre",
+        "note": "rayon équatorial (6 378,137 km)"
+      },
+      {
+        "valeur": 6357,
+        "type": "autre_perimetre",
+        "note": "rayon polaire (6 356,752 km)"
+      },
+      {
+        "valeur": 3959,
+        "type": "autre_unite",
+        "note": "le rayon moyen en miles (6 371,008 / 1,609344)"
+      },
+      {
+        "valeur": 12742,
+        "type": "erreur_frequente",
+        "note": "diamètre moyen de la Terre (≈ 12 742 km), confusion rayon / diamètre"
+      },
+      {
+        "valeur": 6413,
+        "type": "proche"
+      },
+      {
+        "valeur": 6298,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-superficie",
+    "enonce": "Quelle est la superficie totale de la Terre ?",
+    "valeur": 510067420,
+    "valeur_a_retenir": 510000000,
+    "precision": 1000000,
+    "unite": "km²",
+    "perimetre": "surface totale du globe, terres émergées et océans compris",
+    "ancrage": "Les océans en couvrent environ 361 millions de km², soit près de 71 % : les terres émergées en occupent moins d'un tiers.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Terre",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Terre et géologie",
+    "leurres": [
+      {
+        "valeur": 361000000,
+        "type": "autre_perimetre",
+        "note": "superficie des océans seuls (≈ 361 millions de km², page Océan)"
+      },
+      {
+        "valeur": 460000000,
+        "type": "autre_perimetre",
+        "note": "superficie de Vénus, la « jumelle » de la Terre (4,60 × 10⁸ km², page Vénus)"
+      },
+      {
+        "valeur": 197000000,
+        "type": "autre_unite",
+        "note": "la superficie de la Terre en miles carrés (510 067 420 / 2,59 ≈ 196,9 millions)"
+      },
+      {
+        "valeur": 487000000,
+        "type": "proche"
+      },
+      {
+        "valeur": 534000000,
+        "type": "proche"
+      },
+      {
+        "valeur": 552000000,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-fosse-mariannes",
+    "enonce": "Quelle est la profondeur maximale de la fosse des Mariannes ?",
+    "valeur": 10984,
+    "valeur_a_retenir": 10984,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "sous le niveau de la mer, au Challenger Deep (± 25 m, synthèse des mesures publiée en 2014)",
+    "ancrage": "Si l'on y posait l'Everest (8 849 m), son sommet resterait à plus de 2 km sous la surface.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Fosse_des_Mariannes",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Terre et géologie",
+    "leurres": [
+      {
+        "valeur": 11034,
+        "type": "erreur_frequente",
+        "note": "mesure soviétique du Vitiaz (1957), encore souvent citée mais jamais confirmée"
+      },
+      {
+        "valeur": 10916,
+        "type": "autre_perimetre",
+        "note": "profondeur atteinte par le bathyscaphe Trieste en 1960 (valeur corrigée)"
+      },
+      {
+        "valeur": 10882,
+        "type": "autre_perimetre",
+        "note": "profondeur maximale de la fosse des Tonga, 2e fosse la plus profonde (page Fosse océanique)"
+      },
+      {
+        "valeur": 10542,
+        "type": "autre_perimetre",
+        "note": "profondeur maximale de la fosse des Kouriles (page Fosse océanique)"
+      },
+      {
+        "valeur": 8849,
+        "type": "erreur_frequente",
+        "note": "altitude de l'Everest, confusion entre le point le plus haut et le plus profond"
+      },
+      {
+        "valeur": 10947,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-mont-blanc",
+    "enonce": "Quelle est l'altitude du mont Blanc ?",
+    "valeur": 4807.47,
+    "valeur_a_retenir": 4807,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "sommet de la calotte glaciaire, mesure de septembre 2026 (elle varie de quelques mètres d'une campagne à l'autre)",
+    "ancrage": "Son sommet est un dôme de glace qui bouge : 4 810,90 m en 2007, 4 805,59 m en 2023. Le rocher, lui, culmine vers 4 792 m.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Mont_Blanc",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Terre et géologie",
+    "leurres": [
+      {
+        "valeur": 4806,
+        "type": "erreur_frequente",
+        "note": "mesures de 2019 (4 806,03 m) et de 2023 (4 805,59 m)"
+      },
+      {
+        "valeur": 4809,
+        "type": "erreur_frequente",
+        "note": "mesures de 2015 (4 808,73 m) et de 2017 (4 808,72 m)"
+      },
+      {
+        "valeur": 4811,
+        "type": "erreur_frequente",
+        "note": "mesure record de 2007 (4 810,90 m), proche des 4 810 m des anciens manuels"
+      },
+      {
+        "valeur": 4792,
+        "type": "autre_perimetre",
+        "note": "altitude du sommet rocheux, sous la glace"
+      },
+      {
+        "valeur": 4748,
+        "type": "autre_perimetre",
+        "note": "altitude du mont Blanc de Courmayeur, sommet secondaire du massif"
+      },
+      {
+        "valeur": 4634,
+        "type": "autre_perimetre",
+        "note": "altitude du mont Rose (pointe Dufour), 2e sommet des Alpes (page Mont Rose)"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-profondeur-moyenne-oceans",
+    "enonce": "Quelle est la profondeur moyenne des océans ?",
+    "valeur": 3682,
+    "valeur_a_retenir": 3682,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "moyenne sur l'ensemble des océans du globe",
+    "ancrage": "Pour toucher le fond en moyenne, il faudrait empiler plus de 11 tours Eiffel sous les vagues.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Oc%C3%A9an",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Terre et géologie",
+    "leurres": [
+      {
+        "valeur": 3332,
+        "type": "autre_perimetre",
+        "note": "profondeur moyenne de l'océan Atlantique, mers bordières comprises (page Océan Atlantique)"
+      },
+      {
+        "valeur": 3926,
+        "type": "autre_perimetre",
+        "note": "profondeur moyenne de l'Atlantique sans les mers bordières (page Océan Atlantique)"
+      },
+      {
+        "valeur": 5669,
+        "type": "autre_perimetre",
+        "note": "profondeur maximale de l'océan Arctique, le moins profond des océans (page Océan)"
+      },
+      {
+        "valeur": 3517,
+        "type": "proche"
+      },
+      {
+        "valeur": 3847,
+        "type": "proche"
+      },
+      {
+        "valeur": 3761,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-baikal-profondeur",
+    "enonce": "Quelle est la profondeur maximale du lac Baïkal ?",
+    "valeur": 1642,
+    "valeur_a_retenir": 1642,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "profondeur maximale de la colonne d'eau ; c'est le lac le plus profond du monde",
+    "ancrage": "On pourrait y engloutir presque 5 tours Eiffel empilées.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Lac_Ba%C3%AFkal",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Terre et géologie",
+    "leurres": [
+      {
+        "valeur": 1471,
+        "type": "autre_perimetre",
+        "note": "profondeur maximale du lac Tanganyika, 2e lac le plus profond (page Lac Tanganyika)"
+      },
+      {
+        "valeur": 1025,
+        "type": "autre_perimetre",
+        "note": "profondeur maximale de la mer Caspienne (page Mer Caspienne)"
+      },
+      {
+        "valeur": 744,
+        "type": "autre_perimetre",
+        "note": "profondeur moyenne du Baïkal (744,4 m), confusion moyenne / maximale"
+      },
+      {
+        "valeur": 1589,
+        "type": "proche"
+      },
+      {
+        "valeur": 1726,
+        "type": "proche"
+      },
+      {
+        "valeur": 1803,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-loire-longueur",
+    "enonce": "Quelle est la longueur de la Loire ?",
+    "valeur": 1006,
+    "valeur_a_retenir": 1006,
+    "precision": 1,
+    "unite": "km",
+    "perimetre": "de sa source au mont Gerbier-de-Jonc jusqu'à l'estuaire, sur l'Atlantique",
+    "ancrage": "C'est le plus long fleuve qui coule entièrement en France : il part du mont Gerbier-de-Jonc, en Ardèche.",
+    "mnemo": "1 006 : à peine plus de 1 000 km.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Loire",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Terre et géologie",
+    "leurres": [
+      {
+        "valeur": 1126,
+        "type": "erreur_frequente",
+        "note": "longueur donnée par les sources du XIXe siècle (« plus de 1 126 km »)"
+      },
+      {
+        "valeur": 812,
+        "type": "autre_perimetre",
+        "note": "longueur totale du Rhône (page Rhône)"
+      },
+      {
+        "valeur": 775,
+        "type": "autre_perimetre",
+        "note": "longueur de la Seine (774,76 km, page Seine)"
+      },
+      {
+        "valeur": 625,
+        "type": "autre_unite",
+        "note": "la longueur de la Loire en miles (1 006 / 1,609344)"
+      },
+      {
+        "valeur": 1043,
+        "type": "proche"
+      },
+      {
+        "valeur": 968,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]

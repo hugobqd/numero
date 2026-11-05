@@ -1,0 +1,424 @@
+[
+  {
+    "id": "corps-dents-adulte",
+    "enonce": "Combien de dents compte une denture adulte complète ?",
+    "valeur": 32,
+    "valeur_a_retenir": 32,
+    "precision": 1,
+    "unite": "dents",
+    "perimetre": "dents permanentes de l'adulte, dents de sagesse comprises (l'enfant a 20 dents de lait)",
+    "ancrage": "4 quarts de bouche de 8 dents chacun : 2 incisives, 1 canine, 2 prémolaires et 3 molaires, dont la dent de sagesse.",
+    "mnemo": "4 × 8 = 32 : huit dents par quart de mâchoire.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Dent_(anatomie_humaine)",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Corps humain",
+    "leurres": [
+      {
+        "valeur": 28,
+        "type": "erreur_frequente",
+        "note": "denture sans les 4 dents de sagesse, inconstantes et souvent absentes ou extraites"
+      },
+      {
+        "valeur": 16,
+        "type": "autre_perimetre",
+        "note": "dents d'une seule mâchoire (elles se répartissent également entre maxillaire et mandibule)"
+      },
+      {
+        "valeur": 33,
+        "type": "autre_perimetre",
+        "note": "nombre moyen de vertèbres admis (Squelette humain), confusion entre deux comptes du squelette"
+      },
+      {
+        "valeur": 34,
+        "type": "proche"
+      },
+      {
+        "valeur": 36,
+        "type": "proche"
+      },
+      {
+        "valeur": 26,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-chromosomes",
+    "enonce": "Combien de chromosomes contient une cellule humaine ?",
+    "valeur": 46,
+    "valeur_a_retenir": 46,
+    "precision": 1,
+    "unite": "chromosomes",
+    "perimetre": "dans une cellule non reproductrice : 23 paires, dont 22 paires d'autosomes et une paire de chromosomes sexuels",
+    "ancrage": "Les chimpanzés, gorilles et orangs-outans en ont 48 : notre chromosome 2 est né de la fusion de deux chromosomes ancestraux.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Chromosome",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Corps humain",
+    "leurres": [
+      {
+        "valeur": 48,
+        "type": "erreur_frequente",
+        "note": "valeur comptée par Painter en 1921 et admise jusqu'à la découverte de Tjio et Levan (1955-1956) ; c'est aussi le nombre des autres grands singes (Joe Hin Tjio, Chromosome 2 humain)"
+      },
+      {
+        "valeur": 23,
+        "type": "autre_perimetre",
+        "note": "nombre de paires de chromosomes"
+      },
+      {
+        "valeur": 44,
+        "type": "autre_perimetre",
+        "note": "autosomes seuls (22 paires), sans les chromosomes sexuels"
+      },
+      {
+        "valeur": 47,
+        "type": "autre_perimetre",
+        "note": "caryotype « 47, 21+ » d'une personne porteuse de trisomie 21 (Trisomie 21)"
+      },
+      {
+        "valeur": 42,
+        "type": "proche"
+      },
+      {
+        "valeur": 52,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-nerfs-craniens",
+    "enonce": "Combien de paires de nerfs crâniens possède l'être humain ?",
+    "valeur": 12,
+    "valeur_a_retenir": 12,
+    "precision": 1,
+    "unite": "paires",
+    "perimetre": "nerfs qui émergent directement de l'encéphale, selon la classification usuelle (sans le nerf terminal)",
+    "ancrage": "Tous les mammifères en ont 12 paires. La moelle épinière, elle, en émet 31 paires.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Nerf_cr%C3%A2nien",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Corps humain",
+    "leurres": [
+      {
+        "valeur": 13,
+        "type": "autre_perimetre",
+        "note": "en comptant le nerf terminal, parfois décrit comme une treizième paire"
+      },
+      {
+        "valeur": 24,
+        "type": "autre_perimetre",
+        "note": "nombre de nerfs crâniens pris un par un (12 paires)"
+      },
+      {
+        "valeur": 31,
+        "type": "autre_perimetre",
+        "note": "paires de nerfs spinaux, issus de la moelle épinière (Nerf spinal)"
+      },
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "paires de nerfs spinaux cervicaux, C1 à C8 (Nerf spinal)"
+      },
+      {
+        "valeur": 11,
+        "type": "proche"
+      },
+      {
+        "valeur": 14,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-nerfs-spinaux",
+    "enonce": "Combien de paires de nerfs partent de la moelle épinière ?",
+    "valeur": 31,
+    "valeur_a_retenir": 31,
+    "precision": 1,
+    "unite": "paires",
+    "perimetre": "nerfs spinaux : 8 cervicaux, 12 thoraciques, 5 lombaires, 5 sacrés et 1 coccygien",
+    "ancrage": "Il y a 8 paires de nerfs cervicaux pour seulement 7 vertèbres cervicales.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Nerf_spinal",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Corps humain",
+    "leurres": [
+      {
+        "valeur": 33,
+        "type": "autre_perimetre",
+        "note": "nombre moyen de vertèbres admis (Squelette humain) : les nerfs spinaux sortent entre les vertèbres"
+      },
+      {
+        "valeur": 24,
+        "type": "autre_perimetre",
+        "note": "vertèbres libres : 7 cervicales, 12 thoraciques, 5 lombaires (Colonne vertébrale)"
+      },
+      {
+        "valeur": 62,
+        "type": "autre_perimetre",
+        "note": "nombre de nerfs spinaux pris un par un (31 paires)"
+      },
+      {
+        "valeur": 12,
+        "type": "autre_perimetre",
+        "note": "paires de nerfs crâniens, issus de l'encéphale (Nerf crânien)"
+      },
+      {
+        "valeur": 29,
+        "type": "proche"
+      },
+      {
+        "valeur": 35,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-vertebres-cervicales",
+    "enonce": "Combien de vertèbres compte le cou humain ?",
+    "valeur": 7,
+    "valeur_a_retenir": 7,
+    "precision": 1,
+    "unite": "vertèbres",
+    "perimetre": "vertèbres cervicales, de C1 (atlas) à C7",
+    "ancrage": "La girafe en a aussi 7, comme presque tous les mammifères : seuls les lamantins et les paresseux font exception.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Vert%C3%A8bre_cervicale",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Corps humain",
+    "leurres": [
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "paires de nerfs cervicaux, C1 à C8 (Nerf spinal)"
+      },
+      {
+        "valeur": 12,
+        "type": "autre_perimetre",
+        "note": "vertèbres thoraciques (Colonne vertébrale)"
+      },
+      {
+        "valeur": 5,
+        "type": "autre_perimetre",
+        "note": "vertèbres lombaires (Colonne vertébrale)"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "vertèbres cervicales du lamantin, exception parmi les mammifères"
+      },
+      {
+        "valeur": 9,
+        "type": "proche"
+      },
+      {
+        "valeur": 4,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-temperature",
+    "enonce": "Quelle est la température normale du corps humain ?",
+    "valeur": 37,
+    "valeur_a_retenir": 37,
+    "precision": 1,
+    "unite": "°C",
+    "perimetre": "température centrale moyenne d'un adulte en bonne santé (entre 36,5 et 37,5 °C selon les individus)",
+    "ancrage": "La marge est étroite : 4 degrés de plus suffisent, car au-dessus de 41 °C, la fièvre peut léser le système nerveux central.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Fi%C3%A8vre",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Corps humain",
+    "leurres": [
+      {
+        "valeur": 98,
+        "type": "autre_unite",
+        "note": "la même température en degrés Fahrenheit (98,6 °F, Degré Fahrenheit)"
+      },
+      {
+        "valeur": 38,
+        "type": "autre_perimetre",
+        "note": "seuil de fièvre (≥ 38 °C, Brighton Collaboration ; température rectale chez l'enfant)"
+      },
+      {
+        "valeur": 35,
+        "type": "autre_perimetre",
+        "note": "seuil de l'hypothermie : température centrale inférieure à 35 °C (Hypothermie)"
+      },
+      {
+        "valeur": 41,
+        "type": "autre_perimetre",
+        "note": "fièvre au-delà de laquelle le système nerveux central peut être lésé"
+      },
+      {
+        "valeur": 36,
+        "type": "proche"
+      },
+      {
+        "valeur": 39,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-os-main",
+    "enonce": "Combien d'os compte une main humaine ?",
+    "valeur": 27,
+    "valeur_a_retenir": 27,
+    "precision": 1,
+    "unite": "os",
+    "perimetre": "une main d'adulte, poignet compris : 8 os du carpe, 5 métacarpiens et 14 phalanges",
+    "ancrage": "Avec 27 os par main et 26 par pied, mains et pieds rassemblent à eux seuls la moitié des 206 os du squelette.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Main",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Corps humain",
+    "leurres": [
+      {
+        "valeur": 26,
+        "type": "autre_perimetre",
+        "note": "os d'un pied, hors sésamoïdes (Pied (anatomie humaine))"
+      },
+      {
+        "valeur": 54,
+        "type": "autre_perimetre",
+        "note": "os des deux mains"
+      },
+      {
+        "valeur": 14,
+        "type": "autre_perimetre",
+        "note": "phalanges seules (os des doigts)"
+      },
+      {
+        "valeur": 19,
+        "type": "autre_perimetre",
+        "note": "main sans le poignet : 5 métacarpiens et 14 phalanges"
+      },
+      {
+        "valeur": 23,
+        "type": "proche"
+      },
+      {
+        "valeur": 31,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-os-pied",
+    "enonce": "Combien d'os compte un pied humain ?",
+    "valeur": 26,
+    "valeur_a_retenir": 26,
+    "precision": 1,
+    "unite": "os",
+    "perimetre": "un pied d'adulte, hors os sésamoïdes : 7 os du tarse, 5 métatarsiens et 14 phalanges",
+    "ancrage": "Les deux pieds réunissent 52 os : un quart des 206 os du squelette.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Pied_(anatomie_humaine)",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Corps humain",
+    "leurres": [
+      {
+        "valeur": 28,
+        "type": "autre_perimetre",
+        "note": "en comptant les deux os sésamoïdes"
+      },
+      {
+        "valeur": 27,
+        "type": "autre_perimetre",
+        "note": "os d'une main (Main)"
+      },
+      {
+        "valeur": 52,
+        "type": "autre_perimetre",
+        "note": "os des deux pieds"
+      },
+      {
+        "valeur": 14,
+        "type": "autre_perimetre",
+        "note": "phalanges seules (le gros orteil n'en a que deux)"
+      },
+      {
+        "valeur": 22,
+        "type": "proche"
+      },
+      {
+        "valeur": 31,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-cotes",
+    "enonce": "Combien de côtes compte la cage thoracique humaine ?",
+    "valeur": 24,
+    "valeur_a_retenir": 24,
+    "precision": 1,
+    "unite": "côtes",
+    "perimetre": "12 paires chez l'adulte, sans côte cervicale surnuméraire",
+    "ancrage": "Seules les 7 premières paires s'attachent directement au sternum ; les 2 dernières, dites « flottantes », ne s'y rattachent pas.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/C%C3%B4te_(anatomie)",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Corps humain",
+    "leurres": [
+      {
+        "valeur": 12,
+        "type": "autre_perimetre",
+        "note": "nombre de paires de côtes"
+      },
+      {
+        "valeur": 14,
+        "type": "autre_perimetre",
+        "note": "vraies côtes seules (7 paires reliées directement au sternum)"
+      },
+      {
+        "valeur": 25,
+        "type": "autre_perimetre",
+        "note": "avec une côte cervicale surnuméraire, qui s'ossifie parfois sur la 7e vertèbre cervicale"
+      },
+      {
+        "valeur": 22,
+        "type": "proche"
+      },
+      {
+        "valeur": 28,
+        "type": "proche"
+      },
+      {
+        "valeur": 26,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]

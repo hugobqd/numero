@@ -1,0 +1,252 @@
+[
+  {
+    "id": "humanite-onu-etats-membres",
+    "enonce": "Combien d'États sont membres de l'Organisation des Nations unies ?",
+    "valeur": 193,
+    "valeur_a_retenir": 193,
+    "precision": 1,
+    "unite": "pays",
+    "perimetre": "États membres de plein droit, depuis l'admission du Soudan du Sud le 14 juillet 2011 (hors États observateurs)",
+    "ancrage": "L'ONU est née en 1945 avec 51 États signataires de sa Charte : le nombre de membres a presque quadruplé depuis.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Organisation_des_Nations_unies",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 192, "type": "erreur_frequente", "note": "nombre de membres avant l'admission du Soudan du Sud en 2011" },
+      { "valeur": 195, "type": "autre_perimetre", "note": "193 membres + 2 États observateurs (Palestine, Vatican)" },
+      { "valeur": 197, "type": "autre_perimetre", "note": "nombre d'États reconnus par l'ONU, selon Wikipédia" },
+      { "valeur": 51, "type": "autre_perimetre", "note": "États signataires de la Charte en 1945 (leurre éloigné)" },
+      { "valeur": 188, "type": "proche" },
+      { "valeur": 204, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-ue-etats-membres",
+    "enonce": "Combien de pays sont membres de l'Union européenne ?",
+    "valeur": 27,
+    "valeur_a_retenir": 27,
+    "precision": 1,
+    "unite": "pays",
+    "perimetre": "États membres depuis la sortie du Royaume-Uni (Brexit, 2020)",
+    "ancrage": "Ils parlent 24 langues officielles différentes : presque une par pays.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Union_europ%C3%A9enne",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 28, "type": "erreur_frequente", "note": "nombre de membres avant le Brexit" },
+      { "valeur": 21, "type": "autre_perimetre", "note": "pays de la zone euro en 2026" },
+      { "valeur": 24, "type": "autre_perimetre", "note": "nombre de langues officielles de l'UE" },
+      { "valeur": 26, "type": "proche" },
+      { "valeur": 29, "type": "proche" },
+      { "valeur": 31, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-population-france",
+    "enonce": "Combien d'habitants compte la France au 1er janvier 2025 ?",
+    "valeur": 68600000,
+    "valeur_a_retenir": 68600000,
+    "precision": 100000,
+    "unite": "habitants",
+    "perimetre": "estimation Insee au 1er janvier 2025, métropole et cinq départements d'outre-mer (Mayotte comprise), hors collectivités d'outre-mer",
+    "ancrage": "Sur ces 68,6 millions, 2,3 millions vivent dans les cinq départements d'outre-mer : environ un habitant sur trente.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Population_de_la_France",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 66300000, "type": "autre_perimetre", "note": "France métropolitaine seule en 2025 (68,6 M − 2,3 M dans les DOM)" },
+      { "valeur": 68400000, "type": "autre_perimetre", "note": "estimation au 1er janvier 2024 (68 373 433)" },
+      { "valeur": 67400000, "type": "erreur_frequente", "note": "chiffre au 1er janvier 2020 (67 441 850), souvent encore cité" },
+      { "valeur": 68100000, "type": "autre_perimetre", "note": "estimation au 1er janvier 2023 (68 143 433)" },
+      { "valeur": 69200000, "type": "proche" },
+      { "valeur": 67900000, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-population-mondiale",
+    "enonce": "Combien d'humains vivaient sur Terre le 15 novembre 2022, selon l'ONU ?",
+    "valeur": 8000000000,
+    "valeur_a_retenir": 8000000000,
+    "precision": 100000000,
+    "unite": "habitants",
+    "perimetre": "population mondiale estimée par l'ONU au 15 novembre 2022",
+    "ancrage": "Le cap des 7 milliards avait été franchi le 31 octobre 2011 : un milliard d'humains de plus en onze ans.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Population_mondiale",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 7000000000, "type": "erreur_frequente", "note": "cap atteint le 31 octobre 2011, chiffre longtemps répété" },
+      { "valeur": 6000000000, "type": "autre_perimetre", "note": "population en octobre 1999" },
+      { "valeur": 9700000000, "type": "autre_perimetre", "note": "projection ONU pour 2050 (9 664,4 millions)" },
+      { "valeur": 8100000000, "type": "autre_perimetre", "note": "estimation ONU pour 2023 (8 091,7 millions)" },
+      { "valeur": 8600000000, "type": "proche" },
+      { "valeur": 7600000000, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-langues-ethnologue",
+    "enonce": "Combien de langues recense l'Ethnologue dans son édition 2025 ?",
+    "valeur": 7159,
+    "valeur_a_retenir": 7159,
+    "precision": 1,
+    "unite": "langues",
+    "perimetre": "langues recensées par Ethnologue, 28e édition (2025)",
+    "ancrage": "La première édition, en 1951, n'en recensait que 46 : le décompte a été multiplié par plus de 150.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Ethnologue,_Languages_of_the_World",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 7164, "type": "autre_perimetre", "note": "27e édition (2024)" },
+      { "valeur": 7168, "type": "autre_perimetre", "note": "26e édition (2023), le maximum du décompte" },
+      { "valeur": 7106, "type": "autre_perimetre", "note": "17e édition (2013)" },
+      { "valeur": 6909, "type": "erreur_frequente", "note": "16e édition (2009), à l'origine du « près de 7 000 langues » souvent cité" },
+      { "valeur": 7243, "type": "proche" },
+      { "valeur": 7031, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-tour-eiffel-hauteur",
+    "enonce": "Quelle est la hauteur de la tour Eiffel ?",
+    "valeur": 330,
+    "valeur_a_retenir": 330,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "hauteur totale avec antenne, depuis l'ajout d'une nouvelle antenne en 2022",
+    "ancrage": "Le troisième étage, le plus haut accessible au public, est à 276 m : l'antenne et le sommet ajoutent encore plus de 50 m.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Tour_Eiffel",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 324, "type": "erreur_frequente", "note": "hauteur avec antennes mesurée en 2000, valable jusqu'en 2022" },
+      { "valeur": 312, "type": "autre_perimetre", "note": "hauteur d'origine en 1889, drapeau compris (312,27 m)" },
+      { "valeur": 276, "type": "autre_perimetre", "note": "altitude du plancher du troisième étage (276,13 m)" },
+      { "valeur": 318, "type": "proche" },
+      { "valeur": 341, "type": "proche" },
+      { "valeur": 337, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-grande-muraille-longueur",
+    "enonce": "Quelle est la longueur totale de la Grande Muraille de Chine ?",
+    "valeur": 21196.18,
+    "valeur_a_retenir": 21196,
+    "precision": 1,
+    "unite": "km",
+    "perimetre": "longueur officielle annoncée par l'administration chinoise du patrimoine en 2012, toutes dynasties et parties détruites comprises",
+    "ancrage": "C'est plus de la moitié du tour de la Terre (40 075 km à l'équateur).",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Grande_Muraille",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 8852, "type": "erreur_frequente", "note": "chiffre officiel d'avril 2009 (8 851,8 km), avant le recensement de 2012 (leurre éloigné)" },
+      { "valeur": 13171, "type": "autre_unite", "note": "21 196 km convertis en miles" },
+      { "valeur": 42392, "type": "autre_unite", "note": "21 196 km convertis en li modernes de 500 m" },
+      { "valeur": 19876, "type": "proche" },
+      { "valeur": 22618, "type": "proche" },
+      { "valeur": 23401, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-communes-france",
+    "enonce": "Combien de communes compte la France au 1er janvier 2025 ?",
+    "valeur": 34875,
+    "valeur_a_retenir": 34875,
+    "precision": 1,
+    "unite": "communes",
+    "perimetre": "communes de métropole et des départements d'outre-mer au 1er janvier 2025 (DGCL), hors collectivités d'outre-mer et Nouvelle-Calédonie",
+    "ancrage": "Le maximum a été atteint au recensement de 1936, avec 38 014 communes : les fusions en ont effacé plus de 3 000.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Commune_(France)",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 34935, "type": "autre_perimetre", "note": "nombre au 1er janvier 2024 (DGCL)" },
+      { "valeur": 34746, "type": "autre_perimetre", "note": "France métropolitaine seule au 1er janvier 2025" },
+      { "valeur": 34958, "type": "autre_perimetre", "note": "total 2025 en ajoutant les 83 communes des COM et de Nouvelle-Calédonie" },
+      { "valeur": 35416, "type": "erreur_frequente", "note": "nombre début 2017, encore souvent cité" },
+      { "valeur": 38014, "type": "autre_perimetre", "note": "maximum historique, recensement de 1936" },
+      { "valeur": 33682, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-guerre-cent-ans-duree",
+    "enonce": "Combien de temps a duré la guerre de Cent Ans ?",
+    "valeur": 116,
+    "valeur_a_retenir": 116,
+    "precision": 1,
+    "unite": "années",
+    "perimetre": "du 24 mai 1337 au 9 octobre 1453 (116 ans, 4 mois et 15 jours), entrecoupée de trêves",
+    "ancrage": "Elle a duré plus longtemps que la guerre de Quatre-Vingts Ans, qui n'a duré que 79 ans.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Guerre_de_Cent_Ans",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 138, "type": "autre_perimetre", "note": "jusqu'au traité de Picquigny (1475), parfois présenté comme la vraie fin du conflit" },
+      { "valeur": 79, "type": "erreur_frequente", "note": "durée réelle de la guerre de Quatre-Vingts Ans (1568-1648) : confusion entre nom et durée" },
+      { "valeur": 38, "type": "autre_perimetre", "note": "phase lancastrienne seule (1415-1453), leurre éloigné" },
+      { "valeur": 112, "type": "proche" },
+      { "valeur": 121, "type": "proche" },
+      { "valeur": 109, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-departements-france",
+    "enonce": "Combien de départements compte la France ?",
+    "valeur": 101,
+    "valeur_a_retenir": 101,
+    "precision": 1,
+    "unite": "départements",
+    "perimetre": "départements reconnus par le Code officiel géographique de l'Insee : 96 en métropole et 5 en outre-mer",
+    "ancrage": "Il y en a eu jusqu'à 134 sous l'Empire, en 1812-1813.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/D%C3%A9partement_fran%C3%A7ais",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Humanité",
+    "leurres": [
+      { "valeur": 96, "type": "autre_perimetre", "note": "départements de France métropolitaine seulement" },
+      { "valeur": 83, "type": "autre_perimetre", "note": "départements créés en 1790" },
+      { "valeur": 134, "type": "autre_perimetre", "note": "maximum sous l'Empire (1812-1813)" },
+      { "valeur": 94, "type": "erreur_frequente", "note": "collectivités départementales indiquées dans l'infobox Wikipédia (fusions et statuts particuliers)" },
+      { "valeur": 107, "type": "proche" },
+      { "valeur": 98, "type": "proche" }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]

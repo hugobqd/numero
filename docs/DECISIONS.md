@@ -13,7 +13,7 @@ Jeu éducatif pour **retenir des nombres précis** qui régissent le monde (dist
 | Public | Adultes curieux et grands ados |
 | Support | Web, pensé d'abord pour le mobile. Site statique Vite + TypeScript + Svelte, sans backend |
 | Format | Défi quotidien de 5 questions, identique pour tous, renouvelé à minuit heure de Paris, un seul par jour |
-| Composition | 5 questions tirées dans au moins 3 thématiques, ordre quelconque, **pas de niveau** |
+| Composition | Le stock est découpé en défis de 5 questions **sans répétition** : chaque cycle épuise toutes les questions jouables avant de recommencer dans un nouvel ordre. Chaque défi pioche dans des thématiques différentes (au moins 3), en privilégiant celles qui ont le plus de questions restantes. Ordre quelconque, **pas de niveau** |
 | Valeur cible | Chaque question définit `valeur_a_retenir` et `precision` (pas d'arrondi propre à la question) |
 | Mécaniques testées | `slider` : curseur unique, plage fixée par la question (décade de la valeur), le joueur ne choisit ni l'unité ni l'échelle · `palier` : curseur à crans posés sur les propositions du QCM · `qcm` : 4 propositions triées du plus petit au plus grand (la bonne réponse et 3 des 5 leurres du palier) · `plusmoins` : le jeu demande « plus grand ou plus petit que X ? » (deux boutons) ; X est un seuil rond placé entre deux des 6 propositions du palier ; dichotomie en **3 coups au plus** ; **un seul mauvais choix fait perdre la question** ; en progressif : perdu au coup 1 = 0 pt, au coup 2 = 20 pts, au coup 3 = 50 pts, gagné = 100 pts (en exact : 100 ou 0) ; sans erreur, on arrive sur la bonne réponse |
 | Propositions (QCM, palier, plus/moins) | 6 propositions **tirées à chaque défi** (selon la question et le numéro du défi : identiques pour tous un jour donné). On tire d'abord le **rang de la bonne réponse, uniforme** : elle est la plus petite ou la plus grande 1 fois sur 6 chacune, on ne peut pas éliminer les extrémités. Puis, de chaque côté : le piège de la fiche s'il y a de la place, une valeur éloignée (≈ ×0,35–0,55 ou ≈ ×1,7–2,5) pour élargir min et max, et des leurres proches (fiche ou générés, ±3 à 35 %). Le QCM montre la bonne réponse et 3 des 5 leurres au hasard : sa position parmi les 4 est uniforme. Tous les leurres prennent la forme de la bonne réponse ; écart minimal de 2 % pour les leurres générés |
@@ -33,7 +33,7 @@ Voir `src/lib/types.ts`. Champs : `id, enonce, valeur, valeur_a_retenir, precisi
 
 `leurres` est une réserve de 6 à 8 leurres typés (`erreur_frequente`, `autre_unite`, `autre_perimetre`, `proche`), avec une note ; au moins 3 pièges. Règles de rédaction : `docs/agents/03-redaction.md`.
 
-Seules les fiches `valide` entrent dans le défi quotidien.
+Seules les fiches `valide` entrent dans le défi quotidien. **Exception du prototype** : les brouillons sont inclus par défaut pour pouvoir tester (badge « brouillon » sur la question, `?brouillons=0` pour les exclure). Toutes les fiches de `src/data/*.json` sont chargées (un fichier par thématique). `npm run verifier` contrôle les fiches.
 
 ## Contenu
 

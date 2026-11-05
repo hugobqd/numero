@@ -1,7 +1,6 @@
 <script lang="ts">
-  import stock from './data/questions.json';
   import type { Question, Reponse, ResultatQuestion } from './lib/types';
-  import { numeroDefi, questionsDuDefi } from './lib/daily';
+  import { defisParCycle, numeroDefi, questionsDuDefi, questionsJouables } from './lib/daily';
   import { noter } from './lib/score';
   import { avecUnite } from './lib/format';
   import { lireParametres, MECAS, VARIANTES } from './lib/params';
@@ -17,7 +16,12 @@
   const numero = params.jour ?? numeroDefi();
   if (params.reset) effacerPartie(numero);
 
-  const questions: Question[] = questionsDuDefi(stock as Question[], numero);
+  // Toutes les fiches de src/data/*.json (un fichier par thématique ou par lot).
+  const fichiers = import.meta.glob<Question[]>('./data/*.json', { eager: true, import: 'default' });
+  const stock: Question[] = Object.values(fichiers).flat();
+  const jouables = questionsJouables(stock, params.brouillons);
+  const nbBrouillons = jouables.filter((q) => q.statut === 'brouillon').length;
+  const questions: Question[] = questionsDuDefi(jouables, numero);
 
   // Une partie enregistrée avec un réglage qui n'existe plus (ex. l'ancienne variante « tolerance ») est ignorée.
   const enregistree = lirePartie(numero);
@@ -72,9 +76,9 @@
   const aujourdhui = numeroDefi();
 
   /** Lien de test : relance un défi (efface la partie enregistrée) avec les réglages voulus. */
-  function lien({ meca = partie.meca, score = partie.variante, jour = numero } = {}) {
+  function lien({ meca = partie.meca, score = partie.variante, jour = numero, brouillons = params.brouillons } = {}) {
     const j = jour === aujourdhui ? '' : `&jour=${jour}`;
-    return `?meca=${meca}&score=${score}&reset=1${j}`;
+    return `?meca=${meca}&score=${score}&reset=1${j}${brouillons ? '' : '&brouillons=0'}`;
   }
 
   function reinitialiserStats() {
@@ -96,7 +100,10 @@
     </section>
   {:else if ecran === 'question' && courante}
     <section class="question">
-      <p class="progression">Question {partie.resultats.length + 1} / {questions.length} · {courante.thematique}</p>
+      <p class="progression">
+        Question {partie.resultats.length + 1} / {questions.length} · {courante.thematique}
+        {#if courante.statut === 'brouillon'}<span class="badge">brouillon</span>{/if}
+      </p>
       <h2>{courante.enonce}</h2>
       <p class="unite-attendue">Réponse en <strong>{courante.unite}</strong></p>
       {#key courante.id}
@@ -144,6 +151,11 @@
 
   <details class="dev" open>
     <summary>Réglages de test · défi #{numero} · {partie.meca} / {partie.variante}</summary>
+    <p class="stock">
+      {jouables.length} questions jouables ({nbBrouillons} en brouillon) · {defisParCycle(jouables)} défis différents
+      avant répétition ·
+      <a href={lien({ brouillons: !params.brouillons })}>{params.brouillons ? 'exclure' : 'inclure'} les brouillons</a>
+    </p>
     <nav class="defis">
       {#if numero > 1}<a href={lien({ jour: numero - 1 })}>← #{numero - 1}</a>{/if}
       <a href={lien()}>↻ Rejouer #{numero}</a>
@@ -271,6 +283,16 @@
     margin-top: 2rem;
     font-size: 0.8rem;
     color: var(--muted);
+  }
+  .badge {
+    margin-left: 0.4rem;
+    padding: 0 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 0.3rem;
+    font-size: 0.75rem;
+  }
+  .stock {
+    margin: 0.5rem 0 0;
   }
   .rejouer {
     text-align: center;

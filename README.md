@@ -15,5 +15,9 @@ Le panneau « Réglages de test » en bas de page permet de rejouer le défi, de
 
 ## Contenu
 
-Questions : `src/data/questions.json` (format : `src/lib/types.ts`). Seules les fiches `"statut": "valide"` sont jouées.
+Questions : tous les fichiers `src/data/*.json` (format : `src/lib/types.ts`), un par thématique. Dans le prototype, les brouillons sont joués aussi (`?brouillons=0` pour ne garder que les fiches validées).
+
+```bash
+npm run verifier   # contrôle les fiches (format, pas, leurres)
+```
 Consignes des agents de contenu : `docs/agents/`.

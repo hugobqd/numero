@@ -7,6 +7,7 @@ const VARIANTES: VarianteScore[] = ['progressif', 'exact'];
  * Réglages de test, lus dans l'URL : ?meca=slider|palier|qcm|plusmoins&score=progressif|exact
  * &reset=1 efface la partie du jour (tests de couloir).
  * &jour=N force le numéro du défi.
+ * &brouillons=0 exclut les fiches en brouillon (incluses par défaut dans le prototype).
  */
 export function lireParametres() {
   const p = new URLSearchParams(location.search);
@@ -17,6 +18,7 @@ export function lireParametres() {
     meca: meca && MECAS.includes(meca) ? meca : ('slider' as Mecanique),
     variante: score && VARIANTES.includes(score) ? score : ('progressif' as VarianteScore),
     reset: p.has('reset'),
+    brouillons: p.get('brouillons') !== '0',
     jour: Number.isInteger(jour) && jour > 0 ? jour : null,
   };
 }

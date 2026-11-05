@@ -1,0 +1,424 @@
+[
+  {
+    "id": "astro-terre-soleil",
+    "enonce": "Quelle est la distance moyenne entre la Terre et le Soleil ?",
+    "valeur": 149597870,
+    "valeur_a_retenir": 149600000,
+    "precision": 100000,
+    "unite": "km",
+    "perimetre": "distance moyenne (1 unité astronomique)",
+    "ancrage": "La lumière du Soleil met 8 minutes et 19 secondes pour franchir cette distance.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Soleil",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Astronomie",
+    "leurres": [
+      {
+        "valeur": 147100000,
+        "type": "autre_perimetre",
+        "note": "distance au périhélie (147 098 074 km, page Terre)"
+      },
+      {
+        "valeur": 152100000,
+        "type": "autre_perimetre",
+        "note": "distance à l'aphélie (152 097 701 km, page Terre)"
+      },
+      {
+        "valeur": 108200000,
+        "type": "autre_perimetre",
+        "note": "distance moyenne Soleil-Vénus (108 209 500 km, page Vénus)"
+      },
+      {
+        "valeur": 227900000,
+        "type": "autre_perimetre",
+        "note": "distance moyenne Soleil-Mars (227 939 100 km, page Mars)"
+      },
+      {
+        "valeur": 143700000,
+        "type": "proche"
+      },
+      {
+        "valeur": 156300000,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-diametre-terre",
+    "enonce": "Quel est le diamètre moyen de la Terre ?",
+    "valeur": 12742.016,
+    "valeur_a_retenir": 12742,
+    "precision": 1,
+    "unite": "km",
+    "perimetre": "diamètre moyen (2 × rayon moyen de 6 371,008 km)",
+    "ancrage": "Il faudrait aligner environ 30 Terres pour couvrir la distance jusqu'à la Lune.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Terre",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Astronomie",
+    "leurres": [
+      {
+        "valeur": 12756,
+        "type": "autre_perimetre",
+        "note": "diamètre équatorial (2 × 6 378,137 km)"
+      },
+      {
+        "valeur": 12714,
+        "type": "autre_perimetre",
+        "note": "diamètre polaire (2 × 6 356,752 km)"
+      },
+      {
+        "valeur": 6371,
+        "type": "erreur_frequente",
+        "note": "rayon moyen, confusion rayon / diamètre"
+      },
+      {
+        "valeur": 7918,
+        "type": "autre_unite",
+        "note": "le diamètre moyen en miles (12 742 / 1,609)"
+      },
+      {
+        "valeur": 12104,
+        "type": "autre_perimetre",
+        "note": "diamètre de Vénus, presque jumelle de la Terre (2 × 6 051,8 km, page Vénus)"
+      },
+      {
+        "valeur": 13285,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-diametre-soleil",
+    "enonce": "Quel est le diamètre du Soleil ?",
+    "valeur": 1392684,
+    "valeur_a_retenir": 1393000,
+    "precision": 1000,
+    "unite": "km",
+    "perimetre": "diamètre moyen",
+    "ancrage": "On pourrait aligner 109 Terres d'un bord à l'autre du Soleil.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Soleil",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Astronomie",
+    "leurres": [
+      {
+        "valeur": 696000,
+        "type": "erreur_frequente",
+        "note": "rayon du Soleil (696 342 km), confusion rayon / diamètre ; leurre éloigné (×0,5)"
+      },
+      {
+        "valeur": 865000,
+        "type": "autre_unite",
+        "note": "le diamètre en miles (1 392 684 / 1,609 ≈ 865 374)"
+      },
+      {
+        "valeur": 769000,
+        "type": "autre_perimetre",
+        "note": "diamètre de l'orbite de la Lune (2 × 384 400 km) : le Soleil est presque deux fois plus large"
+      },
+      {
+        "valeur": 1327000,
+        "type": "proche"
+      },
+      {
+        "valeur": 1458000,
+        "type": "proche"
+      },
+      {
+        "valeur": 1521000,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-annee-martienne",
+    "enonce": "Combien de jours terrestres dure une année sur Mars ?",
+    "valeur": 686.885,
+    "valeur_a_retenir": 687,
+    "precision": 1,
+    "unite": "jours",
+    "perimetre": "période de révolution de Mars autour du Soleil, en jours terrestres",
+    "ancrage": "Une année martienne dure presque deux années terrestres : 1,88 exactement.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Mars_(plan%C3%A8te)",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Astronomie",
+    "leurres": [
+      {
+        "valeur": 669,
+        "type": "autre_unite",
+        "note": "la même année comptée en sols, jours martiens de 24 h 39 min (668,6 sols)"
+      },
+      {
+        "valeur": 365,
+        "type": "autre_perimetre",
+        "note": "durée de l'année terrestre (365,256 jours)"
+      },
+      {
+        "valeur": 225,
+        "type": "autre_perimetre",
+        "note": "année de Vénus (224,667 jours, page Vénus) ; leurre éloigné"
+      },
+      {
+        "valeur": 652,
+        "type": "proche"
+      },
+      {
+        "valeur": 714,
+        "type": "proche"
+      },
+      {
+        "valeur": 743,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-age-univers",
+    "enonce": "Quel est l'âge de l'Univers ?",
+    "valeur": 13787000000,
+    "valeur_a_retenir": 13800000000,
+    "precision": 100000000,
+    "unite": "années",
+    "perimetre": "depuis le Big Bang (mesure Planck 2018 : 13,787 ± 0,020 milliards d'années)",
+    "ancrage": "La Terre n'existe que depuis un tiers de ce temps : 4,54 milliards d'années.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/%C3%82ge_de_l%27Univers",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Astronomie",
+    "leurres": [
+      {
+        "valeur": 13500000000,
+        "type": "autre_perimetre",
+        "note": "âge des plus vieilles étoiles connues (13,53 milliards d'années, 2MASS J18082002−5104378)"
+      },
+      {
+        "valeur": 14500000000,
+        "type": "erreur_frequente",
+        "note": "temps de Hubble (inverse de H₀ = 67,4 km/s/Mpc ≈ 14,5 milliards d'années), souvent confondu avec l'âge"
+      },
+      {
+        "valeur": 4500000000,
+        "type": "autre_perimetre",
+        "note": "âge de la Terre (4,54 milliards d'années, page Âge de la Terre), au pas de la question ; leurre éloigné"
+      },
+      {
+        "valeur": 13200000000,
+        "type": "proche",
+        "note": "estimation DESI 2024 (13,2 ± 0,6 milliards d'années), moins précise"
+      },
+      {
+        "valeur": 12600000000,
+        "type": "proche"
+      },
+      {
+        "valeur": 14900000000,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-temperature-soleil",
+    "enonce": "Quelle est la température de surface du Soleil ?",
+    "valeur": 5772,
+    "valeur_a_retenir": 5772,
+    "precision": 1,
+    "unite": "K",
+    "perimetre": "température effective de la photosphère, en kelvins (≈ 5 499 °C)",
+    "ancrage": "Le cœur du Soleil est environ 2 600 fois plus chaud : 15,1 millions de kelvins.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Soleil",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Astronomie",
+    "leurres": [
+      {
+        "valeur": 5499,
+        "type": "autre_unite",
+        "note": "la même température en degrés Celsius (5 772 − 273,15)"
+      },
+      {
+        "valeur": 3773,
+        "type": "autre_perimetre",
+        "note": "température des taches solaires (3 500 °C ≈ 3 773 K)"
+      },
+      {
+        "valeur": 6173,
+        "type": "autre_perimetre",
+        "note": "maximum local en surface (jusqu'à 5 900 °C ≈ 6 173 K, infobox)"
+      },
+      {
+        "valeur": 5614,
+        "type": "proche"
+      },
+      {
+        "valeur": 5937,
+        "type": "proche"
+      },
+      {
+        "valeur": 6418,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-lumiere-soleil-terre",
+    "enonce": "Combien de temps la lumière du Soleil met-elle pour atteindre la Terre ?",
+    "valeur": 499,
+    "valeur_a_retenir": 499,
+    "precision": 1,
+    "unite": "secondes",
+    "perimetre": "à la distance moyenne Terre-Soleil (8 min 19 s)",
+    "ancrage": "Quand on regarde le Soleil, on le voit tel qu'il était il y a 8 minutes et 19 secondes.",
+    "mnemo": "499 secondes : à une seconde près, 500.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Soleil",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Astronomie",
+    "leurres": [
+      {
+        "valeur": 491,
+        "type": "autre_perimetre",
+        "note": "au périhélie (147 098 074 km / 299 792 km/s ≈ 490,7 s)"
+      },
+      {
+        "valeur": 507,
+        "type": "autre_perimetre",
+        "note": "à l'aphélie (152 097 701 km / 299 792 km/s ≈ 507,3 s)"
+      },
+      {
+        "valeur": 819,
+        "type": "erreur_frequente",
+        "note": "« 8 min 19 » lu comme 819 secondes"
+      },
+      {
+        "valeur": 361,
+        "type": "autre_perimetre",
+        "note": "temps de trajet jusqu'à Vénus (108 209 500 km / 299 792 km/s ≈ 361 s)"
+      },
+      {
+        "valeur": 473,
+        "type": "proche"
+      },
+      {
+        "valeur": 532,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-diametre-jupiter",
+    "enonce": "Quel est le diamètre de Jupiter à l'équateur ?",
+    "valeur": 142984,
+    "valeur_a_retenir": 142984,
+    "precision": 1,
+    "unite": "km",
+    "perimetre": "diamètre équatorial (2 × 71 488 km de rayon équatorial)",
+    "ancrage": "On pourrait aligner 11 Terres sur l'équateur de Jupiter.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Jupiter_(plan%C3%A8te)",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Astronomie",
+    "leurres": [
+      {
+        "valeur": 133708,
+        "type": "autre_perimetre",
+        "note": "diamètre polaire (Jupiter est aplatie par sa rotation rapide)"
+      },
+      {
+        "valeur": 139772,
+        "type": "autre_perimetre",
+        "note": "diamètre moyen (2 × 69 886 km, rayon volumétrique de l'infobox)"
+      },
+      {
+        "valeur": 120536,
+        "type": "autre_perimetre",
+        "note": "diamètre équatorial de Saturne (2 × 60 268 km, page Saturne)"
+      },
+      {
+        "valeur": 88846,
+        "type": "autre_unite",
+        "note": "le diamètre équatorial en miles (142 984 / 1,609)"
+      },
+      {
+        "valeur": 71488,
+        "type": "erreur_frequente",
+        "note": "rayon équatorial, confusion rayon / diamètre"
+      },
+      {
+        "valeur": 151372,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-vitesse-orbitale-terre",
+    "enonce": "À quelle vitesse la Terre tourne-t-elle autour du Soleil ?",
+    "valeur": 107218.8,
+    "valeur_a_retenir": 107200,
+    "precision": 100,
+    "unite": "km/h",
+    "perimetre": "vitesse orbitale moyenne (29,783 km/s × 3 600)",
+    "ancrage": "En une journée, la Terre parcourt environ 2,6 millions de km : près de 7 fois la distance Terre-Lune.",
+    "source": {
+      "url": "https://fr.wikipedia.org/wiki/Terre",
+      "consulte_le": "2026-11-05"
+    },
+    "thematique": "Astronomie",
+    "leurres": [
+      {
+        "valeur": 105400,
+        "type": "autre_perimetre",
+        "note": "vitesse orbitale minimale, à l'aphélie (29,291 km/s ≈ 105 448 km/h)"
+      },
+      {
+        "valeur": 66600,
+        "type": "autre_unite",
+        "note": "la même vitesse en miles par heure (107 219 / 1,609 ≈ 66 623)"
+      },
+      {
+        "valeur": 40300,
+        "type": "autre_perimetre",
+        "note": "vitesse de libération terrestre (11,186 km/s ≈ 40 270 km/h) ; leurre éloigné"
+      },
+      {
+        "valeur": 101900,
+        "type": "proche"
+      },
+      {
+        "valeur": 112600,
+        "type": "proche"
+      },
+      {
+        "valeur": 118300,
+        "type": "proche"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]
