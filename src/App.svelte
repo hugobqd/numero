@@ -12,10 +12,13 @@
     fichesPossedees,
     gagnerFiche,
     lireCollection,
+    maitrise,
+    MAITRISE_MAX,
   } from './lib/collection';
   import Jeu from './lib/Jeu.svelte';
   import CollectionVue from './lib/CollectionVue.svelte';
   import JoueursVue from './lib/JoueursVue.svelte';
+  import Accueil from './lib/Accueil.svelte';
   import {
     choisirJoueur,
     creerJoueur,
@@ -65,11 +68,7 @@
       ? 'joueurs'
       : !joueur.tutoFait
         ? 'tutoIntro'
-        : reprise?.terminee
-          ? 'bilan'
-          : reprise?.resultats.length
-            ? 'defi'
-            : 'accueil',
+        : 'accueil',
   );
   let stats = $state(lireStats());
   let messagePartage = $state('');
@@ -78,6 +77,8 @@
   let collection = $state(lireCollection());
   let nouvellesFiches = $state<string[]>([]);
   const possedees = $derived(fichesPossedees(collection, stock));
+  const nbARevoirTotal = $derived(possedees.filter((q) => maitrise(collection[q.id]) === 0).length);
+  const nbMaitrisees = $derived(possedees.filter((q) => maitrise(collection[q.id]) === MAITRISE_MAX).length);
 
   function resultatDefi(res: ResultatQuestion) {
     partie.resultats.push(res);
@@ -185,17 +186,16 @@
 
 <main>
   <header>
-    <h1>Numero</h1>
+    <h1>
+      {#if joueur?.tutoFait}
+        <button type="button" class="titre" onclick={() => (ecran = 'accueil')}>Numero</button>
+      {:else}Numero{/if}
+    </h1>
     <nav class="haut">
       {#if joueur}
         <button type="button" class="lien" onclick={() => (ecran = 'joueurs')}>👤 {joueur.pseudo}</button>
       {/if}
-      {#if joueur?.tutoFait && ecran !== 'collection' && ecran !== 'revision'}
-        <button type="button" class="lien" onclick={() => (ecran = 'collection')}>
-          Collection <strong>{possedees.length}</strong>
-        </button>
-      {/if}
-      {#if joueur}<span class="numero">jour {numero}</span>{/if}
+
     </nav>
   </header>
 
@@ -240,13 +240,20 @@
       <button type="button" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
     </section>
   {:else if ecran === 'accueil'}
-    <section class="accueil">
-      <p class="pitch">5 nombres qui régissent le monde. Retiens-les au chiffre près.</p>
-      <button type="button" class="principal" onclick={() => (ecran = 'defi')}>Jouer le défi du jour</button>
-      {#if possedees.length}
-        <button type="button" onclick={reviser}>Réviser ma collection ({possedees.length} fiches)</button>
-      {/if}
-    </section>
+    <Accueil
+      pseudo={joueur?.pseudo ?? ''}
+      jour={numero}
+      defi={{ faites: partie.resultats.length, total: questions.length, terminee: partie.terminee, score: total }}
+      serie={stats.dernierNumero !== null && stats.dernierNumero >= numero - 1 ? stats.serie : 0}
+      nbFiches={possedees.length}
+      nbTotal={stock.length}
+      nbARevoir={nbARevoirTotal}
+      {nbMaitrisees}
+      onjouer={() => (ecran = 'defi')}
+      onbilan={() => (ecran = 'bilan')}
+      onreviser={reviser}
+      oncollection={() => (ecran = 'collection')}
+    />
   {:else if ecran === 'defi'}
     <Jeu
       {questions}
@@ -292,6 +299,7 @@
       </div>
 
       <button type="button" class="principal" onclick={onPartager}>Partager mon résultat</button>
+      <button type="button" onclick={() => (ecran = 'accueil')}>← Accueil</button>
       {#if messagePartage}<p class="message">{messagePartage}</p>{/if}
       <dl class="stats">
         <div><dt>Joués</dt><dd>{stats.jouees}</dd></div>
@@ -309,7 +317,7 @@
       {collection}
       {stock}
       onreviser={reviser}
-      onretour={() => (ecran = partie.terminee ? 'bilan' : partie.resultats.length ? 'defi' : 'accueil')}
+      onretour={() => (ecran = 'accueil')}
     />
   {:else if ecran === 'revision' && revision}
     <Jeu
@@ -338,6 +346,7 @@
       <div class="actions">
         <button type="button" class="principal" onclick={reviser}>Encore une révision</button>
         <button type="button" onclick={() => (ecran = 'collection')}>Ma collection</button>
+        <button type="button" onclick={() => (ecran = 'accueil')}>← Accueil</button>
       </div>
     </section>
   {/if}
@@ -526,18 +535,17 @@
     font-size: 1.5rem;
     letter-spacing: -0.02em;
   }
-  .numero {
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-  }
   .accueil {
     display: grid;
     gap: 1.5rem;
     padding-top: 3rem;
   }
-  .pitch {
-    font-size: 1.4rem;
-    margin: 0;
+  button.titre {
+    font: inherit;
+    padding: 0;
+    background: none;
+    border: none;
+    color: inherit;
   }
   h2 {
     margin: 0;
