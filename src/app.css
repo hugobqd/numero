@@ -63,3 +63,10 @@ button.principal {
     color: #0d0d0d;
   }
 }
+
+/* Outils de test ouverts sur grand écran : on laisse leur place au jeu. */
+@media (min-width: 52rem) {
+  body.dev-ouvert {
+    padding-right: 21rem;
+  }
+}

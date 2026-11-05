@@ -131,6 +131,10 @@
       return false;
     }
   }
+  // Panneau ouvert sur grand écran : le jeu se décale pour ne pas être recouvert (voir app.css).
+  $effect(() => {
+    document.body.classList.toggle('dev-ouvert', devOuvert);
+  });
   function basculerDev() {
     devOuvert = !devOuvert;
     try {
