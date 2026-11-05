@@ -97,6 +97,9 @@ export function propositions(q: Question, numero: number): number[] {
   const ajouterFiche = (v: number, cote: -1 | 1) => {
     const l = aLaForme(v, q, hasard);
     if (retenues.has(l) || !duBonCote(l, cote)) return false;
+    // Seul un piège gardé tel quel peut être très proche (8 848 m contre 8 849 m) ;
+    // un leurre retouché par aLaForme (200 os → 205) respecte l'écart minimal comme un leurre généré.
+    if (l !== v && tropProche(l)) return false;
     retenues.add(l);
     return true;
   };

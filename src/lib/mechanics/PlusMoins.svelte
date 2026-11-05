@@ -12,21 +12,30 @@
   // Recherche par dichotomie parmi les 6 propositions du palier (invisibles pour le joueur) :
   // 3 coups au plus. Le jeu demande « plus ou moins que X ? », X étant un seuil rond
   // placé entre deux propositions voisines ; la proposition restante est la réponse.
-  const candidats = propositions(question, numero);
+  // Il faut au moins 2 pas d'écart entre deux candidats pour placer un seuil entier entre eux
+  // (pas de « 205,5 os ») : on écarte les leurres trop proches d'un voisin, jamais la bonne réponse.
+  const candidats = propositions(question, numero).reduce<number[]>((garde, v) => {
+    const precedent = garde[garde.length - 1];
+    if (precedent === undefined || v - precedent >= 2 * question.precision) garde.push(v);
+    else if (v === question.valeur_a_retenir) garde[garde.length - 1] = v;
+    return garde;
+  }, []);
   const COUPS_MAX = Math.ceil(Math.log2(candidats.length));
 
   let bas = $state(0);
   let haut = $state(candidats.length - 1);
   let historique = $state<{ seuil: number; choix: 'plus' | 'moins' }[]>([]);
 
-  /** Seuil rond strictement compris entre deux propositions voisines. */
+  /** Seuil le plus rond possible, multiple du pas de la question, strictement entre deux propositions voisines. */
   function seuilEntre(a: number, b: number): number {
+    const p = question.precision;
     const m = Math.sqrt(a * b);
     for (let chiffres = 1; chiffres <= 9; chiffres++) {
-      const v = arrondiSignificatif(m, chiffres);
+      const v = Math.round(arrondiSignificatif(m, chiffres) / p) * p;
       if (v > a && v < b) return v;
     }
-    return m;
+    // Dernier recours : le multiple du pas juste au-dessus de a (existe car b − a ≥ 2 pas).
+    return Math.floor(a / p) * p + p;
   }
 
   const coupure = $derived(Math.ceil((bas + haut) / 2));
