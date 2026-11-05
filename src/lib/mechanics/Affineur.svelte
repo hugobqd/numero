@@ -16,9 +16,11 @@
     return p;
   });
 
+  // Boutons d'ajustement : le pas fin (±1 pas) et, si la plage le permet, un pas ×100 ;
+  // pas de niveau intermédiaire ×10, jugé superflu.
   const pasBoutons = $derived.by(() => {
     const pas = [step];
-    while (pas.length < 3 && pas[pas.length - 1] * 10 <= (max - min) / 10) pas.push(pas[pas.length - 1] * 10);
+    if (step * 100 <= (max - min) / 10) pas.push(step * 100);
     return pas.reverse();
   });
 
@@ -45,7 +47,7 @@
     aria-label="Valeur"
   />
 
-  <div class="boutons" style:grid-template-columns="repeat({pasBoutons.length}, 1fr)">
+  <div class="boutons" style:grid-template-columns="repeat({pasBoutons.length * 2}, 1fr)">
     {#each pasBoutons as p}
       <button type="button" class="pas" onclick={() => ajuster(-p)}>−{avecUnite(p)}</button>
     {/each}

@@ -379,7 +379,7 @@
   onclick={basculerDev}
   aria-expanded={devOuvert}
   aria-controls="outils-test"
-  title="Outils de test">{devOuvert ? '✕' : '⚙'}</button
+  title="Outils de test">{devOuvert ? '✕ fermer' : '⚙ test'}</button
 >
 {#if devOuvert}
 <aside class="dev" id="outils-test" aria-label="Outils de test">
@@ -466,14 +466,12 @@
     right: 0.75rem;
     bottom: 0.75rem;
     z-index: 11;
-    width: 2.25rem;
-    height: 2.25rem;
-    padding: 0;
-    border-radius: 50%;
-    font-size: 1rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
     line-height: 1;
     color: var(--muted);
-    opacity: 0.45;
+    opacity: 0.7;
   }
   .dev-bouton:hover,
   .dev-bouton.ouvert {
