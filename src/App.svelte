@@ -116,6 +116,24 @@
 
   // Joueurs et jours simulés : chaque changement recharge la page avec les données du joueur.
   const recharger = () => location.assign(lien());
+
+  // Menu de test : fermé par défaut, état mémorisé dans ce navigateur.
+  let devOuvert = $state(lireDevOuvert());
+  function lireDevOuvert(): boolean {
+    try {
+      return localStorage.getItem('numero:devOuvert') === '1';
+    } catch {
+      return false;
+    }
+  }
+  function basculerDev() {
+    devOuvert = !devOuvert;
+    try {
+      localStorage.setItem('numero:devOuvert', devOuvert ? '1' : '0');
+    } catch {
+      /* rien */
+    }
+  }
   function nouveauJoueur(pseudo: string) {
     creerJoueur(pseudo, 1);
     recharger();
@@ -353,10 +371,19 @@
 
 </main>
 
-<!-- Outils de test, à l'écart du jeu : colonne discrète à droite (sous le jeu sur petit écran). -->
-<aside class="dev" aria-label="Outils de test">
-  <details open>
-    <summary>⚙ Test</summary>
+<!-- Outils de test : repliés derrière un petit ⚙ en bas à droite ; panneau latéral (ou en bas sur mobile). -->
+<button
+  type="button"
+  class="dev-bouton"
+  class:ouvert={devOuvert}
+  onclick={basculerDev}
+  aria-expanded={devOuvert}
+  aria-controls="outils-test"
+  title="Outils de test">{devOuvert ? '✕' : '⚙'}</button
+>
+{#if devOuvert}
+<aside class="dev" id="outils-test" aria-label="Outils de test">
+    <p class="dev-titre">Outils de test</p>
 
     <section>
       <h3>Joueur</h3>
@@ -420,8 +447,8 @@
         </div>
       </section>
     {/if}
-  </details>
 </aside>
+{/if}
 
 <style>
   main {
@@ -433,42 +460,57 @@
     align-content: start;
   }
 
-  /* Outils de test : colonne étroite et discrète, collée à droite sur grand écran. */
+  /* Outils de test : un petit ⚙ discret, qui ouvre un panneau par-dessus le jeu. */
+  .dev-bouton {
+    position: fixed;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    z-index: 11;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--muted);
+    opacity: 0.45;
+  }
+  .dev-bouton:hover,
+  .dev-bouton.ouvert {
+    opacity: 1;
+  }
   .dev {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    bottom: 0;
+    width: 16rem;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 1rem 1rem 3.5rem;
     font-size: 0.78rem;
     color: var(--muted);
-    padding: 0 1rem 2rem;
-    max-width: 34rem;
-    margin: 0 auto;
-    opacity: 0.75;
-    transition: opacity 0.2s;
-  }
-  .dev:hover,
-  .dev:focus-within {
-    opacity: 1;
+    background: var(--bg);
+    border-left: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 0 1.5rem rgb(0 0 0 / 0.15);
   }
   @media (min-width: 52rem) {
     .dev {
-      position: fixed;
       top: 0;
-      right: 0;
-      width: 15rem;
-      height: 100vh;
-      overflow-y: auto;
-      margin: 0;
-      padding: 1rem;
-      border-left: 1px solid var(--border);
-      background: var(--bg);
+      border-top: none;
     }
   }
   @media (max-width: 51.99rem) {
     .dev {
-      border-top: 1px dashed var(--border);
-      padding-top: 1rem;
+      left: 0;
+      width: auto;
+      max-height: 70vh;
+      border-left: none;
+      border-radius: 0.8rem 0.8rem 0 0;
     }
   }
-  .dev summary {
-    cursor: pointer;
+  .dev-titre {
     font-weight: 600;
     letter-spacing: 0.04em;
   }
