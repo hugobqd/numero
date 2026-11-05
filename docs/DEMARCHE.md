@@ -27,7 +27,7 @@ Six chantiers, mais **pas six agents permanents** :
 
 - [ ] **1. Tests de couloir** (toi, en parallèle de tout le reste). 3 tâches (premier défi, défi du jour, collection), 3 questions (« à quoi sert ce jeu ? », « quel nombre retiens-tu ? », « tu rejouerais demain ? »). Noter par personne : mécanique, score, 2 blocages, nombre retenu. Optionnel : `/to-questionnaire` pour un questionnaire propre.
 - [x] **2. Configuration** — session dédiée : `/setup-matt-pocock-skills`. Issues GitHub de `hugobqd/numero` comme backlog, `GLOSSARY.md` + `docs/adr/` à la racine, bloc « Agent skills » dans un `CLAUDE.md` (à créer). *Fait le 2026-11-05 : `CLAUDE.md` créé (renvoi vers ce document + bloc « Agent skills »), configuration dans `docs/agents/`, labels de triage par défaut créés sur GitHub.*
-- [ ] **3. Vocabulaire et premières décisions** — session dédiée : `/grill-with-docs`. Produit `GLOSSARY.md` (fiche, leurre, piège, défi, palier, maîtrise, cycle, révision…) et des ADR pour ce qui est déjà tranché (site statique, données locales, palier par défaut, collection de toutes les fiches jouées…). Source : `docs/DECISIONS.md`.
+- [x] **3. Vocabulaire et premières décisions** — session dédiée : `/grill-with-docs`. Produit `GLOSSARY.md` (fiche, leurre, piège, défi, palier, maîtrise, cycle, révision…) et des ADR pour ce qui est déjà tranché (site statique, données locales, palier par défaut, collection de toutes les fiches jouées…). Source : `docs/DECISIONS.md`. *Fait le 2026-11-05 : `GLOSSARY.md` (35 termes) et 6 ADR dans `docs/adr/`. Deux décisions révisées dans `DECISIONS.md` : les défis forment un **parcours** commun que chaque joueur suit à son rythme (ADR 0002), et la **difficulté** (propriété de la fiche, grand public → pointue) doit monter le long du parcours ; l'écart des leurres s'appelle désormais l'**exigence**.*
 - [ ] **4. La carte** — session dédiée, après les premiers retours de tests : `/wayfinder`. Destination à formuler (proposition : « une v1 publiable : plan de contenu, boucle de jeu et de rétention, charte visuelle, choix techniques »). Les six chantiers deviennent des étiquettes ; `docs/IDEES.md` et les retours de tests fournissent les premiers tickets de décision.
 - [ ] **5. Résoudre les tickets de décision** — une session par ticket (ou deux tickets courts), en suivant la carte.
 - [ ] **6. Construire** — quand une zone de la carte est claire : `/to-spec` → `/to-tickets` → `/implement` (une session par ticket, `/clear` entre deux).
@@ -43,10 +43,16 @@ Six chantiers, mais **pas six agents permanents** :
 
 ## Prochaine étape
 
-**Étape 3 : vocabulaire et premières décisions.** Ouvrir une nouvelle session dans `~/Sites/numero` et taper soi-même (la skill ne se lance qu'à la main) :
+**Étape 4 : la carte**, de préférence après les premiers retours de tests de couloir (étape 1). Ouvrir une nouvelle session dans `~/Sites/numero` et lancer `/wayfinder`.
 
-> /grill-with-docs
+Questions laissées ouvertes à l'étape 3, à transformer en tickets de décision :
 
-en lui donnant comme point de départ : « Lis docs/DEMARCHE.md et docs/DECISIONS.md. Objectif : le GLOSSARY.md du jeu et les ADR de ce qui est déjà tranché. »
+- **Difficulté** : combien de crans, qui l'attribue (agent de rédaction, relecture), comment la rampe monte le long du parcours.
+- **Composition du parcours** : nouvelles règles de composition des défis et de cycle (la règle « pas de niveau » est à revoir), retour programmé des fiches (répétition espacée).
+- **Défi commun en bonus**, en plus du parcours personnel (viralité « tout le monde joue le même aujourd'hui »).
+- **Fiche → carte** : adopter « carte » pour encourager la collectionnite (voir `IDEES.md`, idée n° 3).
+- **Backend** : quand le déclencher (voir ADR 0001).
+
+Dette de vocabulaire dans le code, à corriger lors de la construction : `slider` / `Affineur` → curseur, `thematique` → thème, badge « niveau découverte » → exigence, logique du « jour simulé » → parcours.
 
 En parallèle : continuer les tests de couloir (étape 1).

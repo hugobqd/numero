@@ -36,4 +36,5 @@ Prolongement de la collection de fiches, dont une première version existe : les
   - Que gagne-t-on en finissant une série : un badge, un débloquage de la série suivante ou du niveau 2, un affichage spécial ?
   - Rareté des fiches, et comment en obtenir une précise : le défi du jour distribue des fiches au hasard, il faudra peut-être des défis thématiques pour cibler une série.
   - Doublons : que vaut une fiche déjà possédée (de l'expérience, de la maîtrise, une monnaie d'échange) ?
+  - Renommer « fiche » en « carte » pour encourager la collectionnite (noté à l'étape 3). Le glossaire réserve déjà « carte » à l'objet de jeu ; les éléments d'interface s'appellent « blocs » et le regroupement d'un thème un « album ».
   - Garder l'apprentissage au centre : une fiche n'est vraiment « acquise » qu'une fois maîtrisée (étoiles), pas seulement gagnée.
