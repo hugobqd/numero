@@ -37,13 +37,13 @@ Jeu éducatif pour **retenir des nombres précis** qui régissent le monde (dist
 
 Voir `src/lib/types.ts`. Champs : `id, enonce, valeur, valeur_a_retenir, precision, unite, perimetre, ancrage, mnemo?, source {url, consulte_le}, thematique, leurres[], statut (brouillon|valide), langue`.
 
-`leurres` est une réserve de 6 à 8 leurres typés (`erreur_frequente`, `autre_unite`, `autre_perimetre`, `proche`), avec une note ; au moins 3 pièges. Règles de rédaction : `docs/agents/03-redaction.md`.
+`leurres` est une réserve de 6 à 8 leurres typés (`erreur_frequente`, `autre_unite`, `autre_perimetre`, `proche`), avec une note ; au moins 3 pièges. Règles de rédaction : `docs/contenu/03-redaction.md`.
 
 Seules les fiches `valide` entrent dans le défi quotidien. **Exception du prototype** : les brouillons sont inclus par défaut pour pouvoir tester (statut visible seulement dans l'inspecteur des outils de test, pas pour les joueurs ; `?brouillons=0` pour les exclure). Toutes les fiches de `src/data/*.json` sont chargées (un fichier par thématique). `npm run verifier` contrôle les fiches.
 
 ## Contenu
 
-Chaîne d'agents lancée à la main, consignes dans `docs/agents/` :
+Chaîne d'agents lancée à la main, consignes dans `docs/contenu/` :
 thématiques → sources (Wikipédia) → rédaction → simplification → relecture.
 **La relecture humaine est la seule porte vers `valide`.**
 Cible du prototype : environ 60 questions sur environ 6 thèmes.

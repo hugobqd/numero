@@ -23,7 +23,7 @@ Questions : tous les fichiers `src/data/*.json` (format : `src/lib/types.ts`), u
 ```bash
 npm run verifier   # contrôle les fiches (format, pas, leurres)
 ```
-Consignes des agents de contenu : `docs/agents/`.
+Consignes des agents de contenu : `docs/contenu/`.
 
 ## Mise en ligne
 

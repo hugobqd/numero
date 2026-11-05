@@ -1,5 +1,5 @@
 // Contrôle des fiches questions de src/data/*.json : format, contraintes techniques du jeu,
-// règles de rédaction des leurres (docs/agents/03-redaction.md).
+// règles de rédaction des leurres (docs/contenu/03-redaction.md).
 // Usage : npm run verifier
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
