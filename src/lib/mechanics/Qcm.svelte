@@ -1,12 +1,12 @@
 <script lang="ts">
   import type { Question, Reponse } from '../types';
   import { grand } from '../format';
-  import { propositions } from '../propositions';
+  import { propositionsQcm } from '../propositions';
 
   let { question, onrepondre }: { question: Question; onrepondre: (r: Reponse) => void } = $props();
 
-  // Propositions triées du plus petit au plus grand.
-  const choix = propositions(question);
+  // 4 propositions, triées du plus petit au plus grand.
+  const choix = propositionsQcm(question);
 </script>
 
 <div class="choix">

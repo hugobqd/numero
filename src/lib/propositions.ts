@@ -18,3 +18,25 @@ export function propositions(q: Question): number[] {
   const haut = arrondiSignificatif(Math.max(...proches) * 2);
   return [...new Set([bas, ...proches, haut])].sort((a, b) => a - b);
 }
+
+/** Petit hachage stable d'une chaîne (même résultat pour tous les joueurs). */
+function hachage(s: string): number {
+  let h = 2166136261;
+  for (const c of s) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
+  return h >>> 0;
+}
+
+/**
+ * Les 4 propositions du QCM : une fenêtre de 4 valeurs consécutives, prise dans les
+ * propositions triées et contenant la bonne réponse. La fenêtre dépend de la question
+ * (identique pour tous), ce qui place la bonne réponse à des rangs variés, extrémités comprises.
+ */
+export function propositionsQcm(q: Question, nombre = 4): number[] {
+  const toutes = propositions(q);
+  if (toutes.length <= nombre) return toutes;
+  const rang = toutes.indexOf(q.valeur_a_retenir);
+  const debutMin = Math.max(0, rang - nombre + 1);
+  const debutMax = Math.min(rang, toutes.length - nombre);
+  const debut = debutMin + (hachage(q.id) % (debutMax - debutMin + 1));
+  return toutes.slice(debut, debut + nombre);
+}
