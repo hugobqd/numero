@@ -179,7 +179,7 @@
 
   const total = $derived(
     partie.variante === 'progressif'
-      ? `${partie.resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100}`
+      ? `${partie.resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100} pts`
       : `${partie.resultats.filter((r) => r.gagne).length} / ${questions.length}`,
   );
   const aRevoir = $derived(nouvellesFiches.filter((id) => !partie.resultats.find((r) => r.id === id)?.gagne).length);
