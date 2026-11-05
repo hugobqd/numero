@@ -15,7 +15,7 @@ Jeu éducatif pour **retenir des nombres précis** qui régissent le monde (dist
 | Format | Défi quotidien de 5 questions, identique pour tous, renouvelé à minuit heure de Paris, un seul par jour |
 | Composition | 5 questions tirées dans au moins 3 thématiques, ordre quelconque, **pas de niveau** |
 | Valeur cible | Chaque question définit `valeur_a_retenir` et `precision` (pas d'arrondi propre à la question) |
-| Mécaniques testées | `slider` : curseur en deux temps (échelle log, puis affinage) · `qcm` : 4 choix, leurres proches et plausibles · `plusmoins` : ordre de grandeur révélé, puis 3 propositions avec indice plus/moins |
+| Mécaniques testées | `slider` : curseur unique, dont la plage est fixée par la question (décade de la valeur, ex. 100 000 → 1 000 000 km) ; le joueur ne choisit ni l'unité ni l'échelle · `qcm` : 4 choix, leurres proches et plausibles · `plusmoins` : ordre de grandeur révélé, puis 3 propositions avec indice plus/moins |
 | Scores testés | `tolerance` : gagné à ±5 % · `exact` : gagné si égal à `valeur_a_retenir` à `precision` près · `progressif` : 100 pts si exact, décroît jusqu'à 0 à ±50 % (plus/moins : 100/60/30 selon le coup ; QCM : 100 ou 0) |
 | Tests | Paramètres d'URL `?meca=slider\|qcm\|plusmoins&score=tolerance\|exact\|progressif`, tests de couloir, aucune mesure d'audience |
 | Révélation | Valeur exacte en grand, écart du joueur, ancrage, moyen mnémotechnique facultatif, source |

@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Question, Reponse, VarianteScore } from '../types';
-  import { decadeDe, entier, nomDecade } from '../format';
+  import { bornesQuestion, entier, nomDecade } from '../format';
   import { estTrouve } from '../score';
   import Affineur from './Affineur.svelte';
 
@@ -13,12 +13,9 @@
   }: { question: Question; variante: VarianteScore; onrepondre: (r: Reponse) => void } = $props();
 
   // L'ordre de grandeur est révélé d'entrée.
-  const decade = decadeDe(question.valeur_a_retenir);
-  const min = decade === 0 ? 0 : 10 ** decade;
-  const max = 10 ** (decade + 1);
-  const step = Math.max(1, Math.min(question.precision, 10 ** decade / 10));
+  const { decade, min, max, step, depart } = bornesQuestion(question);
 
-  let valeur = $state(Math.round((5 * 10 ** decade) / step) * step);
+  let valeur = $state(depart);
   let historique = $state<{ valeur: number; indice: 'plus' | 'moins' }[]>([]);
 
   function proposer() {
