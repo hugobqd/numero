@@ -63,3 +63,10 @@ button.principal {
     color: #0d0d0d;
   }
 }
+
+/* Laisse la place à la colonne des outils de test sur grand écran. */
+@media (min-width: 64rem) {
+  body {
+    padding-right: 15rem;
+  }
+}

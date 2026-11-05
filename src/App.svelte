@@ -342,42 +342,77 @@
     </section>
   {/if}
 
-  <details class="dev" open>
-    <summary>Réglages de test · {joueur?.pseudo ?? 'aucun joueur'} · jour {numero} · {partie.meca} / {partie.variante}</summary>
-    <p class="stock">
-      {jouables.length} questions jouables ({nbBrouillons} en brouillon) · {defisParCycle(jouables)} défis différents
-      avant répétition ·
-      <a href={lien({ brouillons: !params.brouillons })}>{params.brouillons ? 'exclure' : 'inclure'} les brouillons</a>
-    </p>
-    {#if joueur}
-      <nav class="defis">
-        <span>Jour simulé :</span>
-        <button type="button" onclick={() => allerAuJour(numero - 1)} disabled={numero <= 1}>← jour {numero - 1}</button>
-        <button type="button" onclick={() => allerAuJour(numero + 1)}>jour {numero + 1} →</button>
-        <button type="button" onclick={rejouerDefi}>↻ Rejouer le jour {numero}</button>
-      </nav>
-      <nav class="defis">
-        <button type="button" onclick={() => (ecran = 'joueurs')}>Changer de joueur</button>
-        <button type="button" onclick={() => { majJoueur(joueur.id, { tutoFait: false }); recharger(); }}>Revoir le tuto</button>
-        <button type="button" onclick={reinitialiserStats}>Effacer les stats</button>
-        <button type="button" onclick={viderCollection}>Vider la collection</button>
-      </nav>
-    {/if}
-    <table>
-      <thead><tr><th></th>{#each VARIANTES as v}<th>{v}</th>{/each}</tr></thead>
-      <tbody>
-        {#each MECAS as m}
-          <tr>
-            <th>{m}</th>
-            {#each VARIANTES as v}
-              <td><a href={lien({ meca: m, score: v, reset: true })} class:actif={m === partie.meca && v === partie.variante}>jouer</a></td>
-            {/each}
-          </tr>
-        {/each}
-      </tbody>
-    </table>
-  </details>
 </main>
+
+<!-- Outils de test, à l'écart du jeu : colonne discrète à droite (sous le jeu sur petit écran). -->
+<aside class="dev" aria-label="Outils de test">
+  <details open>
+    <summary>⚙ Test</summary>
+
+    <section>
+      <h3>Joueur</h3>
+      {#if joueur}
+        <p><strong>{joueur.pseudo}</strong> · jour {numero}</p>
+        <div class="boutons">
+          <button type="button" onclick={() => (ecran = 'joueurs')}>Changer</button>
+          <button type="button" onclick={() => { majJoueur(joueur.id, { tutoFait: false }); recharger(); }}>Revoir le tuto</button>
+        </div>
+      {:else}
+        <p>Aucun joueur</p>
+      {/if}
+    </section>
+
+    {#if joueur}
+      <section>
+        <h3>Jour simulé</h3>
+        <div class="boutons">
+          <button type="button" onclick={() => allerAuJour(numero - 1)} disabled={numero <= 1}>← {numero - 1}</button>
+          <button type="button" onclick={() => allerAuJour(numero + 1)}>{numero + 1} →</button>
+          <button type="button" onclick={rejouerDefi}>↻ Rejouer</button>
+        </div>
+      </section>
+    {/if}
+
+    <section>
+      <h3>Mécanique × score</h3>
+      <table>
+        <thead><tr><th></th>{#each VARIANTES as v}<th>{v}</th>{/each}</tr></thead>
+        <tbody>
+          {#each MECAS as m}
+            <tr>
+              <th>{m}</th>
+              {#each VARIANTES as v}
+                <td>
+                  <a href={lien({ meca: m, score: v, reset: true })} class:actif={m === partie.meca && v === partie.variante}
+                    >{m === partie.meca && v === partie.variante ? '●' : '○'}</a
+                  >
+                </td>
+              {/each}
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h3>Contenu</h3>
+      <p>
+        {jouables.length} questions ({nbBrouillons} brouillons) · {defisParCycle(jouables)} défis avant répétition
+      </p>
+      <a href={lien({ brouillons: !params.brouillons })}>{params.brouillons ? 'Exclure' : 'Inclure'} les brouillons</a>
+    </section>
+
+    {#if joueur}
+      <section>
+        <h3>Données</h3>
+        <div class="boutons">
+          <button type="button" onclick={reinitialiserStats}>Effacer les stats</button>
+          <button type="button" onclick={viderCollection}>Vider la collection</button>
+        </div>
+      </section>
+    {/if}
+  </details>
+</aside>
 
 <style>
   main {
@@ -386,6 +421,98 @@
     padding: 1rem 1rem 3rem;
     display: grid;
     gap: 1.5rem;
+    align-content: start;
+  }
+
+  /* Outils de test : colonne étroite et discrète, collée à droite sur grand écran. */
+  .dev {
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding: 0 1rem 2rem;
+    max-width: 34rem;
+    margin: 0 auto;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  .dev:hover,
+  .dev:focus-within {
+    opacity: 1;
+  }
+  @media (min-width: 64rem) {
+    .dev {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 15rem;
+      height: 100vh;
+      overflow-y: auto;
+      margin: 0;
+      padding: 1rem;
+      border-left: 1px solid var(--border);
+      background: var(--bg);
+    }
+  }
+  @media (max-width: 63.99rem) {
+    .dev {
+      border-top: 1px dashed var(--border);
+      padding-top: 1rem;
+    }
+  }
+  .dev summary {
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .dev section {
+    display: grid;
+    gap: 0.35rem;
+    margin-top: 1rem;
+  }
+  .dev h3 {
+    margin: 0;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .dev p {
+    margin: 0;
+  }
+  .dev .boutons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .dev button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 0.4rem;
+    color: var(--muted);
+  }
+  .dev button:hover {
+    color: var(--fg);
+  }
+  .dev button:disabled {
+    opacity: 0.4;
+  }
+  .dev table {
+    border-collapse: collapse;
+  }
+  .dev th,
+  .dev td {
+    padding: 0.15rem 0.35rem;
+    text-align: left;
+    font-weight: 400;
+  }
+  .dev td {
+    text-align: center;
+  }
+  .dev a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .dev a.actif {
+    font-weight: 700;
   }
   header {
     display: flex;
@@ -469,14 +596,6 @@
     font-size: 1.5rem;
     font-weight: 700;
   }
-  .dev {
-    margin-top: 2rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-  .stock {
-    margin: 0.5rem 0 0;
-  }
   .haut {
     display: flex;
     align-items: baseline;
@@ -525,41 +644,10 @@
   .centre {
     justify-content: center;
   }
-  .defis button:disabled {
-    opacity: 0.4;
-  }
   .accueil h2 {
     margin: 0;
   }
   .accueil p {
     margin: 0;
-  }
-  .defis {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 1rem;
-    margin-top: 0.75rem;
-  }
-  .defis button {
-    padding: 0.25rem 0.6rem;
-    font-size: 0.8rem;
-  }
-  .dev table {
-    margin-top: 0.5rem;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  .dev th,
-  .dev td {
-    padding: 0.25rem;
-    text-align: center;
-  }
-  .dev a {
-    color: var(--accent);
-  }
-  .dev a.actif {
-    font-weight: 700;
-    text-decoration: none;
   }
 </style>

@@ -11,7 +11,7 @@ npm run dev
 ## Réglages de test
 
 `?meca=slider|palier|qcm|plusmoins&score=progressif|exact` — `&reset=1` efface la partie du jour. Les joueurs et les jours sont simulés : bouton « Nouveau joueur », puis « Simuler le jour suivant » ou ← / → dans le panneau de test.
-Le panneau « Réglages de test » en bas de page permet de changer de jour simulé, de rejouer le défi, de changer de joueur, de revoir le tuto, d’effacer les stats ou la collection, et de lancer les 8 combinaisons.
+La colonne « ⚙ Test » (à droite, ou sous le jeu sur mobile) permet de changer de jour simulé, de rejouer le défi, de changer de joueur, de revoir le tuto, d’effacer les stats ou la collection, et de lancer les 8 combinaisons.
 
 ## Contenu
 
