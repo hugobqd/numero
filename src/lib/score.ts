@@ -18,6 +18,9 @@ export function noter(
   meca: Mecanique,
   variante: VarianteScore,
 ): { points: number; gagne: boolean } {
+  // Plus/moins : un mauvais choix fait perdre la question tout de suite.
+  if (r.erreur) return { points: 0, gagne: false };
+
   const exact = estExact(q, r.valeur);
   const ecart = Math.abs(ecartRelatif(q, r.valeur));
 

@@ -26,7 +26,9 @@
         ? 'Gagné'
         : resultat.points > 0
           ? 'Presque'
-        : resultat.reponse <= 0 ||
+        : resultat.erreur
+          ? 'Raté'
+          : resultat.reponse <= 0 ||
             Math.abs(Math.log10(resultat.reponse / question.valeur_a_retenir)) >= 1
           ? 'Mauvaise échelle'
           : 'Raté',
@@ -46,8 +48,14 @@
   <p class="perimetre">{question.perimetre}</p>
 
   <p class="toi">
-    Ta réponse : <strong>{avecUnite(resultat.reponse, question.unite, question.precision)}</strong>
-    {#if !estExact(question, resultat.reponse)}({pourcentage(ecart)}){/if}
+    {#if resultat.erreur}
+      Tu as répondu <strong>« {resultat.erreur.choix} »</strong> à
+      <strong>{avecUnite(resultat.erreur.seuil, question.unite)}</strong>, mais c'était
+      {resultat.erreur.choix === 'plus' ? 'moins' : 'plus'}.
+    {:else}
+      Ta réponse : <strong>{avecUnite(resultat.reponse, question.unite, question.precision)}</strong>
+      {#if !estExact(question, resultat.reponse)}({pourcentage(ecart)}){/if}
+    {/if}
   </p>
 
   <p class="ancrage">{question.ancrage}</p>

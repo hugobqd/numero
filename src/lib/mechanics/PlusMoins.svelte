@@ -10,7 +10,7 @@
   }: { question: Question; numero: number; onrepondre: (r: Reponse) => void } = $props();
 
   // Recherche par dichotomie parmi les 6 propositions du palier (invisibles pour le joueur) :
-  // 3 coups au plus. Le jeu demande « plus ou moins que X ? », X étant un seuil rond
+  // 3 coups au plus ; un seul mauvais choix fait perdre la question. Le jeu demande « plus ou moins que X ? », X étant un seuil rond
   // placé entre deux propositions voisines ; la proposition restante est la réponse.
   // Il faut au moins 2 pas d'écart entre deux candidats pour placer un seuil entier entre eux
   // (pas de « 205,5 os ») : on écarte les leurres trop proches d'un voisin, jamais la bonne réponse.
@@ -44,6 +44,12 @@
 
   function repondre(choix: 'plus' | 'moins') {
     historique.push({ seuil, choix });
+    // Mauvais sens : la question est perdue immédiatement.
+    const bonChoix = question.valeur_a_retenir > seuil ? 'plus' : 'moins';
+    if (choix !== bonChoix) {
+      onrepondre({ valeur: seuil, essai: historique.length, propositions: candidats, erreur: { seuil, choix } });
+      return;
+    }
     if (choix === 'plus') bas = coupure;
     else haut = coupure - 1;
     if (bas === haut) onrepondre({ valeur: candidats[bas], essai: historique.length, propositions: candidats });

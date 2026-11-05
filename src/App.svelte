@@ -41,7 +41,7 @@
   function repondre(r: Reponse) {
     const q = questions[partie.resultats.length];
     const { points, gagne } = noter(q, r, partie.meca, partie.variante);
-    const res: ResultatQuestion = { id: q.id, reponse: r.valeur, points, gagne };
+    const res: ResultatQuestion = { id: q.id, reponse: r.valeur, points, gagne, erreur: r.erreur };
     partie.resultats.push(res);
     ecrirePartie($state.snapshot(partie));
     ecran = 'revelation';

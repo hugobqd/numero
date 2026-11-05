@@ -53,6 +53,13 @@ export interface Reponse {
   essai: number;
   /** Propositions triées parmi lesquelles le joueur a choisi (QCM, palier, plus/moins). */
   propositions?: number[];
+  /** Plus/moins : le mauvais choix qui a fait perdre la question. */
+  erreur?: ErreurPlusMoins;
+}
+
+export interface ErreurPlusMoins {
+  seuil: number;
+  choix: 'plus' | 'moins';
 }
 
 export interface ResultatQuestion {
@@ -60,4 +67,5 @@ export interface ResultatQuestion {
   reponse: number;
   points: number; // 0..100
   gagne: boolean;
+  erreur?: ErreurPlusMoins;
 }
