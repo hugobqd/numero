@@ -65,7 +65,7 @@ button.principal {
 }
 
 /* Laisse la place à la colonne des outils de test sur grand écran. */
-@media (min-width: 64rem) {
+@media (min-width: 52rem) {
   body {
     padding-right: 15rem;
   }

@@ -438,7 +438,7 @@
   .dev:focus-within {
     opacity: 1;
   }
-  @media (min-width: 64rem) {
+  @media (min-width: 52rem) {
     .dev {
       position: fixed;
       top: 0;
@@ -452,7 +452,7 @@
       background: var(--bg);
     }
   }
-  @media (max-width: 63.99rem) {
+  @media (max-width: 51.99rem) {
     .dev {
       border-top: 1px dashed var(--border);
       padding-top: 1rem;
