@@ -19,6 +19,7 @@
   import CollectionVue from './lib/CollectionVue.svelte';
   import JoueursVue from './lib/JoueursVue.svelte';
   import Accueil from './lib/Accueil.svelte';
+  import Recap from './lib/Recap.svelte';
   import {
     choisirJoueur,
     creerJoueur,
@@ -248,13 +249,20 @@
   {:else if ecran === 'tutoBilan'}
     <section class="bilan">
       <h2>Premier défi terminé</h2>
-      <p class="score">{tuto.resultats.filter((r) => r.gagne).length} / {questionsTuto.length}</p>
+      <p class="score">
+        {partie.variante === 'progressif'
+          ? `${tuto.resultats.reduce((s, r) => s + r.points, 0)} / ${questionsTuto.length * 100} pts`
+          : `${tuto.resultats.filter((r) => r.gagne).length} / ${questionsTuto.length}`}
+      </p>
+      <Recap questions={questionsTuto} resultats={tuto.resultats} afficherPoints={partie.variante === 'progressif'} />
       <div class="gain">
         <p>🎴 <strong>+{questionsTuto.length} fiches</strong> dans ta collection.</p>
         <p class="conseil">Les fiches ratées sont « à revoir » : elles passeront en premier dans tes révisions.</p>
+        <div class="actions">
+          <button type="button" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
+        </div>
       </div>
       <button type="button" class="principal" onclick={() => (ecran = 'defi')}>Jouer le défi du jour</button>
-      <button type="button" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
     </section>
   {:else if ecran === 'accueil'}
     <Accueil
@@ -284,14 +292,7 @@
   {:else if ecran === 'bilan'}
     <section class="bilan">
       <p class="score">{total}</p>
-      <ul class="recap">
-        {#each partie.resultats as r, i}
-          <li class:gagne={r.gagne}>
-            <span>{questions[i]?.enonce}</span>
-            <strong>{avecUnite(questions[i].valeur_a_retenir, questions[i].unite, questions[i].precision)}</strong>
-          </li>
-        {/each}
-      </ul>
+      <Recap {questions} resultats={partie.resultats} afficherPoints={partie.variante === 'progressif'} />
 
       <div class="gain">
         {#if nouvellesFiches.length}
@@ -346,14 +347,7 @@
     <section class="bilan">
       <h2>Révision terminée</h2>
       <p class="score">{revision.resultats.filter((r) => r.gagne).length} / {revision.questions.length}</p>
-      <ul class="recap">
-        {#each revision.resultats as r, i}
-          <li class:gagne={r.gagne}>
-            <span>{revision.questions[i].enonce}</span>
-            <strong>{avecUnite(revision.questions[i].valeur_a_retenir, revision.questions[i].unite, revision.questions[i].precision)}</strong>
-          </li>
-        {/each}
-      </ul>
+      <Recap questions={revision.questions} resultats={revision.resultats} afficherPoints={partie.variante === 'progressif'} />
       <p class="demain">Une fiche réussie gagne une étoile de maîtrise ; une erreur la ramène à une étoile.</p>
       <div class="actions">
         <button type="button" class="principal" onclick={reviser}>Encore une révision</button>
@@ -606,26 +600,6 @@
     font-weight: 800;
     font-variant-numeric: tabular-nums;
     text-align: center;
-  }
-  .recap {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 0.5rem;
-  }
-  .recap li {
-    display: grid;
-    gap: 0.15rem;
-    padding: 0.5rem 0.75rem;
-    border-left: 3px solid var(--perdu);
-    background: var(--surface);
-  }
-  .recap li.gagne {
-    border-left-color: var(--gagne);
-  }
-  .recap strong {
-    font-variant-numeric: tabular-nums;
   }
   .message,
   .demain {

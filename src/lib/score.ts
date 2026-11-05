@@ -1,4 +1,4 @@
-import type { Mecanique, Question, Reponse, VarianteScore } from './types';
+import type { Mecanique, Question, Reponse, ResultatQuestion, VarianteScore } from './types';
 
 export const ECART_NUL = 0.5; // progressif : 0 point à ±50 %
 /** Progressif, modes à propositions : points selon l'écart de rang (0 = bonne, 1 = voisine…). */
@@ -62,4 +62,14 @@ export function noter(
 export function caseEmoji(points: number, gagne: boolean): string {
   if (gagne) return '🟩';
   return points > 0 ? '🟨' : '🟥';
+}
+
+/** Qualificatif du résultat d'une question, affiché à la révélation et aux bilans. */
+export function verdict(q: Question, r: ResultatQuestion): 'Pile !' | 'Gagné' | 'Presque' | 'Raté' | 'Mauvaise échelle' {
+  if (estExact(q, r.reponse)) return 'Pile !';
+  if (r.gagne) return 'Gagné';
+  if (r.points > 0) return 'Presque';
+  if (r.erreur) return 'Raté';
+  if (r.reponse <= 0 || Math.abs(Math.log10(r.reponse / q.valeur_a_retenir)) >= 1) return 'Mauvaise échelle';
+  return 'Raté';
 }

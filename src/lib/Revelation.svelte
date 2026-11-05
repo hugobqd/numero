@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Question, ResultatQuestion } from './types';
-  import { ecartRelatif, estExact } from './score';
+  import { ecartRelatif, estExact, verdict as qualifier } from './score';
   import { avecUnite, grand, pourcentage, scientifique } from './format';
 
   let {
@@ -19,20 +19,7 @@
 
   const vraie = $derived(grand(question.valeur_a_retenir, question.unite, question.precision));
   const ecart = $derived(ecartRelatif(question, resultat.reponse));
-  const verdict = $derived(
-    estExact(question, resultat.reponse)
-      ? 'Pile !'
-      : resultat.gagne
-        ? 'Gagné'
-        : resultat.points > 0
-          ? 'Presque'
-        : resultat.erreur
-          ? 'Raté'
-          : resultat.reponse <= 0 ||
-            Math.abs(Math.log10(resultat.reponse / question.valeur_a_retenir)) >= 1
-          ? 'Mauvaise échelle'
-          : 'Raté',
-  );
+  const verdict = $derived(qualifier(question, resultat));
 </script>
 
 <section class="revelation" class:gagne={resultat.gagne}>
