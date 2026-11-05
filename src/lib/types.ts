@@ -18,19 +18,19 @@ export interface Question {
   mnemo?: string;
   source: { url: string; consulte_le: string };
   thematique: string;
-  /** Trois leurres proches et plausibles, pour la mécanique QCM. */
+  /** Trois leurres proches et plausibles (QCM et palier, complétés par 2 extrêmes calculés). */
   leurres: [number, number, number];
   statut: Statut;
   langue: string;
 }
 
-export type Mecanique = 'slider' | 'qcm' | 'plusmoins';
+export type Mecanique = 'slider' | 'palier' | 'qcm' | 'plusmoins';
 export type VarianteScore = 'tolerance' | 'exact' | 'progressif';
 
 /** Ce qu'une mécanique remonte une fois la question jouée. */
 export interface Reponse {
   valeur: number;
-  /** Numéro de la proposition gagnante (plus/moins), 1 à 3 ; sinon 1. */
+  /** Nombre de coups joués (plus/moins) ; 1 sinon. */
   essai: number;
 }
 

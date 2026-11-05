@@ -9,6 +9,7 @@
   import { partager, texteDePartage } from './lib/share';
   import Slider from './lib/mechanics/Slider.svelte';
   import Qcm from './lib/mechanics/Qcm.svelte';
+  import Palier from './lib/mechanics/Palier.svelte';
   import PlusMoins from './lib/mechanics/PlusMoins.svelte';
   import Revelation from './lib/Revelation.svelte';
 
@@ -98,10 +99,12 @@
       {#key courante.id}
         {#if partie.meca === 'slider'}
           <Slider question={courante} onrepondre={repondre} />
+        {:else if partie.meca === 'palier'}
+          <Palier question={courante} onrepondre={repondre} />
         {:else if partie.meca === 'qcm'}
           <Qcm question={courante} onrepondre={repondre} />
         {:else}
-          <PlusMoins question={courante} variante={partie.variante} onrepondre={repondre} />
+          <PlusMoins question={courante} onrepondre={repondre} />
         {/if}
       {/key}
     </section>

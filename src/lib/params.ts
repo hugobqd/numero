@@ -1,10 +1,10 @@
 import type { Mecanique, VarianteScore } from './types';
 
-const MECAS: Mecanique[] = ['slider', 'qcm', 'plusmoins'];
+const MECAS: Mecanique[] = ['slider', 'palier', 'qcm', 'plusmoins'];
 const VARIANTES: VarianteScore[] = ['tolerance', 'exact', 'progressif'];
 
 /**
- * Réglages de test, lus dans l'URL : ?meca=slider|qcm|plusmoins&score=tolerance|exact|progressif
+ * Réglages de test, lus dans l'URL : ?meca=slider|palier|qcm|plusmoins&score=tolerance|exact|progressif
  * &reset=1 efface la partie du jour (tests de couloir).
  * &jour=N force le numéro du défi.
  */

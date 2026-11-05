@@ -2,10 +2,11 @@
   import type { Question, Reponse } from '../types';
   import { grand } from '../format';
   import { melanger } from '../daily';
+  import { propositions } from '../propositions';
 
   let { question, onrepondre }: { question: Question; onrepondre: (r: Reponse) => void } = $props();
 
-  const choix = melanger([question.valeur_a_retenir, ...question.leurres], Math.random);
+  const choix = melanger(propositions(question), Math.random);
 </script>
 
 <div class="choix">

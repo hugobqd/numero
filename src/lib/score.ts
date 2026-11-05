@@ -2,7 +2,6 @@ import type { Mecanique, Question, Reponse, VarianteScore } from './types';
 
 export const TOLERANCE = 0.05; // ±5 %
 export const ECART_NUL = 0.5; // progressif : 0 point à ±50 %
-export const POINTS_PLUSMOINS = [100, 60, 30];
 
 export function ecartRelatif(q: Question, valeur: number): number {
   return (valeur - q.valeur_a_retenir) / q.valeur_a_retenir;
@@ -10,15 +9,6 @@ export function ecartRelatif(q: Question, valeur: number): number {
 
 export function estExact(q: Question, valeur: number): boolean {
   return Math.abs(valeur - q.valeur_a_retenir) < q.precision / 2;
-}
-
-/**
- * Critère « trouvé » utilisé pendant le plus/moins pour arrêter les propositions :
- * exact pour la variante `exact`, ±5 % sinon.
- */
-export function estTrouve(q: Question, valeur: number, variante: VarianteScore): boolean {
-  if (variante === 'exact') return estExact(q, valeur);
-  return estExact(q, valeur) || Math.abs(ecartRelatif(q, valeur)) <= TOLERANCE;
 }
 
 export function noter(
@@ -30,20 +20,12 @@ export function noter(
   const exact = estExact(q, r.valeur);
   const ecart = Math.abs(ecartRelatif(q, r.valeur));
 
-  if (meca === 'qcm') {
+  // QCM et palier : on choisit parmi des propositions, seule la bonne compte.
+  if (meca === 'qcm' || meca === 'palier') {
     return { points: exact ? 100 : 0, gagne: exact };
   }
 
-  if (meca === 'plusmoins') {
-    const trouve = estTrouve(q, r.valeur, variante);
-    if (variante === 'progressif') {
-      const points = trouve ? POINTS_PLUSMOINS[r.essai - 1] ?? 0 : 0;
-      return { points, gagne: trouve };
-    }
-    return { points: trouve ? 100 : 0, gagne: trouve };
-  }
-
-  // slider
+  // Curseur et plus/moins : une estimation libre, notée selon la variante.
   switch (variante) {
     case 'tolerance': {
       const gagne = exact || ecart <= TOLERANCE;
