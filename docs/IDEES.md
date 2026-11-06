@@ -78,6 +78,7 @@ Retour de Hugo sur l'écran « Ma collection » : il n'a pas compris ce que veul
 - **Idée** :
   - Dans un album, **ranger les fiches par difficulté, sous des intertitres** (de facile à difficile). Plus tard, ces groupes pourraient devenir des collections à part (lien avec les séries de l'idée 3 et la révision d'un album de l'idée 6), mais pas pour l'instant.
   - **Réserver les étoiles, ou leur remplaçant, à ce que le joueur sait** : acquis, ou pas encore connu et à réviser.
+  - **N'afficher la valeur que si le joueur l'a trouvée** (ajouté le même jour) : tant qu'il n'a pas trouvé pile au moins une fois, la fiche de la collection montre un label « à réviser » à la place du nombre. Voir le chiffre veut dire qu'on l'a trouvé. Ça fait aussi de la place dans la liste.
 - **À creuser** :
   - Combien d'états pour la maîtrise : deux (acquis / à réviser) ou garder une progression de 0 à 3 ? Deux états sont plus clairs ; une progression montre mieux l'effort en révision.
   - Le signe : des étoiles, un libellé (« à revoir », « acquis »), une couleur ? Les étoiles évoquent souvent une note ou une difficulté, d'où la confusion.
@@ -85,3 +86,6 @@ Retour de Hugo sur l'écran « Ma collection » : il n'a pas compris ce que veul
   - La carte d'un thème affiche la moyenne des étoiles : que montrer à la place (nombre de fiches acquises, part de l'album) ?
   - Le wording des intertitres : reprendre les noms des crans tels quels, ou des libellés plus parlants pour le joueur ?
   - Le ton rassurant : « à réviser » plutôt que « raté », sans honte.
+  - « Trouver pile » selon la mécanique : en QCM, c'est la bonne case ; avec le curseur ou le plus/moins, faut-il la valeur exacte ou une réponse dans la tolérance (une question « réussie ») ?
+  - Une valeur trouvée une fois reste-t-elle affichée pour toujours ? Ce serait cohérent avec la maîtrise, qui ne baisse jamais.
+  - Cacher le nombre empêche de le relire dans la collection pour l'apprendre. Le joueur le voit à la révélation, après chaque réponse : est-ce suffisant, ou faut-il un moyen de le découvrir à la demande ? Et le masquer donne-t-il envie de réviser (effet « carte à retourner », lien avec l'idée 5) ?
