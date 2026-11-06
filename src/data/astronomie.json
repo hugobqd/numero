@@ -70,16 +70,6 @@
     "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
-        "valeur": 12756,
-        "type": "autre_perimetre",
-        "note": "diamètre équatorial (2 × 6 378,137 km, fiche NASA)"
-      },
-      {
-        "valeur": 12714,
-        "type": "autre_perimetre",
-        "note": "diamètre polaire (2 × 6 356,752 km, fiche NASA)"
-      },
-      {
         "valeur": 6371,
         "type": "erreur_frequente",
         "note": "rayon moyen (6 371 km, fiche NASA), confusion rayon / diamètre"
@@ -96,6 +86,15 @@
       },
       {
         "valeur": 13285,
+        "type": "proche"
+      },
+      {
+        "valeur": 6792,
+        "type": "autre_perimetre",
+        "note": "diamètre équatorial de Mars : rayon équatorial 3 396,2 km, soit 6 792,4 km (fiche NASA de Mars, https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html)"
+      },
+      {
+        "valeur": 12329,
         "type": "proche"
       }
     ],
@@ -295,11 +294,6 @@
         "note": "la même température en degrés Celsius (5 772 − 273,15 ≈ 5 498,85)"
       },
       {
-        "valeur": 5778,
-        "type": "erreur_frequente",
-        "note": "ancienne estimation encore répandue (5 778 K, par exemple constante de la bibliothèque SunPy), avant la valeur nominale UAI 2015 de 5 772 K"
-      },
-      {
         "valeur": 6273,
         "type": "autre_perimetre",
         "note": "température au centre de la Terre, à la limite de la graine : environ 6 000 °C ≈ 6 273 K (ESRF 2013, Anzellini et al. : 6 230 ± 500 K)"
@@ -315,6 +309,16 @@
       {
         "valeur": 6418,
         "type": "proche"
+      },
+      {
+        "valeur": 9939,
+        "type": "autre_unite",
+        "note": "la température de surface du Soleil en degrés Fahrenheit : « 5,777 K (9,939 °F) » (Wikipédia anglais, Sun, https://en.wikipedia.org/wiki/Sun)"
+      },
+      {
+        "valeur": 3695,
+        "type": "autre_perimetre",
+        "note": "température de fusion du tungstène, métal des filaments d'ampoules à incandescence : 3 422 °C, soit 3 695 K (Wikipédia, Tungstène, https://fr.wikipedia.org/wiki/Tungst%C3%A8ne)"
       }
     ],
     "difficulte": {
@@ -395,11 +399,6 @@
     },
     "themes": ["Astronomie", "Système solaire"],
     "leurres": [
-      {
-        "valeur": 142984,
-        "type": "erreur_frequente",
-        "note": "ancienne valeur issue des sondes Voyager et Pioneer (2 × 71 492 km), encore sur la fiche NASA ; Juno l'a réduite de 8 km (Galanti et al. 2026)"
-      },
       {
         "valeur": 133684,
         "type": "autre_perimetre",
@@ -571,11 +570,6 @@
     "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
-        "valeur": 366,
-        "type": "autre_perimetre",
-        "note": "durée d'une année bissextile, avec le 29 février (Wikipédia, Année bissextile)"
-      },
-      {
         "valeur": 354,
         "type": "autre_perimetre",
         "note": "année lunaire de 12 mois lunaires, durée d'une année commune du calendrier hégirien (Wikipédia, Calendrier hégirien : 354 ou 355 jours)"
@@ -584,11 +578,6 @@
         "valeur": 225,
         "type": "autre_perimetre",
         "note": "durée de l'année de Vénus en jours terrestres (224,701 jours, fiche NASA de Vénus)"
-      },
-      {
-        "valeur": 364,
-        "type": "autre_perimetre",
-        "note": "52 semaines pleines de 7 jours ; une année en compte un ou deux de plus"
       },
       {
         "valeur": 687,
@@ -602,6 +591,11 @@
       {
         "valeur": 361,
         "type": "proche"
+      },
+      {
+        "valeur": 384,
+        "type": "autre_perimetre",
+        "note": "année embolismique (13 mois) du calendrier hébraïque : « Une année de 13 mois dure normalement 384 jours » (Wikipédia, Calendrier hébraïque, https://fr.wikipedia.org/wiki/Calendrier_h%C3%A9bra%C3%AFque)"
       }
     ],
     "difficulte": {
@@ -637,11 +631,6 @@
         "valeur": 2159,
         "type": "autre_unite",
         "note": "le diamètre moyen en miles (3 474,8 / 1,609344 ≈ 2 159,1)"
-      },
-      {
-        "valeur": 3476,
-        "type": "autre_perimetre",
-        "note": "diamètre équatorial (2 × 1 738,1 km, fiche NASA de la Lune)"
       },
       {
         "valeur": 3643,
@@ -694,19 +683,9 @@
     "themes": ["Astronomie", "Physique"],
     "leurres": [
       {
-        "valeur": 86164,
-        "type": "autre_perimetre",
-        "note": "jour sidéral, le temps d'un tour de la Terre par rapport aux étoiles (23,9345 h, fiche NASA de la Terre, soit 86 164,2 s)"
-      },
-      {
         "valeur": 88775,
         "type": "autre_perimetre",
         "note": "sol, la journée martienne (24,6597 h, fiche NASA de Mars, soit 88 774,9 s)"
-      },
-      {
-        "valeur": 86401,
-        "type": "autre_perimetre",
-        "note": "journée avec une seconde intercalaire, la dernière le 31 décembre 2016 à 23 h 59 min 60 s ; ces secondes seront abandonnées à partir de 2027 (IERS, https://hpiers.obspm.fr/eop-pc/earthor/utc/leapsecond_fr.html ; Wikipédia, Seconde intercalaire)"
       },
       {
         "valeur": 43200,
@@ -726,6 +705,11 @@
       {
         "valeur": 82800,
         "type": "proche"
+      },
+      {
+        "valeur": 62064,
+        "type": "autre_perimetre",
+        "note": "durée du jour sur Uranus : 17,24 h (fiche NASA d'Uranus, https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html), soit 62 064 s"
       }
     ],
     "difficulte": {

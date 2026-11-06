@@ -80,7 +80,8 @@ export const NB_PROPOSITIONS = 6;
  *    - des leurres proches, tirés dans la fiche et parmi des valeurs générées (±3 à 35 %).
  *
  * Tous les leurres sont mis à la forme de la bonne réponse (`aLaForme`). Les leurres générés
- * gardent un écart minimal de 2 % ; ceux de la fiche peuvent être plus proches (8 848 m contre 8 849 m).
+ * gardent un écart minimal de 2 % ; ceux de la fiche peuvent être plus proches, jusqu'à 0,5 % de la réponse
+ * (règle de rédaction, contrôlée par `npm run verifier`).
  */
 /**
  * Difficulté des propositions :
@@ -156,7 +157,7 @@ export function propositions(q: Question, numero: number, difficulte: Difficulte
   const ajouterFiche = (v: number, cote: -1 | 1) => {
     const l = aLaForme(v, q, hasard);
     if (retenues.has(l) || !duBonCote(l, cote)) return false;
-    // Seul un piège gardé tel quel peut être très proche (8 848 m contre 8 849 m) ;
+    // Seul un leurre de la fiche gardé tel quel peut être plus proche que l'écart minimal (0,5 % au moins, voir la consigne) ;
     // un leurre retouché par aLaForme (200 os → 205) respecte l'écart minimal comme un leurre généré.
     if (l !== v && tropProche(l)) return false;
     retenues.add(l);

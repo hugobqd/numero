@@ -18,11 +18,6 @@
     "themes": ["Terre et géologie"],
     "leurres": [
       {
-        "valeur": 40008,
-        "type": "autre_perimetre",
-        "note": "circonférence méridienne, par les pôles (40 007,863 km, 4 × le quart de méridien du GRS 80) : la Terre est aplatie"
-      },
-      {
         "valeur": 24901,
         "type": "autre_unite",
         "note": "la circonférence équatoriale en miles (40 075,017 / 1,609344 = 24 901,46)"
@@ -43,6 +38,16 @@
       {
         "valeur": 42316,
         "type": "proche"
+      },
+      {
+        "valeur": 36788,
+        "type": "autre_perimetre",
+        "note": "longueur du tropique du Cancer, 36 788 km (https://en.wikipedia.org/wiki/Tropic_of_Cancer)"
+      },
+      {
+        "valeur": 21639,
+        "type": "autre_unite",
+        "note": "la circonférence équatoriale en milles marins : 40 075,017 km / 1,852 km = 21 638,8 (mille marin = 1 852 m exactement ; valeur en km : https://en.wikipedia.org/wiki/Earth%27s_circumference)"
       }
     ],
     "difficulte": {
@@ -122,11 +127,6 @@
     "themes": ["Terre et géologie", "Records"],
     "leurres": [
       {
-        "valeur": 10984,
-        "type": "erreur_frequente",
-        "note": "mesure par sonar de 2010 publiée en 2014 (Gardner et al., Marine Geodesy, 10 984 ± 25 m), longtemps la référence et encore citée par Wikipédia"
-      },
-      {
         "valeur": 11034,
         "type": "erreur_frequente",
         "note": "mesure soviétique du Vitiaz (1957), encore souvent citée mais jamais confirmée (page Fosse des Mariannes)"
@@ -152,8 +152,9 @@
         "note": "la profondeur en pieds (35 876 ft, NOAA Ocean Service)"
       },
       {
-        "valeur": 10947,
-        "type": "proche"
+        "valeur": 7192,
+        "type": "autre_perimetre",
+        "note": "profondeur maximale de la fosse de la Sonde (Java), point le plus profond de l'océan Indien : 7 192 m (Bongiovanni et al., Geoscience Data Journal, 2021 ; 7 290 m selon Stewart et Jamieson, Earth-Science Reviews, 2019)"
       }
     ],
     "difficulte": {
@@ -181,31 +182,6 @@
     "themes": ["Terre et géologie", "France"],
     "leurres": [
       {
-        "valeur": 4806,
-        "type": "erreur_frequente",
-        "note": "mesures de 2019 (4 806,03 m, tenue secrète à l'époque) et de 2023 (4 805,59 m)"
-      },
-      {
-        "valeur": 4808,
-        "type": "erreur_frequente",
-        "note": "mesure de 2021 (4 807,81 m)"
-      },
-      {
-        "valeur": 4809,
-        "type": "erreur_frequente",
-        "note": "mesures de 2015 (4 808,73 m) et de 2017 (4 808,72 m)"
-      },
-      {
-        "valeur": 4811,
-        "type": "erreur_frequente",
-        "note": "mesure record de 2007 (4 810,90 m)"
-      },
-      {
-        "valeur": 4792,
-        "type": "autre_perimetre",
-        "note": "altitude du sommet rocheux, sous la glace (page Mont Blanc, d'après Le Monde)"
-      },
-      {
         "valeur": 4748,
         "type": "autre_perimetre",
         "note": "altitude du mont Blanc de Courmayeur, sommet secondaire du massif (page Mont Blanc)"
@@ -214,6 +190,36 @@
         "valeur": 4634,
         "type": "autre_perimetre",
         "note": "altitude du mont Rose (pointe Dufour), 2e sommet des Alpes (page Mont Rose)"
+      },
+      {
+        "valeur": 5642,
+        "type": "erreur_frequente",
+        "note": "altitude de l'Elbrouz (Caucase), présenté comme le plus haut sommet d'Europe selon la limite Europe-Asie retenue (https://en.wikipedia.org/wiki/Mount_Elbrus) : confusion « plus haut sommet d'Europe » / mont Blanc"
+      },
+      {
+        "valeur": 4465,
+        "type": "autre_perimetre",
+        "note": "altitude du mont Maudit, sommet voisin du massif du Mont-Blanc (https://en.wikipedia.org/wiki/List_of_mountains_of_the_Alps_over_4000_metres)"
+      },
+      {
+        "valeur": 4478,
+        "type": "autre_perimetre",
+        "note": "altitude du Cervin (Matterhorn) (même liste, https://en.wikipedia.org/wiki/List_of_mountains_of_the_Alps_over_4000_metres)"
+      },
+      {
+        "valeur": 4304,
+        "type": "autre_perimetre",
+        "note": "altitude du dôme du Goûter, étape de la voie normale (même liste)"
+      },
+      {
+        "valeur": 4102,
+        "type": "autre_perimetre",
+        "note": "altitude de la barre des Écrins, point culminant du massif des Écrins (même liste)"
+      },
+      {
+        "valeur": 15773,
+        "type": "autre_unite",
+        "note": "l'altitude en pieds : 4 807,47 m / 0,3048 = 15 772,5 ft (leurre lointain, le seul de la fiche)"
       }
     ],
     "difficulte": {
@@ -297,11 +303,6 @@
     },
     "themes": ["Terre et géologie", "Records"],
     "leurres": [
-      {
-        "valeur": 1637,
-        "type": "erreur_frequente",
-        "note": "profondeur mesurée en 1991 par le sous-marin Pisces et publiée dans l'Atlas du Baïkal de 1993, encore très citée (Institut limnologique d'Irkoutsk)"
-      },
       {
         "valeur": 1471,
         "type": "autre_perimetre",
@@ -413,16 +414,6 @@
     },
     "themes": ["Terre et géologie", "France"],
     "leurres": [
-      {
-        "valeur": 777,
-        "type": "erreur_frequente",
-        "note": "longueur très répandue, par exemple sur le site de la Ville de Paris : « 777 kilomètres de long » (paris.fr, « La Seine aurait plus de 14 000 ans… »)"
-      },
-      {
-        "valeur": 776,
-        "type": "erreur_frequente",
-        "note": "longueur donnée par l'encyclopédie Larousse : « 776 km » (larousse.fr, article « Seine »)"
-      },
       {
         "valeur": 1006,
         "type": "autre_perimetre",

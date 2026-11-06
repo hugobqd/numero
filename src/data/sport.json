@@ -91,11 +91,6 @@
         "note": "26 miles tout rond (26 × 1 609,344 m) : la distance « impériale » de Londres 1908 sans les 385 yards courus sur la piste jusqu'à la loge royale (World Athletics ; Olympedia)"
       },
       {
-        "valeur": 42237,
-        "type": "autre_perimetre",
-        "note": "longueur mesurée à vélo lors du tracé : 42 195 m × 1,001, marge de sécurité pour qu'un parcours ne soit jamais trop court (short course prevention factor, manuel IAAF/World Athletics de mesure des parcours sur route, 2004)"
-      },
-      {
         "valeur": 42915,
         "type": "proche"
       },
