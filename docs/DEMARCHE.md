@@ -41,6 +41,12 @@ Six chantiers, mais **pas six agents permanents** :
 - **Entre deux étapes** : nouvelle session (le contexte est dans le repo) ; `/compact` seulement si l'étape suivante a besoin du raisonnement de la précédente.
 - Le site en ligne n'est republié que sur demande (un push sur `main` = un déploiement public).
 
+## Bugs
+
+- **Bug simple** (le jeu contredit une règle déjà écrite dans `DECISIONS.md`, le glossaire ou un ADR, et le correctif est court) : traité en hotfix, sans issue. Branche `fix/<sujet>` depuis `main`, une PR, mergée par Hugo. Possible au milieu d'une autre session.
+- **Bug qui demande une décision** (la règle écrite est en cause, ou rien ne la fixe) : Claude le dit, et pose la question à Hugo avec options et recommandation avant de corriger. Si Hugo tranche tout de suite et que le correctif est court, même chemin que le hotfix, avec la règle mise à jour dans `DECISIONS.md` ; sinon, un ticket de décision sur la carte.
+- **Bug long ou risqué** : une issue avec le label `needs-triage`, traitée comme un ticket de construction.
+
 ## Prochaine étape
 
 **Étape 5 : résoudre les tickets de la carte**, un par session. Ouvrir une nouvelle session et lancer `/wayfinder https://github.com/hugobqd/numero/issues/1` : le prochain ticket libre est pris dans l'ordre de la carte.

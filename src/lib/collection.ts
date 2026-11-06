@@ -75,14 +75,15 @@ export function enregistrerRevision(id: string, reussie: boolean): void {
   const avant = maitrise(e);
   e.revisions++;
   e.reussitesDeSuite = reussie ? e.reussitesDeSuite + 1 : 0;
-  e.etoiles = reussie ? Math.min(MAITRISE_MAX, avant + 1) : 0;
+  // La maîtrise ne baisse jamais : une erreur laisse les étoiles acquises.
+  e.etoiles = reussie ? Math.min(MAITRISE_MAX, avant + 1) : avant;
   e.derniereRevision = new Date().toISOString();
   ecrire(c);
 }
 
 /**
  * Maîtrise de 0 à 3 étoiles : 1 si la fiche a été réussie en défi, 0 si elle est à revoir ;
- * +1 par révision réussie (3 au plus), une erreur la ramène à 0.
+ * +1 par révision réussie (3 au plus) ; une erreur ne retire rien (le meilleur niveau est gardé).
  */
 export function maitrise(e: EntreeCollection): number {
   // Fiches enregistrées avant l'ajout des étoiles : 1 + révisions réussies d'affilée.

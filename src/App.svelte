@@ -379,7 +379,7 @@
       <h2>Révision terminée</h2>
       <p class="score">{revision.resultats.filter((r) => r.gagne).length} / {revision.questions.length}</p>
       <Recap questions={revision.questions} resultats={revision.resultats} afficherPoints={partie.variante === 'progressif'} />
-      <p class="demain">Une fiche réussie gagne une étoile de maîtrise ; une erreur la ramène à une étoile.</p>
+      <p class="demain">Une fiche réussie gagne une étoile de maîtrise ; une erreur ne t'en retire aucune.</p>
       <div class="actions">
         <button type="button" class="principal" onclick={reviser}>Encore une révision</button>
         <button type="button" onclick={() => (ecran = 'collection')}>Ma collection</button>
