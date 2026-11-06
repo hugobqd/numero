@@ -468,8 +468,8 @@
       { "valeur": 51, "type": "proche" }
     ],
     "difficulte": {
-      "cran": 3,
-      "justification": "L'Afrique est étudiée en géographie au collège, mais le nombre exact de ses pays n'y est pas un repère : il relève de la culture générale, comme les 193 membres de l'ONU."
+      "cran": 2,
+      "justification": "L'Afrique et ses États sont étudiés en géographie au collège (cycle 4) ; le nombre de ses pays y est souvent cité, même s'il n'est pas un repère exigé."
     },
     "statut": "brouillon",
     "langue": "fr"
