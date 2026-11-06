@@ -53,59 +53,6 @@
     "langue": "fr"
   },
   {
-    "id": "terre-rayon-moyen",
-    "enonce": "Quel est le rayon moyen de la Terre ?",
-    "valeur": 6371,
-    "valeur_a_retenir": 6371,
-    "precision": 1,
-    "unite": "km",
-    "perimetre": "rayon moyen volumétrique (la Terre est légèrement aplatie aux pôles)",
-    "ancrage": "La Terre est aplatie : son rayon à l'équateur (6 378 km) dépasse son rayon polaire (6 357 km) de 21 km, à peine 0,3 %.",
-    "source": {
-      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
-      "consulte_le": "2026-11-06",
-      "recoupement": "https://en.wikipedia.org/wiki/Earth_radius",
-      "idee": "Stock du prototype ; culture générale (dimensions de la Terre)"
-    },
-    "themes": ["Terre et géologie"],
-    "leurres": [
-      {
-        "valeur": 6378,
-        "type": "autre_perimetre",
-        "note": "rayon équatorial (6 378,137 km, fiche NASA et ellipsoïde WGS 84)"
-      },
-      {
-        "valeur": 6357,
-        "type": "autre_perimetre",
-        "note": "rayon polaire (6 356,752 km, fiche NASA)"
-      },
-      {
-        "valeur": 3959,
-        "type": "autre_unite",
-        "note": "le rayon moyen en miles (6 371 / 1,609344 = 3 958,8)"
-      },
-      {
-        "valeur": 12742,
-        "type": "erreur_frequente",
-        "note": "diamètre moyen de la Terre (2 × 6 371 km), confusion rayon / diamètre"
-      },
-      {
-        "valeur": 6413,
-        "type": "proche"
-      },
-      {
-        "valeur": 6298,
-        "type": "proche"
-      }
-    ],
-    "difficulte": {
-      "cran": 2,
-      "justification": "Le rayon terrestre (environ 6 400 km) sert en physique-chimie au collège (cycle 4, gravitation) ; la valeur de 6 371 km se retient avec le diamètre. Cran aligné sur le diamètre et la circonférence (relecture du lot 1)."
-    },
-    "statut": "brouillon",
-    "langue": "fr"
-  },
-  {
     "id": "terre-superficie",
     "enonce": "Quelle est la superficie totale de la Terre ?",
     "valeur": 510067420,
