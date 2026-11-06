@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Question } from './types';
+  import { CRANS_DIFFICULTE, type Question } from './types';
   import { avecUnite } from './format';
   import { propositions, propositionsQcm, type Difficulte } from './propositions';
 
@@ -17,11 +17,24 @@
     proche: 'proche',
   } as const;
   const f = (v: number) => avecUnite(v, '', question.precision);
+  const lien = (url: string) => decodeURIComponent(url.replace(/^https?:\/\//, ''));
 </script>
 
 <dl class="inspecteur">
   <dt>Fiche</dt>
-  <dd><code>{question.id}</code> · {question.thematique} · {question.statut}</dd>
+  <dd><code>{question.id}</code> · {question.statut}</dd>
+
+  <dt>Thèmes</dt>
+  <dd>{question.themes.join(' · ')}</dd>
+
+  <dt>Difficulté</dt>
+  <dd>
+    {#if question.difficulte}
+      {question.difficulte.cran} · {CRANS_DIFFICULTE[question.difficulte.cran]}<br /><small>{question.difficulte.justification}</small>
+    {:else}
+      <em>non attribuée</em>
+    {/if}
+  </dd>
 
   <dt>Bonne réponse</dt>
   <dd>
@@ -41,7 +54,7 @@
     </ul>
   </dd>
 
-  <dt>Propositions (graine {graine} · difficulté {difficulte})</dt>
+  <dt>Propositions (graine {graine} · exigence {difficulte})</dt>
   <dd>
     <span class="liste">
       {#each props6 as v}<span
@@ -54,7 +67,11 @@
   </dd>
 
   <dt>Source</dt>
-  <dd><a href={question.source.url} target="_blank" rel="noopener">{decodeURIComponent(question.source.url.replace(/^https?:\/\//, ''))}</a></dd>
+  <dd>
+    <a href={question.source.url} target="_blank" rel="noopener">{lien(question.source.url)}</a>
+    {#if question.source.recoupement}<br /><small>recoupement : <a href={question.source.recoupement} target="_blank" rel="noopener">{lien(question.source.recoupement)}</a></small>{/if}
+    {#if question.source.idee}<br /><small>idée : {question.source.idee}</small>{/if}
+  </dd>
 </dl>
 
 <style>

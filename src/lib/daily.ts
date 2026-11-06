@@ -1,4 +1,4 @@
-import type { Question } from './types';
+import { themePrincipal, type Question } from './types';
 
 export const DATE_LANCEMENT = '2026-11-05';
 export const QUESTIONS_PAR_DEFI = 5;
@@ -59,8 +59,9 @@ function decouperCycle(jouables: Question[], c: number): Question[][] {
   const alea = rng(c * 7919 + 1);
   const files = new Map<string, Question[]>();
   for (const q of melanger(jouables, alea)) {
-    if (!files.has(q.thematique)) files.set(q.thematique, []);
-    files.get(q.thematique)!.push(q);
+    const theme = themePrincipal(q);
+    if (!files.has(theme)) files.set(theme, []);
+    files.get(theme)!.push(q);
   }
   const restantes = () => [...files.values()].reduce((s, f) => s + f.length, 0);
 

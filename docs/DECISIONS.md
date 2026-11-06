@@ -35,7 +35,9 @@ Jeu éducatif pour **retenir des nombres précis** qui régissent le monde (dist
 
 ## Fiche question
 
-Voir `src/lib/types.ts`. Champs : `id, enonce, valeur, valeur_a_retenir, precision, unite, perimetre, ancrage, mnemo?, source {url, consulte_le}, thematique, leurres[], statut (brouillon|valide), langue`.
+Voir `src/lib/types.ts`. Champs : `id, enonce, valeur, valeur_a_retenir, precision, unite, perimetre, ancrage, mnemo?, source {url, consulte_le, recoupement?, idee?}, themes[], difficulte? {cran, justification}, leurres[], statut (brouillon|valide), langue`.
+
+*Révisé le 2026-11-06 (préalable de hugobqd/numero#10)* : `themes` remplace `thematique`, c'est une liste dont le premier élément est le thème principal (album, composition des défis). `difficulte.cran` vaut 1 (tout public), 2 (grand public), 3 (curieux) ou 4 (pointu), avec une phrase de `justification` ; la difficulté est obligatoire pour une fiche `valide`. `source.recoupement` (URL de la seconde source) et `source.idee` (où l'on a trouvé le sujet) servent à la relecture et ne sont pas affichés en jeu.
 
 `leurres` est une réserve de 6 à 8 leurres typés (`erreur_frequente`, `autre_unite`, `autre_perimetre`, `proche`), avec une note ; au moins 3 pièges. Règles de rédaction : `docs/contenu/03-redaction.md`.
 

@@ -13,7 +13,7 @@
       "url": "https://fr.wikipedia.org/wiki/Lune",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 356500,
@@ -44,6 +44,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Le système Terre-Lune et les distances dans le système solaire sont étudiés au collège (physique-chimie, cycle 4) ; l'ordre de grandeur est connu, la valeur précise moins."
+    },
     "statut": "valide",
     "langue": "fr"
   },
@@ -60,7 +64,7 @@
       "url": "https://fr.wikipedia.org/wiki/Squelette_humain",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 300,
@@ -90,6 +94,10 @@
         "note": "≈ 640 muscles squelettiques, confusion os / muscles"
       }
     ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Nombre très connu, souvent cité dès l'école primaire quand on découvre le squelette."
+    },
     "statut": "valide",
     "langue": "fr"
   },
@@ -106,7 +114,7 @@
       "url": "https://fr.wikipedia.org/wiki/%C3%82ge_de_la_Terre",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 4570000000,
@@ -138,6 +146,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "L'âge de la Terre est étudié au lycée (enseignement scientifique de 1re, « La Terre, un astre singulier ») ; au-delà, c'est de la culture générale."
+    },
     "statut": "valide",
     "langue": "fr"
   },
@@ -155,7 +167,7 @@
       "url": "https://fr.wikipedia.org/wiki/Vitesse_de_la_lumi%C3%A8re",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 186282,
@@ -186,6 +198,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La vitesse de la lumière dans le vide est au programme de physique-chimie du collège (cycle 4, signaux lumineux)."
+    },
     "statut": "valide",
     "langue": "fr"
   },
@@ -202,7 +218,7 @@
       "url": "https://fr.wikipedia.org/wiki/Everest",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 8848,
@@ -233,6 +249,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Le plus haut sommet du monde et son altitude d'environ 8 800 m sont parmi les nombres les plus connus ; la mesure précise de 2020 l'est moins."
+    },
     "statut": "valide",
     "langue": "fr"
   }

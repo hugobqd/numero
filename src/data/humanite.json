@@ -12,7 +12,7 @@
       "url": "https://fr.wikipedia.org/wiki/Organisation_des_Nations_unies",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 192, "type": "erreur_frequente", "note": "nombre de membres avant l'admission du Soudan du Sud en 2011" },
       { "valeur": 195, "type": "autre_perimetre", "note": "193 membres + 2 États observateurs (Palestine, Vatican)" },
@@ -37,7 +37,7 @@
       "url": "https://fr.wikipedia.org/wiki/Union_europ%C3%A9enne",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 28, "type": "erreur_frequente", "note": "nombre de membres avant le Brexit" },
       { "valeur": 21, "type": "autre_perimetre", "note": "pays de la zone euro en 2026" },
@@ -62,7 +62,7 @@
       "url": "https://fr.wikipedia.org/wiki/Population_de_la_France",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 66300000, "type": "autre_perimetre", "note": "France métropolitaine seule en 2025 (68,6 M − 2,3 M dans les DOM)" },
       { "valeur": 68400000, "type": "autre_perimetre", "note": "estimation au 1er janvier 2024 (68 373 433)" },
@@ -87,7 +87,7 @@
       "url": "https://fr.wikipedia.org/wiki/Population_mondiale",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 7000000000, "type": "erreur_frequente", "note": "cap atteint le 31 octobre 2011, chiffre longtemps répété" },
       { "valeur": 6000000000, "type": "autre_perimetre", "note": "population en octobre 1999" },
@@ -112,7 +112,7 @@
       "url": "https://fr.wikipedia.org/wiki/Ethnologue,_Languages_of_the_World",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 7164, "type": "autre_perimetre", "note": "27e édition (2024)" },
       { "valeur": 7168, "type": "autre_perimetre", "note": "26e édition (2023), le maximum du décompte" },
@@ -137,7 +137,7 @@
       "url": "https://fr.wikipedia.org/wiki/Tour_Eiffel",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 324, "type": "erreur_frequente", "note": "hauteur avec antennes mesurée en 2000, valable jusqu'en 2022" },
       { "valeur": 312, "type": "autre_perimetre", "note": "hauteur d'origine en 1889, drapeau compris (312,27 m)" },
@@ -162,7 +162,7 @@
       "url": "https://fr.wikipedia.org/wiki/Grande_Muraille",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 8852, "type": "erreur_frequente", "note": "chiffre officiel d'avril 2009 (8 851,8 km), avant le recensement de 2012 (leurre éloigné)" },
       { "valeur": 13171, "type": "autre_unite", "note": "21 196 km convertis en miles" },
@@ -187,7 +187,7 @@
       "url": "https://fr.wikipedia.org/wiki/Commune_(France)",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 34935, "type": "autre_perimetre", "note": "nombre au 1er janvier 2024 (DGCL)" },
       { "valeur": 34746, "type": "autre_perimetre", "note": "France métropolitaine seule au 1er janvier 2025" },
@@ -212,7 +212,7 @@
       "url": "https://fr.wikipedia.org/wiki/Guerre_de_Cent_Ans",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 138, "type": "autre_perimetre", "note": "jusqu'au traité de Picquigny (1475), parfois présenté comme la vraie fin du conflit" },
       { "valeur": 79, "type": "erreur_frequente", "note": "durée réelle de la guerre de Quatre-Vingts Ans (1568-1648) : confusion entre nom et durée" },
@@ -237,7 +237,7 @@
       "url": "https://fr.wikipedia.org/wiki/D%C3%A9partement_fran%C3%A7ais",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Humanité",
+    "themes": ["Humanité"],
     "leurres": [
       { "valeur": 96, "type": "autre_perimetre", "note": "départements de France métropolitaine seulement" },
       { "valeur": 83, "type": "autre_perimetre", "note": "départements créés en 1790" },

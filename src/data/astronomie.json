@@ -12,7 +12,7 @@
       "url": "https://fr.wikipedia.org/wiki/Soleil",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 147100000,
@@ -59,7 +59,7 @@
       "url": "https://fr.wikipedia.org/wiki/Terre",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 12756,
@@ -107,7 +107,7 @@
       "url": "https://fr.wikipedia.org/wiki/Soleil",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 696000,
@@ -153,7 +153,7 @@
       "url": "https://fr.wikipedia.org/wiki/Mars_(plan%C3%A8te)",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 669,
@@ -199,7 +199,7 @@
       "url": "https://fr.wikipedia.org/wiki/%C3%82ge_de_l%27Univers",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 13500000000,
@@ -246,7 +246,7 @@
       "url": "https://fr.wikipedia.org/wiki/Soleil",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 5499,
@@ -293,7 +293,7 @@
       "url": "https://fr.wikipedia.org/wiki/Soleil",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 491,
@@ -340,7 +340,7 @@
       "url": "https://fr.wikipedia.org/wiki/Jupiter_(plan%C3%A8te)",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 133708,
@@ -388,7 +388,7 @@
       "url": "https://fr.wikipedia.org/wiki/Terre",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Astronomie",
+    "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 105400,

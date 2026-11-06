@@ -12,7 +12,7 @@
       "url": "https://fr.wikipedia.org/wiki/Vitesse_du_son",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 331,
@@ -60,7 +60,7 @@
       "url": "https://fr.wikipedia.org/wiki/Kelvin",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 273,
@@ -106,7 +106,7 @@
       "url": "https://fr.wikipedia.org/wiki/%C3%89l%C3%A9ment_chimique",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 94,
@@ -152,7 +152,7 @@
       "url": "https://fr.wikipedia.org/wiki/Or",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 22600,
@@ -200,7 +200,7 @@
       "url": "https://fr.wikipedia.org/wiki/Fer",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 8960,
@@ -246,7 +246,7 @@
       "url": "https://fr.wikipedia.org/wiki/Fer",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 1811,
@@ -294,7 +294,7 @@
       "url": "https://fr.wikipedia.org/wiki/Tungst%C3%A8ne",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 3695,
@@ -341,7 +341,7 @@
       "url": "https://fr.wikipedia.org/wiki/Pression_atmosph%C3%A9rique",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 1084,
@@ -387,7 +387,7 @@
       "url": "https://fr.wikipedia.org/wiki/Vitesse_de_lib%C3%A9ration",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Physique",
+    "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 28400,

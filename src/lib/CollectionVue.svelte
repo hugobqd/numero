@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Question } from './types';
+  import { themePrincipal, type Question } from './types';
   import { MAITRISE_MAX, maitrise, type Collection } from './collection';
   import { grand } from './format';
   import { illustration } from './themes';
@@ -14,8 +14,8 @@
   // Chaque thème est illustré (src/assets/themes, prompt dans le README).
 
   const themes = $derived(
-    [...new Set(stock.map((q) => q.thematique))].sort().map((theme) => {
-      const toutes = stock.filter((q) => q.thematique === theme);
+    [...new Set(stock.map(themePrincipal))].sort().map((theme) => {
+      const toutes = stock.filter((q) => themePrincipal(q) === theme);
       const possedees = toutes.filter((q) => collection[q.id]);
       const sommeEtoiles = possedees.reduce((s, q) => s + maitrise(collection[q.id]), 0);
       return {
