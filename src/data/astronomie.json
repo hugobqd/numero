@@ -110,44 +110,49 @@
     "id": "astro-diametre-soleil",
     "enonce": "Quel est le diamètre du Soleil ?",
     "valeur": 1392684,
-    "valeur_a_retenir": 1393000,
-    "precision": 1000,
+    "valeur_a_retenir": 1390000,
+    "precision": 10000,
     "unite": "km",
-    "perimetre": "diamètre moyen (2 × rayon de 696 342 km, mesuré en 2012 grâce au satellite SOHO)",
+    "perimetre": "diamètre moyen : 1 392 684 km selon la mesure de 2012 grâce au satellite SOHO, 1 391 400 km selon la valeur de référence de l'UAI (2015) ; à retenir à 10 000 km près, ce qui couvre les deux",
     "ancrage": "On pourrait aligner 109 Terres d'un bord à l'autre du Soleil.",
     "source": {
       "url": "https://manoa.hawaii.edu/news/article.php?aId=4992",
       "consulte_le": "2026-11-06",
-      "recoupement": "https://fr.wikipedia.org/wiki/Soleil",
+      "recoupement": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
       "idee": "Stock du prototype ; culture générale"
     },
     "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
-        "valeur": 696000,
-        "type": "erreur_frequente",
-        "note": "rayon du Soleil (696 342 km, Emilio et al. 2012), confusion rayon / diamètre ; leurre éloigné (×0,5)"
-      },
-      {
-        "valeur": 865000,
+        "valeur": 870000,
         "type": "autre_unite",
         "note": "le diamètre en miles (1 392 684 / 1,609344 ≈ 865 374)"
       },
       {
-        "valeur": 769000,
+        "valeur": 770000,
         "type": "autre_perimetre",
-        "note": "diamètre de l'orbite de la Lune (2 × 384 400 km) : le Soleil est presque deux fois plus large"
+        "note": "diamètre de l'orbite de la Lune (2 × 384 400 km = 768 800 km) : le Soleil est presque deux fois plus large"
       },
       {
-        "valeur": 1327000,
+        "valeur": 1270000,
+        "type": "erreur_frequente",
+        "note": "« le Soleil fait 100 fois la Terre » : 100 × 12 742 km = 1 274 200 km, alors qu'il en faut 109"
+      },
+      {
+        "valeur": 1690000,
+        "type": "autre_perimetre",
+        "note": "diamètre d'Alpha du Centaure A, l'étoile semblable au Soleil la plus proche (1,22 rayon solaire, soit environ 1 694 000 km, d'après Wikipédia)"
+      },
+      {
+        "valeur": 1330000,
         "type": "proche"
       },
       {
-        "valeur": 1458000,
+        "valeur": 1460000,
         "type": "proche"
       },
       {
-        "valeur": 1521000,
+        "valeur": 1520000,
         "type": "proche"
       }
     ],

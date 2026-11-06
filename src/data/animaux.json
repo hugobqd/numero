@@ -335,10 +335,10 @@
     "id": "animaux-requin-groenland-age",
     "enonce": "Quel âge a-t-on estimé pour le plus vieux requin du Groenland daté ?",
     "valeur": 392,
-    "valeur_a_retenir": 392,
-    "precision": 1,
+    "valeur_a_retenir": 390,
+    "precision": 10,
     "unite": "ans",
-    "perimetre": "âge estimé d'une femelle de 5,02 m par datation au carbone 14 du cristallin ; la marge d'erreur est grande (± 120 ans, soit entre 272 et 512 ans)",
+    "perimetre": "âge estimé d'une femelle de 5,02 m par datation au carbone 14 du cristallin : 392 ans, avec une grande marge d'erreur (± 120 ans, soit entre 272 et 512 ans) ; à retenir à la dizaine près",
     "ancrage": "Il grandit de moins d'un centimètre par an et n'atteint sa maturité sexuelle que vers 150 ans.",
     "source": {
       "url": "https://ora.ox.ac.uk/objects/pubs:633506",
@@ -349,36 +349,36 @@
     "themes": ["Animaux", "Records"],
     "leurres": [
       {
-        "valeur": 272,
+        "valeur": 270,
         "type": "autre_perimetre",
-        "note": "borne basse de l'estimation (392 ± 120 ans, Nielsen et al., Science, 2016)"
+        "note": "borne basse de l'estimation, 272 ans (392 ± 120 ans, Nielsen et al., Science, 2016)"
       },
       {
-        "valeur": 512,
+        "valeur": 510,
         "type": "autre_perimetre",
-        "note": "borne haute de l'estimation (392 ± 120 ans)"
+        "note": "borne haute de l'estimation, 512 ans (392 ± 120 ans)"
       },
       {
-        "valeur": 335,
+        "valeur": 340,
         "type": "autre_perimetre",
-        "note": "âge estimé de l'autre grande femelle datée (4,93 m, 335 ± 75 ans, même étude, d'après Wikipédia)"
+        "note": "âge estimé de l'autre grande femelle datée, 335 ans (4,93 m, 335 ± 75 ans, même étude, d'après Wikipédia)"
       },
       {
-        "valeur": 211,
+        "valeur": 210,
         "type": "erreur_frequente",
-        "note": "âge record d'une baleine boréale, le mammifère le plus vieux connu (Guinness World Records)"
+        "note": "âge record d'une baleine boréale, 211 ans, le mammifère le plus vieux connu (Guinness World Records)"
       },
       {
-        "valeur": 188,
+        "valeur": 190,
         "type": "autre_perimetre",
-        "note": "âge de la tortue Tu'i Malila, longtemps record chez les tortues (https://fr.wikipedia.org/wiki/Tu%27i_Malila)"
+        "note": "âge de la tortue Tu'i Malila, 188 ans, longtemps record chez les tortues (https://fr.wikipedia.org/wiki/Tu%27i_Malila)"
       },
       {
-        "valeur": 428,
+        "valeur": 430,
         "type": "proche"
       },
       {
-        "valeur": 457,
+        "valeur": 460,
         "type": "proche"
       }
     ],
@@ -446,10 +446,10 @@
     "id": "animaux-baleine-boreale-age",
     "enonce": "Jusqu'à quel âge une baleine boréale a-t-elle été datée ?",
     "valeur": 211,
-    "valeur_a_retenir": 211,
-    "precision": 1,
+    "valeur_a_retenir": 210,
+    "precision": 10,
     "unite": "ans",
-    "perimetre": "âge estimé le plus élevé (étude de 1999, par l'acide aspartique du cristallin) ; la marge d'erreur est grande : entre 177 et 245 ans",
+    "perimetre": "âge estimé le plus élevé, 211 ans (étude de 1999, par l'acide aspartique du cristallin) ; la marge d'erreur est grande, entre 177 et 245 ans : à retenir à la dizaine près",
     "ancrage": "C'est le mammifère le plus longévif connu ; ses fanons, jusqu'à 4 m de long, sont un record chez les cétacés actuels.",
     "source": {
       "url": "https://www.guinnessworldrecords.com/world-records/461724-longest-lived-whale",
@@ -460,31 +460,31 @@
     "themes": ["Animaux", "Records"],
     "leurres": [
       {
-        "valeur": 177,
+        "valeur": 180,
         "type": "autre_perimetre",
-        "note": "borne basse de l'estimation, compte tenu de la précision de la méthode (George et al., 1999, d'après le Guinness World Records)"
+        "note": "borne basse de l'estimation, 177 ans (George et al., 1999, d'après le Guinness World Records)"
       },
       {
-        "valeur": 245,
+        "valeur": 250,
         "type": "autre_perimetre",
-        "note": "borne haute de l'estimation (177 à 245 ans)"
+        "note": "borne haute de l'estimation, 245 ans"
       },
       {
-        "valeur": 188,
+        "valeur": 190,
         "type": "erreur_frequente",
-        "note": "âge de la tortue Tu'i Malila, souvent citée comme animal record de longévité (https://fr.wikipedia.org/wiki/Tu%27i_Malila)"
+        "note": "âge de la tortue Tu'i Malila, 188 ans, souvent citée comme animal record de longévité (https://fr.wikipedia.org/wiki/Tu%27i_Malila)"
       },
       {
-        "valeur": 392,
+        "valeur": 390,
         "type": "autre_perimetre",
-        "note": "âge estimé du plus vieux requin du Groenland daté (Nielsen et al., Science, 2016)"
+        "note": "âge estimé du plus vieux requin du Groenland daté, 392 ans (Nielsen et al., Science, 2016)"
       },
       {
-        "valeur": 237,
+        "valeur": 240,
         "type": "proche"
       },
       {
-        "valeur": 163,
+        "valeur": 160,
         "type": "proche"
       }
     ],
@@ -510,7 +510,7 @@
       "recoupement": "https://placentation.ucsd.edu/elep.html",
       "idee": "Stock du prototype ; culture générale (records du monde animal)"
     },
-    "themes": ["Animaux", "Records"],
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 15,

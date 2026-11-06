@@ -46,8 +46,8 @@
       }
     ],
     "difficulte": {
-      "cran": 3,
-      "justification": "La mesure de la circonférence terrestre (Ératosthène) est au programme d'enseignement scientifique de 1re ; l'ordre de grandeur de 40 000 km est connu, la valeur précise de 40 075 km l'est beaucoup moins."
+      "cran": 2,
+      "justification": "La taille de la Terre est vue au collège (physique-chimie, cycle 4) et « environ 40 000 km » est très connu ; la valeur au kilomètre près l'est moins. Cran aligné sur le diamètre et le rayon (relecture du lot 1)."
     },
     "statut": "brouillon",
     "langue": "fr"
@@ -99,8 +99,8 @@
       }
     ],
     "difficulte": {
-      "cran": 3,
-      "justification": "Le rayon terrestre (environ 6 400 km) sert en physique-chimie au collège (cycle 4, gravitation) et en enseignement scientifique de 1re ; la valeur précise de 6 371 km relève de la culture générale."
+      "cran": 2,
+      "justification": "Le rayon terrestre (environ 6 400 km) sert en physique-chimie au collège (cycle 4, gravitation) ; la valeur de 6 371 km se retient avec le diamètre. Cran aligné sur le diamètre et la circonférence (relecture du lot 1)."
     },
     "statut": "brouillon",
     "langue": "fr"

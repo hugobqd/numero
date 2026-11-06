@@ -435,11 +435,11 @@
   {
     "id": "physique-vitesse-liberation-terre",
     "enonce": "À quelle vitesse faut-il lancer un objet pour qu'il échappe à l'attraction de la Terre ?",
-    "valeur": 40270,
-    "valeur_a_retenir": 40300,
+    "valeur": 11186,
+    "valeur_a_retenir": 11200,
     "precision": 100,
-    "unite": "km/h",
-    "perimetre": "vitesse de libération depuis la surface terrestre, sans frottement de l'air (11,19 km/s, soit environ 40 270 km/h)",
+    "unite": "m/s",
+    "perimetre": "vitesse de libération depuis la surface terrestre, sans frottement de l'air : 11,19 km/s, soit 11 186 m/s (environ 40 300 km/h)",
     "ancrage": "11,2 km par seconde : Paris-Marseille en moins de 70 secondes.",
     "source": {
       "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
@@ -450,30 +450,31 @@
     "themes": ["Physique", "Astronomie"],
     "leurres": [
       {
-        "valeur": 28400,
+        "valeur": 7900,
         "type": "erreur_frequente",
-        "note": "vitesse minimale de satellisation (7,9 km/s ≈ 28 440 km/h, page Vitesse de libération) : suffit pour rester en orbite, pas pour s'échapper"
+        "note": "vitesse minimale de satellisation (7,9 km/s, page Vitesse de libération) : elle suffit pour rester en orbite, pas pour s'échapper"
       },
       {
-        "valeur": 59800,
+        "valeur": 16600,
         "type": "autre_perimetre",
-        "note": "vitesse à atteindre près de la Terre pour quitter le système solaire : 16,6 km/s ≈ 59 760 km/h, dans un référentiel géocentrique (page Vitesse de libération)"
+        "note": "vitesse à atteindre près de la Terre pour quitter le système solaire : 16,6 km/s, dans un référentiel géocentrique (page Vitesse de libération)"
       },
       {
-        "valeur": 8600,
+        "valeur": 10400,
         "type": "autre_perimetre",
-        "note": "vitesse de libération de la Lune : 2,38 km/s ≈ 8 570 km/h (fiche Lune de la NASA) ; leurre éloigné"
+        "note": "vitesse de libération de Vénus : 10,36 km/s (fiche Vénus de la NASA)"
       },
       {
-        "valeur": 37400,
+        "valeur": 2400,
+        "type": "autre_perimetre",
+        "note": "vitesse de libération de la Lune : 2,38 km/s (fiche Lune de la NASA) ; leurre éloigné"
+      },
+      {
+        "valeur": 12100,
         "type": "proche"
       },
       {
-        "valeur": 43600,
-        "type": "proche"
-      },
-      {
-        "valeur": 34900,
+        "valeur": 10800,
         "type": "proche"
       }
     ],
