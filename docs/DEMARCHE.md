@@ -48,7 +48,7 @@ Six chantiers, mais **pas six agents permanents** :
 - Les benchmarks Quizlet et WikiMaster sont des tâches de Hugo, sans Claude : noter les observations en commentaire du ticket, puis le fermer.
 - *Plan de création du contenu : résolu le 2026-11-06* (150 fiches par lots de 25, difficulté en 4 crans, thèmes ouverts, public dès 12 ans ; détail dans `DECISIONS.md`).
 - Ordre conseillé : Outil de gestion des fiches (prototype, utile dès le premier lot de relecture), Revue par des agents experts, Ton rassurant appliqué (prototype), Composition du parcours (débloqué). Fiches gagnées en révision attend les deux benchmarks.
-- L'étape 7 (industrialiser le contenu) peut démarrer : le plan est tranché.
+- **Production du contenu** : une seule issue, « [Production du contenu v1 : 150 fiches](https://github.com/hugobqd/numero/issues/10) », un lot par session et une PR par lot (jamais de push direct). Lancer une session avec : « Exécute le prochain lot de l'issue hugobqd/numero#10 ». Elle remplace l'étape 7 : pas d'agents dédiés pour l'instant.
 - Dès qu'une décision est constructible : `/to-spec` → `/to-tickets` → `/implement`, livraison, test de couloir.
 
 Dette de vocabulaire dans le code, à corriger lors de la construction : `slider` / `Affineur` → curseur, `thematique` → thème, badge « niveau découverte » → exigence, logique du « jour simulé » → parcours.
