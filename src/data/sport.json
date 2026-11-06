@@ -1,0 +1,172 @@
+[
+  {
+    "id": "sport-match-football-duree",
+    "enonce": "Combien de temps dure un match de football ?",
+    "valeur": 90,
+    "valeur_a_retenir": 90,
+    "precision": 1,
+    "unite": "minutes",
+    "perimetre": "temps de jeu réglementaire d'un match d'adultes : deux mi-temps de 45 minutes, sans le temps additionnel, la pause de la mi-temps ni les prolongations",
+    "ancrage": "Une heure et demie de jeu : deux mi-temps de 45 minutes, séparées par une pause qui ne doit pas dépasser 15 minutes.",
+    "source": {
+      "url": "https://www.theifab.com/laws/latest/the-duration-of-the-match/",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Football",
+      "idee": "Culture générale sportive"
+    },
+    "themes": ["Sport"],
+    "leurres": [
+      {
+        "valeur": 120,
+        "type": "autre_perimetre",
+        "note": "durée avec les prolongations : 90 minutes + deux périodes de 15 minutes au plus (IFAB, Lois du jeu, loi 10.2)"
+      },
+      {
+        "valeur": 105,
+        "type": "autre_perimetre",
+        "note": "90 minutes de jeu + la pause de la mi-temps, au plus 15 minutes (IFAB, loi 7.2) : durée entre le coup d'envoi et le coup de sifflet final, hors temps additionnel"
+      },
+      {
+        "valeur": 45,
+        "type": "autre_perimetre",
+        "note": "durée d'une seule mi-temps (IFAB, loi 7.1 : « two equal halves of 45 minutes »)"
+      },
+      {
+        "valeur": 80,
+        "type": "autre_perimetre",
+        "note": "durée d'un match de rugby à XV : deux mi-temps de 40 minutes au plus (World Rugby, loi 5.1)"
+      },
+      {
+        "valeur": 60,
+        "type": "autre_perimetre",
+        "note": "durée d'un match de handball pour les 16 ans et plus : 2 × 30 minutes (IHF, Règles de jeu, règle 2:1)"
+      },
+      {
+        "valeur": 48,
+        "type": "autre_perimetre",
+        "note": "durée d'un match de basket NBA : quatre périodes de 12 minutes (NBA, Official Playing Rules, règle 5, section II)"
+      },
+      {
+        "valeur": 95,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Nombre très connu, entendu dès l'enfance à la télévision et sur les terrains ; 2 × 45 se calcule à l'école primaire."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "sport-marathon-distance",
+    "enonce": "Quelle est la longueur d'un marathon ?",
+    "valeur": 42195,
+    "valeur_a_retenir": 42195,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "distance officielle de la course sur route, soit 42,195 km (26 miles et 385 yards), fixée en 1921",
+    "ancrage": "Cette distance bizarre vient des Jeux olympiques de Londres en 1908 : la course partait du château de Windsor et finissait devant la loge royale du stade.",
+    "source": {
+      "url": "https://worldathletics.org/disciplines/road-running/marathon",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.olympedia.org/results/56369?id=56412",
+      "idee": "Culture générale sportive ; épreuve olympique très médiatisée"
+    },
+    "themes": ["Sport"],
+    "leurres": [
+      {
+        "valeur": 46145,
+        "type": "autre_unite",
+        "note": "la même distance en yards : 26 miles × 1 760 + 385 = 46 145 yards (World Athletics : « 26 miles and 385 yards »)"
+      },
+      {
+        "valeur": 21098,
+        "type": "autre_perimetre",
+        "note": "distance du semi-marathon, 21,0975 km arrondi au mètre (World Athletics, page Half Marathon)"
+      },
+      {
+        "valeur": 41843,
+        "type": "autre_perimetre",
+        "note": "26 miles tout rond (26 × 1 609,344 m) : la distance « impériale » de Londres 1908 sans les 385 yards courus sur la piste jusqu'à la loge royale (World Athletics ; Olympedia)"
+      },
+      {
+        "valeur": 42237,
+        "type": "autre_perimetre",
+        "note": "longueur mesurée à vélo lors du tracé : 42 195 m × 1,001, marge de sécurité pour qu'un parcours ne soit jamais trop court (short course prevention factor, manuel IAAF/World Athletics de mesure des parcours sur route, 2004)"
+      },
+      {
+        "valeur": 42915,
+        "type": "proche"
+      },
+      {
+        "valeur": 41295,
+        "type": "proche"
+      },
+      {
+        "valeur": 43195,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Les 42 km sont très connus, mais les 195 mètres font hésiter : grand public plutôt que tout public. Hors programme scolaire."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "sport-panier-basket-hauteur",
+    "enonce": "À quelle hauteur se trouve un panier de basket ?",
+    "valeur": 305,
+    "valeur_a_retenir": 305,
+    "precision": 1,
+    "unite": "cm",
+    "perimetre": "hauteur du bord supérieur de l'anneau au-dessus du sol, en compétition adulte (règles FIBA : 3 050 mm à 6 mm près ; NBA : 10 pieds)",
+    "ancrage": "Le panier est 61 cm plus haut que la barre transversale d'un but de football (2,44 m).",
+    "mnemo": "3,05 m, c'est 10 pieds : un chiffre rond aux États-Unis, où le basket a été inventé.",
+    "source": {
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-fiba-official-rules-2026-equipment-v1-0.pdf",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://ak-static.cms.nba.com/wp-content/uploads/sites/4/2024/10/2024-25-Official-NBA-Playing-Rules.pdf",
+      "idee": "Culture générale sportive"
+    },
+    "themes": ["Sport"],
+    "leurres": [
+      {
+        "valeur": 244,
+        "type": "autre_perimetre",
+        "note": "hauteur du bord inférieur de la barre transversale d'un but de football, 2,44 m (IFAB, Lois du jeu, loi 1.10)"
+      },
+      {
+        "valeur": 243,
+        "type": "autre_perimetre",
+        "note": "hauteur du filet de volley pour les hommes, 2,43 m (FIVB, Règles officielles 2025-2028, règle 2.1.1)"
+      },
+      {
+        "valeur": 224,
+        "type": "autre_perimetre",
+        "note": "hauteur du filet de volley pour les femmes, 2,24 m (FIVB, Règles officielles 2025-2028, règle 2.1.1)"
+      },
+      {
+        "valeur": 395,
+        "type": "autre_perimetre",
+        "note": "hauteur du haut du panneau : son bord inférieur est 150 mm sous le haut de l'anneau (2 900 mm) et il mesure 1 050 mm de haut (FIBA, Basketball Equipment 2026, articles 1.1.3, 1.1.5 et 1.2.4)"
+      },
+      {
+        "valeur": 315,
+        "type": "proche"
+      },
+      {
+        "valeur": 287,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Sport souvent pratiqué en EPS au collège ; « 3 mètres » est connu, mais les 5 centimètres de plus font hésiter."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]

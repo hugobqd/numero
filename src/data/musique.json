@@ -1,0 +1,63 @@
+[
+  {
+    "id": "musique-piano-touches",
+    "enonce": "Combien de touches compte un piano ?",
+    "valeur": 88,
+    "valeur_a_retenir": 88,
+    "precision": 1,
+    "unite": "touches",
+    "perimetre": "piano moderne standard, droit ou à queue : touches blanches et noires comprises",
+    "ancrage": "Le tout premier piano, inventé en Italie par Bartolomeo Cristofori, n'avait que 54 touches.",
+    "mnemo": "52 blanches + 36 noires = 88.",
+    "source": {
+      "url": "https://www.yamaha.com/en/musical_instrument_guide/piano/structure/structure003.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.kawaius.com/faq/how-many-keys-are-on-a-piano",
+      "idee": "Culture générale ; musique"
+    },
+    "themes": ["Musique", "Humanité"],
+    "leurres": [
+      {
+        "valeur": 85,
+        "type": "erreur_frequente",
+        "note": "nombre de touches standard pendant une partie du XIXe siècle, avant le passage à 88 ; ex. le Steinway modèle B de 1891, à 3 touches de moins dans l'aigu (M. Steinert & Sons, « The 85-key Steinway »)"
+      },
+      {
+        "valeur": 52,
+        "type": "autre_perimetre",
+        "note": "touches blanches seulement (Classic FM, « Why does a piano have 88 keys? » : « 52 white and 36 black »)"
+      },
+      {
+        "valeur": 36,
+        "type": "autre_perimetre",
+        "note": "touches noires seulement (Classic FM, même article), leurre éloigné"
+      },
+      {
+        "valeur": 97,
+        "type": "autre_perimetre",
+        "note": "Bösendorfer Imperial, piano de concert à 8 octaves complètes (Yamaha, « Why Aren't There More Than 88 Keys on a Piano? » : pianos à 97 touches sur commande ; Wikipédia, « Imperial Bösendorfer »)"
+      },
+      {
+        "valeur": 61,
+        "type": "autre_perimetre",
+        "note": "clavier de 5 octaves, norme du piano jusqu'à la fin du XVIIIe siècle et format de nombreux claviers électroniques (Yamaha, guide des instruments, « The origins of the Piano »)"
+      },
+      {
+        "valeur": 82,
+        "type": "autre_perimetre",
+        "note": "étendue du piano à l'époque de Chopin et de Liszt (Yamaha, guide des instruments, « The origins of the Piano »)"
+      },
+      {
+        "valeur": 76,
+        "type": "autre_perimetre",
+        "note": "clavier de certains pianos numériques portables pour débutants (Kawai, FAQ « How many keys are on a piano? »)"
+      }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Hors programme, mais nombre souvent cité et familier de ceux qui jouent ou voient un piano ; il se retrouve en comptant les 7 octaves et un peu plus."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]

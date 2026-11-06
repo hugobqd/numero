@@ -497,5 +497,242 @@
     },
     "statut": "brouillon",
     "langue": "fr"
+  },
+  {
+    "id": "astro-planetes-systeme-solaire",
+    "enonce": "Combien de planètes compte le système solaire ?",
+    "valeur": 8,
+    "valeur_a_retenir": 8,
+    "precision": 1,
+    "unite": "planètes",
+    "perimetre": "planètes au sens de l'Union astronomique internationale depuis 2006, sans les planètes naines comme Pluton",
+    "ancrage": "Quatre planètes rocheuses près du Soleil (Mercure, Vénus, la Terre et Mars), puis quatre planètes géantes (Jupiter, Saturne, Uranus et Neptune).",
+    "mnemo": "« Me Voici Tout Mouillé, J'ai Suivi Un Nuage » : un mot par planète, dans l'ordre depuis le Soleil.",
+    "source": {
+      "url": "https://science.nasa.gov/solar-system/planets/",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Plan%C3%A8te",
+      "idee": "Liste de culture générale ; programme de sciences et technologie du cycle 3 (« situer la Terre dans le système solaire »)"
+    },
+    "themes": ["Astronomie", "Système solaire"],
+    "leurres": [
+      {
+        "valeur": 9,
+        "type": "erreur_frequente",
+        "note": "Pluton comptait comme neuvième planète de sa découverte en 1930 jusqu'à son reclassement en planète naine par l'UAI en 2006 (NASA, « What Is a Planet? », https://science.nasa.gov/solar-system/planets/what-is-a-planet/)"
+      },
+      {
+        "valeur": 12,
+        "type": "autre_perimetre",
+        "note": "projet de définition de l'UAI du 16 août 2006, rejeté au vote du 24 août : il aurait donné 12 planètes en ajoutant Cérès, Charon et 2003 UB313 (Éris) (UAI, https://www.iau.org/Iau/News/PR2006/iau-draft-planet-pluton-definition.aspx)"
+      },
+      {
+        "valeur": 5,
+        "type": "autre_perimetre",
+        "note": "planètes visibles à l'œil nu depuis la Terre : Mercure, Vénus, Mars, Jupiter et Saturne (Wikipédia, Planète ; NASA JPL, « A Planetary Quintet Is Dancing Across the Skies »)"
+      },
+      {
+        "valeur": 4,
+        "type": "autre_perimetre",
+        "note": "planètes telluriques (rocheuses) seules : Mercure, Vénus, la Terre et Mars (NASA, Planets)"
+      },
+      {
+        "valeur": 7,
+        "type": "autre_perimetre",
+        "note": "planètes autres que la Terre ; c'est aussi le nombre d'astres errants des Anciens (Soleil, Lune et cinq planètes visibles), qui ont donné leurs noms aux jours de la semaine (Wikipédia, Planète)"
+      },
+      {
+        "valeur": 6,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Le système solaire et ses planètes sont au programme de sciences et technologie du cycle 3 (« situer la Terre dans le système solaire ») ; huit planètes est un nombre très connu."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-annee-terrestre",
+    "enonce": "Combien de jours met la Terre pour faire le tour du Soleil ?",
+    "valeur": 365.256,
+    "valeur_a_retenir": 365,
+    "precision": 1,
+    "unite": "jours",
+    "perimetre": "durée d'une révolution complète de la Terre autour du Soleil (année sidérale de 365,256 jours), arrondie au jour ; l'année des saisons, sur laquelle se cale le calendrier, dure 365,242 jours",
+    "ancrage": "Il reste près d'un quart de jour à chaque tour : on le rattrape en ajoutant un 29 février presque tous les quatre ans.",
+    "source": {
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Ann%C3%A9e_sid%C3%A9rale",
+      "idee": "Liste de culture générale ; programme de sciences et technologie du cycle 3 (mouvements de la Terre : rotation et révolution)"
+    },
+    "themes": ["Astronomie", "Système solaire"],
+    "leurres": [
+      {
+        "valeur": 366,
+        "type": "autre_perimetre",
+        "note": "durée d'une année bissextile, avec le 29 février (Wikipédia, Année bissextile)"
+      },
+      {
+        "valeur": 354,
+        "type": "autre_perimetre",
+        "note": "année lunaire de 12 mois lunaires, durée d'une année commune du calendrier hégirien (Wikipédia, Calendrier hégirien : 354 ou 355 jours)"
+      },
+      {
+        "valeur": 225,
+        "type": "autre_perimetre",
+        "note": "durée de l'année de Vénus en jours terrestres (224,701 jours, fiche NASA de Vénus)"
+      },
+      {
+        "valeur": 364,
+        "type": "autre_perimetre",
+        "note": "52 semaines pleines de 7 jours ; une année en compte un ou deux de plus"
+      },
+      {
+        "valeur": 687,
+        "type": "autre_perimetre",
+        "note": "durée de l'année martienne en jours terrestres (686,98 jours, fiche NASA de Mars)"
+      },
+      {
+        "valeur": 368,
+        "type": "proche"
+      },
+      {
+        "valeur": 361,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "La révolution de la Terre autour du Soleil en un an est au programme de sciences et technologie du cycle 3 ; 365 jours est un nombre très connu."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-diametre-lune",
+    "enonce": "Quel est le diamètre moyen de la Lune ?",
+    "valeur": 3474.8,
+    "valeur_a_retenir": 3475,
+    "precision": 1,
+    "unite": "km",
+    "perimetre": "diamètre moyen (2 × rayon moyen de 1 737,4 km)",
+    "ancrage": "C'est un peu plus du quart du diamètre de la Terre (12 742 km) : il faudrait aligner environ 3,7 Lunes pour traverser la Terre.",
+    "source": {
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Lune",
+      "idee": "Liste de culture générale ; ordres de grandeur du système solaire (physique-chimie, cycle 4)"
+    },
+    "themes": ["Astronomie", "Système solaire"],
+    "leurres": [
+      {
+        "valeur": 1737,
+        "type": "erreur_frequente",
+        "note": "rayon moyen (1 737,4 km, fiche NASA de la Lune), confusion rayon / diamètre"
+      },
+      {
+        "valeur": 2159,
+        "type": "autre_unite",
+        "note": "le diamètre moyen en miles (3 474,8 / 1,609344 ≈ 2 159,1)"
+      },
+      {
+        "valeur": 3476,
+        "type": "autre_perimetre",
+        "note": "diamètre équatorial (2 × 1 738,1 km, fiche NASA de la Lune)"
+      },
+      {
+        "valeur": 3643,
+        "type": "autre_perimetre",
+        "note": "diamètre d'Io, lune de Jupiter un peu plus grande que la nôtre (2 × 1 821,5 km, fiche NASA des satellites de Jupiter)"
+      },
+      {
+        "valeur": 3122,
+        "type": "autre_perimetre",
+        "note": "diamètre d'Europe, lune de Jupiter un peu plus petite que la nôtre (2 × 1 560,8 km, fiche NASA des satellites de Jupiter)"
+      },
+      {
+        "valeur": 4879,
+        "type": "autre_perimetre",
+        "note": "diamètre de Mercure, la plus petite planète (fiche comparative NASA des planètes)"
+      },
+      {
+        "valeur": 2376,
+        "type": "autre_perimetre",
+        "note": "diamètre de Pluton (fiche comparative NASA des planètes)"
+      },
+      {
+        "valeur": 3812,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Les ordres de grandeur du système solaire sont vus au collège (physique-chimie, cycle 4) ; « environ 3 500 km » se retient, la valeur au kilomètre près moins."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-secondes-jour",
+    "enonce": "Combien de secondes compte une journée ?",
+    "valeur": 86400,
+    "valeur_a_retenir": 86400,
+    "precision": 1,
+    "unite": "secondes",
+    "perimetre": "journée de 24 heures : 1 jour = 24 h = 86 400 s, selon le Bureau international des poids et mesures",
+    "ancrage": "Une année de 365 jours compte ainsi 31 536 000 secondes, plus de 31 millions.",
+    "mnemo": "24 × 60 × 60 : les heures, puis les minutes, puis les secondes.",
+    "source": {
+      "url": "https://www.bipm.org/en/publications/si-brochure",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-5-units-outside-si",
+      "idee": "Liste de culture générale ; programme de mathématiques du cycle 3 (conversions de durées)"
+    },
+    "themes": ["Astronomie", "Physique"],
+    "leurres": [
+      {
+        "valeur": 86164,
+        "type": "autre_perimetre",
+        "note": "jour sidéral, le temps d'un tour de la Terre par rapport aux étoiles (23,9345 h, fiche NASA de la Terre, soit 86 164,2 s)"
+      },
+      {
+        "valeur": 88775,
+        "type": "autre_perimetre",
+        "note": "sol, la journée martienne (24,6597 h, fiche NASA de Mars, soit 88 774,9 s)"
+      },
+      {
+        "valeur": 86401,
+        "type": "autre_perimetre",
+        "note": "journée avec une seconde intercalaire, la dernière le 31 décembre 2016 à 23 h 59 min 60 s ; ces secondes seront abandonnées à partir de 2027 (IERS, https://hpiers.obspm.fr/eop-pc/earthor/utc/leapsecond_fr.html ; Wikipédia, Seconde intercalaire)"
+      },
+      {
+        "valeur": 43200,
+        "type": "autre_perimetre",
+        "note": "secondes en 12 heures, un tour de cadran (12 × 3 600)"
+      },
+      {
+        "valeur": 1440,
+        "type": "autre_unite",
+        "note": "nombre de minutes dans une journée (24 × 60) ; leurre éloigné"
+      },
+      {
+        "valeur": 84600,
+        "type": "proche",
+        "note": "mêmes chiffres que 86 400, avec le 4 et le 6 intervertis"
+      },
+      {
+        "valeur": 82800,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Les conversions de durées (heures, minutes, secondes) sont vues en mathématiques dès le cycle 3 ; 86 400 se calcule, mais peu de gens le connaissent par cœur."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
   }
 ]

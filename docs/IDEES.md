@@ -38,3 +38,10 @@ Prolongement de la collection de fiches, dont une première version existe : les
   - Doublons : que vaut une fiche déjà possédée (de l'expérience, de la maîtrise, une monnaie d'échange) ?
   - Renommer « fiche » en « carte » pour encourager la collectionnite (noté à l'étape 3). Le glossaire réserve déjà « carte » à l'objet de jeu ; les éléments d'interface s'appellent « blocs » et le regroupement d'un thème un « album ».
   - Garder l'apprentissage au centre : une fiche n'est vraiment « acquise » qu'une fois maîtrisée (étoiles), pas seulement gagnée.
+
+## 4. Des leurres « exacts » que le jeu ne retouche pas (noté le 2026-11-06)
+
+Le jeu décale de quelques % un leurre plus rond que la réponse, pour qu'il ne se trahisse pas. Il perd alors des pièges exacts et instructifs, retirés des fiches pour cette raison au lot 2 : l'ancien record du mille-pattes (750 pattes), la « 10e planète » (10), l'année de 360 jours, le panier de mini-basket (260 cm), les premiers marathons (40 000 m).
+
+- **Idée** : marquer un leurre comme exact dans la fiche (par exemple `"exact": true`), pour que le jeu le montre tel quel.
+- **À creuser** : un leurre rond et exact se repère-t-il trop facilement à côté d'une réponse précise ? Faut-il le réserver aux pièges sourcés ?
