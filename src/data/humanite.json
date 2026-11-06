@@ -312,5 +312,358 @@
     },
     "statut": "brouillon",
     "langue": "fr"
+  },
+  {
+    "id": "humanite-drapeau-europeen-etoiles",
+    "enonce": "Combien d'étoiles y a-t-il sur le drapeau européen ?",
+    "valeur": 12,
+    "valeur_a_retenir": 12,
+    "precision": 1,
+    "unite": "étoiles",
+    "perimetre": "étoiles d'or disposées en cercle sur fond bleu, drapeau commun au Conseil de l'Europe et à l'Union européenne ; leur nombre est fixe et ne dépend pas du nombre de pays membres",
+    "ancrage": "Le drapeau a été adopté en 1955 par le Conseil de l'Europe, bien avant l'Union européenne : il a gardé ses 12 étoiles alors que l'Union est passée de 6 à 27 pays.",
+    "mnemo": "12 étoiles en cercle, comme les 12 heures sur le cadran d'une montre.",
+    "source": {
+      "url": "https://european-union.europa.eu/principles-countries-history/symbols/european-flag_fr",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Drapeau_europ%C3%A9en",
+      "idee": "Liste de culture générale ; drapeau affiché dans chaque salle de classe depuis la loi du 26 juillet 2019 (article L. 111-1-2 du Code de l'éducation)"
+    },
+    "themes": ["Humanité"],
+    "leurres": [
+      { "valeur": 27, "type": "erreur_frequente", "note": "nombre de pays de l'UE : beaucoup croient qu'il y a une étoile par pays, alors que l'UE précise que « le nombre d'étoiles n'est pas lié au nombre de pays » (european-union.europa.eu, page « Le drapeau européen ») ; leurre éloigné" },
+      { "valeur": 15, "type": "autre_perimetre", "note": "premier projet de 1953 (Robert Bichet) : un cercle de 15 étoiles, une par membre du Conseil de l'Europe d'alors, abandonné à cause de la Sarre (Wikipédia, « Drapeau européen ») ; c'est aussi le nombre de pays de l'UE en 1995 (Wikipédia, « Élargissement de l'Union européenne »)" },
+      { "valeur": 6, "type": "autre_perimetre", "note": "pays fondateurs de la Communauté européenne en 1958 : Allemagne, Belgique, France, Italie, Luxembourg, Pays-Bas (european-union.europa.eu, page « Pays de l'UE »)" },
+      { "valeur": 9, "type": "autre_perimetre", "note": "membres de la Communauté européenne après l'adhésion du Royaume-Uni, de l'Irlande et du Danemark en 1973 (Wikipédia, « Élargissement de l'Union européenne »)" },
+      { "valeur": 14, "type": "proche" },
+      { "valeur": 11, "type": "proche" },
+      { "valeur": 13, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Drapeau affiché dans toutes les salles de classe depuis 2019 et partout en Europe : un enfant peut compter ses étoiles ; le piège « une étoile par pays » reste courant."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-regions-metropole",
+    "enonce": "Combien de régions compte la France métropolitaine ?",
+    "valeur": 13,
+    "valeur_a_retenir": 13,
+    "precision": 1,
+    "unite": "régions",
+    "perimetre": "régions de France métropolitaine depuis le 1er janvier 2016 (loi du 16 janvier 2015), en comptant la Corse, collectivité à statut particulier qui exerce les compétences d'une région ; sans les 5 régions d'outre-mer",
+    "ancrage": "Avant 2016, il y en avait 22 : certaines ont fusionné, comme la Basse-Normandie et la Haute-Normandie, devenues la Normandie.",
+    "source": {
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000030109622",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/R%C3%A9gion_fran%C3%A7aise",
+      "idee": "Programme de géographie de 3e (repère du brevet : « les 13 régions métropolitaines », fiche repère de l'académie de Versailles) ; découpage administratif abordé dès le CM1"
+    },
+    "themes": ["Humanité", "France"],
+    "leurres": [
+      { "valeur": 22, "type": "erreur_frequente", "note": "nombre de régions métropolitaines avant le 1er janvier 2016, encore dans beaucoup de mémoires (Acteurs publics, « Les députés PS redessinent une carte à 13 régions » : « de 22 à 13, Corse comprise »)" },
+      { "valeur": 18, "type": "autre_perimetre", "note": "régions de toute la France : 13 en métropole et 5 en outre-mer (Guadeloupe, Guyane, Martinique, La Réunion, Mayotte) (Wikipédia, « Région française »)" },
+      { "valeur": 12, "type": "autre_perimetre", "note": "régions métropolitaines sans la Corse : la loi du 16 janvier 2015 liste 12 régions « sans préjudice des dispositions applicables […] à la collectivité territoriale de Corse » (Légifrance, loi n° 2015-29, article 1er)" },
+      { "valeur": 17, "type": "autre_perimetre", "note": "décompte de l'Insee : « Il y a en France 17 régions dont 5 d'outre-mer », la Corse étant seulement « assimilée à une région » (insee.fr, définition « Région », c1502)" },
+      { "valeur": 14, "type": "autre_perimetre", "note": "nombre de régions du projet de loi du gouvernement en 2014, ramené à 13 par les députés (Acteurs publics : « 13 régions, au lieu de 14 initialement prévues »)" },
+      { "valeur": 15, "type": "proche" },
+      { "valeur": 11, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Les 13 régions métropolitaines sont un repère de géographie de 3e (brevet) ; beaucoup d'adultes hésitent encore avec les 22 régions d'avant 2016 ou les 18 avec l'outre-mer."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-deputes-assemblee",
+    "enonce": "Combien de députés siègent à l'Assemblée nationale ?",
+    "valeur": 577,
+    "valeur_a_retenir": 577,
+    "precision": 1,
+    "unite": "députés",
+    "perimetre": "nombre de sièges de députés, plafond fixé par l'article 24 de la Constitution : 539 élus en métropole, 27 en outre-mer et 11 par les Français de l'étranger",
+    "ancrage": "Chaque député représente une circonscription : 11 d'entre elles regroupent les Français qui vivent à l'étranger, partout dans le monde.",
+    "source": {
+      "url": "https://www.conseil-constitutionnel.fr/le-bloc-de-constitutionnalite/texte-integral-de-la-constitution-du-4-octobre-1958-en-vigueur",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://insee.fr/fr/statistiques/6436478",
+      "idee": "Liste de culture générale ; programme d'EMC du cycle 4 (institutions de la République, le Parlement)"
+    },
+    "themes": ["Humanité", "France"],
+    "leurres": [
+      { "valeur": 348, "type": "autre_perimetre", "note": "nombre de sénateurs : « dont le nombre de membres ne peut excéder trois cent quarante-huit » (Constitution, article 24)" },
+      { "valeur": 925, "type": "autre_perimetre", "note": "577 députés + 348 sénateurs : les parlementaires réunis en Congrès à Versailles (Constitution, articles 24 et 89 ; Wikipédia, « Number of parliamentarians in the Fifth French Republic »)" },
+      { "valeur": 705, "type": "autre_perimetre", "note": "nombre de députés européens de 2020 à 2024, après le Brexit, avant le passage à 720 en 2024 : « de 705 à 720 » (europarl.europa.eu, « Redistribution des sièges au Parlement européen après le Brexit ») ; 720 n'est pas gardé comme leurre car trop rond pour 577" },
+      { "valeur": 539, "type": "autre_perimetre", "note": "députés élus en France métropolitaine seulement, sans l'outre-mer ni les Français de l'étranger (Insee, « Portraits des circonscriptions législatives »)" },
+      { "valeur": 594, "type": "proche" },
+      { "valeur": 612, "type": "proche" },
+      { "valeur": 563, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Le Parlement est étudié en EMC au cycle 4 (3e) et le nombre 577 revient à chaque élection législative ; on le confond facilement avec les sénateurs ou les eurodéputés."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-etats-unis-etats",
+    "enonce": "Combien d'États forment les États-Unis ?",
+    "valeur": 50,
+    "valeur_a_retenir": 50,
+    "precision": 1,
+    "unite": "États",
+    "perimetre": "États fédérés, depuis l'admission d'Hawaï le 21 août 1959 ; sans le district de Columbia (Washington) ni les territoires comme Porto Rico",
+    "ancrage": "Le drapeau américain compte une étoile par État, soit 50 étoiles, et 13 bandes pour les 13 colonies qui ont fondé le pays.",
+    "mnemo": "50 États, 50 étoiles sur le drapeau.",
+    "source": {
+      "url": "https://www.usa.gov/state-governments",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/%C3%89tat_des_%C3%89tats-Unis",
+      "idee": "Liste de culture générale ; nombre très connu"
+    },
+    "themes": ["Humanité"],
+    "leurres": [
+      { "valeur": 48, "type": "autre_perimetre", "note": "États contigus, sans l'Alaska ni Hawaï : « the 48 adjoining U.S. states » (Wikipédia anglais, « Contiguous United States ») ; c'était aussi le nombre total d'États de 1912 à 1959" },
+      { "valeur": 49, "type": "autre_perimetre", "note": "nombre d'États entre l'admission de l'Alaska (3 janvier 1959) et celle d'Hawaï (21 août 1959) ; un drapeau à 49 étoiles a flotté de 1959 à 1960 (Wikipédia, « Drapeau des États-Unis »)" },
+      { "valeur": 51, "type": "erreur_frequente", "note": "50 États + le district de Columbia, que l'on prend souvent pour un État ; usa.gov le liste à côté des 50 États (page « State governments »)" },
+      { "valeur": 56, "type": "autre_perimetre", "note": "50 États + le district de Columbia + 5 territoires habités (Samoa américaines, Guam, îles Mariannes du Nord, Porto Rico, îles Vierges) (usa.gov, page « State governments »)" },
+      { "valeur": 13, "type": "autre_perimetre", "note": "les 13 colonies fondatrices, représentées par les 13 bandes du drapeau (Wikipédia, « Drapeau des États-Unis ») ; leurre éloigné" },
+      { "valeur": 46, "type": "proche" },
+      { "valeur": 53, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Nombre très connu, visible sur le drapeau américain et souvent cité dans les films et les médias."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-pays-afrique",
+    "enonce": "Combien de pays compte l'Afrique ?",
+    "valeur": 54,
+    "valeur_a_retenir": 54,
+    "precision": 1,
+    "unite": "pays",
+    "perimetre": "États souverains d'Afrique membres de l'ONU (groupe des États d'Afrique), depuis l'indépendance du Soudan du Sud en 2011 ; sans la République sahraouie, membre de l'Union africaine mais pas de l'ONU",
+    "ancrage": "Plus d'un pays sur quatre membres de l'ONU est africain : 54 sur 193.",
+    "source": {
+      "url": "https://www.un.org/dgacm/en/content/regional-groups",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://au.int/en/member_states/countryprofiles2",
+      "idee": "Liste de culture générale ; l'Afrique est étudiée en géographie au collège (cycle 4)"
+    },
+    "themes": ["Humanité"],
+    "leurres": [
+      { "valeur": 55, "type": "autre_perimetre", "note": "membres de l'Union africaine, qui compte aussi la République arabe sahraouie démocratique (au.int : « The AU is made up of 55 Member States »)" },
+      { "valeur": 53, "type": "erreur_frequente", "note": "nombre d'États africains de l'ONU avant l'admission du Soudan du Sud en 2011 (ONU, « Growth in United Nations membership »)" },
+      { "valeur": 48, "type": "autre_perimetre", "note": "pays d'Afrique subsaharienne selon la Banque mondiale : « 48 countries in Sub-Saharan Africa » (communiqué de la Banque mondiale du 1er juillet 2020)" },
+      { "valeur": 46, "type": "autre_perimetre", "note": "membres du Conseil de l'Europe, souvent pris pour le nombre de pays d'Europe (Wikipédia, « Drapeau européen »)" },
+      { "valeur": 57, "type": "proche" },
+      { "valeur": 51, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "L'Afrique est étudiée en géographie au collège, mais le nombre exact de ses pays n'y est pas un repère : il relève de la culture générale, comme les 193 membres de l'ONU."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-burj-khalifa-hauteur",
+    "enonce": "Quelle est la hauteur de la Burj Khalifa, le plus haut gratte-ciel du monde ?",
+    "valeur": 828,
+    "valeur_a_retenir": 828,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "hauteur architecturale officielle (flèche comprise, antennes exclues) mesurée par le CTBUH ; tour de Dubaï achevée en 2010, toujours la plus haute du monde en novembre 2026",
+    "ancrage": "C'est à peu près deux tours Eiffel et demie empilées : la tour Eiffel mesure 330 m.",
+    "source": {
+      "url": "https://www.skyscrapercenter.com/building/burj-khalifa/3",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.guinnessworldrecords.com/world-records/tallest-building",
+      "idee": "Wikipédia, records ; liste de culture générale"
+    },
+    "themes": ["Humanité", "Monuments", "Records"],
+    "leurres": [
+      { "valeur": 679, "type": "autre_perimetre", "note": "Merdeka 118 (Kuala Lumpur), deuxième plus haut gratte-ciel du monde depuis 2023 : 679 m (CTBUH, skyscrapercenter.com, liste des 100 plus hauts immeubles achevés)" },
+      { "valeur": 632, "type": "autre_perimetre", "note": "Shanghai Tower, troisième plus haut gratte-ciel du monde : 632 m (CTBUH, skyscrapercenter.com)" },
+      { "valeur": 634, "type": "autre_perimetre", "note": "Tokyo Skytree, tour de télévision et non gratte-ciel : 634 m (site officiel en.tokyo-skytree.jp/about)" },
+      { "valeur": 541, "type": "erreur_frequente", "note": "One World Trade Center (New York), souvent cité comme plus haut gratte-ciel par réflexe américain : 541 m (CTBUH, skyscrapercenter.com)" },
+      { "valeur": 585, "type": "autre_perimetre", "note": "hauteur du dernier étage occupé de la Burj Khalifa : 584,5 m (CTBUH, skyscrapercenter.com/building/burj-khalifa/3)" },
+      { "valeur": 452, "type": "erreur_frequente", "note": "tours Petronas (Kuala Lumpur), plus hautes du monde de 1998 à 2004 : 452 m (CTBUH, skyscrapercenter.com) ; c'est aussi l'altitude de la plateforme d'observation du 124e étage de la Burj (Wikipédia, Burj Khalifa)" },
+      { "valeur": 791, "type": "proche" },
+      { "valeur": 863, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Hors programme ; la Burj Khalifa est très médiatisée et son ordre de grandeur (plus de 800 m) est connu du grand public, mais le chiffre exact l'est moins."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-tunnel-sous-la-manche",
+    "enonce": "Quelle est la longueur du tunnel sous la Manche ?",
+    "valeur": 50.45,
+    "valeur_a_retenir": 50,
+    "precision": 1,
+    "unite": "km",
+    "perimetre": "longueur totale de chacun des trois tubes (deux ferroviaires, un de service), de Coquelles (France) à Folkestone (Royaume-Uni), dont environ 38 km sous la mer",
+    "ancrage": "La navette LeShuttle le traverse en 35 minutes, alors que le ferry le plus rapide met 90 minutes pour franchir la Manche.",
+    "source": {
+      "url": "https://www.leshuttle.com/fr-fr/decouvrir/pourquoi-choisir-leshuttle/construire/le-tunnel-sous-la-manche",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Tunnel_sous_la_Manche",
+      "idee": "Liste de culture générale ; grands ouvrages français"
+    },
+    "themes": ["Humanité", "France"],
+    "leurres": [
+      { "valeur": 38, "type": "autre_perimetre", "note": "longueur de la partie sous-marine : 38 km (LeShuttle, filiale de Getlink ; 37,9 km selon Eurostar et l'Encyclopædia Universalis)" },
+      { "valeur": 33, "type": "autre_perimetre", "note": "largeur du pas de Calais à son point le plus étroit : 33,3 km (Wikipédia, Pas de Calais)" },
+      { "valeur": 57, "type": "erreur_frequente", "note": "tunnel de base du Saint-Gothard (Suisse), plus long tunnel ferroviaire du monde depuis 2016 : 57,1 km (Wikipédia, Tunnel de base du Saint-Gothard) ; on prête souvent ce record au tunnel sous la Manche" },
+      { "valeur": 54, "type": "erreur_frequente", "note": "tunnel du Seikan (Japon), un autre tunnel ferroviaire sous la mer : 53,85 km (Wikipédia, Tunnel du Seikan)" },
+      { "valeur": 46, "type": "proche" },
+      { "valeur": 61, "type": "proche" },
+      { "valeur": 44, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Hors programme ; le tunnel sous la Manche est un ouvrage très connu en France et l'ordre de grandeur « une cinquantaine de kilomètres » est accessible au grand public."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-statue-liberte-hauteur",
+    "enonce": "Quelle est la hauteur de la statue de la Liberté, sans son piédestal ?",
+    "valeur": 46.05,
+    "valeur_a_retenir": 46,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "statue seule, du haut de son socle jusqu'à la pointe de la flamme de la torche (sans le piédestal ni les fondations)",
+    "ancrage": "Posée sur son piédestal, elle culmine à 93 m au-dessus du sol : environ le double de sa propre taille. Sa main mesure à elle seule 5 m.",
+    "source": {
+      "url": "https://www.nps.gov/stli/learn/historyculture/statue-statistics.htm",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Statue_de_la_Libert%C3%A9",
+      "idee": "Liste de culture générale ; monuments célèbres"
+    },
+    "themes": ["Humanité", "Monuments"],
+    "leurres": [
+      { "valeur": 93, "type": "autre_perimetre", "note": "hauteur du sol à la pointe de la flamme, piédestal compris : 92,99 m (National Park Service, Statue Statistics), leurre éloigné" },
+      { "valeur": 47, "type": "autre_perimetre", "note": "hauteur du sol au sommet du piédestal : 46,94 m (National Park Service, Statue Statistics) ; le piédestal est presque aussi haut que la statue" },
+      { "valeur": 34, "type": "autre_perimetre", "note": "hauteur du talon au sommet de la tête, sans le bras levé : 33,86 m (National Park Service, Statue Statistics)" },
+      { "valeur": 41, "type": "proche" },
+      { "valeur": 52, "type": "proche" },
+      { "valeur": 39, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Hors programme ; la statue est célèbre mais sa hauteur, et la distinction entre statue seule et piédestal, relèvent de la culture générale."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-record-vitesse-tgv",
+    "enonce": "Quelle vitesse a atteint le TGV lors de son record du monde de vitesse sur rail ?",
+    "valeur": 574.8,
+    "valeur_a_retenir": 575,
+    "precision": 1,
+    "unite": "km/h",
+    "perimetre": "record du monde de vitesse sur rail classique, établi le 3 avril 2007 sur la LGV Est européenne par la rame d'essai V150 (Alstom, RFF, SNCF) ; trains à sustentation magnétique exclus",
+    "ancrage": "À cette vitesse, le train parcourait près de 160 m chaque seconde, soit environ un terrain de football et demi.",
+    "source": {
+      "url": "https://www.alstom.com/fr/press-releases-news/2007/4/574-8-km-h-nouveau-record-du-monde-etabli-a-13h13-le-3-avril-2007-20070403",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Record_de_vitesse_sur_rail",
+      "idee": "Wikipédia, records ; patrimoine technique français"
+    },
+    "themes": ["Humanité", "France", "Records"],
+    "leurres": [
+      { "valeur": 515, "type": "erreur_frequente", "note": "ancien record du monde, TGV Atlantique n° 325, 18 mai 1990 : 515,3 km/h (communiqué Alstom du 3 avril 2007)" },
+      { "valeur": 603, "type": "autre_perimetre", "note": "record du train à sustentation magnétique L0 (Japon), 21 avril 2015 : 603 km/h (Guinness World Records, Fastest maglev train) ; ce n'est pas un train sur rails" },
+      { "valeur": 357, "type": "autre_unite", "note": "le record exprimé en miles par heure : 357,2 mph (conversion, Wikipédia anglais, LGV Est)" },
+      { "valeur": 554, "type": "autre_perimetre", "note": "essai non homologué de la même rame V150 en février 2007 : 554,2 km/h (Wikipédia, Record de vitesse sur rail)" },
+      { "valeur": 486, "type": "autre_perimetre", "note": "record d'un train de série non modifié, le Zefiro 380 (Chine), en 2010 : 486 km/h (Wikipédia, Record de vitesse sur rail)" },
+      { "valeur": 538, "type": "proche" },
+      { "valeur": 591, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Hors programme ; le record du TGV est une fierté connue en France, mais son chiffre exact relève de la culture générale."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-jeanne-calment-age",
+    "enonce": "Jusqu'à quel âge a vécu la Française Jeanne Calment, la personne la plus âgée de l'histoire ?",
+    "valeur": 122,
+    "valeur_a_retenir": 122,
+    "precision": 1,
+    "unite": "ans",
+    "perimetre": "âge au décès, en années révolues (122 ans et 164 jours) ; record de longévité humaine vérifié, détenu par Jeanne Calment (Arles)",
+    "ancrage": "C'est environ 36 ans de plus que l'espérance de vie d'une Française aujourd'hui, qui est de près de 86 ans.",
+    "source": {
+      "url": "https://www.guinnessworldrecords.com/world-records/oldest-person",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://presse.inserm.fr/en/update-jeanne-calment-the-oldest-woman/59240/",
+      "idee": "Wikipédia, records ; culture générale française"
+    },
+    "themes": ["Humanité", "France", "Records"],
+    "leurres": [
+      { "valeur": 119, "type": "autre_perimetre", "note": "Kane Tanaka (Japon), deuxième personne la plus âgée de l'histoire : 119 ans et 107 jours (Guinness World Records ; LongeviQuest)" },
+      { "valeur": 118, "type": "autre_perimetre", "note": "Lucile Randon, sœur André, Française doyenne de l'humanité jusqu'en 2023 : 118 ans et 340 jours (presse, dont Europe 1, janvier 2023)" },
+      { "valeur": 117, "type": "autre_perimetre", "note": "Maria Branyas (Espagne), doyenne de l'humanité jusqu'en 2024 : 117 ans et 168 jours (Guinness World Records)" },
+      { "valeur": 116, "type": "autre_perimetre", "note": "Jiroemon Kimura (Japon), homme le plus âgé de l'histoire : 116 ans et 54 jours (Guinness World Records, Oldest man ever)" },
+      { "valeur": 86, "type": "erreur_frequente", "note": "espérance de vie à la naissance des femmes en France en 2025 : 85,9 ans (Insee, bilan démographique 2025, insee.fr/fr/statistiques/2416631)" },
+      { "valeur": 124, "type": "proche" },
+      { "valeur": 113, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Hors programme ; Jeanne Calment est très connue en France et son âge record est souvent cité, sans être un nombre que tout le monde a en tête."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "humanite-vitesse-autoroute",
+    "enonce": "Quelle est la vitesse maximale autorisée sur autoroute en France, par temps sec ?",
+    "valeur": 130,
+    "valeur_a_retenir": 130,
+    "precision": 10,
+    "unite": "km/h",
+    "perimetre": "limite générale pour les voitures, par temps sec, hors conducteurs en permis probatoire (Code de la route, article R413-2)",
+    "ancrage": "À 130 km/h, une voiture parcourt environ 36 m chaque seconde : la longueur de trois autobus mis bout à bout.",
+    "source": {
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042240048",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.service-public.gouv.fr/particuliers/vosdroits/F19460",
+      "idee": "Éducation à la sécurité routière au collège (ASSR 1 en 5e, ASSR 2 en 3e) ; nombre très connu"
+    },
+    "themes": ["Humanité", "France"],
+    "leurres": [
+      { "valeur": 110, "type": "autre_perimetre", "note": "limite sur autoroute par temps de pluie, et pour les conducteurs en permis probatoire : 110 km/h (Code de la route, R413-2 II ; service-public.gouv.fr, F19460)" },
+      { "valeur": 120, "type": "erreur_frequente", "note": "limite sur autoroute en Belgique : 120 km/h (code de la route belge, article 11.2, codedelaroute.be) ; c'est aussi la limite en Espagne" },
+      { "valeur": 80, "type": "autre_perimetre", "note": "limite sur les routes à double sens sans séparateur central depuis 2018 : 80 km/h (Code de la route, R413-2 I ; service-public.gouv.fr, F19460)" },
+      { "valeur": 90, "type": "autre_perimetre", "note": "limite sur les sections de route à au moins deux voies dans le même sens : 90 km/h (Code de la route, R413-2 I)" },
+      { "valeur": 50, "type": "autre_perimetre", "note": "limite en agglomération, et sur autoroute quand la visibilité tombe sous 50 m : 50 km/h (service-public.gouv.fr, F19460), leurre éloigné" },
+      { "valeur": 140, "type": "proche" },
+      { "valeur": 150, "type": "proche" }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Nombre très connu, rappelé sur les panneaux d'entrée d'autoroute ; les limitations de vitesse sont abordées dans l'éducation à la sécurité routière au collège (ASSR)."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
   }
 ]

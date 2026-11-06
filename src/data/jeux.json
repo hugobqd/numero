@@ -1,0 +1,121 @@
+[
+  {
+    "id": "jeux-echiquier-cases",
+    "enonce": "Combien de cases compte un échiquier ?",
+    "valeur": 64,
+    "valeur_a_retenir": 64,
+    "precision": 1,
+    "unite": "cases",
+    "perimetre": "cases de l'échiquier du jeu d'échecs, claires et foncées comprises (grille de 8 × 8)",
+    "ancrage": "Selon une vieille légende, l'inventeur des échecs demanda 1 grain de blé sur la première case, 2 sur la deuxième, 4 sur la troisième, et ainsi de suite : sur les 64 cases, cela ferait plus de 18 milliards de milliards de grains.",
+    "mnemo": "8 colonnes × 8 rangées = 64.",
+    "source": {
+      "url": "https://handbook.fide.com/chapter/E012023",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/%C3%89chiquier",
+      "idee": "Culture générale ; jeux de société"
+    },
+    "themes": ["Jeux"],
+    "leurres": [
+      {
+        "valeur": 32,
+        "type": "autre_perimetre",
+        "note": "nombre de pièces sur l'échiquier au début de la partie, 16 par joueur (FIDE, Laws of Chess, article 2.2) ; c'est aussi le nombre de cases claires, ou de cases foncées"
+      },
+      {
+        "valeur": 81,
+        "type": "autre_perimetre",
+        "note": "cases du plateau de shogi, les échecs japonais : 9 × 9 (Wikipédia, « Shogi »)"
+      },
+      {
+        "valeur": 42,
+        "type": "autre_perimetre",
+        "note": "cases de la grille du Puissance 4 : 7 colonnes × 6 rangées, que remplissent exactement les 21 + 21 pions fournis (Hasbro, notice de « The Classic Game of Connect 4 » ; regles-du-jeu.net)"
+      },
+      {
+        "valeur": 121,
+        "type": "autre_perimetre",
+        "note": "emplacements du plateau en étoile des dames chinoises (Wikipédia, « Dames chinoises », qui cite Jeux et Stratégie n° 5, 1980)"
+      },
+      {
+        "valeur": 16,
+        "type": "autre_perimetre",
+        "note": "pièces de chaque joueur au départ (FIDE, Laws of Chess, article 2.2), leurre éloigné"
+      },
+      {
+        "valeur": 56,
+        "type": "proche"
+      },
+      {
+        "valeur": 72,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Un échiquier se voit et se compte facilement, et 8 × 8 relève des tables de multiplication de l'école primaire (cycle 2)."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "jeux-cartes-jeu-classique",
+    "enonce": "Combien de cartes compte un jeu de cartes classique ?",
+    "valeur": 52,
+    "valeur_a_retenir": 52,
+    "precision": 1,
+    "unite": "cartes",
+    "perimetre": "jeu de cartes français classique (bridge, poker, bataille) : 4 couleurs de 13 cartes, sans les jokers",
+    "ancrage": "Il y a autant de cartes dans un jeu que de semaines dans une année : 52.",
+    "mnemo": "4 couleurs × 13 cartes = 52.",
+    "source": {
+      "url": "https://res.cloudinary.com/ffbridge/image/upload/v1710327262/production/cms/Fiche_pour_une_seance_d_initiation_0e418945b4.pdf",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.larousse.fr/encyclopedie/divers/tarot/95959",
+      "idee": "Culture générale ; jeux de société"
+    },
+    "themes": ["Jeux"],
+    "leurres": [
+      {
+        "valeur": 54,
+        "type": "autre_perimetre",
+        "note": "le jeu avec ses 2 jokers, tel qu'il est souvent vendu (Wikipédia, « Jeu de cartes français »)"
+      },
+      {
+        "valeur": 32,
+        "type": "autre_perimetre",
+        "note": "jeu de belote ou de piquet : 8 cartes par couleur, du 7 à l'as (Wikipédia, « Jeu de cartes français »)"
+      },
+      {
+        "valeur": 78,
+        "type": "autre_perimetre",
+        "note": "jeu de tarot : 56 cartes de couleur, 21 atouts et l'excuse (Larousse, encyclopédie, « tarot »)"
+      },
+      {
+        "valeur": 56,
+        "type": "autre_perimetre",
+        "note": "cartes de couleur du tarot : les 52 cartes classiques plus un cavalier par couleur (Larousse, encyclopédie, « tarot »)"
+      },
+      {
+        "valeur": 26,
+        "type": "autre_perimetre",
+        "note": "cartes rouges (cœur et carreau) ou cartes noires (pique et trèfle) : 2 couleurs de 13 cartes (FFB, fiche d'initiation)"
+      },
+      {
+        "valeur": 13,
+        "type": "autre_perimetre",
+        "note": "cartes d'une seule couleur, de l'as au roi, ou d'une main de bridge (FFB, fiche d'initiation : « 52/4=13 »), leurre éloigné"
+      },
+      {
+        "valeur": 48,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Nombre très connu de tous ceux qui ont joué aux cartes ; 4 × 13 se calcule à l'école primaire."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]

@@ -489,5 +489,117 @@
     },
     "statut": "brouillon",
     "langue": "fr"
+  },
+  {
+    "id": "corps-volume-sang",
+    "enonce": "Quel volume de sang contient le corps d'un adulte ?",
+    "valeur": 5,
+    "valeur_a_retenir": 5,
+    "precision": 1,
+    "unite": "litres",
+    "perimetre": "volume total de sang d'un adulte d'environ 70 kg ; il varie avec le poids et le sexe (environ 65 mL par kilo chez la femme, 70 à 75 mL chez l'homme)",
+    "ancrage": "Un don de sang en prélève moins d'un dixième : 470 mL, un peu moins d'un demi-litre.",
+    "source": {
+      "url": "https://www.msdmanuals.com/fr/accueil/troubles-du-sang/biologie-du-sang/pr%C3%A9sentation-du-sang",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://en.wikipedia.org/wiki/Blood_volume",
+      "idee": "Liste de culture générale ; programme de sciences et technologie du cycle 3 (fonctions de nutrition, circulation sanguine)"
+    },
+    "themes": ["Corps humain"],
+    "leurres": [
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "volume de plasma, la partie liquide du sang : environ 55 % du sang, soit 2 750 à 3 300 mL chez l'adulte (Wikipédia, Plasma sanguin)"
+      },
+      {
+        "valeur": 4,
+        "type": "autre_perimetre",
+        "note": "sang d'une femme de 60 kg : 65 mL par kilo, soit 3,9 L (Wikipedia, Blood volume)"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "capacité pulmonaire totale d'un homme, 5,75 L en moyenne (Office québécois de la langue française, fiche « capacité pulmonaire totale »), confusion entre deux volumes du corps"
+      },
+      {
+        "valeur": 2,
+        "type": "autre_perimetre",
+        "note": "sang d'un enfant de 30 kg : 70 à 75 mL par kilo, soit 2,1 à 2,25 L (Wikipedia, Blood volume) ; leurre éloigné"
+      },
+      {
+        "valeur": 7,
+        "type": "proche"
+      },
+      {
+        "valeur": 8,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "La circulation sanguine est abordée en sciences et technologie au cycle 3 (fonctions de nutrition) ; « 5 litres de sang » est un nombre très connu."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-plus-grand-homme",
+    "enonce": "Combien mesurait l'homme le plus grand de l'histoire ?",
+    "valeur": 272,
+    "valeur_a_retenir": 272,
+    "precision": 1,
+    "unite": "cm",
+    "perimetre": "taille de l'Américain Robert Wadlow, mesurée le 27 juin 1940 peu avant sa mort à 22 ans : le plus grand homme dont la taille est attestée (Guinness World Records)",
+    "ancrage": "Il dépassait de près d'un mètre un homme français moyen, qui mesurait 174 cm en 2001 selon l'Insee.",
+    "source": {
+      "url": "https://www.guinnessworldrecords.com/world-records/tallest-man-ever",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://en.wikipedia.org/wiki/Robert_Wadlow",
+      "idee": "Wikipédia, records ; Guinness World Records"
+    },
+    "themes": ["Corps humain", "Records"],
+    "leurres": [
+      {
+        "valeur": 251,
+        "type": "autre_perimetre",
+        "note": "Sultan Kösen, plus grand homme vivant, mesuré en février 2011 (Guinness World Records, « Tallest man living »)"
+      },
+      {
+        "valeur": 267,
+        "type": "autre_perimetre",
+        "note": "John Rogan, détenteur du titre de 1900 à 1905, deuxième plus grand de la liste (Guinness World Records, « Tallest man ever »)"
+      },
+      {
+        "valeur": 254,
+        "type": "autre_perimetre",
+        "note": "Bernard Coyne, détenteur du titre de 1918 à 1921 (Guinness World Records, « Tallest man ever »)"
+      },
+      {
+        "valeur": 246,
+        "type": "autre_perimetre",
+        "note": "Zeng Jinlian, plus grande femme de l'histoire : 246,3 cm à sa mort en 1982 (Guinness World Records, « Tallest woman ever »)"
+      },
+      {
+        "valeur": 174,
+        "type": "autre_perimetre",
+        "note": "taille moyenne des hommes adultes en France en 2001 : 1,741 m (Insee, Économie et statistique n° 361, 2003, tableau A, https://www.insee.fr/fr/statistiques/fichier/1375874/es361d.pdf)"
+      },
+      {
+        "valeur": 107,
+        "type": "autre_unite",
+        "note": "la taille de Wadlow en pouces : 8 pieds 11,1 pouces, soit 107,1 pouces (Guinness World Records) ; leurre éloigné"
+      },
+      {
+        "valeur": 283,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Hors programme (records) ; le record de Wadlow est très médiatisé et son ordre de grandeur, « plus de 2,50 m », se devine, même si la valeur exacte relève plutôt de la culture générale."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
   }
 ]
