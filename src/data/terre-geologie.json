@@ -13,7 +13,7 @@
       "url": "https://fr.wikipedia.org/wiki/Terre",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 40008,
@@ -59,7 +59,7 @@
       "url": "https://fr.wikipedia.org/wiki/Terre",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 6378,
@@ -106,7 +106,7 @@
       "url": "https://fr.wikipedia.org/wiki/Terre",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 361000000,
@@ -152,7 +152,7 @@
       "url": "https://fr.wikipedia.org/wiki/Fosse_des_Mariannes",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 11034,
@@ -200,7 +200,7 @@
       "url": "https://fr.wikipedia.org/wiki/Mont_Blanc",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 4806,
@@ -249,7 +249,7 @@
       "url": "https://fr.wikipedia.org/wiki/Oc%C3%A9an",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 3332,
@@ -295,7 +295,7 @@
       "url": "https://fr.wikipedia.org/wiki/Lac_Ba%C3%AFkal",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 1471,
@@ -342,7 +342,7 @@
       "url": "https://fr.wikipedia.org/wiki/Loire",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Terre et géologie",
+    "themes": ["Terre et géologie"],
     "leurres": [
       {
         "valeur": 1126,

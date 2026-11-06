@@ -46,7 +46,9 @@ Six chantiers, mais **pas six agents permanents** :
 **Étape 5 : résoudre les tickets de la carte**, un par session. Ouvrir une nouvelle session et lancer `/wayfinder https://github.com/hugobqd/numero/issues/1` : le prochain ticket libre est pris dans l'ordre de la carte.
 
 - Les benchmarks Quizlet et WikiMaster sont des tâches de Hugo, sans Claude : noter les observations en commentaire du ticket, puis le fermer.
-- Ordre des tickets de grilling : Revue par des agents experts, Plan de création du contenu, puis Ton rassurant appliqué (prototype). Fiches gagnées en révision attend les deux benchmarks ; Composition du parcours attend le plan de contenu.
+- *Plan de création du contenu : résolu le 2026-11-06* (150 fiches par lots de 25, difficulté en 4 crans, thèmes ouverts, public dès 12 ans ; détail dans `DECISIONS.md`).
+- Ordre conseillé : Outil de gestion des fiches (prototype, utile dès le premier lot de relecture), Revue par des agents experts, Ton rassurant appliqué (prototype), Composition du parcours (débloqué). Fiches gagnées en révision attend les deux benchmarks.
+- **Production du contenu** : une seule issue, « [Production du contenu v1 : 150 fiches](https://github.com/hugobqd/numero/issues/10) », un lot par session et une PR par lot (jamais de push direct). Lancer une session avec : « Exécute le prochain lot de l'issue hugobqd/numero#10 ». *Préalable fait le 2026-11-06* (champs `themes`, `difficulte` {cran 1–4, justification}, `source.recoupement` et `source.idee`) ; prochain : lot 1, reprise des 55 brouillons. Elle remplace l'étape 7 : pas d'agents dédiés pour l'instant.
 - Dès qu'une décision est constructible : `/to-spec` → `/to-tickets` → `/implement`, livraison, test de couloir.
 
 Dette de vocabulaire dans le code, à corriger lors de la construction : `slider` / `Affineur` → curseur, `thematique` → thème, badge « niveau découverte » → exigence, logique du « jour simulé » → parcours.

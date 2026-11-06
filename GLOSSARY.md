@@ -9,7 +9,7 @@ Unité de contenu du jeu : un nombre à retenir, avec son énoncé, son ancrage,
 _Avoid_ : question (pour le contenu), carte
 
 **Difficulté** :
-Propriété d'une fiche : faible pour un nombre de culture générale que le grand public peut connaître, forte pour un nombre de connaissance pointue.
+Propriété d'une fiche, en quatre crans repérés sur les programmes scolaires : tout public (école primaire, ou nombre très connu), grand public (collège), curieux (lycée, ou culture générale), pointu (hors programme).
 _Avoid_ : niveau, notoriété
 
 **Valeur à retenir** :
@@ -30,8 +30,14 @@ Ce que mesure exactement le nombre d'une fiche (« chez l'adulte », « distance
 Comparaison mémorable qui accompagne la valeur à retenir à la révélation.
 
 **Thème** :
-Grand domaine qui regroupe des fiches (astronomie, corps humain…).
+Grand domaine qui regroupe des fiches (astronomie, corps humain…). Une fiche peut appartenir à plusieurs thèmes ; le premier est son thème principal.
 _Avoid_ : thématique, catégorie
+
+**Source** :
+Référence citée par une fiche pour prouver sa valeur à retenir, de préférence l'organisme qui mesure le nombre. À distinguer de la source d'idée, où l'on a trouvé le sujet.
+
+**Lot** :
+Groupe d'environ 25 fiches produites ensemble et relues en une fois.
 
 **Brouillon** / **Validée** :
 Statuts d'une fiche ; seule la relecture humaine fait passer une fiche de brouillon à validée.

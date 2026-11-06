@@ -12,7 +12,7 @@
       "url": "https://fr.wikipedia.org/wiki/Baleine_bleue",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 130,
@@ -58,7 +58,7 @@
       "url": "https://fr.wikipedia.org/wiki/Gu%C3%A9pard",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 93,
@@ -104,7 +104,7 @@
       "url": "https://fr.wikipedia.org/wiki/Faucon_p%C3%A8lerin",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 497,
@@ -150,7 +150,7 @@
       "url": "https://fr.wikipedia.org/wiki/Albatros_hurleur",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 311,
@@ -198,7 +198,7 @@
       "url": "https://fr.wikipedia.org/wiki/Girafe",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 550,
@@ -244,7 +244,7 @@
       "url": "https://fr.wikipedia.org/wiki/Baleine_%C3%A0_bec_de_Cuvier",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 138,
@@ -290,7 +290,7 @@
       "url": "https://fr.wikipedia.org/wiki/Requin_du_Groenland",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 272,
@@ -337,7 +337,7 @@
       "url": "https://fr.wikipedia.org/wiki/Ours_blanc",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 751,
@@ -384,7 +384,7 @@
       "url": "https://fr.wikipedia.org/wiki/Baleine_bor%C3%A9ale",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 268,
@@ -432,7 +432,7 @@
       "url": "https://fr.wikipedia.org/wiki/Elephantidae",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Animaux",
+    "themes": ["Animaux"],
     "leurres": [
       {
         "valeur": 15,

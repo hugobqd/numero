@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Mecanique, Question, Reponse, ResultatQuestion, VarianteScore } from './types';
+  import { themePrincipal, type Mecanique, type Question, type Reponse, type ResultatQuestion, type VarianteScore } from './types';
   import { noter } from './score';
   import Slider from './mechanics/Slider.svelte';
   import Qcm from './mechanics/Qcm.svelte';
@@ -84,13 +84,13 @@
     dernier={resultats.length >= questions.length}
   />
 {:else if courante}
-  {@const ill = illustration(courante.thematique)}
+  {@const ill = illustration(themePrincipal(courante))}
   <section class="question">
     <div class="entete">
       {#if ill}<img class="vignette" src={ill.src} alt="" width="600" height="600" />{/if}
       <div>
         <p class="progression">
-          {#if etiquette}{`${etiquette} · `}{/if}Question {resultats.length + 1} / {questions.length} · {courante.thematique}
+          {#if etiquette}{`${etiquette} · `}{/if}Question {resultats.length + 1} / {questions.length} · {themePrincipal(courante)}
         </p>
         <!-- Avancement : un segment par question. -->
         <ol class="segments" aria-hidden="true">

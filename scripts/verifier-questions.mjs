@@ -5,8 +5,9 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const DOSSIER = new URL('../src/data/', import.meta.url).pathname;
+const CRANS = { 1: 'tout public', 2: 'grand public', 3: 'curieux', 4: 'pointu' };
 const TYPES = ['erreur_frequente', 'autre_unite', 'autre_perimetre', 'proche'];
-const CHAMPS = ['id', 'enonce', 'valeur', 'valeur_a_retenir', 'precision', 'unite', 'perimetre', 'ancrage', 'source', 'thematique', 'leurres', 'statut', 'langue'];
+const CHAMPS = ['id', 'enonce', 'valeur', 'valeur_a_retenir', 'precision', 'unite', 'perimetre', 'ancrage', 'source', 'themes', 'leurres', 'statut', 'langue'];
 
 const zerosFinaux = (n) => {
   let z = 0;
@@ -18,6 +19,9 @@ const erreurs = [];
 const avertissements = [];
 const ids = new Map();
 const parTheme = new Map();
+const parCran = new Map();
+// Champs que le lot 1 doit remplir sur les brouillons existants : signalés en un seul compte.
+const aCompleter = { difficulte: 0, recoupement: 0, idee: 0 };
 let total = 0;
 
 for (const fichier of readdirSync(DOSSIER).filter((f) => f.endsWith('.json')).sort()) {
@@ -37,7 +41,31 @@ for (const fichier of readdirSync(DOSSIER).filter((f) => f.endsWith('.json')).so
     for (const c of CHAMPS) if (q[c] === undefined || q[c] === '') err(`champ « ${c} » manquant`);
     if (ids.has(q.id)) err(`id en double (déjà dans ${ids.get(q.id)})`);
     ids.set(q.id, fichier);
-    parTheme.set(q.thematique, (parTheme.get(q.thematique) ?? 0) + 1);
+
+    // Thèmes : liste non vide, le premier est le thème principal.
+    const themes = Array.isArray(q.themes) ? q.themes : [];
+    if (q.themes !== undefined && !Array.isArray(q.themes)) err('themes doit être une liste');
+    if (themes.some((t) => typeof t !== 'string' || !t.trim())) err('themes : chaque thème doit être un texte non vide');
+    if (new Set(themes).size !== themes.length) err('themes : thème en double');
+    for (const t of themes) if (typeof t === 'string' && t.trim().split(/\s+/).length > 3) avert(`thème « ${t} » : 2 ou 3 mots visés`);
+    if (themes.length) parTheme.set(themes[0], (parTheme.get(themes[0]) ?? 0) + 1);
+
+    // Difficulté : obligatoire pour une fiche validée.
+    if (q.difficulte === undefined) {
+      if (q.statut === 'valide') err('difficulte manquante (obligatoire pour une fiche valide)');
+      else aCompleter.difficulte++;
+    } else {
+      const { cran, justification } = q.difficulte ?? {};
+      if (!(cran in CRANS)) err(`difficulte.cran doit valoir 1, 2, 3 ou 4 (${cran})`);
+      else parCran.set(cran, (parCran.get(cran) ?? 0) + 1);
+      if (typeof justification !== 'string' || !justification.trim()) err('difficulte.justification manquante');
+    }
+
+    // Traçabilité des sources (pour la relecture).
+    if (q.source?.recoupement === undefined) aCompleter.recoupement++;
+    else if (!/^https?:\/\//.test(q.source.recoupement)) err('source.recoupement doit être une URL');
+    if (q.source?.idee === undefined) aCompleter.idee++;
+    else if (typeof q.source.idee !== 'string' || !q.source.idee.trim()) err('source.idee vide');
 
     const v = q.valeur_a_retenir;
     const p = q.precision;
@@ -69,7 +97,18 @@ for (const fichier of readdirSync(DOSSIER).filter((f) => f.endsWith('.json')).so
   }
 }
 
+const pct = (n) => `${Math.round((n / total) * 100)} %`;
 console.log(`${total} fiches · ${[...parTheme].map(([t, n]) => `${t} ${n}`).join(' · ')}`);
+console.log(
+  `Difficulté : ${Object.entries(CRANS).map(([c, nom]) => `${nom} ${parCran.get(Number(c)) ?? 0} (${pct(parCran.get(Number(c)) ?? 0)})`).join(' · ')}` +
+    ` · non attribuée ${aCompleter.difficulte}`,
+);
+const manques = [
+  aCompleter.difficulte && `${aCompleter.difficulte} sans difficulté`,
+  aCompleter.recoupement && `${aCompleter.recoupement} sans source de recoupement`,
+  aCompleter.idee && `${aCompleter.idee} sans source d'idée`,
+].filter(Boolean);
+if (manques.length) console.log(`À compléter (brouillons) : ${manques.join(' · ')}`);
 if (avertissements.length) console.log(`\n${avertissements.length} avertissement(s) :\n- ${avertissements.join('\n- ')}`);
 if (erreurs.length) {
   console.error(`\n${erreurs.length} erreur(s) :\n- ${erreurs.join('\n- ')}`);

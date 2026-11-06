@@ -13,7 +13,7 @@
       "url": "https://fr.wikipedia.org/wiki/Dent_(anatomie_humaine)",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 28,
@@ -59,7 +59,7 @@
       "url": "https://fr.wikipedia.org/wiki/Chromosome",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 48,
@@ -106,7 +106,7 @@
       "url": "https://fr.wikipedia.org/wiki/Nerf_cr%C3%A2nien",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 13,
@@ -153,7 +153,7 @@
       "url": "https://fr.wikipedia.org/wiki/Nerf_spinal",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 33,
@@ -200,7 +200,7 @@
       "url": "https://fr.wikipedia.org/wiki/Vert%C3%A8bre_cervicale",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 8,
@@ -247,7 +247,7 @@
       "url": "https://fr.wikipedia.org/wiki/Fi%C3%A8vre",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 98,
@@ -294,7 +294,7 @@
       "url": "https://fr.wikipedia.org/wiki/Main",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 26,
@@ -341,7 +341,7 @@
       "url": "https://fr.wikipedia.org/wiki/Pied_(anatomie_humaine)",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 28,
@@ -388,7 +388,7 @@
       "url": "https://fr.wikipedia.org/wiki/C%C3%B4te_(anatomie)",
       "consulte_le": "2026-11-05"
     },
-    "thematique": "Corps humain",
+    "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 12,
