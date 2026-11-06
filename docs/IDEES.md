@@ -69,3 +69,19 @@ Idée de gamification : la révision commence globale, puis le joueur gagne le d
   - L'effet sur la maîtrise et sur les fiches gagnées en révision (ticket #7) : la révision d'album rapporte-t-elle comme la révision globale ?
   - L'interface : où proposer cette révision (dans l'album, sur l'accueil), et comment annoncer le déblocage sans rendre la révision globale moins attirante.
   - Le lien avec les thèmes multiples : une fiche à plusieurs thèmes compte-t-elle dans chaque album ?
+
+## 7. Séparer la difficulté de la fiche et ce que le joueur sait (noté le 2026-11-06)
+
+Retour de Hugo sur l'écran « Ma collection » : il n'a pas compris ce que veulent dire les étoiles dans la liste des fiches. Rien ne l'explique à l'écran : une infobulle « Maîtrise x / 3 » au survol seulement, invisible sur mobile.
+
+- **Constat** : deux informations différentes se mélangent. La **difficulté** est une propriété de la fiche (4 crans : tout public, grand public, curieux, pointu). La **maîtrise** dit où en est le joueur. Aujourd'hui, les étoiles portent la maîtrise mais servent aussi à régler l'exigence des propositions en révision, et rien ne montre la difficulté.
+- **Idée** :
+  - Dans un album, **ranger les fiches par difficulté, sous des intertitres** (de facile à difficile). Plus tard, ces groupes pourraient devenir des collections à part (lien avec les séries de l'idée 3 et la révision d'un album de l'idée 6), mais pas pour l'instant.
+  - **Réserver les étoiles, ou leur remplaçant, à ce que le joueur sait** : acquis, ou pas encore connu et à réviser.
+- **À creuser** :
+  - Combien d'états pour la maîtrise : deux (acquis / à réviser) ou garder une progression de 0 à 3 ? Deux états sont plus clairs ; une progression montre mieux l'effort en révision.
+  - Le signe : des étoiles, un libellé (« à revoir », « acquis »), une couleur ? Les étoiles évoquent souvent une note ou une difficulté, d'où la confusion.
+  - L'exigence en révision suit aujourd'hui la maîtrise (0 ★ découverte, 3 ★ experte) : la garder liée à la maîtrise, ou la lier aussi à la difficulté ?
+  - La carte d'un thème affiche la moyenne des étoiles : que montrer à la place (nombre de fiches acquises, part de l'album) ?
+  - Le wording des intertitres : reprendre les noms des crans tels quels, ou des libellés plus parlants pour le joueur ?
+  - Le ton rassurant : « à réviser » plutôt que « raté », sans honte.
