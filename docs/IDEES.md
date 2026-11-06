@@ -45,3 +45,27 @@ Le jeu décale de quelques % un leurre plus rond que la réponse, pour qu'il ne 
 
 - **Idée** : marquer un leurre comme exact dans la fiche (par exemple `"exact": true`), pour que le jeu le montre tel quel.
 - **À creuser** : un leurre rond et exact se repère-t-il trop facilement à côté d'une réponse précise ? Faut-il le réserver aux pièges sourcés ?
+
+## 5. Des fiches qui ressemblent à des cartes à jouer (noté le 2026-11-06)
+
+Idée de design graphique : renforcer l'aspect « carte » des fiches, façon carte à jouer ou carte à collectionner.
+
+- **Idée** : au lancement d'un défi, ses 5 fiches apparaissent comme une **pile de cartes**, qu'on joue une à une. Cette pile pourrait sortir d'un **booster** que le joueur ouvre.
+- **À creuser** :
+  - Le moment exact : à l'ouverture du défi (la pile entière, face cachée) ou à chaque révélation (la carte se retourne) ? « Révélation » désigne déjà, dans le glossaire, l'écran qui suit la réponse.
+  - Le lien avec la collection façon album Panini (idée 3) : le booster rend visible le fait de « gagner » des cartes. Il faut garder l'apprentissage au centre, pas seulement le tirage.
+  - Le vocabulaire : l'idée pousse vers le renommage de « fiche » en « carte », encore à décider (le glossaire réserve « carte » à l'objet de jeu).
+  - Le coût : animations (ouverture, pile, retournement), accessibilité et réglage « réduire les animations », lisibilité sur mobile.
+
+## 6. Réviser un album, une récompense de progression (noté le 2026-11-06)
+
+Idée de gamification : la révision commence globale, puis le joueur gagne le droit de réviser un seul album.
+
+- **Idée** : au début, la révision pioche dans toute la collection, comme aujourd'hui. Quand le joueur a assez de fiches dans un album (les fiches d'un thème), il débloque la **révision de cet album** seul. C'est une récompense qui suit sa progression, et elle sert à apprendre : il cible le thème qu'il veut consolider.
+- **À creuser** :
+  - Le seuil de déblocage : un nombre de fiches possédées dans l'album (5 ? 10 ?), une part de l'album, ou des fiches maîtrisées (étoiles) ? Un seuil sur la maîtrise garde l'apprentissage au centre.
+  - Le vocabulaire : Hugo parle de « réviser une collection ». Dans le glossaire, la collection est l'ensemble des fiches du joueur et l'album le regroupement d'un thème : ici, c'est donc l'album qu'on révise. Avec les séries façon Panini (idée 3), la révision pourrait aussi porter sur une série.
+  - Le choix des fiches : la règle actuelle (les moins maîtrisées et les moins récemment révisées d'abord) s'applique-t-elle telle quelle dans l'album ? Que faire quand toutes ses fiches ont 3 étoiles ?
+  - L'effet sur la maîtrise et sur les fiches gagnées en révision (ticket #7) : la révision d'album rapporte-t-elle comme la révision globale ?
+  - L'interface : où proposer cette révision (dans l'album, sur l'accueil), et comment annoncer le déblocage sans rendre la révision globale moins attirante.
+  - Le lien avec les thèmes multiples : une fiche à plusieurs thèmes compte-t-elle dans chaque album ?
