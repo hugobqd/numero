@@ -552,5 +552,62 @@
     },
     "statut": "brouillon",
     "langue": "fr"
+  },
+  {
+    "id": "animaux-mille-pattes-record",
+    "enonce": "Combien de pattes a le mille-pattes qui en compte le plus ?",
+    "valeur": 1306,
+    "valeur_a_retenir": 1306,
+    "precision": 1,
+    "unite": "pattes",
+    "perimetre": "record pour un seul individu : une femelle d'Eumillipes persephone à 330 anneaux, décrite en 2021 ; le nombre de pattes varie d'un individu à l'autre",
+    "ancrage": "Long d'à peine 10 cm et large de moins d'1 mm, il vit à 60 mètres sous terre, en Australie, dans le noir complet : il n'a pas d'yeux.",
+    "source": {
+      "url": "https://www.nature.com/articles/s41598-021-02447-0",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://vtx.vt.edu/articles/2022/02/first-true-millipede.html",
+      "idee": "Wikipédia, records animaux ; actualité scientifique de 2021"
+    },
+    "themes": ["Animaux", "Records"],
+    "leurres": [
+      {
+        "valeur": 653,
+        "type": "autre_unite",
+        "note": "le même record compté en paires de pattes : 1 306 ÷ 2 (Marek et al., Scientific Reports, 2021)"
+      },
+      {
+        "valeur": 998,
+        "type": "autre_perimetre",
+        "note": "pattes d'une autre femelle de la même espèce, à 253 anneaux (Marek et al., 2021)"
+      },
+      {
+        "valeur": 818,
+        "type": "autre_perimetre",
+        "note": "record chez les mâles de la même espèce, à 208 anneaux (Marek et al., 2021 ; Virginia Tech)"
+      },
+      {
+        "valeur": 778,
+        "type": "autre_perimetre",
+        "note": "pattes du mâle holotype, le spécimen de référence qui a servi à décrire l'espèce, à 198 anneaux (Marek et al., 2021)"
+      },
+      {
+        "valeur": 1216,
+        "type": "proche"
+      },
+      {
+        "valeur": 1362,
+        "type": "proche"
+      },
+      {
+        "valeur": 1288,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Record scientifique récent (2021), hors programme ; le nom « mille-pattes » pousse à répondre 1 000 alors qu'aucun mille-pattes n'en avait jamais eu autant."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
   }
 ]

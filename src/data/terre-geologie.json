@@ -395,5 +395,68 @@
     },
     "statut": "brouillon",
     "langue": "fr"
+  },
+  {
+    "id": "terre-seine-longueur",
+    "enonce": "Quelle est la longueur de la Seine ?",
+    "valeur": 775,
+    "valeur_a_retenir": 775,
+    "precision": 1,
+    "unite": "km",
+    "perimetre": "de sa source à Source-Seine (Côte-d'Or), sur le plateau de Langres, jusqu'à son embouchure dans la Manche, entre Le Havre et Honfleur ; longueur du référentiel national des cours d'eau (Sandre)",
+    "ancrage": "Sur ses 775 km, la Seine ne traverse Paris que sur 13 km.",
+    "source": {
+      "url": "https://www.sandre.eaufrance.fr/geo/CoursEau_Carthage2017/----0010",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Seine",
+      "idee": "Programme de géographie (cycle 3, grands repères géographiques de la France : les fleuves) ; pendant de la fiche sur la Loire"
+    },
+    "themes": ["Terre et géologie", "France"],
+    "leurres": [
+      {
+        "valeur": 777,
+        "type": "erreur_frequente",
+        "note": "longueur très répandue, par exemple sur le site de la Ville de Paris : « 777 kilomètres de long » (paris.fr, « La Seine aurait plus de 14 000 ans… »)"
+      },
+      {
+        "valeur": 776,
+        "type": "erreur_frequente",
+        "note": "longueur donnée par l'encyclopédie Larousse : « 776 km » (larousse.fr, article « Seine »)"
+      },
+      {
+        "valeur": 1006,
+        "type": "autre_perimetre",
+        "note": "longueur de la Loire, plus long fleuve de France (Sandre, fiche « la Loire », ----0000)"
+      },
+      {
+        "valeur": 812,
+        "type": "autre_perimetre",
+        "note": "longueur totale du Rhône, de la Suisse à la Méditerranée (Wikipédia, « Rhône »)"
+      },
+      {
+        "valeur": 545,
+        "type": "autre_perimetre",
+        "note": "longueur du Rhône en France seulement, « 545 km, selon le SANDRE » (Wikipédia, « Rhône »)"
+      },
+      {
+        "valeur": 482,
+        "type": "autre_unite",
+        "note": "la longueur de la Seine en miles (775 / 1,609344 = 481,6)"
+      },
+      {
+        "valeur": 791,
+        "type": "proche"
+      },
+      {
+        "valeur": 758,
+        "type": "proche"
+      }
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Les grands fleuves français sont des repères de géographie dès l'école (cycle 3) ; tout le monde connaît la Seine, mais sa longueur beaucoup moins."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
   }
 ]
