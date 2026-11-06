@@ -59,6 +59,7 @@ idées → vérification → rédaction → relecture. Plus de maillon « simpli
 - **Exclusions v1** : pas de dates, de nombres négatifs ni de pourcentages.
 - **Fiches datées** (population, communes, éditions d'un recensement) : on retient la dernière donnée publiée, et ces fiches sont revues chaque janvier. Une valeur incertaine prend un pas qui couvre son incertitude ou l'écart entre les sources de référence (relecture du lot 1, hugobqd/numero#12).
 - **Rééquilibrage** : le stock du prototype penche vers le difficile (lot 1 : 7 / 31 / 38 / 24 %) ; les lots 2 à 5 visent surtout tout public et grand public (autour de 40 et 45 %).
+- **Écart minimal des leurres** : un leurre de la fiche s'écarte d'au moins 0,5 % de la réponse, même s'il s'agit d'un vrai piège (8 848 contre 8 849 m pour l'Everest était trop proche). Décidé le 2026-11-06 ; contrôlé par `npm run verifier`.
 - **Cran d'un nombre hors programme** : un nombre très cité (record médiatisé, objet du quotidien, monument célèbre) peut rester en grand public même s'il n'est au programme nulle part ; les taux de réussite réels trancheront (relecture du lot 2, hugobqd/numero#13).
 
 ## Plus tard

@@ -185,17 +185,17 @@
         "note": "vitesse de la lumière dans le verre ou la fibre optique"
       },
       {
-        "valeur": 300000,
-        "type": "erreur_frequente",
-        "note": "arrondi courant"
-      },
-      {
         "valeur": 289471,
         "type": "proche"
       },
       {
         "valeur": 311208,
         "type": "proche"
+      },
+      {
+        "valeur": 124035,
+        "type": "autre_perimetre",
+        "note": "vitesse de la lumière dans le diamant : c / 2,417 (indice pour la lumière jaune à 589 nm, Wikipédia, Diamant, https://fr.wikipedia.org/wiki/Diamant) ≈ 124 035 km/s ; leurre lointain (×0,41), le seul de la fiche"
       }
     ],
     "difficulte": {
@@ -221,11 +221,6 @@
     "themes": ["Terre et géologie"],
     "leurres": [
       {
-        "valeur": 8848,
-        "type": "erreur_frequente",
-        "note": "ancienne mesure officielle (1955), encore très citée"
-      },
-      {
         "valeur": 8611,
         "type": "autre_perimetre",
         "note": "altitude du K2, 2e sommet du monde"
@@ -241,12 +236,18 @@
         "note": "altitude du Lhotse, 4e sommet"
       },
       {
-        "valeur": 8882,
+        "valeur": 9014,
         "type": "proche"
       },
       {
-        "valeur": 9014,
-        "type": "proche"
+        "valeur": 10984,
+        "type": "autre_perimetre",
+        "note": "profondeur de la fosse des Mariannes (Challenger Deep) : 10 984 ± 25 m, méta-analyse Gardner et al. 2014, Marine Geodesy (Wikipédia, Fosse des Mariannes, https://fr.wikipedia.org/wiki/Fosse_des_Mariannes ; l'infobox donne 10 994 m)"
+      },
+      {
+        "valeur": 4807,
+        "type": "autre_perimetre",
+        "note": "altitude du mont Blanc, plus haut sommet des Alpes : 4 807,47 m, mesure de septembre 2026 (Wikipédia, Mont Blanc, https://fr.wikipedia.org/wiki/Mont_Blanc)"
       }
     ],
     "difficulte": {

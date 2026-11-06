@@ -78,13 +78,13 @@
     },
     "themes": ["Humanité", "France"],
     "leurres": [
-      { "valeur": 68900000, "type": "autre_perimetre", "note": "population au 1er janvier 2025 (68 852 milliers, Insee, estimation révisée)" },
       { "valeur": 68600000, "type": "erreur_frequente", "note": "chiffre très repris en 2025 : première estimation pour le 1er janvier 2025 (68,6 M, Insee Première n° 2033), proche de l'estimation actuelle au 1er janvier 2024 (68 638 milliers)" },
       { "valeur": 66800000, "type": "autre_perimetre", "note": "France métropolitaine seule au 1er janvier 2026 (66 793 milliers, Insee)" },
       { "valeur": 68400000, "type": "autre_perimetre", "note": "population au 1er janvier 2023, désormais définitive (68 405 milliers, Insee)" },
       { "valeur": 67400000, "type": "erreur_frequente", "note": "ancien chiffre : population au 1er janvier 2020 (67 442 milliers, Insee)" },
-      { "valeur": 69400000, "type": "proche" },
-      { "valeur": 67900000, "type": "proche" }
+      { "valeur": 67900000, "type": "proche" },
+      { "valeur": 68100000, "type": "autre_perimetre", "note": "population au 1er janvier 2022 (68 060 milliers, Insee, tableau « Population au 1er janvier », https://www.insee.fr/fr/statistiques/5225246)" },
+      { "valeur": 66600000, "type": "erreur_frequente", "note": "ancien chiffre : population de la France au 1er janvier 2016 (66 603 milliers, Insee, même tableau https://www.insee.fr/fr/statistiques/5225246)" }
     ],
     "difficulte": {
       "cran": 3,
@@ -142,13 +142,12 @@
     },
     "themes": ["Humanité"],
     "leurres": [
-      { "valeur": 7159, "type": "autre_perimetre", "note": "28e édition (2025)" },
-      { "valeur": 7164, "type": "autre_perimetre", "note": "27e édition (2024)" },
-      { "valeur": 7168, "type": "autre_perimetre", "note": "26e édition (2023), longtemps le maximum" },
-      { "valeur": 7151, "type": "autre_perimetre", "note": "25e édition (2022)" },
       { "valeur": 6909, "type": "erreur_frequente", "note": "16e édition (2009), ancien décompte encore souvent repris" },
       { "valeur": 7243, "type": "proche" },
-      { "valeur": 7031, "type": "proche" }
+      { "valeur": 7031, "type": "proche" },
+      { "valeur": 7097, "type": "erreur_frequente", "note": "décompte des 19e (2016) et 21e (2018) éditions d'Ethnologue (tableau des éditions, https://en.wikipedia.org/wiki/Ethnologue)" },
+      { "valeur": 7111, "type": "erreur_frequente", "note": "décompte de la 22e édition d'Ethnologue (2019) (https://en.wikipedia.org/wiki/Ethnologue)" },
+      { "valeur": 7117, "type": "erreur_frequente", "note": "décompte de la 23e édition d'Ethnologue (2020) (https://en.wikipedia.org/wiki/Ethnologue)" }
     ],
     "difficulte": {
       "cran": 4,
@@ -236,12 +235,12 @@
     },
     "themes": ["Humanité", "France"],
     "leurres": [
-      { "valeur": 34935, "type": "autre_perimetre", "note": "nombre au 1er janvier 2024 (DGCL)" },
-      { "valeur": 34746, "type": "autre_perimetre", "note": "France métropolitaine seule (34 875 − 129 communes des DOM, Code officiel géographique 2026)" },
-      { "valeur": 34958, "type": "autre_perimetre", "note": "total en ajoutant les 83 communes de Polynésie française (48), de Nouvelle-Calédonie (33) et de Saint-Pierre-et-Miquelon (2)" },
       { "valeur": 35416, "type": "erreur_frequente", "note": "ancien chiffre : nombre au 1er janvier 2017 (DGCL)" },
       { "valeur": 38014, "type": "autre_perimetre", "note": "nombre au recensement de 1936" },
-      { "valeur": 33682, "type": "proche" }
+      { "valeur": 33682, "type": "proche" },
+      { "valeur": 36681, "type": "erreur_frequente", "note": "nombre de communes au 1er janvier 2013 et 2014, avant la vague de communes nouvelles : l'origine des « 36 000 communes » (Insee, COG, repris dans https://fr.wikipedia.org/wiki/Nombre_de_communes_en_France)" },
+      { "valeur": 35885, "type": "erreur_frequente", "note": "nombre au 1er janvier 2016 (Insee, COG, repris dans https://fr.wikipedia.org/wiki/Nombre_de_communes_en_France)" },
+      { "valeur": 35357, "type": "erreur_frequente", "note": "nombre au 1er janvier 2018 (Insee, COG, repris dans https://fr.wikipedia.org/wiki/Nombre_de_communes_en_France)" }
     ],
     "difficulte": {
       "cran": 4,

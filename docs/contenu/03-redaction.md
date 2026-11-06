@@ -43,7 +43,7 @@ Règles :
 1. **Au moins 3 pièges** (`autre_perimetre`, `autre_unite` ou `erreur_frequente`), car ce sont eux qui apprennent quelque chose.
 2. **Les leurres ont la même forme que la bonne réponse** : même pas, et pas plus de zéros à la fin. Pour 206 os, écris 196 ou 287, pas 200 ni 300. Pour 299 792 km/s, écris 186 282, pas 300 000. Le jeu corrige automatiquement un leurre trop rond pour qu'il ne se trahisse pas, mais il le décale de quelques %. Un piège comme « l'arrondi courant 300 000 » perd alors son sens. Préfère des pièges qui sont déjà des valeurs précises.
 3. **Les leurres doivent rester plausibles** : entre environ la moitié et le double de la bonne valeur. Un piège plus éloigné (âge de l'Univers pour l'âge de la Terre) est accepté, mais en un seul exemplaire.
-4. **Les leurres peuvent être très proches** s'il s'agit de vrais pièges. 8 848 m, l'ancienne mesure de l'Everest, contre 8 849 m est un excellent leurre.
+4. **Écart minimal de 0,5 %** : un leurre s'écarte d'au moins 0,5 % de la bonne réponse, même s'il s'agit d'un vrai piège. 8 848 m, l'ancienne mesure de l'Everest, contre 8 849 m est trop proche : on ne la distingue pas de mémoire. 366 jours contre 365 reste trop proche aussi (0,27 %). Une ancienne mesure trop proche peut être citée dans l'ancrage ou le périmètre. `npm run verifier` bloque les leurres trop proches.
 5. **Pas de doublon** avec la bonne réponse ni entre leurres.
 6. Chaque piège est **vérifié** : il doit être sourcé dans la note, comme la valeur principale.
 

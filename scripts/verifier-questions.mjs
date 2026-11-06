@@ -90,6 +90,7 @@ for (const fichier of readdirSync(DOSSIER).filter((f) => f.endsWith('.json')).so
       vus.add(l.valeur);
       if (l.valeur % p !== 0) avert(`leurre ${l.valeur} : pas un multiple de precision (${p}), il sera retouché`);
       else if (zerosFinaux(l.valeur / p) > zerosFinaux(v / p)) avert(`leurre ${l.valeur} : plus rond que la réponse, il sera retouché`);
+      if (Math.abs(l.valeur - v) / v < 0.005) err(`leurre ${l.valeur} : à moins de 0,5 % de la réponse`);
       if (l.valeur < v * 0.5 || l.valeur > v * 2) lointains++;
       if (l.type !== 'proche' && !l.note) avert(`piège ${l.valeur} sans note`);
     }
