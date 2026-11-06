@@ -126,7 +126,7 @@ _Avoid_ : carte (de thème)
 Session personnelle de 5 questions sur des fiches de sa collection ; ce n'est pas un défi et elle ne compte ni dans les stats ni dans le partage.
 
 **Maîtrise** :
-Niveau d'une fiche dans la collection d'un joueur, de 0 à 3 étoiles.
+Niveau d'une fiche dans la collection d'un joueur, de 0 à 3 étoiles. Elle ne fait que monter : une erreur en révision ne retire pas d'étoile.
 
 **À revoir** :
 Se dit d'une fiche à 0 étoile.
