@@ -2,37 +2,39 @@
   {
     "id": "astro-terre-soleil",
     "enonce": "Quelle est la distance moyenne entre la Terre et le Soleil ?",
-    "valeur": 149597870,
+    "valeur": 149597870.7,
     "valeur_a_retenir": 149600000,
     "precision": 100000,
     "unite": "km",
     "perimetre": "distance moyenne (1 unité astronomique)",
     "ancrage": "La lumière du Soleil met 8 minutes et 19 secondes pour franchir cette distance.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Soleil",
-      "consulte_le": "2026-11-05"
+      "url": "https://syrte.obspm.fr/IAU_resolutions/IAUResol_2012_0.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+      "idee": "Stock du prototype ; programme de physique-chimie du cycle 4 (structure de l'Univers et du système solaire, ordres de grandeur des distances astronomiques)"
     },
-    "themes": ["Astronomie"],
+    "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
         "valeur": 147100000,
         "type": "autre_perimetre",
-        "note": "distance au périhélie (147 098 074 km, page Terre)"
+        "note": "distance au périhélie (147 098 074 km, page Terre ; 147,095 millions de km selon la NASA)"
       },
       {
         "valeur": 152100000,
         "type": "autre_perimetre",
-        "note": "distance à l'aphélie (152 097 701 km, page Terre)"
+        "note": "distance à l'aphélie (152 097 701 km, page Terre ; 152,100 millions de km selon la NASA)"
       },
       {
         "valeur": 108200000,
         "type": "autre_perimetre",
-        "note": "distance moyenne Soleil-Vénus (108 209 500 km, page Vénus)"
+        "note": "distance moyenne Soleil-Vénus (108,210 millions de km, fiche NASA de Vénus)"
       },
       {
         "valeur": 227900000,
         "type": "autre_perimetre",
-        "note": "distance moyenne Soleil-Mars (227 939 100 km, page Mars)"
+        "note": "distance moyenne Soleil-Mars (227 944 000 km, page Mars ; 227,956 millions de km selon la NASA)"
       },
       {
         "valeur": 143700000,
@@ -43,54 +45,64 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Les distances dans le système solaire sont étudiées au collège (physique-chimie, cycle 4) ; les « 150 millions de km » sont connus, la valeur 149,6 millions l'est moins."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "astro-diametre-terre",
     "enonce": "Quel est le diamètre moyen de la Terre ?",
-    "valeur": 12742.016,
+    "valeur": 12742,
     "valeur_a_retenir": 12742,
     "precision": 1,
     "unite": "km",
-    "perimetre": "diamètre moyen (2 × rayon moyen de 6 371,008 km)",
+    "perimetre": "diamètre moyen (2 × rayon moyen de 6 371 km)",
     "ancrage": "Il faudrait aligner environ 30 Terres pour couvrir la distance jusqu'à la Lune.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Terre",
-      "consulte_le": "2026-11-05"
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Terre",
+      "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie"],
+    "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
         "valeur": 12756,
         "type": "autre_perimetre",
-        "note": "diamètre équatorial (2 × 6 378,137 km)"
+        "note": "diamètre équatorial (2 × 6 378,137 km, fiche NASA)"
       },
       {
         "valeur": 12714,
         "type": "autre_perimetre",
-        "note": "diamètre polaire (2 × 6 356,752 km)"
+        "note": "diamètre polaire (2 × 6 356,752 km, fiche NASA)"
       },
       {
         "valeur": 6371,
         "type": "erreur_frequente",
-        "note": "rayon moyen, confusion rayon / diamètre"
+        "note": "rayon moyen (6 371 km, fiche NASA), confusion rayon / diamètre"
       },
       {
         "valeur": 7918,
         "type": "autre_unite",
-        "note": "le diamètre moyen en miles (12 742 / 1,609)"
+        "note": "le diamètre moyen en miles (12 742 / 1,609344 ≈ 7 917,5)"
       },
       {
         "valeur": 12104,
         "type": "autre_perimetre",
-        "note": "diamètre de Vénus, presque jumelle de la Terre (2 × 6 051,8 km, page Vénus)"
+        "note": "diamètre de Vénus, presque jumelle de la Terre (2 × 6 051,8 km, fiche NASA de Vénus)"
       },
       {
         "valeur": 13285,
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La taille de la Terre et les ordres de grandeur du système solaire sont vus au collège (physique-chimie, cycle 4) ; « environ 12 700 km » se retient, la valeur au kilomètre près moins."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -98,77 +110,90 @@
     "id": "astro-diametre-soleil",
     "enonce": "Quel est le diamètre du Soleil ?",
     "valeur": 1392684,
-    "valeur_a_retenir": 1393000,
-    "precision": 1000,
+    "valeur_a_retenir": 1390000,
+    "precision": 10000,
     "unite": "km",
-    "perimetre": "diamètre moyen",
+    "perimetre": "diamètre moyen : 1 392 684 km selon la mesure de 2012 grâce au satellite SOHO, 1 391 400 km selon la valeur de référence de l'UAI (2015) ; à retenir à 10 000 km près, ce qui couvre les deux",
     "ancrage": "On pourrait aligner 109 Terres d'un bord à l'autre du Soleil.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Soleil",
-      "consulte_le": "2026-11-05"
+      "url": "https://manoa.hawaii.edu/news/article.php?aId=4992",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
+      "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie"],
+    "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
-        "valeur": 696000,
-        "type": "erreur_frequente",
-        "note": "rayon du Soleil (696 342 km), confusion rayon / diamètre ; leurre éloigné (×0,5)"
-      },
-      {
-        "valeur": 865000,
+        "valeur": 870000,
         "type": "autre_unite",
-        "note": "le diamètre en miles (1 392 684 / 1,609 ≈ 865 374)"
+        "note": "le diamètre en miles (1 392 684 / 1,609344 ≈ 865 374)"
       },
       {
-        "valeur": 769000,
+        "valeur": 770000,
         "type": "autre_perimetre",
-        "note": "diamètre de l'orbite de la Lune (2 × 384 400 km) : le Soleil est presque deux fois plus large"
+        "note": "diamètre de l'orbite de la Lune (2 × 384 400 km = 768 800 km) : le Soleil est presque deux fois plus large"
       },
       {
-        "valeur": 1327000,
+        "valeur": 1270000,
+        "type": "erreur_frequente",
+        "note": "« le Soleil fait 100 fois la Terre » : 100 × 12 742 km = 1 274 200 km, alors qu'il en faut 109"
+      },
+      {
+        "valeur": 1690000,
+        "type": "autre_perimetre",
+        "note": "diamètre d'Alpha du Centaure A, l'étoile semblable au Soleil la plus proche (1,22 rayon solaire, soit environ 1 694 000 km, d'après Wikipédia)"
+      },
+      {
+        "valeur": 1330000,
         "type": "proche"
       },
       {
-        "valeur": 1458000,
+        "valeur": 1460000,
         "type": "proche"
       },
       {
-        "valeur": 1521000,
+        "valeur": 1520000,
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Hors programme au kilomètre près ; « le Soleil fait environ 109 fois la Terre » relève de la culture générale, la valeur de 1,39 million de km moins."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "astro-annee-martienne",
     "enonce": "Combien de jours terrestres dure une année sur Mars ?",
-    "valeur": 686.885,
+    "valeur": 686.98,
     "valeur_a_retenir": 687,
     "precision": 1,
     "unite": "jours",
     "perimetre": "période de révolution de Mars autour du Soleil, en jours terrestres",
-    "ancrage": "Une année martienne dure presque deux années terrestres : 1,88 exactement.",
+    "ancrage": "Une année martienne dure presque deux années terrestres : 1,88 fois plus.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Mars_(plan%C3%A8te)",
-      "consulte_le": "2026-11-05"
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://en.wikipedia.org/wiki/Mars",
+      "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie"],
+    "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
         "valeur": 669,
         "type": "autre_unite",
-        "note": "la même année comptée en sols, jours martiens de 24 h 39 min (668,6 sols)"
+        "note": "la même année comptée en sols, jours martiens de 24 h 39 min (686,98 / 1,0275 ≈ 668,6 sols, fiche NASA)"
       },
       {
         "valeur": 365,
         "type": "autre_perimetre",
-        "note": "durée de l'année terrestre (365,256 jours)"
+        "note": "durée de l'année terrestre (365,256 jours, fiche NASA)"
       },
       {
         "valeur": 225,
         "type": "autre_perimetre",
-        "note": "année de Vénus (224,667 jours, page Vénus) ; leurre éloigné"
+        "note": "année de Vénus (224,701 jours, fiche NASA de Vénus) ; leurre éloigné"
       },
       {
         "valeur": 652,
@@ -183,6 +208,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Le mouvement de révolution des planètes est vu en cycle 3, mais la durée de l'année martienne n'est pas au programme : c'est de la culture générale, souvent citée avec les missions sur Mars."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -196,20 +225,27 @@
     "perimetre": "depuis le Big Bang (mesure Planck 2018 : 13,787 ± 0,020 milliards d'années)",
     "ancrage": "La Terre n'existe que depuis un tiers de ce temps : 4,54 milliards d'années.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/%C3%82ge_de_l%27Univers",
-      "consulte_le": "2026-11-05"
+      "url": "https://arxiv.org/abs/1807.06209",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://apod.nasa.gov/apod/ap180722.html",
+      "idee": "Stock du prototype ; culture générale"
     },
     "themes": ["Astronomie"],
     "leurres": [
       {
         "valeur": 13500000000,
         "type": "autre_perimetre",
-        "note": "âge des plus vieilles étoiles connues (13,53 milliards d'années, 2MASS J18082002−5104378)"
+        "note": "âge estimé d'une des plus vieilles étoiles connues, 2MASS J18082002−5104378 (13,535 milliards d'années, Schlaufman et al. 2018)"
+      },
+      {
+        "valeur": 13700000000,
+        "type": "erreur_frequente",
+        "note": "ancienne mesure du satellite WMAP (13,7 ± 0,2 milliards d'années, Bennett et al. 2003), encore très citée"
       },
       {
         "valeur": 14500000000,
         "type": "erreur_frequente",
-        "note": "temps de Hubble (inverse de H₀ = 67,4 km/s/Mpc ≈ 14,5 milliards d'années), souvent confondu avec l'âge"
+        "note": "temps de Hubble (inverse de H₀ = 67,4 km/s/Mpc ≈ 14,5 milliards d'années, Planck 2018), souvent confondu avec l'âge"
       },
       {
         "valeur": 4500000000,
@@ -218,8 +254,7 @@
       },
       {
         "valeur": 13200000000,
-        "type": "proche",
-        "note": "estimation DESI 2024 (13,2 ± 0,6 milliards d'années), moins précise"
+        "type": "proche"
       },
       {
         "valeur": 12600000000,
@@ -230,6 +265,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "L'évolution de l'Univers est abordée au collège (physique-chimie, cycle 4), mais les 13,8 milliards d'années relèvent de la culture générale."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -241,27 +280,29 @@
     "precision": 1,
     "unite": "K",
     "perimetre": "température effective de la photosphère, en kelvins (≈ 5 499 °C)",
-    "ancrage": "Le cœur du Soleil est environ 2 600 fois plus chaud : 15,1 millions de kelvins.",
+    "ancrage": "Le cœur du Soleil est environ 2 700 fois plus chaud : 15,7 millions de kelvins.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Soleil",
-      "consulte_le": "2026-11-05"
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://arxiv.org/abs/1510.07674",
+      "idee": "Stock du prototype ; programme d'enseignement scientifique de 1re (« Le Soleil, notre source d'énergie »)"
     },
-    "themes": ["Astronomie"],
+    "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
         "valeur": 5499,
         "type": "autre_unite",
-        "note": "la même température en degrés Celsius (5 772 − 273,15)"
+        "note": "la même température en degrés Celsius (5 772 − 273,15 ≈ 5 498,85)"
       },
       {
-        "valeur": 3773,
-        "type": "autre_perimetre",
-        "note": "température des taches solaires (3 500 °C ≈ 3 773 K)"
+        "valeur": 5778,
+        "type": "erreur_frequente",
+        "note": "ancienne estimation encore répandue (5 778 K, par exemple constante de la bibliothèque SunPy), avant la valeur nominale UAI 2015 de 5 772 K"
       },
       {
-        "valeur": 6173,
+        "valeur": 6273,
         "type": "autre_perimetre",
-        "note": "maximum local en surface (jusqu'à 5 900 °C ≈ 6 173 K, infobox)"
+        "note": "température au centre de la Terre, à la limite de la graine : environ 6 000 °C ≈ 6 273 K (ESRF 2013, Anzellini et al. : 6 230 ± 500 K)"
       },
       {
         "valeur": 5614,
@@ -276,13 +317,17 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "La température de surface des étoiles, dont le Soleil, est étudiée au lycée (enseignement scientifique de 1re, loi de Wien) ; la valeur précise en kelvins reste peu connue."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "astro-lumiere-soleil-terre",
     "enonce": "Combien de temps la lumière du Soleil met-elle pour atteindre la Terre ?",
-    "valeur": 499,
+    "valeur": 499.005,
     "valeur_a_retenir": 499,
     "precision": 1,
     "unite": "secondes",
@@ -290,10 +335,12 @@
     "ancrage": "Quand on regarde le Soleil, on le voit tel qu'il était il y a 8 minutes et 19 secondes.",
     "mnemo": "499 secondes : à une seconde près, 500.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Soleil",
-      "consulte_le": "2026-11-05"
+      "url": "https://promenade.imcce.fr/en/pages5/523.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Soleil",
+      "idee": "Stock du prototype ; programme de physique-chimie du cycle 4 (vitesse de la lumière, distances astronomiques)"
     },
-    "themes": ["Astronomie"],
+    "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
         "valeur": 491,
@@ -313,7 +360,7 @@
       {
         "valeur": 361,
         "type": "autre_perimetre",
-        "note": "temps de trajet jusqu'à Vénus (108 209 500 km / 299 792 km/s ≈ 361 s)"
+        "note": "temps de trajet de la lumière du Soleil jusqu'à Vénus (108 210 000 km / 299 792 km/s ≈ 361 s, fiche NASA de Vénus)"
       },
       {
         "valeur": 473,
@@ -324,86 +371,112 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Calculer le temps de trajet de la lumière du Soleil est un exercice classique de physique-chimie au collège (cycle 4) ; les « 8 minutes » sont connues, les 499 secondes moins."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "astro-diametre-jupiter",
     "enonce": "Quel est le diamètre de Jupiter à l'équateur ?",
-    "valeur": 142984,
-    "valeur_a_retenir": 142984,
+    "valeur": 142976,
+    "valeur_a_retenir": 142976,
     "precision": 1,
     "unite": "km",
-    "perimetre": "diamètre équatorial (2 × 71 488 km de rayon équatorial)",
+    "perimetre": "diamètre équatorial (2 × 71 488 km de rayon équatorial, mesure de la sonde Juno publiée en 2026)",
     "ancrage": "On pourrait aligner 11 Terres sur l'équateur de Jupiter.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Jupiter_(plan%C3%A8te)",
-      "consulte_le": "2026-11-05"
+      "url": "https://en.wikipedia.org/wiki/Jupiter",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.sci.news/space/jupiter-size-shape-14536.html",
+      "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie"],
+    "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
-        "valeur": 133708,
-        "type": "autre_perimetre",
-        "note": "diamètre polaire (Jupiter est aplatie par sa rotation rapide)"
+        "valeur": 142984,
+        "type": "erreur_frequente",
+        "note": "ancienne valeur issue des sondes Voyager et Pioneer (2 × 71 492 km), encore sur la fiche NASA ; Juno l'a réduite de 8 km (Galanti et al. 2026)"
       },
       {
-        "valeur": 139772,
+        "valeur": 133684,
         "type": "autre_perimetre",
-        "note": "diamètre moyen (2 × 69 886 km, rayon volumétrique de l'infobox)"
+        "note": "diamètre polaire (2 × 66 842 km, Galanti et al. 2026) : Jupiter est aplatie par sa rotation rapide"
       },
       {
         "valeur": 120536,
         "type": "autre_perimetre",
-        "note": "diamètre équatorial de Saturne (2 × 60 268 km, page Saturne)"
+        "note": "diamètre équatorial de Saturne (2 × 60 268 km, fiche NASA de Saturne)"
       },
       {
-        "valeur": 88846,
+        "valeur": 88841,
         "type": "autre_unite",
-        "note": "le diamètre équatorial en miles (142 984 / 1,609)"
+        "note": "le diamètre équatorial en miles (142 976 / 1,609344 ≈ 88 841)"
       },
       {
         "valeur": 71488,
         "type": "erreur_frequente",
-        "note": "rayon équatorial, confusion rayon / diamètre"
+        "note": "rayon équatorial (71 488 km), confusion rayon / diamètre"
       },
       {
         "valeur": 151372,
         "type": "proche"
+      },
+      {
+        "valeur": 137219,
+        "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme : on sait que Jupiter est la plus grosse planète, mais son diamètre au kilomètre près est une connaissance de passionné."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "astro-vitesse-orbitale-terre",
     "enonce": "À quelle vitesse la Terre tourne-t-elle autour du Soleil ?",
-    "valeur": 107218.8,
+    "valeur": 107208,
     "valeur_a_retenir": 107200,
     "precision": 100,
     "unite": "km/h",
-    "perimetre": "vitesse orbitale moyenne (29,783 km/s × 3 600)",
+    "perimetre": "vitesse orbitale moyenne (29,78 km/s × 3 600)",
     "ancrage": "En une journée, la Terre parcourt environ 2,6 millions de km : près de 7 fois la distance Terre-Lune.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Terre",
-      "consulte_le": "2026-11-05"
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Terre",
+      "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie"],
+    "themes": ["Astronomie", "Système solaire"],
     "leurres": [
       {
         "valeur": 105400,
         "type": "autre_perimetre",
-        "note": "vitesse orbitale minimale, à l'aphélie (29,291 km/s ≈ 105 448 km/h)"
+        "note": "vitesse orbitale minimale, à l'aphélie (29,29 km/s ≈ 105 444 km/h, fiche NASA)"
       },
       {
         "valeur": 66600,
         "type": "autre_unite",
-        "note": "la même vitesse en miles par heure (107 219 / 1,609 ≈ 66 623)"
+        "note": "la même vitesse en miles par heure (107 208 / 1,609344 ≈ 66 616)"
       },
       {
         "valeur": 40300,
         "type": "autre_perimetre",
-        "note": "vitesse de libération terrestre (11,186 km/s ≈ 40 270 km/h) ; leurre éloigné"
+        "note": "vitesse de libération terrestre (11,186 km/s ≈ 40 270 km/h, fiche NASA) ; leurre éloigné"
+      },
+      {
+        "valeur": 86700,
+        "type": "autre_perimetre",
+        "note": "vitesse orbitale moyenne de Mars (24,08 km/s ≈ 86 688 km/h, fiche NASA de Mars)"
+      },
+      {
+        "valeur": 126100,
+        "type": "autre_perimetre",
+        "note": "vitesse orbitale moyenne de Vénus (35,02 km/s ≈ 126 072 km/h, fiche NASA de Vénus)"
       },
       {
         "valeur": 101900,
@@ -418,6 +491,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Hors programme en tant que valeur, mais « plus de 100 000 km/h » est souvent cité en vulgarisation : culture générale d'adulte curieux."
+    },
     "statut": "brouillon",
     "langue": "fr"
   }

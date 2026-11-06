@@ -57,6 +57,8 @@ idées → vérification → rédaction → relecture. Plus de maillon « simpli
 - **Difficulté** : 4 crans (tout public, grand public, curieux, pointu), repérés sur les programmes (primaire, collège, lycée, hors programme). La rédaction propose un cran avec une phrase de justification, la relecture le confirme. Répartition indicative : environ 25 / 40 / 20 / 15 %, la justesse de chaque fiche prime.
 - **Thèmes ouverts** : une liste de thèmes par fiche, le premier sert au jeu (album, composition). Un thème naît dès sa première fiche (2 ou 3 mots, réutiliser l'existant) et peut compter moins de 10 fiches.
 - **Exclusions v1** : pas de dates, de nombres négatifs ni de pourcentages.
+- **Fiches datées** (population, communes, éditions d'un recensement) : on retient la dernière donnée publiée, et ces fiches sont revues chaque janvier. Une valeur incertaine prend un pas qui couvre son incertitude ou l'écart entre les sources de référence (relecture du lot 1, hugobqd/numero#12).
+- **Rééquilibrage** : le stock du prototype penche vers le difficile (lot 1 : 7 / 31 / 38 / 24 %) ; les lots 2 à 5 visent surtout tout public et grand public (autour de 40 et 45 %).
 
 ## Plus tard
 

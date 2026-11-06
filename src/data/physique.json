@@ -10,29 +10,31 @@
     "ancrage": "Le son parcourt environ 1 km en 3 secondes : c'est pourquoi on compte les secondes entre l'éclair et le tonnerre.",
     "source": {
       "url": "https://fr.wikipedia.org/wiki/Vitesse_du_son",
-      "consulte_le": "2026-11-05"
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://en.wikipedia.org/wiki/Speed_of_sound",
+      "idee": "Stock du prototype ; programme de physique-chimie (cycle 4, signaux sonores ; seconde, vitesse de propagation d'un signal sonore)"
     },
     "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 331,
         "type": "autre_perimetre",
-        "note": "vitesse du son dans l'air à 0 °C (331 m/s selon l'article)"
+        "note": "vitesse du son dans l'air sec à 0 °C : 331,3 à 331,5 m/s selon les sources (331,5 dans la table de l'article, d'après le CRC Handbook)"
       },
       {
         "valeur": 349,
         "type": "autre_perimetre",
-        "note": "vitesse du son dans l'air à 30 °C (349,2 m/s dans le tableau)"
+        "note": "vitesse du son dans l'air à 30 °C (349,2 m/s dans la table de l'article, CRC Handbook)"
       },
       {
         "valeur": 325,
         "type": "autre_perimetre",
-        "note": "vitesse du son dans l'air à −10 °C (325,4 m/s dans le tableau)"
+        "note": "vitesse du son dans l'air à −10 °C (325,4 m/s dans la table de l'article, CRC Handbook)"
       },
       {
-        "valeur": 1224,
+        "valeur": 1236,
         "type": "autre_unite",
-        "note": "la vitesse du son en km/h (1 224 km/h à 15 °C selon l'article) ; leurre éloigné"
+        "note": "la même vitesse en km/h (343,4 × 3,6 ≈ 1 236 km/h) ; leurre éloigné"
       },
       {
         "valeur": 356,
@@ -43,13 +45,17 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La vitesse de propagation du son est au programme de physique-chimie du collège (cycle 4, signaux sonores) puis de seconde ; on y retient souvent l'arrondi 340 m/s, la valeur précise à 20 °C l'est moins."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "physique-ebullition-eau-kelvin",
     "enonce": "À quelle température, en kelvins, l'eau bout-elle au niveau de la mer ?",
-    "valeur": 373.1339,
+    "valeur": 373.124,
     "valeur_a_retenir": 373,
     "precision": 1,
     "unite": "K",
@@ -57,8 +63,10 @@
     "ancrage": "Le kelvin part du zéro absolu, 273 degrés sous la glace fondante : 100 °C deviennent donc 373 K.",
     "mnemo": "373 = 273 + 100.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Kelvin",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.iapws.org/faq/boil.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Kelvin",
+      "idee": "Stock du prototype ; culture générale (échelles de température)"
     },
     "themes": ["Physique"],
     "leurres": [
@@ -75,7 +83,7 @@
       {
         "valeur": 288,
         "type": "autre_perimetre",
-        "note": "température moyenne à la surface de la Terre : 288 K (page Kelvin)"
+        "note": "température moyenne à la surface de la Terre : 288 K (fiche Terre de la NASA, et page Kelvin)"
       },
       {
         "valeur": 363,
@@ -90,6 +98,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Le kelvin n'est pas au programme du collège ni de seconde (on y travaille en degrés Celsius) ; il n'apparaît qu'en spécialité physique-chimie au lycée. La valeur se retrouve toutefois par le calcul 273 + 100."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -103,10 +115,12 @@
     "perimetre": "éléments observés et reconnus par l'UICPA, de l'hydrogène (1) à l'oganesson (118), tableau complet depuis 2016",
     "ancrage": "Seuls les 94 premiers existent dans la nature ; les 24 derniers ont été fabriqués par l'humain, souvent quelques atomes à la fois.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/%C3%89l%C3%A9ment_chimique",
-      "consulte_le": "2026-11-05"
+      "url": "https://iupac.org/what-we-do/periodic-table-of-elements/",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/%C3%89l%C3%A9ment_chimique",
+      "idee": "Stock du prototype ; programme de physique-chimie (tableau périodique, cycle 4 dès la 4e, puis seconde)"
     },
-    "themes": ["Physique"],
+    "themes": ["Physique", "Chimie"],
     "leurres": [
       {
         "valeur": 94,
@@ -121,7 +135,7 @@
       {
         "valeur": 83,
         "type": "autre_perimetre",
-        "note": "nombre d'éléments primordiaux (page Tableau périodique des éléments)"
+        "note": "nombre d'éléments primordiaux, présents sur Terre depuis sa formation (page anglaise Primordial nuclide : 83 éléments)"
       },
       {
         "valeur": 112,
@@ -136,54 +150,64 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Le tableau périodique est utilisé dès la 4e en physique-chimie (cycle 4), puis en seconde ; le nombre total d'éléments y est visible mais rarement retenu."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "physique-masse-volumique-or",
     "enonce": "Quelle est la masse volumique de l'or ?",
-    "valeur": 19300,
+    "valeur": 19320,
     "valeur_a_retenir": 19300,
     "precision": 100,
     "unite": "kg/m³",
     "perimetre": "or pur, à 20 °C (19,3 g/cm³)",
     "ancrage": "Un litre d'or pèse 19,3 kg, près de 20 fois plus qu'un litre d'eau. Le tungstène a quasiment la même densité.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Or",
-      "consulte_le": "2026-11-05"
+      "url": "https://physics.nist.gov/PhysRefData/XrayMassCoef/tab1.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Or",
+      "idee": "Stock du prototype ; programme de physique-chimie de cycle 4 (masse volumique)"
     },
     "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 22600,
         "type": "autre_perimetre",
-        "note": "osmium, élément naturel le plus dense : 22 610 kg/m³ (page Masse volumique)"
+        "note": "osmium, élément le plus dense : 22,57 g/cm³, soit 22 570 kg/m³ (table du NIST)"
       },
       {
         "valeur": 21500,
         "type": "autre_perimetre",
-        "note": "platine : 21 450 kg/m³ (page Masse volumique)"
-      },
-      {
-        "valeur": 19100,
-        "type": "autre_perimetre",
-        "note": "uranium : 19 100 kg/m³ (page Masse volumique)"
+        "note": "platine : 21,46 g/cm³ (Jefferson Lab, via PubChem ; 21,45 dans la table du NIST)"
       },
       {
         "valeur": 13500,
-        "type": "erreur_frequente",
-        "note": "mercure, 13 545 kg/m³ (page Masse volumique) : souvent cité comme exemple de matière très dense"
+        "type": "autre_perimetre",
+        "note": "mercure, le métal liquide : 13,534 g/cm³ (Jefferson Lab, via PubChem)"
+      },
+      {
+        "valeur": 11300,
+        "type": "autre_perimetre",
+        "note": "plomb, réputé très lourd : 11,342 g/cm³ (Jefferson Lab, via PubChem)"
       },
       {
         "valeur": 10500,
         "type": "autre_perimetre",
-        "note": "argent : 10 500 kg/m³ (page Masse volumique)"
+        "note": "argent : 10,50 g/cm³ (table du NIST)"
       },
       {
         "valeur": 17900,
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La masse volumique est au programme de physique-chimie du cycle 4 (relation m = ρ.V, distinguer des matériaux) ; l'or y sert d'exemple de métal très dense, mais sa valeur précise est peu retenue."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -197,25 +221,32 @@
     "perimetre": "fer pur, à 20 °C (7,874 g/cm³)",
     "ancrage": "Un cube de fer de 10 cm de côté pèse près de 8 kg, presque 8 fois le même cube rempli d'eau.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Fer",
-      "consulte_le": "2026-11-05"
+      "url": "https://physics.nist.gov/PhysRefData/XrayMassCoef/tab1.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://pubchem.ncbi.nlm.nih.gov/element/Iron",
+      "idee": "Stock du prototype ; programme de physique-chimie de cycle 4 (masse volumique)"
     },
     "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 8960,
         "type": "autre_perimetre",
-        "note": "cuivre : 8,96 g/cm³ (page Cuivre)"
+        "note": "cuivre : 8,960 g/cm³ (table du NIST)"
       },
       {
-        "valeur": 7150,
+        "valeur": 7130,
         "type": "autre_perimetre",
-        "note": "zinc : 7 150 kg/m³ (page Masse volumique)"
+        "note": "zinc : 7,133 g/cm³ (table du NIST)"
       },
       {
         "valeur": 7290,
         "type": "autre_perimetre",
-        "note": "étain : 7 290 kg/m³ (page Masse volumique)"
+        "note": "étain blanc : 7,287 g/cm³ (Jefferson Lab, via PubChem)"
+      },
+      {
+        "valeur": 7850,
+        "type": "autre_perimetre",
+        "note": "acier de construction : 7 850 kg/m³, valeur de calcul de l'Eurocode 3 (NF EN 1993-1-1) ; confusion fer / acier"
       },
       {
         "valeur": 7630,
@@ -230,6 +261,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La masse volumique est au programme de physique-chimie du cycle 4 ; le fer est l'exemple de métal le plus courant des exercices, sans que sa valeur précise soit à connaître."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -243,41 +278,47 @@
     "perimetre": "fer pur, à la pression atmosphérique",
     "ancrage": "C'est plus de 450 °C au-dessus du point de fusion de l'or (1 064 °C) et du cuivre (1 085 °C).",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Fer",
-      "consulte_le": "2026-11-05"
+      "url": "https://pubchem.ncbi.nlm.nih.gov/element/Iron",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Fer",
+      "idee": "Stock du prototype ; culture générale (températures de fusion des métaux)"
     },
     "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 1811,
         "type": "autre_unite",
-        "note": "la même température en kelvins (1 538 + 273,15 = 1 811 K)"
+        "note": "la même température en kelvins : 1 811 K (Jefferson Lab, via PubChem)"
       },
       {
         "valeur": 2861,
         "type": "autre_perimetre",
-        "note": "température d'ébullition du fer : 2 861 °C (page Fer)"
+        "note": "température d'ébullition du fer : 2 861 °C (Jefferson Lab ; 2 862 °C selon Los Alamos, via PubChem)"
       },
       {
         "valeur": 1455,
         "type": "autre_perimetre",
-        "note": "fusion du nickel : 1 455 °C (page Nickel)"
+        "note": "fusion du nickel : 1 455 °C (Los Alamos et Jefferson Lab, via PubChem)"
       },
       {
         "valeur": 1085,
         "type": "autre_perimetre",
-        "note": "fusion du cuivre : 1 084,62 °C (page Cuivre)"
+        "note": "fusion du cuivre : 1 084,62 °C (Jefferson Lab, via PubChem)"
       },
       {
         "valeur": 1064,
         "type": "autre_perimetre",
-        "note": "fusion de l'or : 1 064,18 °C (page Or)"
+        "note": "fusion de l'or : 1 064,18 °C (Los Alamos et Jefferson Lab, via PubChem)"
       },
       {
         "valeur": 1613,
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Les températures de changement d'état sont au programme du cycle 4 et de seconde, mais celle du fer n'y est pas à connaître : c'est de la culture générale."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -289,32 +330,34 @@
     "precision": 1,
     "unite": "°C",
     "perimetre": "tungstène pur, à la pression atmosphérique ; c'est le point de fusion le plus élevé de tous les métaux",
-    "ancrage": "C'est plus du double de la température de fusion du fer (1 538 °C) : d'où son usage dans les filaments d'ampoules.",
+    "ancrage": "C'est plus du double de la température de fusion du fer (1 538 °C) : d'où son usage dans les filaments des ampoules à incandescence.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Tungst%C3%A8ne",
-      "consulte_le": "2026-11-05"
+      "url": "https://pubchem.ncbi.nlm.nih.gov/element/Tungsten",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Tungst%C3%A8ne",
+      "idee": "Stock du prototype ; culture générale, records des éléments"
     },
-    "themes": ["Physique"],
+    "themes": ["Physique", "Records"],
     "leurres": [
       {
         "valeur": 3695,
         "type": "autre_unite",
-        "note": "la même température en kelvins (3 422 + 273,15 ≈ 3 695 K)"
+        "note": "la même température en kelvins : 3 695 K (Jefferson Lab, via PubChem)"
       },
       {
-        "valeur": 3185,
+        "valeur": 3186,
         "type": "autre_perimetre",
-        "note": "fusion du rhénium : 3 185 °C (page Rhénium, 3e plus haut point de fusion)"
+        "note": "fusion du rhénium : 3 186 °C (Los Alamos et Jefferson Lab, via PubChem)"
       },
       {
         "valeur": 3033,
         "type": "autre_perimetre",
-        "note": "fusion de l'osmium : 3 033 °C (page Osmium)"
+        "note": "fusion de l'osmium : 3 033 °C (Los Alamos et Jefferson Lab, via PubChem)"
       },
       {
-        "valeur": 5555,
+        "valeur": 3017,
         "type": "autre_perimetre",
-        "note": "température d'ébullition du tungstène : 5 555 °C (page Tungstène)"
+        "note": "fusion du tantale : 3 017 °C (Los Alamos et Jefferson Lab, via PubChem)"
       },
       {
         "valeur": 3317,
@@ -325,6 +368,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme : le tungstène et son point de fusion ne sont étudiés ni au collège ni au lycée ; c'est une connaissance de passionné."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -338,25 +385,32 @@
     "perimetre": "pression normale de référence, au niveau moyen de la mer, à 15 °C",
     "ancrage": "C'est le poids d'environ 10 tonnes d'air sur chaque mètre carré, ou d'une colonne de mercure de 760 mm.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Pression_atmosph%C3%A9rique",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.bipm.org/en/committees/cg/cgpm/10-1954/resolution-4",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Pression_atmosph%C3%A9rique",
+      "idee": "Stock du prototype ; culture générale (météo, atmosphère normale)"
     },
     "themes": ["Physique"],
     "leurres": [
       {
         "valeur": 1084,
         "type": "autre_perimetre",
-        "note": "record de pression pour une station sous 750 m : 1 083,8 hPa à Agata (Russie)"
+        "note": "record de pression ramenée au niveau de la mer pour une station sous 750 m : 1 083,8 hPa à Agata (Russie), 1968 (archive des extrêmes de l'OMM)"
       },
       {
-        "valeur": 1087,
+        "valeur": 1089,
         "type": "autre_perimetre",
-        "note": "record ramené au niveau de la mer : 1 086,8 hPa à Tosontsengel (Mongolie), 2010"
+        "note": "record de pression ramenée au niveau de la mer pour une station au-dessus de 750 m : 1 089,1 hPa à Tosontsengel (Mongolie), 2004 (archive des extrêmes de l'OMM)"
       },
       {
-        "valeur": 869,
+        "valeur": 872,
         "type": "autre_perimetre",
-        "note": "pression estimée au cœur du cyclone Monica (2006) : 868,5 hPa, proche du record mesuré de 870 hPa (typhon Tip)"
+        "note": "pression la plus basse mesurée dans l'hémisphère ouest : 872 hPa au cœur de l'ouragan Patricia, 2015 (archive des extrêmes de l'OMM ; record mondial : 870 hPa, typhon Tip)"
+      },
+      {
+        "valeur": 981,
+        "type": "autre_unite",
+        "note": "l'« atmosphère technique » (1 kgf/cm²), unité ancienne différente de l'atmosphère normale : 98 066,5 Pa, soit 980,665 hPa (NIST, guide du SI, annexe B)"
       },
       {
         "valeur": 989,
@@ -371,52 +425,63 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "La pression d'un fluide n'est étudiée qu'en spécialité physique-chimie de 1re ; la valeur de 1 013 hPa est surtout familière aux lecteurs de bulletins météo."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "physique-vitesse-liberation-terre",
     "enonce": "À quelle vitesse faut-il lancer un objet pour qu'il échappe à l'attraction de la Terre ?",
-    "valeur": 40320,
-    "valeur_a_retenir": 40300,
+    "valeur": 11186,
+    "valeur_a_retenir": 11200,
     "precision": 100,
-    "unite": "km/h",
-    "perimetre": "vitesse de libération depuis la surface terrestre, sans frottement de l'air (11,2 km/s, soit 40 320 km/h)",
+    "unite": "m/s",
+    "perimetre": "vitesse de libération depuis la surface terrestre, sans frottement de l'air : 11,19 km/s, soit 11 186 m/s (environ 40 300 km/h)",
     "ancrage": "11,2 km par seconde : Paris-Marseille en moins de 70 secondes.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Vitesse_de_lib%C3%A9ration",
-      "consulte_le": "2026-11-05"
+      "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Vitesse_de_lib%C3%A9ration",
+      "idee": "Stock du prototype ; culture générale (conquête spatiale)"
     },
-    "themes": ["Physique"],
+    "themes": ["Physique", "Astronomie"],
     "leurres": [
       {
-        "valeur": 28400,
+        "valeur": 7900,
         "type": "erreur_frequente",
-        "note": "vitesse minimale de satellisation (7,9 km/s ≈ 28 440 km/h) : suffit pour rester en orbite, pas pour s'échapper"
+        "note": "vitesse minimale de satellisation (7,9 km/s, page Vitesse de libération) : elle suffit pour rester en orbite, pas pour s'échapper"
       },
       {
-        "valeur": 59800,
+        "valeur": 16600,
         "type": "autre_perimetre",
-        "note": "vitesse pour quitter le système solaire depuis l'orbite terrestre : 16,6 km/s ≈ 59 760 km/h (référentiel géocentrique)"
+        "note": "vitesse à atteindre près de la Terre pour quitter le système solaire : 16,6 km/s, dans un référentiel géocentrique (page Vitesse de libération)"
       },
       {
-        "valeur": 8600,
+        "valeur": 10400,
         "type": "autre_perimetre",
-        "note": "vitesse de libération de la Lune : 2,4 km/s ≈ 8 640 km/h ; leurre éloigné"
+        "note": "vitesse de libération de Vénus : 10,36 km/s (fiche Vénus de la NASA)"
       },
       {
-        "valeur": 37400,
+        "valeur": 2400,
+        "type": "autre_perimetre",
+        "note": "vitesse de libération de la Lune : 2,38 km/s (fiche Lune de la NASA) ; leurre éloigné"
+      },
+      {
+        "valeur": 12100,
         "type": "proche"
       },
       {
-        "valeur": 43600,
-        "type": "proche"
-      },
-      {
-        "valeur": 34900,
+        "valeur": 10800,
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme : le lycée étudie la gravitation et le mouvement des satellites (spécialité de terminale), pas la vitesse de libération ; la valeur est surtout connue des passionnés d'espace."
+    },
     "statut": "brouillon",
     "langue": "fr"
   }

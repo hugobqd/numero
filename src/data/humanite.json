@@ -9,18 +9,24 @@
     "perimetre": "États membres de plein droit, depuis l'admission du Soudan du Sud le 14 juillet 2011 (hors États observateurs)",
     "ancrage": "L'ONU est née en 1945 avec 51 États signataires de sa Charte : le nombre de membres a presque quadruplé depuis.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Organisation_des_Nations_unies",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.un.org/en/about-us/growth-in-un-membership",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Organisation_des_Nations_unies",
+      "idee": "Stock du prototype ; culture générale"
     },
     "themes": ["Humanité"],
     "leurres": [
-      { "valeur": 192, "type": "erreur_frequente", "note": "nombre de membres avant l'admission du Soudan du Sud en 2011" },
-      { "valeur": 195, "type": "autre_perimetre", "note": "193 membres + 2 États observateurs (Palestine, Vatican)" },
-      { "valeur": 197, "type": "autre_perimetre", "note": "nombre d'États reconnus par l'ONU, selon Wikipédia" },
-      { "valeur": 51, "type": "autre_perimetre", "note": "États signataires de la Charte en 1945 (leurre éloigné)" },
+      { "valeur": 192, "type": "erreur_frequente", "note": "nombre de membres de 2006 (Monténégro) à l'admission du Soudan du Sud en 2011 (ONU)" },
+      { "valeur": 195, "type": "autre_perimetre", "note": "193 membres + 2 États observateurs (Palestine, Saint-Siège)" },
+      { "valeur": 197, "type": "autre_perimetre", "note": "États parties à la Convention-cadre de l'ONU sur les changements climatiques : 193 membres, 2 observateurs, îles Cook et Niue (198 parties avec l'UE, CCNUCC)" },
+      { "valeur": 51, "type": "autre_perimetre", "note": "membres originels de 1945 (ONU), leurre éloigné" },
       { "valeur": 188, "type": "proche" },
       { "valeur": 204, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "L'ONU est évoquée en histoire et en EMC au collège, mais le nombre exact de ses membres relève de la culture générale d'un adulte qui s'informe."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -34,43 +40,56 @@
     "perimetre": "États membres depuis la sortie du Royaume-Uni (Brexit, 2020)",
     "ancrage": "Ils parlent 24 langues officielles différentes : presque une par pays.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Union_europ%C3%A9enne",
-      "consulte_le": "2026-11-05"
+      "url": "https://european-union.europa.eu/principles-countries-history/eu-countries_fr",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Union_europ%C3%A9enne",
+      "idee": "Stock du prototype ; programme de géographie de 3e (« La France et l'Union européenne »)"
     },
     "themes": ["Humanité"],
     "leurres": [
       { "valeur": 28, "type": "erreur_frequente", "note": "nombre de membres avant le Brexit" },
-      { "valeur": 21, "type": "autre_perimetre", "note": "pays de la zone euro en 2026" },
+      { "valeur": 21, "type": "autre_perimetre", "note": "pays de la zone euro depuis l'entrée de la Bulgarie le 1er janvier 2026 (BCE)" },
       { "valeur": 24, "type": "autre_perimetre", "note": "nombre de langues officielles de l'UE" },
+      { "valeur": 29, "type": "autre_perimetre", "note": "pays de l'espace Schengen depuis l'adhésion complète de la Bulgarie et de la Roumanie le 1er janvier 2025 (25 de l'UE + 4 de l'AELE)" },
       { "valeur": 26, "type": "proche" },
-      { "valeur": 29, "type": "proche" },
       { "valeur": 31, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Nombre très connu, rappelé à chaque élection européenne ; l'UE est étudiée en géographie de 3e (cycle 4)."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "humanite-population-france",
-    "enonce": "Combien d'habitants compte la France au 1er janvier 2025 ?",
-    "valeur": 68600000,
-    "valeur_a_retenir": 68600000,
+    "enonce": "Combien d'habitants compte la France au 1er janvier 2026 ?",
+    "valeur": 69082000,
+    "valeur_a_retenir": 69100000,
     "precision": 100000,
     "unite": "habitants",
-    "perimetre": "estimation Insee au 1er janvier 2025, métropole et cinq départements d'outre-mer (Mayotte comprise), hors collectivités d'outre-mer",
-    "ancrage": "Sur ces 68,6 millions, 2,3 millions vivent dans les cinq départements d'outre-mer : environ un habitant sur trente.",
+    "perimetre": "estimation Insee au 1er janvier 2026 (provisoire, bilan démographique 2025, révisée chaque janvier), métropole et cinq départements d'outre-mer (Mayotte comprise), hors collectivités d'outre-mer",
+    "ancrage": "Sur ces 69,1 millions, 2,3 millions vivent dans les cinq départements d'outre-mer : environ un habitant sur trente.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Population_de_la_France",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.insee.fr/fr/statistiques/5225246",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.insee.fr/fr/statistiques/8719824",
+      "idee": "Stock du prototype ; organisme (Insee)"
     },
-    "themes": ["Humanité"],
+    "themes": ["Humanité", "France"],
     "leurres": [
-      { "valeur": 66300000, "type": "autre_perimetre", "note": "France métropolitaine seule en 2025 (68,6 M − 2,3 M dans les DOM)" },
-      { "valeur": 68400000, "type": "autre_perimetre", "note": "estimation au 1er janvier 2024 (68 373 433)" },
-      { "valeur": 67400000, "type": "erreur_frequente", "note": "chiffre au 1er janvier 2020 (67 441 850), souvent encore cité" },
-      { "valeur": 68100000, "type": "autre_perimetre", "note": "estimation au 1er janvier 2023 (68 143 433)" },
-      { "valeur": 69200000, "type": "proche" },
+      { "valeur": 68900000, "type": "autre_perimetre", "note": "population au 1er janvier 2025 (68 852 milliers, Insee, estimation révisée)" },
+      { "valeur": 68600000, "type": "erreur_frequente", "note": "chiffre très repris en 2025 : première estimation pour le 1er janvier 2025 (68,6 M, Insee Première n° 2033), proche de l'estimation actuelle au 1er janvier 2024 (68 638 milliers)" },
+      { "valeur": 66800000, "type": "autre_perimetre", "note": "France métropolitaine seule au 1er janvier 2026 (66 793 milliers, Insee)" },
+      { "valeur": 68400000, "type": "autre_perimetre", "note": "population au 1er janvier 2023, désormais définitive (68 405 milliers, Insee)" },
+      { "valeur": 67400000, "type": "erreur_frequente", "note": "ancien chiffre : population au 1er janvier 2020 (67 442 milliers, Insee)" },
+      { "valeur": 69400000, "type": "proche" },
       { "valeur": 67900000, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "La population de la France est abordée en géographie de 3e et l'ordre de grandeur (« 68 millions ») est connu, mais la valeur au pas de 100 000, révisée chaque année, relève de la culture générale de qui suit l'actualité."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -82,45 +101,59 @@
     "precision": 100000000,
     "unite": "habitants",
     "perimetre": "population mondiale estimée par l'ONU au 15 novembre 2022",
-    "ancrage": "Le cap des 7 milliards avait été franchi le 31 octobre 2011 : un milliard d'humains de plus en onze ans.",
+    "ancrage": "Selon l'ONU, il a fallu 12 ans pour passer de 7 à 8 milliards d'humains, et il en faudra environ 15 pour atteindre 9 milliards.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Population_mondiale",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.un.org/en/dayof8billion",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.ined.fr/fr/presse/huit-milliards-humains-aujourd-hui-combien-demain",
+      "idee": "Stock du prototype ; organisme (ONU)"
     },
     "themes": ["Humanité"],
     "leurres": [
-      { "valeur": 7000000000, "type": "erreur_frequente", "note": "cap atteint le 31 octobre 2011, chiffre longtemps répété" },
-      { "valeur": 6000000000, "type": "autre_perimetre", "note": "population en octobre 1999" },
-      { "valeur": 9700000000, "type": "autre_perimetre", "note": "projection ONU pour 2050 (9 664,4 millions)" },
-      { "valeur": 8100000000, "type": "autre_perimetre", "note": "estimation ONU pour 2023 (8 091,7 millions)" },
+      { "valeur": 7000000000, "type": "erreur_frequente", "note": "cap symboliquement fixé par l'ONU au 31 octobre 2011, chiffre longtemps répété" },
+      { "valeur": 6000000000, "type": "autre_perimetre", "note": "cap symbolique du 12 octobre 1999 (Journée des 6 milliards)" },
+      { "valeur": 9700000000, "type": "autre_perimetre", "note": "projection ONU pour 2050 (9 664,4 millions, World Population Prospects 2024)" },
+      { "valeur": 8100000000, "type": "autre_perimetre", "note": "estimation ONU pour 2023 (8 091,7 millions au 1er juillet, World Population Prospects 2024)" },
+      { "valeur": 8300000000, "type": "autre_perimetre", "note": "estimation ONU pour 2026 (8 300,7 millions au 1er juillet, World Population Prospects 2024)" },
       { "valeur": 8600000000, "type": "proche" },
       { "valeur": 7600000000, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La croissance de la population mondiale est étudiée en géographie de 5e (« La question démographique et l'inégal développement ») et le cap des 8 milliards a été très médiatisé."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "humanite-langues-ethnologue",
-    "enonce": "Combien de langues recense l'Ethnologue dans son édition 2025 ?",
-    "valeur": 7159,
-    "valeur_a_retenir": 7159,
+    "enonce": "Combien de langues recense l'Ethnologue dans son édition 2026 ?",
+    "valeur": 7170,
+    "valeur_a_retenir": 7170,
     "precision": 1,
     "unite": "langues",
-    "perimetre": "langues recensées par Ethnologue, 28e édition (2025)",
+    "perimetre": "langues vivantes recensées par Ethnologue, 29e édition (2026)",
     "ancrage": "La première édition, en 1951, n'en recensait que 46 : le décompte a été multiplié par plus de 150.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Ethnologue,_Languages_of_the_World",
-      "consulte_le": "2026-11-05"
+      "url": "https://en.wikipedia.org/wiki/Ethnologue",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Ethnologue,_Languages_of_the_World",
+      "idee": "Stock du prototype ; culture générale (Ethnologue)"
     },
     "themes": ["Humanité"],
     "leurres": [
+      { "valeur": 7159, "type": "autre_perimetre", "note": "28e édition (2025)" },
       { "valeur": 7164, "type": "autre_perimetre", "note": "27e édition (2024)" },
-      { "valeur": 7168, "type": "autre_perimetre", "note": "26e édition (2023), le maximum du décompte" },
-      { "valeur": 7106, "type": "autre_perimetre", "note": "17e édition (2013)" },
-      { "valeur": 6909, "type": "erreur_frequente", "note": "16e édition (2009), à l'origine du « près de 7 000 langues » souvent cité" },
+      { "valeur": 7168, "type": "autre_perimetre", "note": "26e édition (2023), longtemps le maximum" },
+      { "valeur": 7151, "type": "autre_perimetre", "note": "25e édition (2022)" },
+      { "valeur": 6909, "type": "erreur_frequente", "note": "16e édition (2009), ancien décompte encore souvent repris" },
       { "valeur": 7243, "type": "proche" },
       { "valeur": 7031, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme : on sait souvent qu'il existe « environ 7 000 langues », mais le décompte exact d'une édition d'Ethnologue est une connaissance de passionné."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -134,10 +167,12 @@
     "perimetre": "hauteur totale avec antenne, depuis l'ajout d'une nouvelle antenne en 2022",
     "ancrage": "Le troisième étage, le plus haut accessible au public, est à 276 m : l'antenne et le sommet ajoutent encore plus de 50 m.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Tour_Eiffel",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.toureiffel.paris/fr/actualites/histoire-et-culture/de-300-330-metres-lhistoire-de-la-taille-de-la-tour",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Tour_Eiffel",
+      "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Humanité"],
+    "themes": ["Humanité", "Monuments"],
     "leurres": [
       { "valeur": 324, "type": "erreur_frequente", "note": "hauteur avec antennes mesurée en 2000, valable jusqu'en 2022" },
       { "valeur": 312, "type": "autre_perimetre", "note": "hauteur d'origine en 1889, drapeau compris (312,27 m)" },
@@ -146,6 +181,10 @@
       { "valeur": 341, "type": "proche" },
       { "valeur": 337, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Hors programme ; la hauteur de la tour Eiffel est célèbre, mais beaucoup retiennent encore 300 ou 324 m : la valeur de 330 m depuis 2022 relève de la culture générale à jour."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -160,42 +199,54 @@
     "ancrage": "C'est plus de la moitié du tour de la Terre (40 075 km à l'équateur).",
     "source": {
       "url": "https://fr.wikipedia.org/wiki/Grande_Muraille",
-      "consulte_le": "2026-11-05"
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.news.cn/2023-12/02/c_1130005251.htm",
+      "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Humanité"],
+    "themes": ["Humanité", "Monuments"],
     "leurres": [
-      { "valeur": 8852, "type": "erreur_frequente", "note": "chiffre officiel d'avril 2009 (8 851,8 km), avant le recensement de 2012 (leurre éloigné)" },
+      { "valeur": 8852, "type": "erreur_frequente", "note": "chiffre officiel d'avril 2009 pour la seule muraille des Ming (8 851,8 km), avant le recensement de 2012 (leurre éloigné)" },
       { "valeur": 13171, "type": "autre_unite", "note": "21 196 km convertis en miles" },
       { "valeur": 42392, "type": "autre_unite", "note": "21 196 km convertis en li modernes de 500 m" },
       { "valeur": 19876, "type": "proche" },
       { "valeur": 22618, "type": "proche" },
       { "valeur": 23401, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme : la longueur officielle au kilomètre près, issue d'un recensement chinois de 2012, est une connaissance de passionné."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "humanite-communes-france",
-    "enonce": "Combien de communes compte la France au 1er janvier 2025 ?",
+    "enonce": "Combien de communes compte la France au 1er janvier 2026 ?",
     "valeur": 34875,
     "valeur_a_retenir": 34875,
     "precision": 1,
     "unite": "communes",
-    "perimetre": "communes de métropole et des départements d'outre-mer au 1er janvier 2025 (DGCL), hors collectivités d'outre-mer et Nouvelle-Calédonie",
-    "ancrage": "Le maximum a été atteint au recensement de 1936, avec 38 014 communes : les fusions en ont effacé plus de 3 000.",
+    "perimetre": "communes de métropole et des départements d'outre-mer au 1er janvier 2026, hors collectivités d'outre-mer et Nouvelle-Calédonie (nombre inchangé depuis 2025 : aucune fusion n'est possible l'année des élections municipales)",
+    "ancrage": "On en comptait 38 014 au recensement de 1936 : les fusions de communes en ont effacé plus de 3 000 depuis.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Commune_(France)",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.insee.fr/fr/information/8740222",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.collectivites-locales.gouv.fr/actualites/bis-195-les-structures-territoriales-au-1er-janvier-2025",
+      "idee": "Stock du prototype ; organisme (DGCL, Insee)"
     },
-    "themes": ["Humanité"],
+    "themes": ["Humanité", "France"],
     "leurres": [
       { "valeur": 34935, "type": "autre_perimetre", "note": "nombre au 1er janvier 2024 (DGCL)" },
-      { "valeur": 34746, "type": "autre_perimetre", "note": "France métropolitaine seule au 1er janvier 2025" },
-      { "valeur": 34958, "type": "autre_perimetre", "note": "total 2025 en ajoutant les 83 communes des COM et de Nouvelle-Calédonie" },
-      { "valeur": 35416, "type": "erreur_frequente", "note": "nombre début 2017, encore souvent cité" },
-      { "valeur": 38014, "type": "autre_perimetre", "note": "maximum historique, recensement de 1936" },
+      { "valeur": 34746, "type": "autre_perimetre", "note": "France métropolitaine seule (34 875 − 129 communes des DOM, Code officiel géographique 2026)" },
+      { "valeur": 34958, "type": "autre_perimetre", "note": "total en ajoutant les 83 communes de Polynésie française (48), de Nouvelle-Calédonie (33) et de Saint-Pierre-et-Miquelon (2)" },
+      { "valeur": 35416, "type": "erreur_frequente", "note": "ancien chiffre : nombre au 1er janvier 2017 (DGCL)" },
+      { "valeur": 38014, "type": "autre_perimetre", "note": "nombre au recensement de 1936" },
       { "valeur": 33682, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "La commune est étudiée en EMC dès l'école et beaucoup savent qu'il y en a « environ 35 000 », mais le nombre exact à l'unité, qui change avec les fusions, est hors programme."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -206,21 +257,27 @@
     "valeur_a_retenir": 116,
     "precision": 1,
     "unite": "années",
-    "perimetre": "du 24 mai 1337 au 9 octobre 1453 (116 ans, 4 mois et 15 jours), entrecoupée de trêves",
+    "perimetre": "de 1337 à 1453 : de la confiscation de la Guyenne par Philippe VI (24 mai 1337) à la reddition de Bordeaux (octobre 1453), entrecoupée de trêves",
     "ancrage": "Elle a duré plus longtemps que la guerre de Quatre-Vingts Ans, qui n'a duré que 79 ans.",
     "source": {
       "url": "https://fr.wikipedia.org/wiki/Guerre_de_Cent_Ans",
-      "consulte_le": "2026-11-05"
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://catalogue.bnf.fr/ark:/12148/cb11938577c",
+      "idee": "Stock du prototype ; programme d'histoire de 5e (affirmation de l'État monarchique sous les Capétiens et les Valois)"
     },
     "themes": ["Humanité"],
     "leurres": [
       { "valeur": 138, "type": "autre_perimetre", "note": "jusqu'au traité de Picquigny (1475), parfois présenté comme la vraie fin du conflit" },
-      { "valeur": 79, "type": "erreur_frequente", "note": "durée réelle de la guerre de Quatre-Vingts Ans (1568-1648) : confusion entre nom et durée" },
+      { "valeur": 79, "type": "erreur_frequente", "note": "durée réelle de la guerre de Quatre-Vingts Ans (23 mai 1568 - 30 janvier 1648) : confusion entre nom et durée" },
       { "valeur": 38, "type": "autre_perimetre", "note": "phase lancastrienne seule (1415-1453), leurre éloigné" },
       { "valeur": 112, "type": "proche" },
       { "valeur": 121, "type": "proche" },
       { "valeur": 109, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La guerre de Cent Ans est étudiée en histoire de 5e (cycle 4), et le fait qu'elle ait duré plus de cent ans est une question classique de culture générale."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -234,18 +291,25 @@
     "perimetre": "départements reconnus par le Code officiel géographique de l'Insee : 96 en métropole et 5 en outre-mer",
     "ancrage": "Il y en a eu jusqu'à 134 sous l'Empire, en 1812-1813.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/D%C3%A9partement_fran%C3%A7ais",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.insee.fr/fr/metadonnees/definition/c1696",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/D%C3%A9partement_fran%C3%A7ais",
+      "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Humanité"],
+    "themes": ["Humanité", "France"],
     "leurres": [
-      { "valeur": 96, "type": "autre_perimetre", "note": "départements de France métropolitaine seulement" },
+      { "valeur": 96, "type": "autre_perimetre", "note": "départements de France métropolitaine seulement (Insee)" },
+      { "valeur": 95, "type": "erreur_frequente", "note": "numéro du dernier département métropolitain (Val-d'Oise) ; la Corse en compte deux (2A et 2B), d'où 96 en métropole" },
       { "valeur": 83, "type": "autre_perimetre", "note": "départements créés en 1790" },
       { "valeur": 134, "type": "autre_perimetre", "note": "maximum sous l'Empire (1812-1813)" },
-      { "valeur": 94, "type": "erreur_frequente", "note": "collectivités départementales indiquées dans l'infobox Wikipédia (fusions et statuts particuliers)" },
+      { "valeur": 94, "type": "autre_perimetre", "note": "collectivités départementales selon l'infobox Wikipédia : certains départements ont fusionné leurs institutions (Corse, Alsace) ou les ont confiées à une collectivité unique (Paris, Guyane, Martinique)" },
       { "valeur": 107, "type": "proche" },
       { "valeur": 98, "type": "proche" }
     ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Nombre très connu (numéros de département sur les plaques et les codes postaux) ; l'organisation territoriale de la France est abordée dès l'école et au collège."
+    },
     "statut": "brouillon",
     "langue": "fr"
   }

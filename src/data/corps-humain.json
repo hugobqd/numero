@@ -10,15 +10,22 @@
     "ancrage": "4 quarts de bouche de 8 dents chacun : 2 incisives, 1 canine, 2 prémolaires et 3 molaires, dont la dent de sagesse.",
     "mnemo": "4 × 8 = 32 : huit dents par quart de mâchoire.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Dent_(anatomie_humaine)",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.ufsbd.fr/wp-content/uploads/2013/08/fiche-dents-laits-definitives.pdf",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.msdmanuals.com/fr/accueil/troubles-bucco-dentaires/biologie-de-la-cavit%C3%A9-buccale-et-des-dents/biologie-des-dents",
+      "idee": "Stock du prototype ; programme du cycle 2 (Questionner le monde, « modifications de la dentition »)"
     },
     "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 28,
         "type": "erreur_frequente",
-        "note": "denture sans les 4 dents de sagesse, inconstantes et souvent absentes ou extraites"
+        "note": "denture sans les 4 dents de sagesse, inconstantes et souvent absentes ou extraites ; c'est aussi le nombre de dents à 12 ans (UFSBD)"
+      },
+      {
+        "valeur": 24,
+        "type": "autre_perimetre",
+        "note": "dents d'un enfant de 6 ans : les 20 dents de lait plus les 4 premières molaires définitives, les « dents de 6 ans » (UFSBD)"
       },
       {
         "valeur": 16,
@@ -43,6 +50,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Les dents de lait et les dents définitives sont vues dès l'école primaire (cycle 2, Questionner le monde, « modifications de la dentition ») ; 32 dents est un nombre très connu."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -56,25 +67,27 @@
     "perimetre": "dans une cellule non reproductrice : 23 paires, dont 22 paires d'autosomes et une paire de chromosomes sexuels",
     "ancrage": "Les chimpanzés, gorilles et orangs-outans en ont 48 : notre chromosome 2 est né de la fusion de deux chromosomes ancestraux.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Chromosome",
-      "consulte_le": "2026-11-05"
+      "url": "https://medlineplus.gov/genetics/understanding/basics/howmanychromosomes/",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.sciencehistory.org/stories/magazine/joe-hin-tjio-counts-chromosomes/",
+      "idee": "Stock du prototype ; programme de SVT du cycle 4 (stabilité génétique des individus, caryotype en 3e)"
     },
     "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 48,
         "type": "erreur_frequente",
-        "note": "valeur comptée par Painter en 1921 et admise jusqu'à la découverte de Tjio et Levan (1955-1956) ; c'est aussi le nombre des autres grands singes (Joe Hin Tjio, Chromosome 2 humain)"
+        "note": "valeur retenue par Painter en 1923 et enseignée jusqu'au comptage de Tjio et Levan (1955, publié en 1956) ; c'est aussi le nombre des autres grands singes (Science History Institute, Chromosome 2 humain)"
       },
       {
         "valeur": 23,
         "type": "autre_perimetre",
-        "note": "nombre de paires de chromosomes"
+        "note": "nombre de paires de chromosomes (MedlinePlus), et nombre de chromosomes d'un gamète"
       },
       {
         "valeur": 44,
         "type": "autre_perimetre",
-        "note": "autosomes seuls (22 paires), sans les chromosomes sexuels"
+        "note": "autosomes seuls (22 paires), sans les chromosomes sexuels (MedlinePlus)"
       },
       {
         "valeur": 47,
@@ -90,6 +103,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Le caryotype humain (23 paires, 46 chromosomes) est étudié au collège en SVT (cycle 4, « diversité et stabilité génétique des individus », en 3e)."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -103,15 +120,17 @@
     "perimetre": "nerfs qui émergent directement de l'encéphale, selon la classification usuelle (sans le nerf terminal)",
     "ancrage": "Tous les mammifères en ont 12 paires. La moelle épinière, elle, en émet 31 paires.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Nerf_cr%C3%A2nien",
-      "consulte_le": "2026-11-05"
+      "url": "https://meshb.nlm.nih.gov/record/ui?ui=D003391",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://my.clevelandclinic.org/health/body/21998-cranial-nerves",
+      "idee": "Stock du prototype ; Wikipédia, anatomie humaine"
     },
     "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 13,
         "type": "autre_perimetre",
-        "note": "en comptant le nerf terminal, parfois décrit comme une treizième paire"
+        "note": "en comptant le nerf terminal, parfois décrit comme une treizième paire (Nerf crânien, d'après Humbert et al., Morphologie, 2019)"
       },
       {
         "valeur": 24,
@@ -121,12 +140,12 @@
       {
         "valeur": 31,
         "type": "autre_perimetre",
-        "note": "paires de nerfs spinaux, issus de la moelle épinière (Nerf spinal)"
+        "note": "paires de nerfs spinaux, issus de la moelle épinière (MeSH, Spinal Nerves)"
       },
       {
         "valeur": 8,
         "type": "autre_perimetre",
-        "note": "paires de nerfs spinaux cervicaux, C1 à C8 (Nerf spinal)"
+        "note": "paires de nerfs spinaux cervicaux, C1 à C8 (OpenStax, Anatomy and Physiology, 13.4)"
       },
       {
         "valeur": 11,
@@ -137,6 +156,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme : le collège (SVT, cycle 4) parle de nerfs et de centres nerveux sans les dénombrer ; le compte des nerfs crâniens relève des études de biologie ou de médecine."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -150,8 +173,10 @@
     "perimetre": "nerfs spinaux : 8 cervicaux, 12 thoraciques, 5 lombaires, 5 sacrés et 1 coccygien",
     "ancrage": "Il y a 8 paires de nerfs cervicaux pour seulement 7 vertèbres cervicales.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Nerf_spinal",
-      "consulte_le": "2026-11-05"
+      "url": "https://meshb.nlm.nih.gov/record/ui?ui=D013127",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system",
+      "idee": "Stock du prototype ; Wikipédia, anatomie humaine"
     },
     "themes": ["Corps humain"],
     "leurres": [
@@ -173,7 +198,7 @@
       {
         "valeur": 12,
         "type": "autre_perimetre",
-        "note": "paires de nerfs crâniens, issus de l'encéphale (Nerf crânien)"
+        "note": "paires de nerfs crâniens, issus de l'encéphale (MeSH, Cranial Nerves)"
       },
       {
         "valeur": 29,
@@ -184,6 +209,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme : le collège (SVT, cycle 4) étudie le message nerveux et la moelle épinière sans compter les nerfs ; la valeur est surtout connue des étudiants en santé."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -197,15 +226,17 @@
     "perimetre": "vertèbres cervicales, de C1 (atlas) à C7",
     "ancrage": "La girafe en a aussi 7, comme presque tous les mammifères : seuls les lamantins et les paresseux font exception.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Vert%C3%A8bre_cervicale",
-      "consulte_le": "2026-11-05"
+      "url": "https://meshb.nlm.nih.gov/record/ui?ui=D002574",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://doi.org/10.1186/2041-9139-2-11",
+      "idee": "Stock du prototype ; culture générale (la girafe a autant de vertèbres cervicales que nous)"
     },
     "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 8,
         "type": "autre_perimetre",
-        "note": "paires de nerfs cervicaux, C1 à C8 (Nerf spinal)"
+        "note": "paires de nerfs cervicaux, C1 à C8 (OpenStax, Anatomy and Physiology, 13.4)"
       },
       {
         "valeur": 12,
@@ -220,7 +251,7 @@
       {
         "valeur": 6,
         "type": "autre_perimetre",
-        "note": "vertèbres cervicales du lamantin, exception parmi les mammifères"
+        "note": "vertèbres cervicales du lamantin, exception parmi les mammifères : 6, parfois 5, car la 7e vertèbre y porte toujours des côtes (Varela-Lasheras et al., EvoDevo, 2011)"
       },
       {
         "valeur": 9,
@@ -231,6 +262,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Le nombre de vertèbres cervicales n'est pas au programme ; il est connu par culture générale, souvent via l'anecdote de la girafe qui en a autant que nous."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -241,33 +276,35 @@
     "valeur_a_retenir": 37,
     "precision": 1,
     "unite": "°C",
-    "perimetre": "température centrale moyenne d'un adulte en bonne santé (entre 36,5 et 37,5 °C selon les individus)",
-    "ancrage": "La marge est étroite : 4 degrés de plus suffisent, car au-dessus de 41 °C, la fièvre peut léser le système nerveux central.",
+    "perimetre": "valeur de référence chez l'adulte en bonne santé, au degré près : elle varie selon les personnes, l'heure et l'endroit de la mesure (dans la bouche, la moyenne est plutôt de 36,6 °C)",
+    "ancrage": "La marge est étroite : 4 degrés de plus suffisent, car au-delà de 41 °C, la fièvre devient dangereuse pour les organes.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Fi%C3%A8vre",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.msdmanuals.com/fr/accueil/infections/biologie-des-maladies-infectieuses/fi%C3%A8vre-chez-les-adultes",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.bmj.com/content/359/bmj.j5468",
+      "idee": "Stock du prototype ; culture générale"
     },
     "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 98,
         "type": "autre_unite",
-        "note": "la même température en degrés Fahrenheit (98,6 °F, Degré Fahrenheit)"
+        "note": "la même température en degrés Fahrenheit : 37 °C = 98,6 °F (37 × 1,8 + 32), valeur connue sous la forme « 98,6 »"
       },
       {
         "valeur": 38,
         "type": "autre_perimetre",
-        "note": "seuil de fièvre (≥ 38 °C, Brighton Collaboration ; température rectale chez l'enfant)"
+        "note": "seuil de la fièvre : au-delà de 38 °C en mesure rectale (ameli.fr, Comment bien prendre la température)"
       },
       {
         "valeur": 35,
         "type": "autre_perimetre",
-        "note": "seuil de l'hypothermie : température centrale inférieure à 35 °C (Hypothermie)"
+        "note": "seuil de l'hypothermie : température centrale inférieure à 35 °C (Manuel MSD, Hypothermie)"
       },
       {
         "valeur": 41,
         "type": "autre_perimetre",
-        "note": "fièvre au-delà de laquelle le système nerveux central peut être lésé"
+        "note": "au-delà de 41 °C, une hausse extrême de la température peut être dangereuse (Manuel MSD, Fièvre chez les adultes)"
       },
       {
         "valeur": 36,
@@ -278,6 +315,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Nombre très connu, que chacun lit sur un thermomètre dès l'enfance."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -288,18 +329,25 @@
     "valeur_a_retenir": 27,
     "precision": 1,
     "unite": "os",
-    "perimetre": "une main d'adulte, poignet compris : 8 os du carpe, 5 métacarpiens et 14 phalanges",
-    "ancrage": "Avec 27 os par main et 26 par pied, mains et pieds rassemblent à eux seuls la moitié des 206 os du squelette.",
+    "perimetre": "une main d'adulte, poignet compris, hors os sésamoïdes : 8 os du carpe, 5 métacarpiens et 14 phalanges",
+    "ancrage": "Avec 27 os par main et 26 par pied, mains et pieds rassemblent à eux seuls plus de la moitié des 206 os du squelette.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Main",
-      "consulte_le": "2026-11-05"
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-2-bones-of-the-upper-limb",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Main",
+      "idee": "Stock du prototype ; culture générale"
     },
     "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 26,
         "type": "autre_perimetre",
-        "note": "os d'un pied, hors sésamoïdes (Pied (anatomie humaine))"
+        "note": "os d'un pied, hors sésamoïdes (OpenStax, Anatomy and Physiology, 8.4)"
+      },
+      {
+        "valeur": 29,
+        "type": "autre_perimetre",
+        "note": "en comptant les deux os sésamoïdes, constants au pouce (Main, d'après White, Black et Folkens, Traité d'ostéologie humaine)"
       },
       {
         "valeur": 54,
@@ -309,7 +357,7 @@
       {
         "valeur": 14,
         "type": "autre_perimetre",
-        "note": "phalanges seules (os des doigts)"
+        "note": "phalanges seules, os des doigts (OpenStax, Anatomy and Physiology, 8.2)"
       },
       {
         "valeur": 19,
@@ -325,6 +373,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Le squelette est abordé à l'école et au collège sans compter les os de la main ; la valeur précise relève de la culture générale."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -338,20 +390,22 @@
     "perimetre": "un pied d'adulte, hors os sésamoïdes : 7 os du tarse, 5 métatarsiens et 14 phalanges",
     "ancrage": "Les deux pieds réunissent 52 os : un quart des 206 os du squelette.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Pied_(anatomie_humaine)",
-      "consulte_le": "2026-11-05"
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/8-4-bones-of-the-lower-limb",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.larousse.fr/encyclopedie/medical/pied/15371",
+      "idee": "Stock du prototype ; culture générale"
     },
     "themes": ["Corps humain"],
     "leurres": [
       {
         "valeur": 28,
         "type": "autre_perimetre",
-        "note": "en comptant les deux os sésamoïdes"
+        "note": "en comptant les deux os sésamoïdes du gros orteil (Pied (anatomie humaine) : « 28 os, 26 os auxquels s'ajoutent deux os sésamoïdes »)"
       },
       {
         "valeur": 27,
         "type": "autre_perimetre",
-        "note": "os d'une main (Main)"
+        "note": "os d'une main (OpenStax, Anatomy and Physiology, 8.2)"
       },
       {
         "valeur": 52,
@@ -361,7 +415,7 @@
       {
         "valeur": 14,
         "type": "autre_perimetre",
-        "note": "phalanges seules (le gros orteil n'en a que deux)"
+        "note": "phalanges seules, le gros orteil n'en a que deux (OpenStax, Anatomy and Physiology, 8.4)"
       },
       {
         "valeur": 22,
@@ -372,6 +426,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Le squelette est abordé à l'école et au collège sans compter les os du pied ; la valeur précise relève de la culture générale."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -385,8 +443,10 @@
     "perimetre": "12 paires chez l'adulte, sans côte cervicale surnuméraire",
     "ancrage": "Seules les 7 premières paires s'attachent directement au sternum ; les 2 dernières, dites « flottantes », ne s'y rattachent pas.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/C%C3%B4te_(anatomie)",
-      "consulte_le": "2026-11-05"
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-4-the-thoracic-cage",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.healthline.com/health/bone-health/how-many-ribs-do-men-have",
+      "idee": "Stock du prototype ; culture générale"
     },
     "themes": ["Corps humain"],
     "leurres": [
@@ -396,14 +456,19 @@
         "note": "nombre de paires de côtes"
       },
       {
+        "valeur": 23,
+        "type": "erreur_frequente",
+        "note": "croyance, issue du récit d'Adam et Ève, selon laquelle les hommes auraient une côte de moins : faux, hommes et femmes en ont 24 (Healthline)"
+      },
+      {
         "valeur": 14,
         "type": "autre_perimetre",
-        "note": "vraies côtes seules (7 paires reliées directement au sternum)"
+        "note": "vraies côtes seules (7 paires reliées directement au sternum, OpenStax, Anatomy and Physiology, 7.4)"
       },
       {
         "valeur": 25,
         "type": "autre_perimetre",
-        "note": "avec une côte cervicale surnuméraire, qui s'ossifie parfois sur la 7e vertèbre cervicale"
+        "note": "avec une côte cervicale surnuméraire, qui s'ossifie parfois sur la 7e vertèbre cervicale (Côte (anatomie))"
       },
       {
         "valeur": 22,
@@ -418,6 +483,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "La cage thoracique n'est pas dénombrée dans les programmes ; 12 paires de côtes relève de la culture générale, et la croyance d'une côte en moins chez l'homme montre que la valeur n'est pas évidente."
+    },
     "statut": "brouillon",
     "langue": "fr"
   }

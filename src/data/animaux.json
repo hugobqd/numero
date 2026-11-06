@@ -6,28 +6,35 @@
     "valeur_a_retenir": 190,
     "precision": 10,
     "unite": "tonnes",
-    "perimetre": "record (spécimen le plus lourd confirmé ; un adulte pèse en moyenne 130 tonnes)",
-    "ancrage": "Son cœur pèse à lui seul 181 kg, et un baleineau pèse déjà environ 2,5 tonnes à la naissance.",
+    "perimetre": "record (femelle de 27,6 m pêchée en 1947 dans l'océan Austral) ; un adulte pèse en moyenne 130 tonnes",
+    "ancrage": "Son cœur pèse à lui seul environ 180 kg, et un baleineau pèse déjà 2 à 3 tonnes à la naissance.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Baleine_bleue",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.guinnessworldrecords.com/world-records/115537-largest-animal",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://en.wikipedia.org/wiki/Blue_whale",
+      "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux"],
+    "themes": ["Animaux", "Records"],
     "leurres": [
       {
         "valeur": 130,
         "type": "autre_perimetre",
-        "note": "masse moyenne d'un adulte (25 à 27 m)"
+        "note": "masse moyenne d'un adulte selon Wikipédia (c'est aussi la moyenne des femelles de l'Antarctique, Lockyer 1976)"
+      },
+      {
+        "valeur": 160,
+        "type": "autre_perimetre",
+        "note": "masse d'un adulte typique selon le Guinness World Records (« c. 160 tonnes »)"
       },
       {
         "valeur": 170,
         "type": "autre_perimetre",
-        "note": "haut de la fourchette des masses couramment enregistrées (150 à 170 t)"
+        "note": "haut de la fourchette des masses couramment enregistrées (150 à 170 t, Wikipédia)"
       },
       {
-        "valeur": 150,
+        "valeur": 180,
         "type": "autre_perimetre",
-        "note": "bas de la fourchette des masses enregistrées (150 à 170 t)"
+        "note": "≈ 177 t : femelle la plus lourde pesée précisément par le National Marine Mammal Laboratory (Wikipédia)"
       },
       {
         "valeur": 210,
@@ -42,45 +49,52 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Que la baleine bleue soit le plus gros animal est connu dès l'école primaire, mais sa masse record précise relève de la culture générale d'un adulte curieux ; elle n'est dans aucun programme."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "animaux-guepard-vitesse",
     "enonce": "Quelle vitesse record un guépard a-t-il atteinte à la course ?",
-    "valeur": 112,
-    "valeur_a_retenir": 112,
+    "valeur": 103.5,
+    "valeur_a_retenir": 104,
     "precision": 1,
     "unite": "km/h",
-    "perimetre": "record mesuré (en captivité), tenu seulement quelques secondes",
-    "ancrage": "Il passe de 0 à 70 km/h en deux secondes, mais ne tient sa vitesse que sur 300 à 400 mètres.",
+    "perimetre": "record mesuré de façon fiable : une guéparde chronométrée sur 201 m (mesure de 1965, publiée en 1997)",
+    "ancrage": "En 2012, la guéparde Sarah a couru le 100 m en 5,95 s, près de 4 secondes de moins qu'Usain Bolt (9,58 s). Mais un guépard ne tient sa vitesse de pointe que sur quelques centaines de mètres.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Gu%C3%A9pard",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.guinnessworldrecords.com/world-records/70463-fastest-mammal-on-land-over-short-distances",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://en.wikipedia.org/wiki/Cheetah",
+      "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux"],
+    "themes": ["Animaux", "Records"],
     "leurres": [
       {
-        "valeur": 93,
-        "type": "autre_perimetre",
-        "note": "vitesse maximale mesurée à l'état sauvage (étude de 2013)"
+        "valeur": 112,
+        "type": "erreur_frequente",
+        "note": "chiffre très répandu (« 112 km/h » sur Wikipédia en français, « 71 mph » en anglais), jugé erroné par Sharp (1997) car l'enclos de mesure était plus court qu'annoncé"
       },
       {
         "valeur": 98,
         "type": "autre_perimetre",
-        "note": "vitesse finale de la guéparde Sarah sur 100 m en 2012"
+        "note": "vitesse de pointe de la guéparde Sarah lors de son record du 100 m en 2012 (61 mph, National Geographic)"
       },
       {
-        "valeur": 72,
+        "valeur": 93,
         "type": "autre_perimetre",
-        "note": "vitesse que très peu de courses dépassent en nature (étude de 2013)"
+        "note": "vitesse maximale mesurée chez des guépards sauvages en chasse (25,9 m/s, Wilson et al., Nature, 2013)"
       },
       {
-        "valeur": 104,
-        "type": "proche"
+        "valeur": 65,
+        "type": "autre_unite",
+        "note": "104 km/h exprimés en miles par heure (≈ 65 mph)"
       },
       {
-        "valeur": 127,
+        "valeur": 108,
         "type": "proche"
       },
       {
@@ -88,38 +102,49 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Hors programme, mais le guépard animal terrestre le plus rapide, autour de 100 km/h, est un fait très connu ; la valeur précise du record l'est moins."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "animaux-faucon-pelerin-pique",
     "enonce": "Quelle vitesse record un faucon pèlerin a-t-il atteinte en piqué ?",
-    "valeur": 389,
+    "valeur": 389.46,
     "valeur_a_retenir": 389,
     "precision": 1,
     "unite": "km/h",
-    "perimetre": "record mesuré en piqué (Ken Franklin, 2005)",
-    "ancrage": "C'est l'animal le plus rapide du monde : plus de trois fois la vitesse de pointe du guépard (112 km/h).",
+    "perimetre": "record mesuré en piqué (Frightful, faucon de Ken Franklin, 1999)",
+    "ancrage": "C'est l'animal le plus rapide du monde : plus de trois fois la vitesse de pointe du guépard (104 km/h).",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Faucon_p%C3%A8lerin",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.guinnessworldrecords.com/world-records/70929-fastest-bird-diving",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.smithsonianmag.com/air-space-magazine/falling-with-the-falcon-7491768/",
+      "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux"],
+    "themes": ["Animaux", "Records"],
     "leurres": [
       {
-        "valeur": 497,
+        "valeur": 403,
         "type": "autre_perimetre",
-        "note": "vitesse limite théorique calculée pour un faucon « idéal » de 0,5 kg"
+        "note": "vitesse limite théorique d'un faucon « idéal » lourd en piqué vertical (112 m/s, Tucker, Journal of Experimental Biology, 1998)"
+      },
+      {
+        "valeur": 209,
+        "type": "autre_perimetre",
+        "note": "vitesse limite mesurée en piqué chez un faucon gerfaut dressé (58 m/s, Tucker, Cade et Tucker, 1998)"
       },
       {
         "valeur": 184,
         "type": "autre_perimetre",
-        "note": "haut de la fourchette des piqués habituellement mesurés (130 à 184 km/h)"
+        "note": "haut de la fourchette des piqués mesurés au radar (130 à 184 km/h, Wikipédia)"
       },
       {
         "valeur": 242,
         "type": "autre_unite",
-        "note": "389 km/h exprimés en miles par heure (≈ 242 mph)"
+        "note": "389 km/h exprimés en miles par heure (242 mph, Guinness World Records)"
       },
       {
         "valeur": 352,
@@ -128,12 +153,12 @@
       {
         "valeur": 418,
         "type": "proche"
-      },
-      {
-        "valeur": 336,
-        "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Hors programme ; le faucon pèlerin plus rapide que tout autre animal relève de la culture générale, et la valeur précise du record est surtout connue des curieux."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -144,28 +169,30 @@
     "valeur_a_retenir": 363,
     "precision": 1,
     "unite": "cm",
-    "perimetre": "record mesuré (moyenne : 311 cm chez le mâle, 299 cm chez la femelle)",
+    "perimetre": "record mesuré (mâle capturé en 1965 en mer de Tasman) ; moyenne : 311 cm chez le mâle, 299 cm chez la femelle",
     "ancrage": "Plus de deux fois la taille d'un homme adulte : ses ailes lui permettent de planer des heures sans battre.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Albatros_hurleur",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.guinnessworldrecords.com/world-records/69469-largest-wingspan-of-any-living-species-of-bird",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.nhm.ac.uk/discover/what-is-the-biggest-bird-in-the-world.html",
+      "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux"],
+    "themes": ["Animaux", "Records"],
     "leurres": [
       {
         "valeur": 311,
         "type": "autre_perimetre",
-        "note": "envergure moyenne du mâle"
+        "note": "envergure moyenne du mâle (Shaffer, Weimerskirch et Costa, Functional Ecology, 2001, cité par Wikipédia)"
       },
       {
         "valeur": 299,
         "type": "autre_perimetre",
-        "note": "envergure moyenne de la femelle"
+        "note": "envergure moyenne de la femelle (même étude)"
       },
       {
         "valeur": 351,
         "type": "autre_perimetre",
-        "note": "haut de l'envergure habituelle (254 à 351 cm)"
+        "note": "haut de l'envergure habituelle (254 à 351 cm, Harrison 1985, cité par Wikipédia)"
       },
       {
         "valeur": 254,
@@ -173,61 +200,76 @@
         "note": "bas de l'envergure habituelle (254 à 351 cm)"
       },
       {
-        "valeur": 113,
-        "type": "autre_perimetre",
-        "note": "envergure maximale d'une femelle de faucon pèlerin (104 à 113 cm), source : https://fr.wikipedia.org/wiki/Faucon_p%C3%A8lerin"
+        "valeur": 422,
+        "type": "erreur_frequente",
+        "note": "envergure de 4,22 m rapportée pour un spécimen mais jamais vérifiée (Wood 1983, cité par Wikipédia en anglais ; le Natural History Museum évoque des « plus de 4 m » non confirmés)"
       },
       {
         "valeur": 382,
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme ; on sait parfois que l'albatros a la plus grande envergure des oiseaux, mais la valeur précise du record est une connaissance de passionné."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
   {
     "id": "animaux-girafe-hauteur",
-    "enonce": "Quelle hauteur peut atteindre une girafe ?",
+    "enonce": "Quelle hauteur mesurait la plus grande girafe connue ?",
     "valeur": 580,
     "valeur_a_retenir": 580,
     "precision": 10,
     "unite": "cm",
-    "perimetre": "hauteur maximale citée, chez un grand mâle (une femelle mesure 4,30 m en moyenne)",
-    "ancrage": "C'est l'animal actuel le plus haut : le girafon mesure déjà 2 m à la naissance, et chacune de ses 7 vertèbres cervicales fait environ 40 cm.",
+    "perimetre": "record : George, un mâle massaï du zoo de Chester (Royaume-Uni), mort en 1969 ; une femelle adulte mesure en moyenne 4,30 m",
+    "ancrage": "C'est l'animal actuel le plus haut : le girafon mesure déjà près de 2 m à la naissance, et chacune de ses 7 vertèbres cervicales (autant que nous) peut mesurer une trentaine de centimètres.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Girafe",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.guinnessworldrecords.com/world-records/464584-tallest-giraffe-ever",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://fr.wikipedia.org/wiki/Girafe",
+      "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux"],
+    "themes": ["Animaux", "Records"],
     "leurres": [
       {
         "valeur": 550,
         "type": "erreur_frequente",
-        "note": "hauteur souvent citée (« atteindre 5,50 m et même 5,80 m »)"
+        "note": "hauteur souvent citée pour la girafe en général (5,5 m dans l'entrée « Tallest living animal » du Guinness World Records ; « 5,50 m » dans Pour la science)"
+      },
+      {
+        "valeur": 570,
+        "type": "autre_perimetre",
+        "note": "haut de la fourchette des girafes adultes (4,3 à 5,7 m, Nowak 1999, cité par Wikipédia en anglais)"
       },
       {
         "valeur": 430,
         "type": "autre_perimetre",
-        "note": "hauteur moyenne d'une femelle adulte"
+        "note": "bas de cette fourchette, et taille moyenne d'une femelle adulte (4,30 m, Wikipédia)"
       },
       {
-        "valeur": 460,
+        "valeur": 610,
         "type": "autre_perimetre",
-        "note": "haut de la fourchette des femelles (4,00 à 4,60 m)"
-      },
-      {
-        "valeur": 620,
-        "type": "proche"
+        "note": "hauteur du toit de la maison des girafes du zoo de Chester, que les cornes de George frôlaient (6,1 m, Guinness World Records)"
       },
       {
         "valeur": 510,
         "type": "proche"
       },
       {
-        "valeur": 670,
+        "valeur": 660,
+        "type": "proche"
+      },
+      {
+        "valeur": 490,
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Hors programme, mais la girafe animal le plus haut, autour de 5 à 6 m, est un fait très connu ; la hauteur précise du record l'est moins."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -238,18 +280,30 @@
     "valeur_a_retenir": 222,
     "precision": 1,
     "unite": "minutes",
-    "perimetre": "record enregistré en 2020 (3 h 42)",
-    "ancrage": "Plus de 3 h 40 sans respirer : cette baleine détient aussi le record de profondeur, 2 992 m.",
+    "perimetre": "record publié en 2020 (3 h 42), plongée d'une baleine suivie au large de la Caroline du Nord",
+    "ancrage": "Plus de 3 h 40 sans respirer : cette espèce détient aussi le record de profondeur chez les mammifères, 2 992 m.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Baleine_%C3%A0_bec_de_Cuvier",
-      "consulte_le": "2026-11-05"
+      "url": "https://doi.org/10.1242/jeb.222109",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.guinnessworldrecords.com/world-records/341455-longest-dive-by-a-mammal",
+      "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux"],
+    "themes": ["Animaux", "Records"],
     "leurres": [
       {
         "valeur": 138,
         "type": "autre_perimetre",
-        "note": "ancien record d'apnée de l'espèce (137,5 min), associé à la plongée record à 2 992 m"
+        "note": "ancien record d'apnée de l'espèce (137,5 min, Schorr et al., PLOS ONE, 2014)"
+      },
+      {
+        "valeur": 173,
+        "type": "autre_perimetre",
+        "note": "autre très longue plongée de la même baleine (173 min, Quick et al., 2020)"
+      },
+      {
+        "valeur": 132,
+        "type": "autre_perimetre",
+        "note": "plus longue des 3 680 plongées de l'échantillon principal de la même étude (132 min, Quick et al., 2020)"
       },
       {
         "valeur": 342,
@@ -257,13 +311,9 @@
         "note": "lecture erronée de « 3 h 42 » comme 342 minutes"
       },
       {
-        "valeur": 82,
-        "type": "autre_perimetre",
-        "note": "plongée de 4 938 s (≈ 82 min) de la tortue luth (https://fr.wikipedia.org/wiki/Tortue_luth)"
-      },
-      {
-        "valeur": 196,
-        "type": "proche"
+        "valeur": 205,
+        "type": "erreur_frequente",
+        "note": "confusion entre 3 h 42 et 3,42 h (3,42 × 60 ≈ 205 minutes)"
       },
       {
         "valeur": 257,
@@ -274,6 +324,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme ; l'espèce et son record d'apnée sont peu connus du grand public, c'est une connaissance de passionné."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -281,46 +335,57 @@
     "id": "animaux-requin-groenland-age",
     "enonce": "Quel âge a-t-on estimé pour le plus vieux requin du Groenland daté ?",
     "valeur": 392,
-    "valeur_a_retenir": 392,
-    "precision": 1,
+    "valeur_a_retenir": 390,
+    "precision": 10,
     "unite": "ans",
-    "perimetre": "âge estimé d'une femelle de 5,02 m (± 120 ans), par datation au carbone 14 du cristallin",
+    "perimetre": "âge estimé d'une femelle de 5,02 m par datation au carbone 14 du cristallin : 392 ans, avec une grande marge d'erreur (± 120 ans, soit entre 272 et 512 ans) ; à retenir à la dizaine près",
     "ancrage": "Il grandit de moins d'un centimètre par an et n'atteint sa maturité sexuelle que vers 150 ans.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Requin_du_Groenland",
-      "consulte_le": "2026-11-05"
+      "url": "https://ora.ox.ac.uk/objects/pubs:633506",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://maritime-executive.com/article/greenland-shark-nearly-four-hundred-years-old",
+      "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux"],
+    "themes": ["Animaux", "Records"],
     "leurres": [
       {
-        "valeur": 272,
+        "valeur": 270,
         "type": "autre_perimetre",
-        "note": "borne basse de l'estimation (272 à 510 ans)"
+        "note": "borne basse de l'estimation, 272 ans (392 ± 120 ans, Nielsen et al., Science, 2016)"
       },
       {
-        "valeur": 335,
+        "valeur": 510,
         "type": "autre_perimetre",
-        "note": "âge estimé de l'autre femelle datée (4,93 m, 335 ± 75 ans)"
+        "note": "borne haute de l'estimation, 512 ans (392 ± 120 ans)"
       },
       {
-        "valeur": 211,
+        "valeur": 340,
+        "type": "autre_perimetre",
+        "note": "âge estimé de l'autre grande femelle datée, 335 ans (4,93 m, 335 ± 75 ans, même étude, d'après Wikipédia)"
+      },
+      {
+        "valeur": 210,
         "type": "erreur_frequente",
-        "note": "âge record d'une baleine boréale, longtemps citée comme le vertébré le plus vieux (https://fr.wikipedia.org/wiki/Baleine_bor%C3%A9ale)"
+        "note": "âge record d'une baleine boréale, 211 ans, le mammifère le plus vieux connu (Guinness World Records)"
       },
       {
-        "valeur": 188,
+        "valeur": 190,
         "type": "autre_perimetre",
-        "note": "âge de la tortue Tu'i Malila, longtemps record chez les tortues (https://fr.wikipedia.org/wiki/Tu%27i_Malila)"
+        "note": "âge de la tortue Tu'i Malila, 188 ans, longtemps record chez les tortues (https://fr.wikipedia.org/wiki/Tu%27i_Malila)"
       },
       {
-        "valeur": 428,
+        "valeur": 430,
         "type": "proche"
       },
       {
-        "valeur": 457,
+        "valeur": 460,
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Hors programme ; la découverte de 2016 (« un requin de 400 ans ») a été très médiatisée, c'est de la culture générale d'adulte curieux, mais la valeur précise est peu connue."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -331,13 +396,15 @@
     "valeur_a_retenir": 1002,
     "precision": 1,
     "unite": "kg",
-    "perimetre": "record (mâle abattu en 1960 en Alaska) ; un mâle pèse le plus souvent 400 à 600 kg",
+    "perimetre": "record rapporté (mâle abattu en 1960 en Alaska) ; un mâle pèse le plus souvent 400 à 600 kg",
     "ancrage": "Plus d'une tonne : c'est le plus grand carnivore terrestre, deux fois plus lourd qu'un mâle ordinaire de son espèce.",
     "source": {
       "url": "https://fr.wikipedia.org/wiki/Ours_blanc",
-      "consulte_le": "2026-11-05"
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://en.wikipedia.org/wiki/Polar_bear",
+      "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux"],
+    "themes": ["Animaux", "Records"],
     "leurres": [
       {
         "valeur": 751,
@@ -368,6 +435,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme ; l'ours blanc plus grand carnivore terrestre est assez connu, mais la masse précise de ce record ancien est une connaissance de passionné."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -375,47 +446,52 @@
     "id": "animaux-baleine-boreale-age",
     "enonce": "Jusqu'à quel âge une baleine boréale a-t-elle été datée ?",
     "valeur": 211,
-    "valeur_a_retenir": 211,
-    "precision": 1,
+    "valeur_a_retenir": 210,
+    "precision": 10,
     "unite": "ans",
-    "perimetre": "âge estimé le plus élevé (étude dirigée par Jeffrey Bada)",
+    "perimetre": "âge estimé le plus élevé, 211 ans (étude de 1999, par l'acide aspartique du cristallin) ; la marge d'erreur est grande, entre 177 et 245 ans : à retenir à la dizaine près",
     "ancrage": "C'est le mammifère le plus longévif connu ; ses fanons, jusqu'à 4 m de long, sont un record chez les cétacés actuels.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Baleine_bor%C3%A9ale",
-      "consulte_le": "2026-11-05"
+      "url": "https://www.guinnessworldrecords.com/world-records/461724-longest-lived-whale",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://www.gi.alaska.edu/alaska-science-forum/bowhead-whales-may-be-worlds-oldest-mammals",
+      "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux"],
+    "themes": ["Animaux", "Records"],
     "leurres": [
       {
-        "valeur": 268,
+        "valeur": 180,
         "type": "autre_perimetre",
-        "note": "longévité maximale envisagée (« peut-être jusqu'à 268 ans »)"
+        "note": "borne basse de l'estimation, 177 ans (George et al., 1999, d'après le Guinness World Records)"
       },
       {
-        "valeur": 115,
+        "valeur": 250,
         "type": "autre_perimetre",
-        "note": "bas de la fourchette des autres datations (115 à 130 ans)"
+        "note": "borne haute de l'estimation, 245 ans"
       },
       {
-        "valeur": 188,
+        "valeur": 190,
         "type": "erreur_frequente",
-        "note": "âge de la tortue Tu'i Malila (https://fr.wikipedia.org/wiki/Tu%27i_Malila)"
+        "note": "âge de la tortue Tu'i Malila, 188 ans, souvent citée comme animal record de longévité (https://fr.wikipedia.org/wiki/Tu%27i_Malila)"
       },
       {
-        "valeur": 175,
+        "valeur": 390,
         "type": "autre_perimetre",
-        "note": "âge de la tortue des Galápagos Harriet à sa mort en 2006 (https://fr.wikipedia.org/wiki/Tu%27i_Malila)"
+        "note": "âge estimé du plus vieux requin du Groenland daté, 392 ans (Nielsen et al., Science, 2016)"
       },
       {
-        "valeur": 392,
-        "type": "autre_perimetre",
-        "note": "âge estimé du plus vieux requin du Groenland daté (https://fr.wikipedia.org/wiki/Requin_du_Groenland)"
+        "valeur": 240,
+        "type": "proche"
       },
       {
-        "valeur": 237,
+        "valeur": 160,
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Hors programme ; la longévité de la baleine boréale est peu connue du grand public, c'est une connaissance de passionné."
+    },
     "statut": "brouillon",
     "langue": "fr"
   },
@@ -426,11 +502,13 @@
     "valeur_a_retenir": 22,
     "precision": 1,
     "unite": "mois",
-    "perimetre": "durée moyenne (fourchette de 20 à 22 mois)",
-    "ancrage": "C'est la gestation la plus longue de tous les animaux terrestres : près de deux ans, pour un éléphanteau d'environ 120 kg.",
+    "perimetre": "durée habituelle (environ 640 à 660 jours)",
+    "ancrage": "C'est la gestation la plus longue de tous les animaux terrestres : près de deux ans, pour un éléphanteau d'une centaine de kilos.",
     "source": {
-      "url": "https://fr.wikipedia.org/wiki/Elephantidae",
-      "consulte_le": "2026-11-05"
+      "url": "https://doi.org/10.1098/rspb.2012.1038",
+      "consulte_le": "2026-11-06",
+      "recoupement": "https://placentation.ucsd.edu/elep.html",
+      "idee": "Stock du prototype ; culture générale (records du monde animal)"
     },
     "themes": ["Animaux"],
     "leurres": [
@@ -450,8 +528,14 @@
         "note": "durée d'une grossesse humaine, réflexe de projection"
       },
       {
+        "valeur": 21,
+        "type": "autre_perimetre",
+        "note": "640 jours ≈ 21 mois, bas des gestations normales observées (640 à 660 jours, UC San Diego)"
+      },
+      {
         "valeur": 18,
-        "type": "proche"
+        "type": "autre_perimetre",
+        "note": "bas de la fourchette donnée pour l'éléphant d'Asie par le Guinness World Records (18 à 22 mois)"
       },
       {
         "valeur": 26,
@@ -462,6 +546,10 @@
         "type": "proche"
       }
     ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La reproduction des animaux est abordée en sciences au cycle 3, sans cette valeur ; « près de deux ans » pour l'éléphant est toutefois un fait assez connu du grand public."
+    },
     "statut": "brouillon",
     "langue": "fr"
   }
