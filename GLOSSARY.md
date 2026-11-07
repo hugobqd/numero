@@ -123,22 +123,28 @@ La partie de la collection qui regroupe les fiches d'un thème, rangées par dif
 _Avoid_ : collection (pour un thème), carte (de thème)
 
 **État** :
-Ce que le joueur sait d'une fiche de sa collection : pas encore trouvée, presque sue ou acquise. L'état ne fait que progresser.
+Ce que le joueur sait d'une fiche de sa collection : découverte, en cours ou acquise. L'état ne fait que progresser.
 _Avoid_ : maîtrise, étoiles, niveau
 
-**Pas encore trouvée** :
-État d'une fiche jamais réussie ; sa valeur à retenir reste cachée dans la collection.
-_Avoid_ : à revoir, ratée
+**Inconnue** :
+Se dit d'une fiche que le joueur n'a pas encore dans sa collection. Ce n'est pas un état stocké.
 
-**Presque sue** :
+**Découverte** :
+État d'une fiche jouée mais jamais réussie ; sa valeur à retenir reste cachée dans la collection. À ne pas confondre avec l'exigence « découverte », qui s'applique aux propositions (une fiche découverte est d'ailleurs révisée en exigence découverte).
+_Avoid_ : pas encore trouvée, à revoir, ratée
+
+**En cours** :
 État d'une fiche réussie une fois.
+_Avoid_ : presque sue
 
 **Acquise** :
 État d'une fiche réussie deux fois, en deux occasions séparées.
-_Avoid_ : maîtrisée
+
+**Maîtrisée** :
+Réservé à un futur état : une fiche retrouvée après un long délai, avec la répétition espacée (#37). Pas encore construit.
 
 **Trouvée** :
-Se dit d'une fiche réussie au moins une fois ; sa valeur à retenir s'affiche alors pour toujours dans la collection.
+Se dit d'une fiche réussie au moins une fois (en cours ou acquise) ; sa valeur à retenir s'affiche alors pour toujours dans la collection.
 
 **Révision** :
 Session personnelle de 5 questions sur des fiches de sa collection, choisies selon leur état ; ce n'est pas un défi et elle ne compte ni dans la série ni dans le partage.

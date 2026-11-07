@@ -33,7 +33,7 @@
     etiquette?: string;
     /** Affiche le mode d'emploi de la mécanique sous la question (tuto). */
     aide?: boolean;
-    /** Difficulté des propositions pour une question (révision : selon la maîtrise de la fiche). */
+    /** Difficulté des propositions pour une question (révision : selon l'état de la fiche). */
     difficulte?: (q: Question) => Difficulte;
     /** Question affichée, graine et difficulté de ses propositions, exposées aux outils de test. */
     enCours?: { question: Question; graine: number; difficulte: Difficulte } | null;

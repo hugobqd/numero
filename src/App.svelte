@@ -12,8 +12,6 @@
     fichesPossedees,
     gagnerFiche,
     lireCollection,
-    maitrise,
-    MAITRISE_MAX,
     toutGagner,
   } from './lib/collection';
   import Jeu from './lib/Jeu.svelte';
@@ -79,20 +77,20 @@
   let stats = $state(lireStats());
   let messagePartage = $state('');
 
-  // Code de triche : le joueur « hubert » possède toutes les fiches, gagnées pile.
+  // Code de triche : le joueur « hubert » possède toutes les fiches, acquises.
   if (joueur?.pseudo.trim().toLowerCase() === 'hubert') toutGagner(stock);
 
   // Collection : fiches gagnées en défi, à réviser.
   let collection = $state(lireCollection());
   let nouvellesFiches = $state<string[]>([]);
   const possedees = $derived(fichesPossedees(collection, stock));
-  const nbARevoirTotal = $derived(possedees.filter((q) => maitrise(collection[q.id]) === 0).length);
-  const nbMaitrisees = $derived(possedees.filter((q) => maitrise(collection[q.id]) === MAITRISE_MAX).length);
+  const nbAReviserTotal = $derived(possedees.filter((q) => collection[q.id].etat === 'decouverte').length);
+  const nbAcquises = $derived(possedees.filter((q) => collection[q.id].etat === 'acquise').length);
 
   function resultatDefi(res: ResultatQuestion) {
     partie.resultats.push(res);
     ecrirePartie($state.snapshot(partie));
-    // Toutes les fiches jouées rejoignent la collection ; les ratées sont à revoir en priorité.
+    // Toutes les fiches jouées rejoignent la collection ; les découvertes passent en priorité en révision.
     if (gagnerFiche(res.id, numero, res.gagne)) {
       nouvellesFiches.push(res.id);
       collection = lireCollection();
@@ -129,11 +127,10 @@
   // Question affichée (outils de test : inspecteur).
   let enCours = $state<{ question: Question; graine: number; difficulte: Difficulte } | null>(null);
 
-  /** Révision : la difficulté des propositions suit la maîtrise de la fiche (0 ★ découverte, 3 ★ experte). */
+  /** Révision : l'exigence des propositions suit l'état de la fiche (découverte, normale, experte). */
   function difficulteRevision(q: Question): Difficulte {
-    const e = collection[q.id];
-    const m = e ? maitrise(e) : 1;
-    return m === 0 ? 'decouverte' : m >= MAITRISE_MAX ? 'experte' : 'normale';
+    const etat = collection[q.id]?.etat ?? 'en-cours';
+    return etat === 'decouverte' ? 'decouverte' : etat === 'acquise' ? 'experte' : 'normale';
   }
 
   // Menu de test : fermé par défaut, état mémorisé dans ce navigateur.
@@ -201,7 +198,7 @@
   }
 
   const total = $derived(`${partie.resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100} pts`);
-  const aRevoir = $derived(nouvellesFiches.filter((id) => !partie.resultats.find((r) => r.id === id)?.gagne).length);
+  const aReviser = $derived(nouvellesFiches.filter((id) => !partie.resultats.find((r) => r.id === id)?.gagne).length);
 
   /** Lien de test avec les réglages voulus (le jour et le mode de réponse viennent du joueur actif). */
   function lien({ brouillons = params.brouillons, reset = false } = {}) {
@@ -259,7 +256,7 @@
     <section class="accueil">
       <h2>Bienvenue {joueur.pseudo} !</h2>
       <p>Numero, c'est <strong>5 nombres par jour</strong> à retenir <strong>au chiffre près</strong> : la distance Terre-Lune, le nombre d'os du corps humain, l'âge de la Terre…</p>
-      <p>Chaque question jouée devient une <strong>fiche de ta collection</strong>. Celles que tu rates sont « à revoir » : tu les retravailles en révision jusqu'à les maîtriser (★★★).</p>
+      <p>Chaque question jouée devient une <strong>fiche de ta collection</strong>. Celles que tu ne trouves pas du premier coup sont « à réviser » : tu les retrouves en révision jusqu'à les avoir acquises.</p>
       <p>Pour commencer, voici ton <strong>premier défi</strong> : {questionsTuto.length} questions, avec le mode d'emploi.</p>
       <button type="button" class="principal" onclick={() => (ecran = 'tuto')}>C'est parti</button>
     </section>
@@ -284,7 +281,7 @@
       <Recap questions={questionsTuto} resultats={tuto.resultats} />
       <div class="gain">
         <p><strong class="gain-nombre">+{questionsTuto.length}</strong> fiches dans ta collection.</p>
-        <p class="conseil">Les fiches ratées sont « à revoir » : elles passeront en premier dans tes révisions.</p>
+        <p class="conseil">Les fiches pas encore trouvées sont « à réviser » : elles passeront en premier dans tes révisions.</p>
         <div class="actions">
           <button type="button" class="secondaire" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
         </div>
@@ -299,8 +296,8 @@
       serie={stats.dernierNumero !== null && stats.dernierNumero >= numero - 1 ? stats.serie : 0}
       nbFiches={possedees.length}
       nbTotal={stock.length}
-      nbARevoir={nbARevoirTotal}
-      {nbMaitrisees}
+      nbAReviser={nbAReviserTotal}
+      {nbAcquises}
       {meca}
       onmeca={choisirMeca}
       onjouer={() => (ecran = 'defi')}
@@ -328,9 +325,9 @@
           <p>
             <strong class="gain-nombre">+{nouvellesFiches.length}</strong> fiche{nouvellesFiches.length > 1 ? 's' : ''}
             dans ta collection ({possedees.length} / {stock.length})
-            {#if aRevoir}· dont <strong>{aRevoir} à revoir</strong>{/if}
+            {#if aReviser}· dont <strong>{aReviser} à réviser</strong>{/if}
           </p>
-          {#if aRevoir}<p class="conseil">Les fiches ratées passent en premier dans tes révisions.</p>{/if}
+          {#if aReviser}<p class="conseil">Les fiches à réviser passent en premier dans tes révisions.</p>{/if}
         {:else}
           <p>Les fiches de ce défi sont dans ta collection ({possedees.length} / {stock.length}).</p>
         {/if}
@@ -378,7 +375,7 @@
       <h2>Révision terminée</h2>
       <p class="score">{revision.resultats.filter((r) => r.gagne).length} / {revision.questions.length}</p>
       <Recap questions={revision.questions} resultats={revision.resultats} />
-      <p class="demain">Une fiche réussie gagne une étoile de maîtrise ; une erreur ne t'en retire aucune.</p>
+      <p class="demain">Une fiche réussie progresse (découverte, en cours, acquise) ; une erreur ne lui retire rien.</p>
       <div class="actions">
         <button type="button" class="principal" onclick={reviser}>Encore une révision</button>
         <button type="button" onclick={() => (ecran = 'collection')}>Ma collection</button>

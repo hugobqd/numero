@@ -10,8 +10,8 @@
     serie,
     nbFiches,
     nbTotal,
-    nbARevoir,
-    nbMaitrisees,
+    nbAReviser,
+    nbAcquises,
     meca,
     onmeca,
     onjouer,
@@ -26,8 +26,8 @@
     serie: number;
     nbFiches: number;
     nbTotal: number;
-    nbARevoir: number;
-    nbMaitrisees: number;
+    nbAReviser: number;
+    nbAcquises: number;
     /** Mode de réponse choisi par le joueur. */
     meca: Mecanique;
     onmeca: (m: Mecanique) => void;
@@ -75,7 +75,7 @@
       <div>
         <h3>Révision</h3>
         <p class="etat">
-          {#if nbARevoir}<strong class="chiffres">{nbARevoir}</strong> fiche{nbARevoir > 1 ? 's' : ''} à revoir{:else}Aucune fiche à revoir{/if}
+          {#if nbAReviser}<strong class="chiffres">{nbAReviser}</strong> fiche{nbAReviser > 1 ? 's' : ''} à réviser{:else}Aucune fiche à réviser{/if}
         </p>
         <button type="button" class="discret" onclick={oncollection}>Ma collection →</button>
       </div>
@@ -86,7 +86,7 @@
   <dl class="compteurs">
     <div><dt>Série</dt><dd class="chiffres">{serie}</dd></div>
     <div><dt>Fiches</dt><dd class="chiffres">{nbFiches}<small> / {nbTotal}</small></dd></div>
-    <div><dt>Maîtrisées</dt><dd class="chiffres">{nbMaitrisees}</dd></div>
+    <div><dt>Acquises</dt><dd class="chiffres">{nbAcquises}</dd></div>
   </dl>
 
   <fieldset class="mode">
