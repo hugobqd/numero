@@ -98,6 +98,8 @@ export interface ResultatQuestion {
   points: number; // 0..100
   gagne: boolean;
   erreur?: ErreurPlusMoins;
+  /** Neurones gagnés par cette réponse (fiche qui progresse), affichés à la révélation et au bilan. */
+  neurones?: number;
 }
 
 /** Thème principal d'une fiche : le premier de sa liste. */

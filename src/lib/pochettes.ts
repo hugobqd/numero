@@ -57,7 +57,7 @@ export function tirerPochette(candidates: Question[], alea: () => number = Math.
 /** Une pochette ouverte : ses fiches tirées et le défi en cours ou terminé. */
 export interface Pochette {
   id: string;
-  origine: 'offerte' | 'jour';
+  origine: 'offerte' | 'jour' | 'bonus';
   /** Jour (simulé) où elle a été ouverte. */
   jour: number;
   fiches: string[];
@@ -68,6 +68,8 @@ export interface Pochette {
 }
 
 export const idPochetteDuJour = (jour: number) => `jour-${jour}`;
+/** Pochettes bonus numérotées dans l'ordre où elles ont été gagnées (1, 2…). */
+export const idPochetteBonus = (rang: number) => `bonus-${rang}`;
 
 const clePochette = (id: string) => cleJoueur(`pochette:${id}`);
 
@@ -123,4 +125,22 @@ export function ouvrirPochetteOfferte(jour: number, candidates: Question[]): Poc
   const faciles = candidates.filter((q) => q.difficulte?.cran === CRAN_OFFERT);
   const urne = faciles.length >= FICHES_PAR_POCHETTE ? faciles : candidates;
   return ouvrir(ID_POCHETTE_OFFERTE, 'offerte', jour, tirerPochette(urne));
+}
+
+/** Ouvre la pochette bonus de ce rang, tirée comme la pochette du jour. */
+export function ouvrirPochetteBonus(rang: number, jour: number, candidates: Question[]): Pochette {
+  return ouvrir(idPochetteBonus(rang), 'bonus', jour, tirerPochette(candidates));
+}
+
+/**
+ * Pochettes bonus gagnées : la première pas encore terminée (commencée ou non) et le nombre
+ * qui restent à ouvrir. On les joue dans l'ordre, une à la fois.
+ */
+export function etatPochettesBonus(gagnees: number): { rang: number; commencee: Pochette | null; aOuvrir: number } | null {
+  for (let rang = 1; rang <= gagnees; rang++) {
+    const p = lirePochette(idPochetteBonus(rang));
+    if (p?.terminee) continue;
+    return { rang, commencee: p, aOuvrir: gagnees - rang + (p ? 0 : 1) };
+  }
+  return null;
 }

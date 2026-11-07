@@ -9,9 +9,11 @@
     nbTotal,
     nbAReviser,
     nbAcquises,
+    bonus,
     onouvrir,
     onjouer,
     onbilan,
+    onbonus,
     onreviser,
     oncollection,
   }: {
@@ -29,9 +31,15 @@
     nbTotal: number;
     nbAReviser: number;
     nbAcquises: number;
+    /**
+     * Pochettes bonus gagnées avec les neurones et pas encore terminées : celle commencée (faites / total)
+     * et le nombre à ouvrir ; null s'il n'y en a pas (ou plus de fiches à récupérer).
+     */
+    bonus: { aOuvrir: number; faites: number | null; total: number | null } | null;
     onouvrir: () => void;
     onjouer: () => void;
     onbilan: () => void;
+    onbonus: () => void;
     onreviser: () => void;
     oncollection: () => void;
   } = $props();
@@ -64,6 +72,24 @@
       <button type="button" class="principal" onclick={onjouer}>Reprendre</button>
     {/if}
   </article>
+
+  {#if bonus}
+    <!-- Pochettes bonus (provisoire, en attendant la liste « Pochettes à ouvrir » de l'accueil, #24). -->
+    <article class="bonus">
+      <div>
+        <h3>Pochettes bonus</h3>
+        <p class="etat">
+          {#if bonus.faites !== null}
+            <strong class="chiffres">{bonus.faites} / {bonus.total}</strong> questions jouées
+          {:else}
+            <strong class="chiffres">{bonus.aOuvrir}</strong> à ouvrir
+          {/if}
+        </p>
+        {#if bonus.faites !== null && bonus.aOuvrir}<p class="note">Puis {bonus.aOuvrir} autre{bonus.aOuvrir > 1 ? 's' : ''} à ouvrir</p>{/if}
+      </div>
+      <button type="button" class="principal" onclick={onbonus}>{bonus.faites !== null ? 'Reprendre' : 'Ouvrir'}</button>
+    </article>
+  {/if}
 
   {#if nbFiches}
     <!-- Révision en accès direct, juste sous la pochette du jour : un geste pour lancer 5 fiches. -->
@@ -209,7 +235,20 @@
     font-weight: 500;
     color: var(--muted);
   }
-  .revision {
+  /* Pochettes bonus : même gabarit que la révision, liseré terracotta pour rappeler la pochette du jour. */
+  .bonus {
+    border: 2px solid var(--accent);
+  }
+  .bonus .note {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .bonus .etat .chiffres {
+    font-size: 1.5rem;
+    color: var(--accent-texte);
+  }
+  .revision,
+  .bonus {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -218,7 +257,8 @@
     background: var(--surface);
     border-radius: var(--rayon-carte);
   }
-  .revision > div {
+  .revision > div,
+  .bonus > div {
     display: grid;
     gap: 0.2rem;
     justify-items: start;
@@ -230,7 +270,8 @@
     font-size: 1.5rem;
     color: var(--accent-texte);
   }
-  .revision .principal {
+  .revision .principal,
+  .bonus .principal {
     flex: none;
     min-width: 7.5rem;
   }
