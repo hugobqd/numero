@@ -1,13 +1,14 @@
 <script lang="ts">
   import type { Mecanique, Question, ResultatQuestion } from './lib/types';
   import {
-    FICHES_OFFERTES,
+    ID_POCHETTE_OFFERTE,
     FICHES_PAR_POCHETTE,
     ecrirePochette,
     effacerPochette,
     idPochetteDuJour,
     lirePochette,
     ouvrirPochetteDuJour,
+    ouvrirPochetteOfferte,
     questionsJouables,
     type Pochette,
   } from './lib/pochettes';
@@ -158,18 +159,31 @@
     ecran = 'bilan';
   }
 
-  // Pochette offerte (premier défi) : 5 fiches connues, avec le mode d'emploi, avant la pochette du jour.
-  const questionsTuto = parId(FICHES_OFFERTES);
-  let tuto = $state<{ resultats: ResultatQuestion[] }>({ resultats: [] });
+  // Pochette offerte (premier défi) : 5 fiches tout public tirées au hasard, avec le mode d'emploi,
+  // avant la pochette du jour. Enregistrée comme les autres : un rechargement reprend où on en était.
+  let offerte = $state<Pochette | null>(lirePochette(ID_POCHETTE_OFFERTE));
+  const questionsTuto = $derived(offerte ? parId(offerte.fiches) : []);
+  const resultatsTuto = $derived(offerte?.resultats ?? []);
+
+  function commencerTuto() {
+    if (!offerte) offerte = ouvrirPochetteOfferte(numero, aRecuperer);
+    ecran = 'tuto';
+  }
 
   function resultatTuto(res: ResultatQuestion) {
-    tuto.resultats.push(res);
+    if (!offerte) return;
+    offerte.resultats.push(res);
+    ecrirePochette($state.snapshot(offerte));
     // Fiches de la pochette offerte : jour 0.
     gagnerFiche(res.id, 0, res.gagne);
     collection = lireCollection();
   }
 
   function finTuto() {
+    if (offerte) {
+      offerte.terminee = true;
+      ecrirePochette($state.snapshot(offerte));
+    }
     if (joueur) majJoueur(joueur.id, { tutoFait: true });
     ecran = 'tutoBilan';
   }
@@ -324,15 +338,15 @@
       <h2>Bienvenue {joueur.pseudo} !</h2>
       <p>Numero, c'est <strong>5 nombres par jour</strong> à retenir <strong>au chiffre près</strong> : la distance Terre-Lune, le nombre d'os du corps humain, l'âge de la Terre…</p>
       <p>Chaque question jouée devient une <strong>fiche de ta collection</strong>. Celles que tu ne trouves pas du premier coup sont « à réviser » : tu les retrouves en révision jusqu'à les avoir acquises.</p>
-      <p>Pour commencer, voici ta <strong>première pochette</strong>, offerte : {questionsTuto.length} questions, avec le mode d'emploi. Ensuite, une nouvelle pochette chaque jour.</p>
-      <button type="button" class="principal" onclick={() => (ecran = 'tuto')}>C'est parti</button>
+      <p>Pour commencer, voici ta <strong>première pochette</strong>, offerte : {FICHES_PAR_POCHETTE} questions, avec le mode d'emploi. Ensuite, une nouvelle pochette chaque jour.</p>
+      <button type="button" class="principal" onclick={commencerTuto}>{resultatsTuto.length ? 'Reprendre' : "C'est parti"}</button>
     </section>
   {:else if ecran === 'tuto'}
     <Jeu
       questions={questionsTuto}
       {meca}
       graine={0}
-      resultats={tuto.resultats}
+      resultats={resultatsTuto}
       etiquette="Premier défi"
       aide
       onresultat={resultatTuto}
@@ -343,9 +357,9 @@
     <section class="bilan">
       <h2>Premier défi terminé</h2>
       <p class="score">
-        {tuto.resultats.reduce((s, r) => s + r.points, 0)} / {questionsTuto.length * 100} pts
+        {resultatsTuto.reduce((s, r) => s + r.points, 0)} / {questionsTuto.length * 100} pts
       </p>
-      <Recap questions={questionsTuto} resultats={tuto.resultats} />
+      <Recap questions={questionsTuto} resultats={resultatsTuto} />
       <div class="gain">
         <p><strong class="gain-nombre">+{questionsTuto.length}</strong> fiches dans ta collection.</p>
         <p class="conseil">Les fiches pas encore trouvées sont « à réviser » : elles passeront en premier dans tes révisions.</p>
@@ -501,7 +515,7 @@
         <p><strong>{joueur.pseudo}</strong> · jour {numero}</p>
         <div class="boutons">
           <button type="button" onclick={() => (ecran = 'joueurs')}>Changer</button>
-          <button type="button" onclick={() => { majJoueur(joueur.id, { tutoFait: false }); recharger(); }}>Revoir le tuto</button>
+          <button type="button" onclick={() => { majJoueur(joueur.id, { tutoFait: false }); effacerPochette(ID_POCHETTE_OFFERTE); recharger(); }}>Revoir le tuto</button>
         </div>
       {:else}
         <p>Aucun joueur</p>

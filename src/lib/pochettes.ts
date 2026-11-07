@@ -12,14 +12,9 @@ export const THEMES_MIN = 3;
 /** Chances de sortir selon le cran : les fiches faciles sortent plus souvent, la difficulté monte d'elle-même. */
 export const POIDS_PAR_CRAN: Record<CranDifficulte, number> = { 1: 8, 2: 4, 3: 2, 4: 1 };
 
-/** Pochette offerte du début : 5 fiches fixes et connues, jouées avec le mode d'emploi. */
-export const FICHES_OFFERTES = [
-  'corps-os-adulte',
-  'terre-everest',
-  'astro-terre-lune',
-  'corps-dents-adulte',
-  'humanite-tour-eiffel-hauteur',
-];
+/** Pochette offerte du début, jouée avec le mode d'emploi : ses fiches sont tirées dans le cran tout public. */
+export const ID_POCHETTE_OFFERTE = 'offerte';
+export const CRAN_OFFERT: CranDifficulte = 1;
 
 /** Questions jouables : les fiches validées, plus les brouillons si on les inclut (prototype). */
 export function questionsJouables(stock: Question[], inclureBrouillons: boolean): Question[] {
@@ -101,17 +96,31 @@ export function effacerPochette(id: string): void {
   }
 }
 
-/** Ouvre la pochette du jour : tire ses fiches parmi celles que le joueur n'a pas encore et l'enregistre. */
-export function ouvrirPochetteDuJour(jour: number, candidates: Question[]): Pochette {
+function ouvrir(id: string, origine: Pochette['origine'], jour: number, fiches: Question[]): Pochette {
   const p: Pochette = {
-    id: idPochetteDuJour(jour),
-    origine: 'jour',
+    id,
+    origine,
     jour,
-    fiches: tirerPochette(candidates).map((q) => q.id),
+    fiches: fiches.map((q) => q.id),
     graine: 1 + Math.floor(Math.random() * 1_000_000),
     resultats: [],
     terminee: false,
   };
   ecrirePochette(p);
   return p;
+}
+
+/** Ouvre la pochette du jour : tire ses fiches parmi celles que le joueur n'a pas encore et l'enregistre. */
+export function ouvrirPochetteDuJour(jour: number, candidates: Question[]): Pochette {
+  return ouvrir(idPochetteDuJour(jour), 'jour', jour, tirerPochette(candidates));
+}
+
+/**
+ * Ouvre la pochette offerte : 5 fiches tout public tirées au hasard (au moins 3 thèmes) parmi celles
+ * que le joueur n'a pas encore ; s'il en reste moins de 5 dans ce cran, le tirage se fait dans tout le stock restant.
+ */
+export function ouvrirPochetteOfferte(jour: number, candidates: Question[]): Pochette {
+  const faciles = candidates.filter((q) => q.difficulte?.cran === CRAN_OFFERT);
+  const urne = faciles.length >= FICHES_PAR_POCHETTE ? faciles : candidates;
+  return ouvrir(ID_POCHETTE_OFFERTE, 'offerte', jour, tirerPochette(urne));
 }

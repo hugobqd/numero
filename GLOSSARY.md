@@ -103,7 +103,7 @@ Les 5 questions d'une pochette, jouées à son ouverture. Chaque joueur a ses pr
 _Avoid_ : partie, quiz
 
 **Premier défi** :
-Défi de la première pochette, offerte et fixe (des fiches connues), joué avec le mode d'emploi de la mécanique.
+Défi de la première pochette, offerte, joué avec le mode d'emploi de la mécanique. Ses 5 fiches sont tirées au hasard parmi les fiches tout public : chaque joueur a la sienne.
 _Avoid_ : tuto, tutoriel
 
 **Série** :
