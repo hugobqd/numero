@@ -75,11 +75,3 @@ export function ajouterNeurones(gain: number, jour: number): { neurones: Neurone
 export function verifierPalier(jour: number): { neurones: Neurones; bonusGagnee: boolean } {
   return ajouterNeurones(0, jour);
 }
-
-export function effacerNeurones(): void {
-  try {
-    localStorage.removeItem(cle());
-  } catch {
-    /* rien */
-  }
-}

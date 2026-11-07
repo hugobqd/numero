@@ -20,16 +20,16 @@
     ajouterNeurones,
     gainFiche,
     jauge,
+    lireNeurones,
     verifierPalier,
   } from './lib/neurones';
   import { avecUnite } from './lib/format';
   import { estMecanique, lireParametres, MECA_PAR_DEFAUT } from './lib/params';
-  import { effacerStats, enregistrerOuverture, lireStats, migrerStats, serieDuJour } from './lib/storage';
+  import { enregistrerOuverture, lireStats, migrerStats, serieDuJour } from './lib/storage';
   import { partager, texteDePartage } from './lib/share';
   import {
     FICHES_PAR_REVISION,
     choisirRevision,
-    effacerCollection,
     enregistrerRevision,
     fichesPossedees,
     gagnerFiche,
@@ -49,6 +49,7 @@
   import {
     choisirJoueur,
     creerJoueur,
+    effacerTout,
     joueurActif,
     lireJoueurs,
     majJoueur,
@@ -83,7 +84,7 @@
   }
 
   // Neurones : à l'arrivée, ceux gardés de la veille peuvent donner la pochette bonus du jour.
-  let neurones = $state(verifierPalier(numero).neurones);
+  let neurones = $state(joueur ? verifierPalier(numero).neurones : lireNeurones());
   // Une pochette bonus est tombée pendant le défi ou la révision en cours (annoncée au bilan).
   let bonusRecente = $state(false);
   /** Ajoute les neurones d'une réponse ou d'un bonus, et note la pochette bonus éventuellement gagnée. */
@@ -381,14 +382,10 @@
     return q ? `?${q}` : location.pathname;
   }
 
-  function reinitialiserStats() {
-    effacerStats();
-    stats = lireStats();
-  }
-
-  function viderCollection() {
-    effacerCollection();
-    collection = lireCollection();
+  /** Test : efface toutes les données du jeu (tous les joueurs compris) et recharge la page. */
+  function effacerLesDonnees() {
+    effacerTout();
+    location.replace(location.pathname);
   }
 
 </script>
@@ -666,8 +663,7 @@
       <section>
         <h3>Jour simulé</h3>
         <div class="boutons">
-          <button type="button" onclick={() => allerAuJour(numero - 1)} disabled={numero <= 1}>← {numero - 1}</button>
-          <button type="button" onclick={() => allerAuJour(numero + 1)}>{numero + 1} →</button>
+          <button type="button" onclick={() => allerAuJour(numero + 1)}>Jour suivant</button>
           <button type="button" onclick={nouvellePochette} title="Oublie la pochette du jour pour en ouvrir une autre">↻ Pochette</button>
         </div>
       </section>
@@ -694,8 +690,7 @@
       <section>
         <h3>Données</h3>
         <div class="boutons">
-          <button type="button" onclick={reinitialiserStats}>Effacer les stats</button>
-          <button type="button" onclick={viderCollection}>Vider la collection</button>
+          <button type="button" onclick={effacerLesDonnees}>Effacer les données</button>
         </div>
       </section>
     {/if}
