@@ -1,7 +1,4 @@
 <script lang="ts">
-  import type { Mecanique } from './types';
-  import { MECAS } from './params';
-
   /** Écran principal du joueur : le défi du jour, sa progression, ses révisions. Volontairement sobre. */
   let {
     pseudo,
@@ -12,8 +9,6 @@
     nbTotal,
     nbAReviser,
     nbAcquises,
-    meca,
-    onmeca,
     onjouer,
     onbilan,
     onreviser,
@@ -28,20 +23,11 @@
     nbTotal: number;
     nbAReviser: number;
     nbAcquises: number;
-    /** Mode de réponse choisi par le joueur. */
-    meca: Mecanique;
-    onmeca: (m: Mecanique) => void;
     onjouer: () => void;
     onbilan: () => void;
     onreviser: () => void;
     oncollection: () => void;
   } = $props();
-
-  const MODES: Record<Mecanique, { nom: string; aide: string }> = {
-    palier: { nom: 'Palier', aide: 'Un curseur à 5 crans : choisis le bon, puis valide.' },
-    qcm: { nom: 'QCM', aide: '5 valeurs : touche la bonne.' },
-    plusmoins: { nom: 'Plus ou moins', aide: 'Plus grand ou plus petit ? 3 coups au plus, une erreur fait perdre.' },
-  };
 </script>
 
 <section class="accueil">
@@ -89,18 +75,6 @@
     <div><dt>Acquises</dt><dd class="chiffres">{nbAcquises}</dd></div>
   </dl>
 
-  <fieldset class="mode">
-    <legend>Mode de réponse</legend>
-    <div class="segments">
-      {#each MECAS as m}
-        <label class:actif={m === meca}>
-          <input type="radio" name="mode-reponse" value={m} checked={m === meca} onchange={() => onmeca(m)} />
-          {MODES[m].nom}
-        </label>
-      {/each}
-    </div>
-    <p class="note-mode">{MODES[meca].aide}</p>
-  </fieldset>
 </section>
 
 <style>
@@ -259,58 +233,5 @@
   }
   .discret:hover {
     text-decoration: underline;
-  }
-  /* Mode de réponse : trois boutons segmentés ; le choix s'applique dès la question suivante. */
-  .mode {
-    display: grid;
-    gap: 0.5rem;
-    margin: 0;
-    padding: 0;
-    border: none;
-  }
-  .mode legend {
-    padding: 0;
-    margin-bottom: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-  .segments {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.25rem;
-    padding: 0.25rem;
-    background: var(--surface);
-    border-radius: var(--rayon-bouton);
-  }
-  .segments label {
-    display: grid;
-    place-items: center;
-    min-height: 2.75rem;
-    padding: 0.4rem 0.3rem;
-    border-radius: var(--rayon-petit);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-align: center;
-    color: var(--muted);
-    cursor: pointer;
-  }
-  .segments label.actif {
-    background: var(--bg);
-    color: var(--fg);
-    box-shadow: 0 0 0 2px var(--accent);
-  }
-  .segments label:has(input:focus-visible) {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-  .segments input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-  }
-  .note-mode {
-    margin: 0;
-    font-size: 0.85rem;
-    color: var(--muted);
   }
 </style>
