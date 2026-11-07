@@ -38,6 +38,7 @@ Référence citée par une fiche pour prouver sa valeur à retenir, de préfére
 
 **Lot** :
 Groupe d'environ 25 fiches produites ensemble et relues en une fois.
+_Avoid_ : lot (pour la pochette)
 
 **Brouillon** / **Validée** :
 Statuts d'une fiche ; seule la relecture humaine fait passer une fiche de brouillon à validée.
@@ -82,55 +83,69 @@ _Avoid_ : score exact (retiré)
 Se dit d'une question à laquelle le joueur a donné la valeur à retenir.
 _Avoid_ : gagnée
 
-## Défis
+## Pochettes et défis
+
+**Pochette** :
+Paquet de 5 fiches qu'un joueur récupère, tirées au hasard parmi celles qu'il n'a pas encore, les plus faciles ayant plus de chances de sortir. Ouvrir une pochette lance aussitôt le défi de ses fiches.
+_Avoid_ : booster, lot, paquet
+
+**Pochette du jour** :
+Pochette que le joueur peut ouvrir une fois par jour.
+
+**Pochette bonus** :
+Pochette gagnée en franchissant un palier de neurones ; une par jour au plus.
 
 **Question** :
 Une fiche telle qu'elle est posée au joueur, dans un défi ou une révision.
 
 **Défi** :
-Ensemble fixe de 5 questions, numéroté (« Numero #12 »), le même pour quiconque le joue.
+Les 5 questions d'une pochette, jouées à son ouverture. Chaque joueur a ses propres défis : deux joueurs n'ont pas les mêmes fiches.
 _Avoid_ : partie, quiz
 
-**Parcours** :
-La suite ordonnée des défis (#1, #2, #3…), la même pour tous ; chaque joueur y avance à son rythme.
-
-**Défi du jour** :
-Le prochain défi du parcours d'un joueur ; on en joue un par jour au plus.
-
-**Série** :
-Nombre de jours consécutifs où le joueur a joué son défi du jour.
-_Avoid_ : streak
-
 **Premier défi** :
-Défi d'accueil fixe d'un nouveau joueur, joué avant son premier défi du jour, avec le mode d'emploi de la mécanique.
+Défi de la première pochette, offerte et fixe (des fiches connues), joué avec le mode d'emploi de la mécanique.
 _Avoid_ : tuto, tutoriel
 
-**Cycle** :
-Passage complet sur toutes les fiches jouables, sans répétition, avant d'en recommencer un dans un nouvel ordre.
+**Série** :
+Nombre de jours consécutifs où le joueur a ouvert sa pochette du jour.
+_Avoid_ : streak
 
 **Révélation** :
 Ce que le joueur voit après avoir répondu : la valeur à retenir, son écart, l'ancrage et la source.
 
-## Collection et maîtrise
+## Collection et connaissance
 
 **Collection** :
-L'ensemble des fiches qu'un joueur a rencontrées en défi, réussies ou non.
+L'ensemble des fiches qu'un joueur a récupérées ; chacune a été jouée au moins une fois, réussie ou non.
 
 **Album** :
-La partie de la collection qui regroupe les fiches d'un thème.
-_Avoid_ : carte (de thème)
+La partie de la collection qui regroupe les fiches d'un thème, rangées par difficulté.
+_Avoid_ : collection (pour un thème), carte (de thème)
+
+**État** :
+Ce que le joueur sait d'une fiche de sa collection : pas encore trouvée, presque sue ou acquise. L'état ne fait que progresser.
+_Avoid_ : maîtrise, étoiles, niveau
+
+**Pas encore trouvée** :
+État d'une fiche jamais réussie ; sa valeur à retenir reste cachée dans la collection.
+_Avoid_ : à revoir, ratée
+
+**Presque sue** :
+État d'une fiche réussie une fois.
+
+**Acquise** :
+État d'une fiche réussie deux fois, en deux occasions séparées.
+_Avoid_ : maîtrisée
+
+**Trouvée** :
+Se dit d'une fiche réussie au moins une fois ; sa valeur à retenir s'affiche alors pour toujours dans la collection.
 
 **Révision** :
-Session personnelle de 5 questions sur des fiches de sa collection ; ce n'est pas un défi et elle ne compte ni dans les stats ni dans le partage.
+Session personnelle de 5 questions sur des fiches de sa collection, choisies selon leur état ; ce n'est pas un défi et elle ne compte ni dans la série ni dans le partage.
 
-**Maîtrise** :
-Niveau d'une fiche dans la collection d'un joueur, de 0 à 3 étoiles. Elle ne fait que monter : une erreur en révision ne retire pas d'étoile.
-
-**À revoir** :
-Se dit d'une fiche à 0 étoile.
-
-**Maîtrisée** :
-Se dit d'une fiche à 3 étoiles.
+**Neurones** :
+Compteur de progression du joueur : il en gagne quand une fiche change d'état, davantage pour une fiche difficile. Il ne baisse jamais ; on ne dépense pas ses neurones, ils franchissent des paliers qui donnent des pochettes bonus.
+_Avoid_ : points (réservé au score d'une question), XP
 
 ## Mots réservés
 

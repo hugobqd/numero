@@ -1,5 +1,7 @@
 # Le contenu d'un défi est déterminé par son numéro
 
+_Remplacé le 2026-11-07 par l'ADR 0007 (pochettes tirées pour chaque joueur)._
+
 Les défis forment un parcours fixe (#1, #2, #3…), le même pour tous ; chaque joueur avance dans ce parcours à son rythme, un défi par jour au plus. Les fiches d'un défi et le tirage de leurs propositions sont calculés dans le navigateur à partir du seul numéro du défi (tirage déterministe), si bien que deux joueurs qui jouent le #12 voient exactement les mêmes questions, sans serveur pour les distribuer (voir ADR 0001).
 
 ## Options écartées

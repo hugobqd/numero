@@ -4,6 +4,8 @@ Pistes notées en cours de route. Rien n'est décidé : chaque idée passera par
 
 ## 1. S'appuyer sur les programmes scolaires (noté le 2026-11-05)
 
+> **Suivi (2026-11-07)** : hors champ pour le public scolaire en tant que tel (carte #1) ; les programmes servent de repère aux crans de difficulté. Les dates restent dans le brouillard de la carte.
+
 Explorer les programmes officiels de l'Éducation nationale, matière par matière (histoire, français, biologie / SVT, physique-chimie, géographie…) et niveau par niveau (cycles 3 et 4, lycée).
 
 - **Pourquoi** : définir un savoir à acquérir par tranche d'âge. Ça donne une culture générale qui répond aussi à un besoin scolaire, et ça ouvre un public (élèves, parents, enseignants) qu'on avait mis de côté au cadrage.
@@ -16,6 +18,8 @@ Explorer les programmes officiels de l'Éducation nationale, matière par matiè
 
 ## 2. Des questions tirées de l'actualité (noté le 2026-11-05)
 
+> **Suivi (2026-11-07)** : hors champ (carte #1).
+
 Trouver une ou plusieurs sources d'actualité pour en tirer des nombres du moment :
 
 - **découvertes scientifiques** : nouvelle exoplanète, record, fossile, mesure…
@@ -27,6 +31,8 @@ Trouver une ou plusieurs sources d'actualité pour en tirer des nombres du momen
   - L'automatisation : un agent de veille qui propose des fiches en `brouillon`, toujours validées par un humain.
 
 ## 3. Collection à compléter, façon « looting » (noté le 2026-11-05)
+
+> **Suivi (2026-11-07)** : pochettes décidées (ADR 0007, hugobqd/numero#19) ; séries et récompense d'un album : hugobqd/numero#30.
 
 Prolongement de la collection de fiches, dont une première version existe : les fiches sont gagnées en défi, révisées et rangées par thème avec une progression « x / 10 ».
 
@@ -41,12 +47,16 @@ Prolongement de la collection de fiches, dont une première version existe : les
 
 ## 4. Des leurres « exacts » que le jeu ne retouche pas (noté le 2026-11-06)
 
+> **Suivi (2026-11-07)** : hugobqd/numero#32.
+
 Le jeu décale de quelques % un leurre plus rond que la réponse, pour qu'il ne se trahisse pas. Il perd alors des pièges exacts et instructifs, retirés des fiches pour cette raison au lot 2 : l'ancien record du mille-pattes (750 pattes), la « 10e planète » (10), l'année de 360 jours, le panier de mini-basket (260 cm), les premiers marathons (40 000 m).
 
 - **Idée** : marquer un leurre comme exact dans la fiche (par exemple `"exact": true`), pour que le jeu le montre tel quel.
 - **À creuser** : un leurre rond et exact se repère-t-il trop facilement à côté d'une réponse précise ? Faut-il le réserver aux pièges sourcés ?
 
 ## 5. Des fiches qui ressemblent à des cartes à jouer (noté le 2026-11-06)
+
+> **Suivi (2026-11-07)** : ouverture de pochette animée (hugobqd/numero#25), fiche en carte (hugobqd/numero#26), renommage en « carte » (hugobqd/numero#31).
 
 Idée de design graphique : renforcer l'aspect « carte » des fiches, façon carte à jouer ou carte à collectionner.
 
@@ -58,6 +68,8 @@ Idée de design graphique : renforcer l'aspect « carte » des fiches, façon ca
   - Le coût : animations (ouverture, pile, retournement), accessibilité et réglage « réduire les animations », lisibilité sur mobile.
 
 ## 6. Réviser un album, une récompense de progression (noté le 2026-11-06)
+
+> **Suivi (2026-11-07)** : hugobqd/numero#33.
 
 Idée de gamification : la révision commence globale, puis le joueur gagne le droit de réviser un seul album.
 
@@ -71,6 +83,8 @@ Idée de gamification : la révision commence globale, puis le joueur gagne le d
   - Le lien avec les thèmes multiples : une fiche à plusieurs thèmes compte-t-elle dans chaque album ?
 
 ## 7. Séparer la difficulté de la fiche et ce que le joueur sait (noté le 2026-11-06)
+
+> **Suivi (2026-11-07)** : décidé (états pas encore trouvée / presque sue / acquise, chiffre caché, albums par difficulté) ; à construire : hugobqd/numero#18 et hugobqd/numero#22.
 
 Retour de Hugo sur l'écran « Ma collection » : il n'a pas compris ce que veulent dire les étoiles dans la liste des fiches. Rien ne l'explique à l'écran : une infobulle « Maîtrise x / 3 » au survol seulement, invisible sur mobile.
 

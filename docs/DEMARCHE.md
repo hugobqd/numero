@@ -49,6 +49,8 @@ Six chantiers, mais **pas six agents permanents** :
 
 ## Prochaine étape
 
+**Trier le backlog de la collection par pochettes** (décidée le 2026-11-07 : ADR 0007, section « Collection par pochettes » de `DECISIONS.md`). 12 tickets de construction (hugobqd/numero#18 à #29, avec leurs dépendances) et 4 tickets de décision tirés de `IDEES.md` (#30 à #33), tous en `needs-triage` sous la carte #1, puis #34 à #37 tirés du brouillard. Le pilotage se fait dans le GitHub Project « [Numero — pilotage](https://github.com/users/hugobqd/projects/1) » (Statut, Priorité, Nature, Chantier ; vues Roadmap, Tableau, À trier) : le tri consiste à remplir la Priorité et à passer les tickets de « À trier » à « Prêt ». Ensuite, construire dans l'ordre des dépendances : #18 (états d'une fiche) puis #19 (pochettes).
+
 **Étape 5 : résoudre les tickets de la carte**, un par session. Ouvrir une nouvelle session et lancer `/wayfinder https://github.com/hugobqd/numero/issues/1` : le prochain ticket libre est pris dans l'ordre de la carte.
 
 - Les benchmarks Quizlet et WikiMaster sont des tâches de Hugo, sans Claude : noter les observations en commentaire du ticket, puis le fermer.
