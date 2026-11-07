@@ -2,7 +2,7 @@
 
 Ce document est le **fil conducteur entre les sessions de travail**. Chaque nouvelle session commence par le lire, et le met à jour en fin de session (cases cochées, prochaine étape).
 
-Point de départ (2026-11-05) : un prototype jouable en ligne (https://hugobqd.github.io/numero/), 60 questions en brouillon, décisions dans `docs/DECISIONS.md`, idées dans `docs/IDEES.md`.
+Point de départ (2026-11-05) : un prototype jouable en ligne (https://hugobqd.github.io/numero/), 60 questions en brouillon, décisions dans `docs/DECISIONS.md`, idées dans `docs/IDEES.md`. Benchmark général des jeux de quiz, de chiffres et de mémorisation (Cifra, Magnitudle, Anki, Quizlet, WikiMaster, Duolingo…) dans `docs/BENCHMARK.md` (ajouté le 2026-11-07) : à consulter avant de trancher un ticket de game design ou de gamification.
 
 ## Rôles
 
@@ -53,9 +53,9 @@ Six chantiers, mais **pas six agents permanents** :
 
 **Étape 5 : résoudre les tickets de la carte**, un par session. Ouvrir une nouvelle session et lancer `/wayfinder https://github.com/hugobqd/numero/issues/1` : le prochain ticket libre est pris dans l'ordre de la carte.
 
-- Les benchmarks Quizlet et WikiMaster sont des tâches de Hugo, sans Claude : noter les observations en commentaire du ticket, puis le fermer.
+- *Benchmarks Quizlet et WikiMaster : fermés sans suite le 2026-11-07* (#2, #3), remplacés par le benchmark général `docs/BENCHMARK.md`. Le même jour : promesse retenue « retenir les chiffres qui décrivent le monde » (Vision de `DECISIONS.md`), états de fiche renommés découverte / en cours / acquise (#18 à jour).
 - *Plan de création du contenu : résolu le 2026-11-06* (150 fiches par lots de 25, difficulté en 4 crans, thèmes ouverts, public dès 12 ans ; détail dans `DECISIONS.md`).
-- Ordre conseillé : Outil de gestion des fiches (prototype, utile dès le premier lot de relecture), Revue par des agents experts, Ton rassurant appliqué (prototype), Composition du parcours (débloqué). Fiches gagnées en révision attend les deux benchmarks.
+- Ordre conseillé : Outil de gestion des fiches (prototype, utile dès le premier lot de relecture), Revue par des agents experts, Ton rassurant appliqué (prototype), Composition du parcours (débloqué).
 - **Production du contenu** : une seule issue, « [Production du contenu v1 : 150 fiches](https://github.com/hugobqd/numero/issues/10) », un lot par session et une PR par lot (jamais de push direct). Lancer une session avec : « Exécute le prochain lot de l'issue hugobqd/numero#10 ». *Préalable fait le 2026-11-06* (champs `themes`, `difficulte` {cran 1–4, justification}, `source.recoupement` et `source.idee`). *Lot 1 fait le 2026-11-06* (55 brouillons repris : valeurs vérifiées sur sources primaires, difficulté, recoupement, leurres ; 3 valeurs corrigées) : questions de relecture tranchées (règles reportées dans `DECISIONS.md`, Contenu), fiche du rayon de la Terre retirée (doublon) : 54 brouillons et 59 fiches ; PR #12 prête, à merger par Hugo. Les fiches restent en `brouillon` : leur passage en `valide` reste à faire par Hugo (ADR 0006). *Lot 2 fait le 2026-11-06* : 25 nouvelles fiches en `brouillon` (lot : 9 / 13 / 2 / 1 en tout public / grand public / curieux / pointu ; total 84 fiches : 18 / 37 / 29 / 17 %), trois thèmes nouveaux (Sport, Jeux, Musique) ; questions de relecture tranchées (règle de cran reportée dans `DECISIONS.md`, idée du leurre « exact » dans `IDEES.md`) ; mergé sur `main` (PR #14). Ensuite, règle de l'écart minimal des leurres (0,5 %), appliquée à toutes les fiches. Ne plus empiler les PR : chaque lot part de `main`. Prochain : lot 3, 25 nouvelles fiches, toujours surtout tout public et grand public. Méthode qui a marché (lots 1 et 2) : 4 agents en parallèle, environ 6 fiches chacun, avec une consigne commune (sujets choisis d'avance avec cran visé et pistes de pièges à vérifier) ; chaque agent écrit dans un fichier à part, puis la fusion respecte le style de chaque fichier de `src/data/`. Elle remplace l'étape 7 : pas d'agents dédiés pour l'instant.
 - Dès qu'une décision est constructible : `/to-spec` → `/to-tickets` → `/implement`, livraison, test de couloir.
 

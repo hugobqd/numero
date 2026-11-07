@@ -84,7 +84,7 @@ Idée de gamification : la révision commence globale, puis le joueur gagne le d
 
 ## 7. Séparer la difficulté de la fiche et ce que le joueur sait (noté le 2026-11-06)
 
-> **Suivi (2026-11-07)** : décidé (états pas encore trouvée / presque sue / acquise, chiffre caché, albums par difficulté) ; à construire : hugobqd/numero#18 et hugobqd/numero#22.
+> **Suivi (2026-11-07)** : décidé (états découverte / en cours / acquise, libellés révisés le même jour ; chiffre caché, albums par difficulté) ; à construire : hugobqd/numero#18 et hugobqd/numero#22.
 
 Retour de Hugo sur l'écran « Ma collection » : il n'a pas compris ce que veulent dire les étoiles dans la liste des fiches. Rien ne l'explique à l'écran : une infobulle « Maîtrise x / 3 » au survol seulement, invisible sur mobile.
 
