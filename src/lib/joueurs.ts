@@ -93,11 +93,16 @@ export function nbFichesDe(id: string): number {
   return Object.keys(lire<Record<string, unknown>>(`numero:${id}:collection`, {})).length;
 }
 
-/** Supprime les données d'avant les comptes simulés (clés sans joueur : numero:stats, numero:partie:N…). */
+/**
+ * Supprime les données qui ne servent plus : celles d'avant les comptes simulés (clés sans joueur :
+ * numero:stats, numero:partie:N…) et les parties du parcours commun, remplacées par les pochettes
+ * (numero:<joueur>:partie:N).
+ */
 export function nettoyerAnciennesDonnees(): void {
   try {
     for (const cle of Object.keys(localStorage)) {
-      if (/^numero:(stats|collection|partie:\d+)$/.test(cle)) localStorage.removeItem(cle);
+      if (/^numero:(stats|collection|partie:\d+)$/.test(cle) || /^numero:[^:]+:partie:\d+$/.test(cle))
+        localStorage.removeItem(cle);
     }
   } catch {
     /* rien */

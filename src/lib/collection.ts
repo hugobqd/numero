@@ -74,6 +74,15 @@ export function lireCollection(): Collection {
   }
 }
 
+/** Réécrit la collection enregistrée au format actuel (états, jour d'obtention), si elle existe. */
+export function migrerCollection(): void {
+  try {
+    if (localStorage.getItem(cle()) !== null) ecrire(lireCollection());
+  } catch {
+    /* rien */
+  }
+}
+
 function ecrire(c: Collection): void {
   try {
     localStorage.setItem(cle(), JSON.stringify(c));

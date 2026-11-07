@@ -38,6 +38,15 @@ export function lireStats(): Stats {
   };
 }
 
+/** Réécrit les stats enregistrées au format actuel (pochettes ouvertes, dernier jour), si elles existent. */
+export function migrerStats(): void {
+  try {
+    if (localStorage.getItem(cleStats()) !== null) localStorage.setItem(cleStats(), JSON.stringify(lireStats()));
+  } catch {
+    /* rien */
+  }
+}
+
 /** À l'ouverture de la pochette du jour : une fois par jour, prolonge la série ou la recommence. */
 export function enregistrerOuverture(jour: number): Stats {
   const s = lireStats();

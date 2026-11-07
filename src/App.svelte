@@ -13,7 +13,7 @@
   } from './lib/pochettes';
   import { avecUnite } from './lib/format';
   import { estMecanique, lireParametres, MECA_PAR_DEFAUT } from './lib/params';
-  import { effacerStats, enregistrerOuverture, lireStats, serieDuJour } from './lib/storage';
+  import { effacerStats, enregistrerOuverture, lireStats, migrerStats, serieDuJour } from './lib/storage';
   import { partager, texteDePartage } from './lib/share';
   import {
     choisirRevision,
@@ -22,6 +22,7 @@
     fichesPossedees,
     gagnerFiche,
     lireCollection,
+    migrerCollection,
     toutGagner,
   } from './lib/collection';
   import Jeu from './lib/Jeu.svelte';
@@ -43,7 +44,10 @@
   } from './lib/joueurs';
 
   const params = lireParametres();
+  // Données locales au format actuel dès le chargement : anciennes parties supprimées, collection et stats réécrites.
   nettoyerAnciennesDonnees();
+  migrerCollection();
+  migrerStats();
   // Comptes simulés : le jour est le jour simulé du joueur actif.
   const joueur = joueurActif();
   const joueurs = lireJoueurs();
