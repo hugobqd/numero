@@ -68,6 +68,28 @@ export function gagnerFiche(id: string, numeroDefi: number, reussie: boolean): b
   return true;
 }
 
+/**
+ * Code de triche (joueur « hubert ») : toutes les fiches du stock entrent dans la collection
+ * comme gagnées pile en défi (1 étoile). Une fiche déjà mieux maîtrisée garde ses étoiles.
+ */
+export function toutGagner(stock: { id: string }[]): void {
+  const c = lireCollection();
+  for (const { id } of stock) {
+    const e = c[id];
+    if (!e) {
+      c[id] = {
+        obtenueAuDefi: 0,
+        obtenueLe: new Date().toISOString(),
+        etoiles: 1,
+        revisions: 0,
+        reussitesDeSuite: 0,
+        derniereRevision: null,
+      };
+    } else if (maitrise(e) === 0) e.etoiles = 1;
+  }
+  ecrire(c);
+}
+
 export function enregistrerRevision(id: string, reussie: boolean): void {
   const c = lireCollection();
   const e = c[id];

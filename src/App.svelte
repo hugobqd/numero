@@ -14,6 +14,7 @@
     lireCollection,
     maitrise,
     MAITRISE_MAX,
+    toutGagner,
   } from './lib/collection';
   import Jeu from './lib/Jeu.svelte';
   import CollectionVue from './lib/CollectionVue.svelte';
@@ -77,6 +78,9 @@
   );
   let stats = $state(lireStats());
   let messagePartage = $state('');
+
+  // Code de triche : le joueur « hubert » possède toutes les fiches, gagnées pile.
+  if (joueur?.pseudo.trim().toLowerCase() === 'hubert') toutGagner(stock);
 
   // Collection : fiches gagnées en défi, à réviser.
   let collection = $state(lireCollection());
