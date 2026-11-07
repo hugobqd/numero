@@ -9,7 +9,7 @@
   import { illustration } from './themes';
 
   /**
-   * Déroulé d'une série de questions (défi du jour ou révision) : question, puis révélation,
+   * Déroulé d'une série de questions (défi d'une pochette ou révision) : question, puis révélation,
    * jusqu'à la dernière. Le parent garde les résultats et décide quoi en faire.
    */
   let {

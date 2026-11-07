@@ -36,6 +36,9 @@
   --rayon-bouton: 10px;
   --rayon-petit: 6px;
 
+  /* Barre de navigation du bas (hors zone de sécurité de l'écran). */
+  --hauteur-barre: 3.75rem;
+
   --police: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   color-scheme: light;
@@ -146,5 +149,18 @@ input[type='range'] {
 @media (min-width: 52rem) {
   body.dev-ouvert {
     padding-right: 21rem;
+  }
+}
+
+/* Barre du bas affichée : le contenu et le bouton « Test » restent au-dessus d'elle. */
+body.avec-barre {
+  padding-bottom: calc(var(--hauteur-barre) + env(safe-area-inset-bottom));
+}
+body.avec-barre .dev-bouton {
+  bottom: calc(var(--hauteur-barre) + env(safe-area-inset-bottom) + 0.75rem);
+}
+@media (min-width: 52rem) {
+  body.dev-ouvert .barre {
+    right: 21rem;
   }
 }

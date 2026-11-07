@@ -29,6 +29,7 @@
   import CollectionVue from './lib/CollectionVue.svelte';
   import JoueursVue from './lib/JoueursVue.svelte';
   import Accueil from './lib/Accueil.svelte';
+  import Reglages from './lib/Reglages.svelte';
   import Recap from './lib/Recap.svelte';
   import Inspecteur from './lib/Inspecteur.svelte';
   import Partage from './lib/Partage.svelte';
@@ -61,7 +62,7 @@
   const nbBrouillons = jouables.filter((q) => q.statut === 'brouillon').length;
   const parId = (ids: string[]) => ids.map((id) => stock.find((q) => q.id === id)).filter((q): q is Question => !!q);
 
-  // Mode de réponse : réglage du joueur (accueil), mémorisé ; ?meca= dans l'URL le change aussi.
+  // Mode de réponse : réglage du joueur (Mes réglages), mémorisé ; ?meca= dans l'URL le change aussi.
   if (params.meca && joueur) majJoueur(joueur.id, { meca: params.meca });
   let meca = $state<Mecanique>(params.meca ?? (estMecanique(joueur?.meca) ? joueur.meca : MECA_PAR_DEFAUT));
   function choisirMeca(m: Mecanique) {
@@ -83,7 +84,8 @@
     | 'bilan'
     | 'collection'
     | 'revision'
-    | 'bilanRevision';
+    | 'bilanRevision'
+    | 'reglages';
   let ecran = $state<Ecran>(
     !joueur
       ? 'joueurs'
@@ -92,6 +94,28 @@
         : 'accueil',
   );
   let stats = $state(lireStats());
+  // Série en cours : remise à zéro si le joueur a manqué un jour.
+  const serie = $derived(serieDuJour(stats, numero));
+
+  // Navigation : pendant un défi, le tuto ou une révision, l'en-tête se réduit à un ✕ et la barre du bas disparaît.
+  const enJeu = $derived(ecran === 'tuto' || ecran === 'defi' || ecran === 'revision');
+  const avecBarre = $derived(!!joueur && !enJeu && ecran !== 'tutoIntro');
+  const ongletActif = $derived(
+    ecran === 'accueil' || ecran === 'bilan'
+      ? 'accueil'
+      : ecran === 'collection'
+        ? 'collection'
+        : ecran === 'reglages' || ecran === 'joueurs'
+          ? 'reglages'
+          : null,
+  );
+  $effect(() => {
+    document.body.classList.toggle('avec-barre', avecBarre);
+  });
+  /** ✕ : retour à l'accueil ; les réponses déjà données sont enregistrées. */
+  function fermerJeu() {
+    ecran = 'accueil';
+  }
   let messagePartage = $state('');
 
   // Code de triche : le joueur « hubert » possède toutes les fiches, acquises.
@@ -267,18 +291,24 @@
 {/snippet}
 
 <main>
-  <header>
-    <h1>
-      {#if joueur?.tutoFait}
-        <button type="button" class="titre" onclick={() => (ecran = 'accueil')}>{@render marque()}</button>
-      {:else}{@render marque()}{/if}
-    </h1>
-    <nav class="haut">
+  {#if enJeu}
+    <header class="en-jeu">
+      <button type="button" class="fermer" onclick={fermerJeu} aria-label="Fermer et revenir à l'accueil">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+    </header>
+  {:else}
+    <header>
+      <h1>
+        {#if joueur?.tutoFait}
+          <button type="button" class="titre" onclick={() => (ecran = 'accueil')}>{@render marque()}</button>
+        {:else}{@render marque()}{/if}
+      </h1>
       {#if joueur}
-        <button type="button" class="lien" onclick={() => (ecran = 'joueurs')}>{joueur.pseudo}</button>
+        <p class="serie" aria-label="Série : {serie} jour{serie > 1 ? 's' : ''} d'affilée">Série <span class="chiffres">{serie}</span></p>
       {/if}
-    </nav>
-  </header>
+    </header>
+  {/if}
 
   {#if ecran === 'joueurs'}
     <JoueursVue
@@ -287,7 +317,7 @@
       oncreer={nouveauJoueur}
       onchoisir={changerJoueur}
       onsupprimer={retirerJoueur}
-      onretour={joueur ? () => (ecran = joueur.tutoFait ? 'accueil' : 'tutoIntro') : undefined}
+      onretour={joueur ? () => (ecran = 'reglages') : undefined}
     />
   {:else if ecran === 'tutoIntro' && joueur}
     <section class="accueil">
@@ -334,13 +364,11 @@
       pseudo={joueur?.pseudo ?? ''}
       jour={numero}
       pochette={etatPochette}
-      serie={serieDuJour(stats, numero)}
+      {serie}
       nbFiches={possedees.length}
       nbTotal={stock.length}
       nbAReviser={nbAReviserTotal}
       {nbAcquises}
-      {meca}
-      onmeca={choisirMeca}
       onouvrir={ouvrirPochette}
       onjouer={() => (ecran = 'defi')}
       onbilan={() => (ecran = 'bilan')}
@@ -424,9 +452,32 @@
         <button type="button" onclick={() => (ecran = 'accueil')}>← Accueil</button>
       </div>
     </section>
+  {:else if ecran === 'reglages' && joueur}
+    <Reglages pseudo={joueur.pseudo} {meca} onmeca={choisirMeca} onjoueurs={() => (ecran = 'joueurs')} />
   {/if}
-
 </main>
+
+{#if avecBarre}
+  <!-- Barre du bas : trois écrans et un raccourci qui lance directement une révision. -->
+  <nav class="barre" aria-label="Navigation principale">
+    <button type="button" class:actif={ongletActif === 'accueil'} aria-current={ongletActif === 'accueil' ? 'page' : undefined} onclick={() => (ecran = 'accueil')}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7M6 9.5V20h4.5v-5.5h3V20H18V9.5" /></svg>
+      Accueil
+    </button>
+    <button type="button" class:actif={ongletActif === 'collection'} aria-current={ongletActif === 'collection' ? 'page' : undefined} onclick={() => (ecran = 'collection')}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="11" height="14" rx="1.5" /><path d="M8 3.5h10.5a1.5 1.5 0 0 1 1.5 1.5v12.5" /></svg>
+      Ma collection
+    </button>
+    <button type="button" onclick={reviser} disabled={!possedees.length} title={possedees.length ? undefined : 'Joue un défi pour avoir des fiches à réviser'}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.5 12a7.5 7.5 0 0 1-13 5.1M4.5 12a7.5 7.5 0 0 1 13-5.1" /><path d="M17.5 3v4h-4M6.5 21v-4h4" /></svg>
+      Réviser
+    </button>
+    <button type="button" class:actif={ongletActif === 'reglages'} aria-current={ongletActif === 'reglages' ? 'page' : undefined} onclick={() => (ecran = 'reglages')}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" /><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" /><circle cx="12" cy="12" r="6.5" /></svg>
+      Mes réglages
+    </button>
+  </nav>
+{/if}
 
 <footer class="version"><Partage {meca} /> · v{__VERSION__} · {__COMMIT__}</footer>
 
@@ -681,20 +732,110 @@
     font-stretch: 72%;
     line-height: 1.05;
   }
-  .haut {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-  }
-  button.lien {
+  /* Série : pastille crème, mot et chiffre en capitales étroites. */
+  .serie {
+    margin: 0;
+    padding: 0.3rem 0.75rem;
     background: var(--surface);
-    padding: 0.35rem 0.75rem;
-    color: var(--fg);
-    font-size: 0.9rem;
-    font-weight: 600;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-stretch: 72%;
+    white-space: nowrap;
   }
-  button.lien:hover {
-    background: var(--surface-2);
+  .serie .chiffres {
+    font-size: 1.05rem;
+    font-weight: 900;
+    margin-left: 0.15rem;
+  }
+  header.en-jeu {
+    justify-content: flex-end;
+    padding: 0;
+  }
+  .fermer {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    background: none;
+    color: var(--fg);
+  }
+  .fermer:hover {
+    background: var(--surface);
+  }
+  .fermer svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  /* Barre du bas : fixe, sur toute la largeur, contenu centré sur la colonne du jeu. */
+  .barre {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 8.5rem));
+    justify-content: center;
+    padding: 0 0.25rem env(safe-area-inset-bottom);
+    background: var(--bg);
+    border-top: 2px solid var(--surface-2);
+  }
+  .barre button {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 0.15rem;
+    min-height: var(--hauteur-barre);
+    padding: 0.4rem 0.15rem;
+    background: none;
+    border-radius: 0;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.15;
+    text-align: center;
+  }
+  .barre button:hover:not(:disabled, .actif) {
+    color: var(--fg);
+  }
+  .barre button:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+  .barre button:disabled:active {
+    transform: none;
+  }
+  .barre button.actif {
+    color: var(--accent-texte);
+  }
+  /* Onglet actif : un trait terracotta en haut. */
+  .barre button.actif::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 22%;
+    right: 22%;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: var(--accent);
+  }
+  .barre svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
   .gain {
     display: grid;
