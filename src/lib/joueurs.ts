@@ -74,14 +74,32 @@ export function majJoueur(id: string, modif: Partial<Joueur>): void {
   );
 }
 
+/** Efface toutes les données du jeu dans ce navigateur : joueurs, stats, collections, neurones, pochettes. */
+export function effacerTout(): void {
+  try {
+    for (const cle of Object.keys(localStorage)) if (cle.startsWith('numero:')) localStorage.removeItem(cle);
+  } catch {
+    /* rien */
+  }
+}
+
+/** Efface toutes les données d'un joueur (stats, collection, neurones, pochettes). */
+function effacerDonnees(id: string): void {
+  try {
+    for (const cle of Object.keys(localStorage)) if (cle.startsWith(`numero:${id}:`)) localStorage.removeItem(cle);
+  } catch {
+    /* rien */
+  }
+}
+
 /** Supprime le joueur et toutes ses données. */
 export function supprimerJoueur(id: string): void {
   ecrire(
     CLE_JOUEURS,
     lireJoueurs().filter((j) => j.id !== id),
   );
+  effacerDonnees(id);
   try {
-    for (const cle of Object.keys(localStorage)) if (cle.startsWith(`numero:${id}:`)) localStorage.removeItem(cle);
     if (lire<string | null>(CLE_ACTIF, null) === id) localStorage.removeItem(CLE_ACTIF);
   } catch {
     /* rien */

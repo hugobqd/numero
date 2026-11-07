@@ -15,14 +15,6 @@ type StatsStockees = Partial<Stats> & { jouees?: number; dernierNumero?: number 
 // Clé propre au joueur actif (comptes simulés) : on la calcule à chaque appel.
 const cleStats = () => cleJoueur('stats');
 
-export function effacerStats(): void {
-  try {
-    localStorage.removeItem(cleStats());
-  } catch {
-    /* rien */
-  }
-}
-
 export function lireStats(): Stats {
   let s: StatsStockees = {};
   try {

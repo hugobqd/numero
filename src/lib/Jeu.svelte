@@ -83,7 +83,7 @@
   {@const ill = illustration(themePrincipal(courante))}
   <section class="question">
     <div class="entete">
-      {#if ill}<img class="vignette" src={ill.src} alt="" width="600" height="600" />{/if}
+      {#if ill}<img class="vignette" src={ill.src} alt="" width="600" height="600" />{:else}<span class="vignette sans-illustration" aria-hidden="true"></span>{/if}
       <div>
         <p class="progression">
           {#if etiquette}{`${etiquette} · `}{/if}Question {resultats.length + 1} / {questions.length} · {themePrincipal(courante)}
@@ -131,6 +131,10 @@
     height: 3.5rem;
     object-fit: cover;
     display: block;
+  }
+  /* Thème sans illustration (Sport, Jeux, Musique pour l'instant) : un carré ivoire à sa place. */
+  .sans-illustration {
+    background: var(--ivoire);
   }
   .progression {
     margin: 0;

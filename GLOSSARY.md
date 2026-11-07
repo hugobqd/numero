@@ -93,7 +93,7 @@ _Avoid_ : booster, lot, paquet
 Pochette que le joueur peut ouvrir une fois par jour.
 
 **Pochette bonus** :
-Pochette gagnée en franchissant un palier de neurones ; une par jour au plus.
+Pochette gagnée en franchissant un palier de neurones (tous les 250).
 
 **Question** :
 Une fiche telle qu'elle est posée au joueur, dans un défi ou une révision.
@@ -103,7 +103,7 @@ Les 5 questions d'une pochette, jouées à son ouverture. Chaque joueur a ses pr
 _Avoid_ : partie, quiz
 
 **Premier défi** :
-Défi de la première pochette, offerte et fixe (des fiches connues), joué avec le mode d'emploi de la mécanique.
+Défi de la première pochette, offerte, joué avec le mode d'emploi de la mécanique. Ses 5 fiches sont tirées au hasard parmi les fiches tout public : chaque joueur a la sienne.
 _Avoid_ : tuto, tutoriel
 
 **Série** :

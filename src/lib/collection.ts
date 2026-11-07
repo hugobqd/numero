@@ -91,14 +91,6 @@ function ecrire(c: Collection): void {
   }
 }
 
-export function effacerCollection(): void {
-  try {
-    localStorage.removeItem(cle());
-  } catch {
-    /* rien */
-  }
-}
-
 /** État suivant après une réussite ; une erreur ne change rien (l'état ne fait que progresser). */
 export function progresser(etat: Etat, reussie: boolean): Etat {
   if (!reussie) return etat;

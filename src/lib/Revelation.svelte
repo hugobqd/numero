@@ -23,6 +23,7 @@
 <section class="revelation" class:gagne={resultat.gagne}>
   <p class="verdict" class:presque={!resultat.gagne && resultat.points > 0}>
     <span class="pastille">{verdict}</span><span class="points">{resultat.points} pts</span>
+    {#if resultat.neurones}<span class="neurones">+{resultat.neurones} neurones</span>{/if}
   </p>
 
   <div class="vraie">
@@ -73,24 +74,30 @@
   .pastille {
     padding: 0.3rem 0.7rem;
     border-radius: var(--rayon-petit);
-    background: var(--perdu);
-    color: var(--ivoire);
+    background: var(--verdict-perdu);
+    color: var(--verdict-texte);
     font-size: 1.3rem;
     font-stretch: 72%;
     text-transform: uppercase;
     letter-spacing: 0.02em;
   }
   .presque .pastille {
-    background: var(--presque);
-    color: var(--petrole);
+    background: var(--verdict-presque);
   }
   .gagne .pastille {
-    background: var(--gagne);
-    color: var(--ivoire);
+    background: var(--verdict-gagne);
   }
   .points {
     font-size: 1.3rem;
     font-stretch: 72%;
+  }
+  .neurones {
+    margin-left: auto;
+    font-size: 1.1rem;
+    font-stretch: 72%;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--accent-texte);
   }
   .vraie {
     display: flex;
