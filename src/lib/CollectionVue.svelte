@@ -41,7 +41,7 @@
   </div>
 
   {#if nbPossedees === 0}
-    <p class="vide">Joue le défi du jour : chaque question jouée, réussie ou non, rejoint ta collection.</p>
+    <p class="vide">Ouvre ta pochette du jour : chaque question jouée, réussie ou non, rejoint ta collection.</p>
   {:else}
     <button type="button" class="principal" onclick={onreviser}>
       Réviser mes fiches{#if nbAReviser}{` · ${nbAReviser} à réviser`}{/if}
@@ -80,7 +80,7 @@
                     <p>Trouve-la en révision pour découvrir sa valeur.</p>
                   {/if}
                   <p class="meta">
-                    {e.obtenueAuDefi === 0 ? 'Obtenue au premier défi' : `Obtenue au défi #${e.obtenueAuDefi}`} · {e.revisions} révision{e.revisions > 1 ? 's' : ''}
+                    {e.obtenueLeJour === 0 ? 'Obtenue dans la pochette offerte' : `Obtenue le jour ${e.obtenueLeJour}`} · {e.revisions} révision{e.revisions > 1 ? 's' : ''}
                   </p>
                 </div>
               </details>
@@ -88,7 +88,7 @@
           {/each}
         </ul>
       {:else}
-        <p class="vide">Aucune fiche de ce thème pour l'instant. Elles arrivent avec les défis du jour.</p>
+        <p class="vide">Aucune fiche de ce thème pour l'instant. Elles arrivent avec les pochettes.</p>
       {/if}
     </div>
     <button type="button" onclick={() => (themeOuvert = null)}>← Tous les thèmes</button>

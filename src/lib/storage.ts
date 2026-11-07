@@ -1,50 +1,19 @@
-import type { ResultatQuestion } from './types';
 import { cleJoueur } from './joueurs';
 
-export interface PartieDuJour {
-  numero: number;
-  resultats: ResultatQuestion[];
-  terminee: boolean;
-}
-
+/** Statistiques du joueur : la série compte les jours consécutifs où la pochette du jour a été ouverte. */
 export interface Stats {
-  jouees: number;
+  /** Pochettes du jour ouvertes. */
+  ouvertes: number;
   serie: number;
   meilleureSerie: number;
-  dernierNumero: number | null;
+  dernierJour: number | null;
 }
 
-// Les clés dépendent du joueur actif (comptes simulés) : on les calcule à chaque appel.
-const CLE_PARTIE = (n: number) => cleJoueur(`partie:${n}`);
+/** Stats telles qu'enregistrées avant les pochettes (défis du jour joués). */
+type StatsStockees = Partial<Stats> & { jouees?: number; dernierNumero?: number | null };
+
+// Clé propre au joueur actif (comptes simulés) : on la calcule à chaque appel.
 const cleStats = () => cleJoueur('stats');
-
-function lire<T>(cle: string): T | null {
-  try {
-    const brut = localStorage.getItem(cle);
-    return brut ? (JSON.parse(brut) as T) : null;
-  } catch {
-    return null;
-  }
-}
-
-function ecrire(cle: string, valeur: unknown): void {
-  try {
-    localStorage.setItem(cle, JSON.stringify(valeur));
-  } catch {
-    // stockage indisponible : le jeu reste jouable, sans mémoire
-  }
-}
-
-export const lirePartie = (n: number) => lire<PartieDuJour>(CLE_PARTIE(n));
-export const ecrirePartie = (p: PartieDuJour) => ecrire(CLE_PARTIE(p.numero), p);
-
-export function effacerPartie(n: number): void {
-  try {
-    localStorage.removeItem(CLE_PARTIE(n));
-  } catch {
-    /* rien */
-  }
-}
 
 export function effacerStats(): void {
   try {
@@ -55,20 +24,39 @@ export function effacerStats(): void {
 }
 
 export function lireStats(): Stats {
-  return lire<Stats>(cleStats()) ?? { jouees: 0, serie: 0, meilleureSerie: 0, dernierNumero: null };
+  let s: StatsStockees = {};
+  try {
+    s = JSON.parse(localStorage.getItem(cleStats()) ?? '{}') as StatsStockees;
+  } catch {
+    /* stockage indisponible */
+  }
+  return {
+    ouvertes: s.ouvertes ?? s.jouees ?? 0,
+    serie: s.serie ?? 0,
+    meilleureSerie: s.meilleureSerie ?? 0,
+    dernierJour: s.dernierJour ?? s.dernierNumero ?? null,
+  };
 }
 
-/** À appeler une seule fois, quand le défi du jour est terminé. */
-export function enregistrerFin(numero: number): Stats {
+/** À l'ouverture de la pochette du jour : une fois par jour, prolonge la série ou la recommence. */
+export function enregistrerOuverture(jour: number): Stats {
   const s = lireStats();
-  if (s.dernierNumero === numero) return s;
-  const serie = s.dernierNumero === numero - 1 ? s.serie + 1 : 1;
+  if (s.dernierJour === jour) return s;
+  const serie = s.dernierJour === jour - 1 ? s.serie + 1 : 1;
   const maj: Stats = {
-    jouees: s.jouees + 1,
+    ouvertes: s.ouvertes + 1,
     serie,
     meilleureSerie: Math.max(s.meilleureSerie, serie),
-    dernierNumero: numero,
+    dernierJour: jour,
   };
-  ecrire(cleStats(), maj);
+  try {
+    localStorage.setItem(cleStats(), JSON.stringify(maj));
+  } catch {
+    /* stockage indisponible */
+  }
   return maj;
 }
+
+/** Série en cours au jour donné : elle tombe à 0 si la pochette d'hier n'a pas été ouverte. */
+export const serieDuJour = (s: Stats, jour: number) =>
+  s.dernierJour !== null && s.dernierJour >= jour - 1 ? s.serie : 0;
