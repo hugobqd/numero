@@ -6,13 +6,11 @@
   let {
     question,
     resultat,
-    afficherPoints,
     onsuivante,
     dernier,
   }: {
     question: Question;
     resultat: ResultatQuestion;
-    afficherPoints: boolean;
     onsuivante: () => void;
     dernier: boolean;
   } = $props();
@@ -24,7 +22,7 @@
 
 <section class="revelation" class:gagne={resultat.gagne}>
   <p class="verdict" class:presque={!resultat.gagne && resultat.points > 0}>
-    <span class="pastille">{verdict}</span>{#if afficherPoints}<span class="points">{resultat.points} pts</span>{/if}
+    <span class="pastille">{verdict}</span><span class="points">{resultat.points} pts</span>
   </p>
 
   <div class="vraie">

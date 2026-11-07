@@ -64,17 +64,17 @@ function melange<T>(items: T[], hasard: () => number): T[] {
   return copie;
 }
 
-export const NB_PROPOSITIONS = 6;
+export const NB_PROPOSITIONS = 5;
 
 /**
- * Propositions du défi n°`numero` pour une question (palier et plus/moins : 6 ; QCM : 4 d'entre elles),
+ * Les 5 propositions du défi n°`numero` pour une question (palier, QCM et plus/moins),
  * triées par ordre croissant. Le tirage dépend de la question **et du numéro du défi** :
  * identique pour tous les joueurs un jour donné, différent d'un défi à l'autre.
  *
- * 1. On tire d'abord le **rang de la bonne réponse** (0 à 5, uniforme) : elle est la plus petite
- *    1 fois sur 6 et la plus grande 1 fois sur 6, on ne peut donc pas éliminer d'office les extrémités.
+ * 1. On tire d'abord le **rang de la bonne réponse** (0 à 4, uniforme) : elle est la plus petite
+ *    1 fois sur 5 et la plus grande 1 fois sur 5, on ne peut donc pas éliminer d'office les extrémités.
  *    Le piège est ensuite choisi parmi ceux qui ont de la place de leur côté.
- * 2. On place ensuite r leurres en dessous et 5 − r au-dessus. De chaque côté, dans l'ordre :
+ * 2. On place ensuite r leurres en dessous et 4 − r au-dessus. De chaque côté, dans l'ordre :
  *    - le piège de la fiche (`erreur_frequente`, `autre_unite`, `autre_perimetre`) s'il est de ce côté ;
  *    - une valeur éloignée (≈ ×0,35–0,55 ou ≈ ×1,7–2,5, ou un leurre éloigné de la fiche) pour élargir le min ou le max ;
  *    - des leurres proches, tirés dans la fiche et parmi des valeurs générées (±3 à 35 %).
@@ -175,7 +175,7 @@ export function propositions(q: Question, numero: number, difficulte: Difficulte
     return false;
   };
 
-  // 1. Rang de la bonne réponse, uniforme : 1 chance sur 6 d'être la plus petite, idem la plus grande.
+  // 1. Rang de la bonne réponse, uniforme : 1 chance sur 5 d'être la plus petite, idem la plus grande.
   const rang = Math.floor(hasard() * NB_PROPOSITIONS);
 
   // Piège : tiré parmi ceux qui ont de la place de leur côté (aucun en dessous si la réponse est la plus petite).
@@ -227,25 +227,4 @@ export function propositions(q: Question, numero: number, difficulte: Difficulte
   }
 
   return [...retenues].sort((a, b) => a - b);
-}
-
-/**
- * Les 4 propositions du QCM : la bonne réponse et 3 leurres tirés au hasard parmi les 5 du palier,
- * triés. Comme le rang de la réponse parmi les 6 est uniforme, sa position parmi les 4 l'est aussi
- * (1 chance sur 4 d'être en première ou en dernière position).
- */
-export function propositionsQcm(
-  q: Question,
-  numero: number,
-  difficulte: Difficulte = 'normale',
-  nombre = 4,
-): number[] {
-  const toutes = propositions(q, numero, difficulte);
-  if (toutes.length <= nombre) return toutes;
-  const hasard = alea((hachage(q.id) ^ Math.imul(numero, 40503)) + 1);
-  const leurres = melange(
-    toutes.filter((v) => v !== q.valeur_a_retenir),
-    hasard,
-  ).slice(0, nombre - 1);
-  return [q.valeur_a_retenir, ...leurres].sort((a, b) => a - b);
 }

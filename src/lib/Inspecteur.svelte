@@ -1,13 +1,12 @@
 <script lang="ts">
   import { CRANS_DIFFICULTE, type Question } from './types';
   import { avecUnite } from './format';
-  import { propositions, propositionsQcm, type Difficulte } from './propositions';
+  import { propositions, type Difficulte } from './propositions';
 
   /** Outils de test : tout ce qu'il faut savoir sur la question affichée. */
   let { question, graine, difficulte }: { question: Question; graine: number; difficulte: Difficulte } = $props();
 
-  const props6 = $derived(propositions(question, graine, difficulte));
-  const props4 = $derived(propositionsQcm(question, graine, difficulte));
+  const tirage = $derived(propositions(question, graine, difficulte));
   const leurresTries = $derived([...question.leurres].sort((a, b) => a.valeur - b.valeur));
   const deLaFiche = $derived(new Set(question.leurres.map((l) => l.valeur)));
   const TYPES = {
@@ -57,13 +56,12 @@
   <dt>Propositions (graine {graine} · exigence {difficulte})</dt>
   <dd>
     <span class="liste">
-      {#each props6 as v}<span
+      {#each tirage as v}<span
           class:bonne={v === question.valeur_a_retenir}
-          class:fiche={deLaFiche.has(v)}
-          class:qcm={props4.includes(v)}>{f(v)}</span
+          class:fiche={deLaFiche.has(v)}>{f(v)}</span
         >{/each}
     </span>
-    <small>vert : bonne réponse · gras : leurre de la fiche · souligné : QCM</small>
+    <small>vert : bonne réponse · gras : leurre de la fiche</small>
   </dd>
 
   <dt>Source</dt>
@@ -115,8 +113,5 @@
   .fiche {
     font-weight: 700;
     color: var(--fg);
-  }
-  .qcm {
-    text-decoration: underline;
   }
 </style>

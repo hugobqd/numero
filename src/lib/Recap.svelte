@@ -4,11 +4,7 @@
   import { verdict } from './score';
 
   /** Liste des questions d'un défi ou d'une révision, chacune qualifiée par son résultat. */
-  let {
-    questions,
-    resultats,
-    afficherPoints,
-  }: { questions: Question[]; resultats: ResultatQuestion[]; afficherPoints: boolean } = $props();
+  let { questions, resultats }: { questions: Question[]; resultats: ResultatQuestion[] } = $props();
 
   const etat = (r: ResultatQuestion) => (r.gagne ? 'gagne' : r.points > 0 ? 'presque' : 'rate');
 </script>
@@ -21,7 +17,7 @@
         <span class="enonce">{q.enonce}</span>
         <strong class="valeur">{avecUnite(q.valeur_a_retenir, q.unite, q.precision)}</strong>
         <span class="verdict">
-          {verdict(q, r)}{#if afficherPoints}{` · ${r.points} pts`}{/if}
+          {verdict(q, r)} · {r.points} pts
         </span>
       </li>
     {/if}

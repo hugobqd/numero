@@ -45,7 +45,7 @@ Statuts d'une fiche ; seule la relecture humaine fait passer une fiche de brouil
 ## Propositions
 
 **Proposition** :
-Toute valeur offerte au choix du joueur pour une question ; une question a 6 propositions, la valeur à retenir et 5 leurres.
+Toute valeur offerte au choix du joueur pour une question ; une question a 5 propositions, la valeur à retenir et 4 leurres.
 
 **Leurre** :
 Proposition fausse, écrite dans la fiche ou générée par le jeu.
@@ -61,27 +61,25 @@ _Avoid_ : difficulté (pour les propositions), niveau, profil
 ## Mécaniques et score
 
 **Mécanique** :
-Façon de répondre à une question : curseur, palier, QCM ou plus/moins.
-
-**Curseur** :
-Mécanique où le joueur règle librement une valeur sur une plage fixée par la fiche.
-_Avoid_ : slider, affineur
+Façon de répondre à une question, choisie par le joueur (réglage « mode de réponse ») : palier, QCM ou plus/moins.
+_Avoid_ : slider, curseur libre (mécanique retirée)
 
 **Palier** :
 Mécanique de curseur à crans, un cran par proposition.
 _Avoid_ : palier (pour désigner l'ensemble des propositions)
 
 **QCM** :
-Mécanique où le joueur choisit parmi 4 des propositions, triées du plus petit au plus grand.
+Mécanique où le joueur choisit parmi les 5 propositions, triées du plus petit au plus grand.
 
 **Plus/moins** :
 Mécanique où le joueur répond « plus grand » ou « plus petit » à des seuils successifs, en 3 coups au plus ; un mauvais choix fait perdre la question.
 
-**Score progressif** / **Score exact** :
-Les deux façons de noter : le progressif donne des points selon la proximité de la réponse, l'exact donne 100 ou 0.
+**Score** :
+Points d'une question, selon le rang de la réponse parmi les propositions (bonne 100, voisine 50, deux crans plus loin 20) ; c'est l'ancien score progressif, seul conservé.
+_Avoid_ : score exact (retiré)
 
 **Réussie** :
-Se dit d'une question à laquelle le joueur a donné la valeur à retenir (ou, au curseur en score progressif, une réponse valant au moins 80 points).
+Se dit d'une question à laquelle le joueur a donné la valeur à retenir.
 _Avoid_ : gagnée
 
 ## Défis

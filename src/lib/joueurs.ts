@@ -1,3 +1,5 @@
+import type { Mecanique } from './types';
+
 /**
  * Comptes de joueurs simulés (prototype) : chaque joueur a un pseudo, son propre jour simulé
  * et ses propres données (parties, stats, collection), toutes dans le localStorage du navigateur.
@@ -10,6 +12,8 @@ export interface Joueur {
   jour: number;
   /** Le premier défi (tuto) a été joué. */
   tutoFait: boolean;
+  /** Mode de réponse choisi (réglage de l'accueil) ; palier si absent. */
+  meca?: Mecanique;
 }
 
 const CLE_JOUEURS = 'numero:joueurs';

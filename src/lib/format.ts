@@ -64,19 +64,6 @@ const NOMS_DECADES = [
   'billions',
 ];
 
-/**
- * Plage de réponse déduite de la question : la décade de la valeur à retenir
- * (ex. 384 400 → de 100 000 à 1 000 000), avec la précision de la question comme pas.
- */
-export function bornesQuestion(q: { valeur_a_retenir: number; precision: number }) {
-  const decade = decadeDe(q.valeur_a_retenir);
-  const min = decade === 0 ? 0 : 10 ** decade;
-  const max = 10 ** (decade + 1);
-  const step = Math.max(1, Math.min(q.precision, 10 ** decade / 10));
-  const depart = Math.round((5 * 10 ** decade) / step) * step;
-  return { decade, min, max, step, depart };
-}
-
 export function nomDecade(e: number): string {
   return NOMS_DECADES[e] ?? `10^${e}`;
 }
