@@ -1,6 +1,6 @@
 <script lang="ts">
   import { themePrincipal, type Question } from './types';
-  import { MAITRISE_MAX, maitrise, type Collection } from './collection';
+  import { estTrouvee, LIBELLES_ETAT, type Collection } from './collection';
   import { grand } from './format';
   import { illustration } from './themes';
 
@@ -17,14 +17,7 @@
     [...new Set(stock.map(themePrincipal))].sort().map((theme) => {
       const toutes = stock.filter((q) => themePrincipal(q) === theme);
       const possedees = toutes.filter((q) => collection[q.id]);
-      const sommeEtoiles = possedees.reduce((s, q) => s + maitrise(collection[q.id]), 0);
-      return {
-        theme,
-        total: toutes.length,
-        possedees,
-        /** Moyenne des étoiles des fiches possédées (0 à 3). */
-        moyenne: possedees.length ? sommeEtoiles / possedees.length : 0,
-      };
+      return { theme, total: toutes.length, possedees };
     }),
   );
 
@@ -36,21 +29,9 @@
   let themeOuvert = $state<string | null>(null);
   const detail = $derived(themes.find((t) => t.theme === themeOuvert));
 
-  /**
-   * Étoiles de la moyenne, arrondie à la demi-étoile inférieure : 1,7 → ★½☆ (1 pleine, 1 demie, 1 vide).
-   * Renvoie le remplissage de chaque étoile : 1, 0,5 ou 0.
-   */
-  const remplissage = (moyenne: number) => {
-    const arrondi = Math.floor(moyenne * 2) / 2;
-    return Array.from({ length: MAITRISE_MAX }, (_, i) => Math.max(0, Math.min(1, arrondi - i)));
-  };
-
-  const moyenneLisible = (m: number) => new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 1 }).format(m);
   const nbPossedees = $derived(themes.reduce((s, t) => s + t.possedees.length, 0));
   const nbAObtenir = $derived(stock.length - nbPossedees);
-  const nbARevoir = $derived(stock.filter((q) => collection[q.id] && maitrise(collection[q.id]) === 0).length);
-
-  const etoiles = (n: number) => '★'.repeat(n) + '☆'.repeat(MAITRISE_MAX - n);
+  const nbAReviser = $derived(stock.filter((q) => collection[q.id]?.etat === 'decouverte').length);
 </script>
 
 <section class="collection">
@@ -63,7 +44,7 @@
     <p class="vide">Joue le défi du jour : chaque question jouée, réussie ou non, rejoint ta collection.</p>
   {:else}
     <button type="button" class="principal" onclick={onreviser}>
-      Réviser mes fiches{#if nbARevoir}{` · ${nbARevoir} à revoir`}{/if}
+      Réviser mes fiches{#if nbAReviser}{` · ${nbAReviser} à réviser`}{/if}
     </button>
   {/if}
 
@@ -79,19 +60,25 @@
           {#each detail.possedees as q}
             {@const g = grand(q.valeur_a_retenir, q.unite, q.precision)}
             {@const e = collection[q.id]}
-            <li class:revoir={maitrise(e) === 0}>
+            <li class="etat-{e.etat}">
               <details>
                 <summary>
                   <span class="enonce">{q.enonce}</span>
-                  <span class="valeur"><strong>{g.chiffres}</strong> {g.unite}</span>
-                  <span class="etoiles" title="Maîtrise {maitrise(e)} / {MAITRISE_MAX}">
-                    {#if maitrise(e) === 0}<span class="a-revoir">à revoir</span>{/if}{etoiles(maitrise(e))}
-                  </span>
+                  {#if estTrouvee(e)}
+                    <span class="valeur"><strong>{g.chiffres}</strong> {g.unite}</span>
+                  {:else}
+                    <span class="valeur cachee">à réviser</span>
+                  {/if}
+                  <span class="etat">{LIBELLES_ETAT[e.etat]}</span>
                 </summary>
                 <div class="detail">
                   <p class="perimetre">{q.perimetre}</p>
-                  <p>{q.ancrage}</p>
-                  {#if q.mnemo}<p><strong>Astuce :</strong> {q.mnemo}</p>{/if}
+                  {#if estTrouvee(e)}
+                    <p>{q.ancrage}</p>
+                    {#if q.mnemo}<p><strong>Astuce :</strong> {q.mnemo}</p>{/if}
+                  {:else}
+                    <p>Trouve-la en révision pour découvrir sa valeur.</p>
+                  {/if}
                   <p class="meta">
                     {e.obtenueAuDefi === 0 ? 'Obtenue au premier défi' : `Obtenue au défi #${e.obtenueAuDefi}`} · {e.revisions} révision{e.revisions > 1 ? 's' : ''}
                   </p>
@@ -115,14 +102,6 @@
             <span class="nom">{t.theme}</span>
             <span class="quantite"><strong>{t.possedees.length}</strong> / {t.total} fiches</span>
             <span class="jauge" aria-hidden="true"><span style:width="{(100 * t.possedees.length) / t.total}%"></span></span>
-            <span
-              class="maitrise"
-              role="img"
-              aria-label="Maîtrise moyenne : {moyenneLisible(t.moyenne)} étoile(s) sur {MAITRISE_MAX}"
-              title="Moyenne des étoiles des fiches possédées : {moyenneLisible(t.moyenne)} / {MAITRISE_MAX}"
-            >
-              {#each remplissage(t.moyenne) as r}<span class="etoile" style:--plein="{r * 100}%"></span>{/each}
-            </span>
           </button>
         </li>
       {/each}
@@ -184,12 +163,12 @@
     grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
     gap: 0.75rem;
   }
-  /* Carte de thème : l'illustration en grand, puis le nom, la quantité et la maîtrise. */
+  /* Carte de thème : l'illustration en grand, puis le nom et la quantité. */
   .carte {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
     align-content: start;
     gap: 0.4rem;
     justify-items: start;
@@ -260,28 +239,6 @@
     height: 100%;
     background: var(--accent);
   }
-  .maitrise {
-    display: inline-flex;
-    gap: 0.1rem;
-    font-size: 1rem;
-    line-height: 1;
-  }
-  /* Étoile vide (☆) recouverte d'une étoile pleine (★) coupée à --plein : 0 %, 50 % ou 100 %. */
-  .etoile {
-    position: relative;
-    color: var(--accent);
-  }
-  .etoile::before {
-    content: '☆';
-  }
-  .etoile::after {
-    content: '★';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: var(--plein);
-    overflow: hidden;
-  }
   .bandeau {
     display: grid;
     grid-template-columns: 5.5rem 1fr;
@@ -351,19 +308,26 @@
     font-weight: 800;
     font-stretch: 72%;
   }
-  .revoir details {
-    border-left-color: var(--perdu);
+  /* Liseré par état : discret pour une découverte, accent pour une fiche acquise. */
+  .etat-decouverte details {
+    border-left-color: var(--border);
   }
-  .a-revoir {
-    margin-right: 0.4rem;
-    color: var(--perdu);
-    font-size: 0.75rem;
-    letter-spacing: 0;
+  .etat-en-cours details {
+    border-left-color: var(--gagne);
   }
-  .etoiles {
-    color: var(--accent);
-    letter-spacing: 0.1em;
+  .valeur.cachee {
     align-self: center;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .etat {
+    align-self: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  .etat-acquise .etat {
+    color: var(--accent-texte);
+    font-weight: 600;
   }
   .detail {
     padding: 0 0.75rem 0.6rem;

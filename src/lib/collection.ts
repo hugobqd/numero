@@ -3,31 +3,65 @@ import { cleJoueur } from './joueurs';
 
 /**
  * Collection du joueur : toutes les fiches jouées en défi, réussies ou non, qu'il peut ensuite réviser.
- * Les fiches ratées entrent à 0 étoile : ce sont elles que la révision propose en premier.
+ * Chaque fiche a un état (découverte, en cours, acquise) qui ne fait que progresser.
  * Stockée dans le navigateur (localStorage), comme le reste du prototype.
  */
+
+/**
+ * État d'une fiche (voir GLOSSARY.md) :
+ * - `decouverte` : jouée, jamais réussie ; sa valeur à retenir reste cachée ;
+ * - `en-cours` : réussie une fois ;
+ * - `acquise` : réussie deux fois, en deux occasions séparées (un défi ou une révision chacune).
+ */
+export type Etat = 'decouverte' | 'en-cours' | 'acquise';
+
+export const ETATS: Etat[] = ['decouverte', 'en-cours', 'acquise'];
+
+export const LIBELLES_ETAT: Record<Etat, string> = {
+  decouverte: 'découverte',
+  'en-cours': 'en cours',
+  acquise: 'acquise',
+};
+
 export interface EntreeCollection {
   /** Numéro du défi où la fiche a été obtenue. */
   obtenueAuDefi: number;
-  /** Maîtrise de 0 à 3 étoiles (0 = à revoir). */
-  etoiles?: number;
+  etat: Etat;
   obtenueLe: string;
   revisions: number;
-  /** Ancien compteur (avant `etoiles`) : révisions réussies d'affilée. */
-  reussitesDeSuite: number;
   derniereRevision: string | null;
 }
 
 export type Collection = Record<string, EntreeCollection>;
 
+/** Entrée telle qu'elle a pu être enregistrée avant les états (étoiles de 0 à 3, ou compteur plus ancien). */
+type EntreeStockee = Omit<EntreeCollection, 'etat'> & { etat?: Etat; etoiles?: number; reussitesDeSuite?: number };
+
 // Clé propre au joueur actif (comptes simulés).
 const cle = () => cleJoueur('collection');
-export const MAITRISE_MAX = 3;
 export const FICHES_PAR_REVISION = 5;
+
+/** Reprise des données : 0 ★ → découverte, 1–2 ★ → en cours, 3 ★ → acquise. */
+function etatDepuisEtoiles(etoiles: number): Etat {
+  return etoiles <= 0 ? 'decouverte' : etoiles >= 3 ? 'acquise' : 'en-cours';
+}
+
+function normaliser(e: EntreeStockee): EntreeCollection {
+  // Entrées d'avant les étoiles : 1 étoile + révisions réussies d'affilée.
+  const etat = e.etat ?? etatDepuisEtoiles(e.etoiles ?? Math.min(3, 1 + (e.reussitesDeSuite ?? 0)));
+  return {
+    obtenueAuDefi: e.obtenueAuDefi,
+    etat,
+    obtenueLe: e.obtenueLe,
+    revisions: e.revisions ?? 0,
+    derniereRevision: e.derniereRevision ?? null,
+  };
+}
 
 export function lireCollection(): Collection {
   try {
-    return JSON.parse(localStorage.getItem(cle()) ?? '{}') as Collection;
+    const brut = JSON.parse(localStorage.getItem(cle()) ?? '{}') as Record<string, EntreeStockee>;
+    return Object.fromEntries(Object.entries(brut).map(([id, e]) => [id, normaliser(e)]));
   } catch {
     return {};
   }
@@ -49,8 +83,17 @@ export function effacerCollection(): void {
   }
 }
 
+/** État suivant après une réussite ; une erreur ne change rien (l'état ne fait que progresser). */
+export function progresser(etat: Etat, reussie: boolean): Etat {
+  if (!reussie) return etat;
+  return etat === 'decouverte' ? 'en-cours' : 'acquise';
+}
+
+/** Fiche trouvée : réussie au moins une fois ; sa valeur à retenir s'affiche pour toujours. */
+export const estTrouvee = (e: EntreeCollection) => e.etat !== 'decouverte';
+
 /**
- * Ajoute une fiche jouée en défi : 1 étoile si la question est réussie, 0 (« à revoir ») sinon.
+ * Ajoute une fiche jouée en défi : en cours si la question est réussie, découverte sinon.
  * Renvoie true si elle est nouvelle.
  */
 export function gagnerFiche(id: string, numeroDefi: number, reussie: boolean): boolean {
@@ -59,33 +102,27 @@ export function gagnerFiche(id: string, numeroDefi: number, reussie: boolean): b
   c[id] = {
     obtenueAuDefi: numeroDefi,
     obtenueLe: new Date().toISOString(),
-    etoiles: reussie ? 1 : 0,
+    etat: progresser('decouverte', reussie),
     revisions: 0,
-    reussitesDeSuite: 0,
     derniereRevision: null,
   };
   ecrire(c);
   return true;
 }
 
-/**
- * Code de triche (joueur « hubert ») : toutes les fiches du stock entrent dans la collection
- * comme gagnées pile en défi (1 étoile). Une fiche déjà mieux maîtrisée garde ses étoiles.
- */
+/** Code de triche (joueur « hubert ») : toutes les fiches du stock entrent dans la collection, acquises. */
 export function toutGagner(stock: { id: string }[]): void {
   const c = lireCollection();
   for (const { id } of stock) {
-    const e = c[id];
-    if (!e) {
+    if (c[id]) c[id].etat = 'acquise';
+    else
       c[id] = {
         obtenueAuDefi: 0,
         obtenueLe: new Date().toISOString(),
-        etoiles: 1,
+        etat: 'acquise',
         revisions: 0,
-        reussitesDeSuite: 0,
         derniereRevision: null,
       };
-    } else if (maitrise(e) === 0) e.etoiles = 1;
   }
   ecrire(c);
 }
@@ -94,22 +131,10 @@ export function enregistrerRevision(id: string, reussie: boolean): void {
   const c = lireCollection();
   const e = c[id];
   if (!e) return;
-  const avant = maitrise(e);
   e.revisions++;
-  e.reussitesDeSuite = reussie ? e.reussitesDeSuite + 1 : 0;
-  // La maîtrise ne baisse jamais : une erreur laisse les étoiles acquises.
-  e.etoiles = reussie ? Math.min(MAITRISE_MAX, avant + 1) : avant;
+  e.etat = progresser(e.etat, reussie);
   e.derniereRevision = new Date().toISOString();
   ecrire(c);
-}
-
-/**
- * Maîtrise de 0 à 3 étoiles : 1 si la fiche a été réussie en défi, 0 si elle est à revoir ;
- * +1 par révision réussie (3 au plus) ; une erreur ne retire rien (le meilleur niveau est gardé).
- */
-export function maitrise(e: EntreeCollection): number {
-  // Fiches enregistrées avant l'ajout des étoiles : 1 + révisions réussies d'affilée.
-  return e.etoiles ?? Math.min(MAITRISE_MAX, 1 + e.reussitesDeSuite);
 }
 
 /** Les fiches de la collection présentes dans le stock (une fiche retirée du jeu est ignorée). */
@@ -118,7 +143,7 @@ export function fichesPossedees(c: Collection, stock: Question[]): Question[] {
 }
 
 /**
- * Fiches à réviser : les moins maîtrisées d'abord, puis celles révisées il y a le plus longtemps
+ * Fiches à réviser : les moins avancées d'abord, puis celles révisées il y a le plus longtemps
  * (ou jamais), avec un peu de hasard entre fiches équivalentes.
  */
 export function choisirRevision(c: Collection, stock: Question[], nombre = FICHES_PAR_REVISION): Question[] {
@@ -126,7 +151,7 @@ export function choisirRevision(c: Collection, stock: Question[], nombre = FICHE
     .map((q) => ({ q, e: c[q.id], hasard: Math.random() }))
     .sort(
       (a, b) =>
-        maitrise(a.e) - maitrise(b.e) ||
+        ETATS.indexOf(a.e.etat) - ETATS.indexOf(b.e.etat) ||
         (a.e.derniereRevision ?? '').localeCompare(b.e.derniereRevision ?? '') ||
         a.hasard - b.hasard,
     )

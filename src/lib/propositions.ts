@@ -86,10 +86,10 @@ export const NB_PROPOSITIONS = 5;
 /**
  * Difficulté des propositions :
  * - `decouverte` : 2 valeurs éloignées de chaque côté et des proches assez larges (±15 à 35 %),
- *   pour ancrer d'abord l'ordre de grandeur (fiche à 0 étoile en révision) ;
- * - `normale` : 1 valeur éloignée de chaque côté, le reste proche (défi du jour, fiches à 1–2 étoiles) ;
+ *   pour ancrer d'abord l'ordre de grandeur (fiche découverte en révision) ;
+ * - `normale` : 1 valeur éloignée de chaque côté, le reste proche (défi du jour, fiches en cours) ;
  * - `experte` : aucune valeur éloignée, seulement des pièges et des proches serrés (±2 à 12 %),
- *   pour viser le chiffre exact (fiches à 3 étoiles).
+ *   pour viser le chiffre exact (fiches acquises).
  */
 export type Difficulte = 'decouverte' | 'normale' | 'experte';
 
