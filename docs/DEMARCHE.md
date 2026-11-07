@@ -20,7 +20,7 @@ Six chantiers, mais **pas six agents permanents** :
 | Game design, gamification, viralité | se décide | tickets de décision `/wayfinder`, `/prototype` pour tester une mécanique |
 | Direction artistique, UI, wording | se décide puis s'exécute | tickets de décision, skill `design-taste-frontend` |
 | Contenu pédagogique | se produit à la chaîne | **agents dédiés** (`docs/contenu/`), relecture humaine obligatoire |
-| Backlog et roadmap | s'organise | carte `/wayfinder` + issues GitHub |
+| Backlog et roadmap | s'organise | carte `/wayfinder` + issues GitHub, priorités dans le GitHub Project « Numero — pilotage » : seule source du backlog, aucune copie locale (HTML, liste) |
 | Direction technique | se décide | ADR via `/grill-with-docs`, puis `/to-spec` → `/to-tickets` → `/implement` |
 
 ## Les étapes
