@@ -497,11 +497,7 @@
           <button type="button" class="secondaire" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
         </div>
       </div>
-      {#if aRecuperer.length}
-        <button type="button" class="principal" onclick={ouvrirPochette}>Ouvrir la pochette du jour</button>
-      {:else}
-        <button type="button" class="principal" onclick={() => (ecran = 'accueil')}>Accueil</button>
-      {/if}
+      <button type="button" class="principal" onclick={() => (ecran = 'accueil')}>Retour à l'accueil</button>
     </section>
   {:else if ecran === 'accueil'}
     <Accueil

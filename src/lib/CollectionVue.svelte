@@ -52,7 +52,7 @@
     {@const ill = illustration(detail.theme)}
     <div class="theme">
       <div class="bandeau">
-        {#if ill}<img src={ill.src} alt={ill.alt} width="600" height="600" />{/if}
+        {#if ill}<img src={ill.src} alt={ill.alt} width="600" height="600" />{:else}<span class="vide" aria-hidden="true"></span>{/if}
         <h3>{detail.theme} <span class="compte">{detail.possedees.length} / {detail.total}</span></h3>
       </div>
       {#if detail.possedees.length}
@@ -98,7 +98,7 @@
         {@const ill = illustration(t.theme)}
         <li>
           <button type="button" class="carte" onclick={() => (themeOuvert = t.theme)}>
-            {#if ill}<img class="illustration" src={ill.src} alt="" width="600" height="600" loading="lazy" />{/if}
+            {#if ill}<img class="illustration" src={ill.src} alt="" width="600" height="600" loading="lazy" />{:else}<span class="illustration vide" aria-hidden="true"></span>{/if}
             <span class="nom">{t.theme}</span>
             <span class="quantite"><strong>{t.possedees.length}</strong> / {t.total} fiches</span>
             <span class="jauge" aria-hidden="true"><span style:width="{(100 * t.possedees.length) / t.total}%"></span></span>
@@ -193,6 +193,12 @@
     margin-bottom: 0.35rem;
     transition: transform 0.4s ease;
   }
+  /* Thème sans illustration (Sport, Jeux, Musique pour l'instant) : un carré ivoire à sa place. */
+  .vide {
+    display: block;
+    aspect-ratio: 1;
+    background: var(--ivoire);
+  }
   .carte > .jauge {
     width: calc(100% - 1.6rem);
   }
@@ -245,7 +251,8 @@
     align-items: center;
     gap: 1rem;
   }
-  .bandeau img {
+  .bandeau img,
+  .bandeau .vide {
     border-radius: var(--rayon-carte);
     width: 100%;
     height: auto;
