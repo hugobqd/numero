@@ -93,7 +93,7 @@ _Avoid_ : booster, lot, paquet
 Pochette que le joueur peut ouvrir une fois par jour.
 
 **Pochette bonus** :
-Pochette gagnée en franchissant un palier de neurones ; une par jour au plus.
+Pochette gagnée en franchissant un palier de neurones (tous les 250).
 
 **Question** :
 Une fiche telle qu'elle est posée au joueur, dans un défi ou une révision.

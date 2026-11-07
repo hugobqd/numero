@@ -52,7 +52,7 @@
     {@const ill = illustration(detail.theme)}
     <div class="theme">
       <div class="bandeau">
-        {#if ill}<img src={ill.src} alt={ill.alt} width="600" height="600" />{:else}<span class="vide" aria-hidden="true"></span>{/if}
+        {#if ill}<img src={ill.src} alt={ill.alt} width="600" height="600" />{:else}<span class="sans-illustration" aria-hidden="true"></span>{/if}
         <h3>{detail.theme} <span class="compte">{detail.possedees.length} / {detail.total}</span></h3>
       </div>
       {#if detail.possedees.length}
@@ -87,6 +87,10 @@
             </li>
           {/each}
         </ul>
+        {#if detail.total > detail.possedees.length}
+          {@const reste = detail.total - detail.possedees.length}
+          <p class="reste">Encore {reste} fiche{reste > 1 ? 's' : ''} à récupérer</p>
+        {/if}
       {:else}
         <p class="vide">Aucune fiche de ce thème pour l'instant. Elles arrivent avec les pochettes.</p>
       {/if}
@@ -98,7 +102,7 @@
         {@const ill = illustration(t.theme)}
         <li>
           <button type="button" class="carte" onclick={() => (themeOuvert = t.theme)}>
-            {#if ill}<img class="illustration" src={ill.src} alt="" width="600" height="600" loading="lazy" />{:else}<span class="illustration vide" aria-hidden="true"></span>{/if}
+            {#if ill}<img class="illustration" src={ill.src} alt="" width="600" height="600" loading="lazy" />{:else}<span class="illustration sans-illustration" aria-hidden="true"></span>{/if}
             <span class="nom">{t.theme}</span>
             <span class="quantite"><strong>{t.possedees.length}</strong> / {t.total} fiches</span>
             <span class="jauge" aria-hidden="true"><span style:width="{(100 * t.possedees.length) / t.total}%"></span></span>
@@ -194,7 +198,7 @@
     transition: transform 0.4s ease;
   }
   /* Thème sans illustration (Sport, Jeux, Musique pour l'instant) : un carré ivoire à sa place. */
-  .vide {
+  .sans-illustration {
     display: block;
     aspect-ratio: 1;
     background: var(--ivoire);
@@ -245,6 +249,13 @@
     height: 100%;
     background: var(--accent);
   }
+  /* Sous la liste d'un thème : ce qu'il reste à récupérer dans les pochettes. */
+  .reste {
+    margin: 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
   .bandeau {
     display: grid;
     grid-template-columns: 5.5rem 1fr;
@@ -252,7 +263,7 @@
     gap: 1rem;
   }
   .bandeau img,
-  .bandeau .vide {
+  .bandeau .sans-illustration {
     border-radius: var(--rayon-carte);
     width: 100%;
     height: auto;
@@ -284,12 +295,16 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 0.4rem;
+    /* Un seul bloc, comme le récap d'un défi : les fiches se suivent, séparées par un filet. */
+    border-radius: var(--rayon-carte);
+    overflow: hidden;
+  }
+  .fiches li + li {
+    border-top: 1px solid var(--bg);
   }
   details {
     background: var(--surface);
     border-left: 4px solid var(--accent);
-    border-radius: var(--rayon-petit);
   }
   summary {
     display: grid;

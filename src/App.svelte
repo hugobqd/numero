@@ -16,12 +16,11 @@
   } from './lib/pochettes';
   import {
     BONUS_REVISION_PARFAITE,
-    PALIER_BONUS,
     ajouterNeurones,
     gainFiche,
-    jauge,
+    progression,
     lireNeurones,
-    verifierPalier,
+    reglerPaliers,
   } from './lib/neurones';
   import { avecUnite } from './lib/format';
   import { estMecanique, lireParametres, MECA_PAR_DEFAUT } from './lib/params';
@@ -45,6 +44,7 @@
   import Recap from './lib/Recap.svelte';
   import Inspecteur from './lib/Inspecteur.svelte';
   import Partage from './lib/Partage.svelte';
+  import JaugeNeurones from './lib/JaugeNeurones.svelte';
   import type { Difficulte } from './lib/propositions';
   import {
     choisirJoueur,
@@ -84,15 +84,15 @@
   }
 
   // Neurones : à l'arrivée, ceux gardés de la veille peuvent donner la pochette bonus du jour.
-  let neurones = $state(joueur ? verifierPalier(numero).neurones : lireNeurones());
+  let neurones = $state(joueur ? reglerPaliers().neurones : lireNeurones());
   // Une pochette bonus est tombée pendant le défi ou la révision en cours (annoncée au bilan).
   let bonusRecente = $state(false);
   /** Ajoute les neurones d'une réponse ou d'un bonus, et note la pochette bonus éventuellement gagnée. */
   function gagnerNeurones(gain: number) {
     if (gain <= 0) return;
-    const r = ajouterNeurones(gain, numero);
+    const r = ajouterNeurones(gain);
     neurones = r.neurones;
-    if (r.bonusGagnee) bonusRecente = true;
+    if (r.bonusGagnees) bonusRecente = true;
   }
   const sommeNeurones = (res: ResultatQuestion[]) => res.reduce((s, r) => s + (r.neurones ?? 0), 0);
 
@@ -413,23 +413,11 @@
 {/snippet}
 
 {#snippet gainNeurones(gain: number, dontBonus = 0)}
-  <!-- Neurones gagnés et jauge vers la prochaine pochette bonus (une tous les 100, une par jour au plus). -->
-  {@const j = jauge(neurones)}
+  <!-- Neurones gagnés et jauge vers la prochaine pochette bonus (une à chaque palier de 250). -->
   <div class="bloc neurones">
-    <p class="ligne-gain">
-      <span><strong class="gain-nombre">+{gain}</strong> neurone{gain > 1 ? 's' : ''}{#if dontBonus}<span class="conseil"> · dont {dontBonus} de révision parfaite</span>{/if}</span>
-      <span class="conseil">{#if j >= PALIER_BONUS}Pochette bonus demain{:else}Pochette bonus {j} / {PALIER_BONUS}{/if}</span>
-    </p>
-    <div
-      class="jauge"
-      role="progressbar"
-      aria-label="Neurones vers la prochaine pochette bonus"
-      aria-valuemin={0}
-      aria-valuemax={PALIER_BONUS}
-      aria-valuenow={Math.min(j, PALIER_BONUS)}
-    >
-      <span style:width="{(Math.min(j, PALIER_BONUS) / PALIER_BONUS) * 100}%"></span>
-    </div>
+    <JaugeNeurones {...progression(neurones)}>
+      {#snippet titre()}<strong class="gain-nombre">+{gain}</strong> neurone{gain > 1 ? 's' : ''}{#if dontBonus}<span class="conseil"> · dont {dontBonus} de révision parfaite</span>{/if}{/snippet}
+    </JaugeNeurones>
     {#if bonusRecente}<p class="bonus-gagnee">Pochette bonus gagnée ! Elle t'attend sur l'accueil.</p>{/if}
   </div>
 {/snippet}
@@ -508,6 +496,7 @@
       nbAReviser={nbAReviserTotal}
       {nbAcquises}
       bonus={etatBonus}
+      neurones={progression(neurones)}
       onouvrir={ouvrirPochette}
       onjouer={ouvrirPochette}
       onbilan={ouvrirPochette}
@@ -1009,13 +998,6 @@
   .bloc p {
     margin: 0;
   }
-  .ligne-gain {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0 0.75rem;
-  }
   .gain-nombre {
     font-size: 1.4rem;
     font-weight: 900;
@@ -1054,19 +1036,6 @@
   .conseil {
     color: var(--muted);
     font-size: 0.85rem;
-  }
-  /* Jauge vers la prochaine pochette bonus : un trait terracotta sur fond crème foncé. */
-  .jauge {
-    height: 0.4rem;
-    border-radius: 1rem;
-    background: var(--surface-2);
-    overflow: hidden;
-  }
-  .jauge span {
-    display: block;
-    height: 100%;
-    border-radius: inherit;
-    background: var(--accent);
   }
   .bonus-gagnee {
     font-weight: 700;

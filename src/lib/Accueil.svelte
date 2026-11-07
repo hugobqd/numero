@@ -1,4 +1,5 @@
 <script lang="ts">
+  import JaugeNeurones from './JaugeNeurones.svelte';
   /** Écran principal du joueur : la pochette du jour, sa progression, ses révisions. Volontairement sobre. */
   let {
     pseudo,
@@ -10,6 +11,7 @@
     nbAReviser,
     nbAcquises,
     bonus,
+    neurones,
     onouvrir,
     onjouer,
     onbilan,
@@ -36,6 +38,8 @@
      * et le nombre à ouvrir ; null s'il n'y en a pas (ou plus de fiches à récupérer).
      */
     bonus: { aOuvrir: number; faites: number | null; total: number | null } | null;
+    /** Neurones : total, dernier palier payé, palier suivant, et si sa pochette bonus arrive demain. */
+    neurones: { total: number; depuis: number; vers: number };
     onouvrir: () => void;
     onjouer: () => void;
     onbilan: () => void;
@@ -55,6 +59,17 @@
     </svg>
   </div>
 
+  {#if pochette.etat === 'ouverte' && pochette.terminee}
+    <!-- Pochette du jour jouée : elle passe au second plan, en bloc discret. -->
+    <article class="defi-joue">
+      <div>
+        <h3>Pochette du jour</h3>
+        <p class="etat"><strong class="chiffres">{pochette.score}</strong></p>
+        <p class="note">Prochaine pochette demain</p>
+      </div>
+      <button type="button" onclick={onbilan}>Voir le bilan</button>
+    </article>
+  {:else}
   <article class="defi">
     <h3>Pochette du jour</h3>
     {#if pochette.etat === 'toutes-les-fiches'}
@@ -63,15 +78,12 @@
     {:else if pochette.etat === 'a-ouvrir'}
       <p class="etat"><strong class="chiffres">{pochette.fiches}</strong> nombre{pochette.fiches > 1 ? 's' : ''} à retenir au chiffre près</p>
       <button type="button" class="principal" onclick={onouvrir}>Ouvrir</button>
-    {:else if pochette.terminee}
-      <p class="etat"><strong class="chiffres">{pochette.score}</strong></p>
-      <p class="note">Terminée. Prochaine pochette demain.</p>
-      <button type="button" onclick={onbilan}>Voir le bilan</button>
     {:else}
       <p class="etat"><strong class="chiffres">{pochette.faites} / {pochette.total}</strong> questions jouées</p>
       <button type="button" class="principal" onclick={onjouer}>Reprendre</button>
     {/if}
   </article>
+  {/if}
 
   {#if bonus}
     <!-- Pochettes bonus (provisoire, en attendant la liste « Pochettes à ouvrir » de l'accueil, #24). -->
@@ -102,6 +114,12 @@
         <button type="button" class="discret" onclick={oncollection}>Ma collection →</button>
       </div>
       <button type="button" class="principal" onclick={onreviser}>Réviser</button>
+      <!-- Neurones : la jauge vers la prochaine pochette bonus (une à chaque palier). -->
+      <div class="neurones">
+        <JaugeNeurones {...neurones}>
+          {#snippet titre()}Neurones{/snippet}
+        </JaugeNeurones>
+      </div>
     </article>
   {/if}
 
@@ -196,8 +214,7 @@
   }
   /* Texte ivoire sur terracotta : en grand et gras pour rester lisible (contraste « grand texte »). */
   .defi h3,
-  .defi .etat,
-  .defi .note {
+  .defi .etat {
     font-size: 1.2rem;
     font-weight: 700;
   }
@@ -248,8 +265,10 @@
     color: var(--accent-texte);
   }
   .revision,
-  .bonus {
+  .bonus,
+  .defi-joue {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
@@ -258,7 +277,8 @@
     border-radius: var(--rayon-carte);
   }
   .revision > div,
-  .bonus > div {
+  .bonus > div,
+  .defi-joue > div {
     display: grid;
     gap: 0.2rem;
     justify-items: start;
@@ -269,6 +289,27 @@
   .revision .etat .chiffres {
     font-size: 1.5rem;
     color: var(--accent-texte);
+  }
+  /* Jauge de neurones, sur toute la largeur du bloc Révision. */
+  .revision > .neurones {
+    flex-basis: 100%;
+    justify-items: stretch;
+    display: grid;
+    gap: 0.3rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--bg);
+  }
+  /* Pochette du jour jouée : discrète, le score en petit. */
+  .defi-joue .etat .chiffres {
+    font-size: 1.3rem;
+  }
+  .defi-joue .note {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .defi-joue button {
+    flex: none;
+    background: var(--surface-2);
   }
   .revision .principal,
   .bonus .principal {

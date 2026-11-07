@@ -5,21 +5,20 @@ import { cleJoueur } from './joueurs';
 /**
  * Neurones (voir GLOSSARY.md) : compteur de progression du joueur, qui ne baisse jamais.
  * Une fiche qui progresse grâce à une réussite rapporte 10 × son cran ; une révision parfaite, 20 de bonus.
- * Tous les 100 neurones, une pochette bonus est gagnée, une par jour au plus : les neurones au-delà
- * restent dans la jauge et donnent la pochette suivante dès le jour suivant.
+ * Un palier tous les 250 neurones (250, 500, 750…) : chaque palier atteint donne aussitôt une pochette bonus.
  */
 
 export const NEURONES_PAR_CRAN = 10;
 export const BONUS_REVISION_PARFAITE = 20;
-export const PALIER_BONUS = 100;
+export const PALIER_BONUS = 250;
 
 export interface Neurones {
   /** Total gagné depuis le début : ne baisse jamais. */
   total: number;
-  /** Pochettes bonus gagnées depuis le début (chacune a consommé un palier de 100). */
+  /** Pochettes bonus gagnées depuis le début (leur rang sert d'identifiant). */
   bonus: number;
-  /** Jour (simulé) de la dernière pochette bonus gagnée. */
-  dernierJourBonus: number | null;
+  /** Paliers déjà changés en pochette bonus (le suivant est à (paliers + 1) × 250). */
+  paliers: number;
 }
 
 const cle = () => cleJoueur('neurones');
@@ -31,7 +30,11 @@ export function lireNeurones(): Neurones {
   } catch {
     /* stockage indisponible */
   }
-  return { total: n.total ?? 0, bonus: n.bonus ?? 0, dernierJourBonus: n.dernierJourBonus ?? null };
+  const total = n.total ?? 0;
+  const bonus = n.bonus ?? 0;
+  // Données d'avant les paliers de 250 (un palier tous les 100) : les paliers déjà atteints comptent comme payés.
+  const paliers = n.paliers ?? Math.min(bonus, atteints(total));
+  return { total, bonus, paliers };
 }
 
 function ecrire(n: Neurones): void {
@@ -42,8 +45,15 @@ function ecrire(n: Neurones): void {
   }
 }
 
-/** Neurones dans la jauge : ceux qui n'ont pas encore donné de pochette bonus (peut dépasser 100). */
-export const jauge = (n: Neurones) => n.total - n.bonus * PALIER_BONUS;
+/** Nombre de paliers atteints par un total de neurones. */
+const atteints = (total: number) => Math.floor(total / PALIER_BONUS);
+
+/**
+ * Progression vers la prochaine pochette bonus : le total actuel, entre le dernier palier atteint et le suivant.
+ */
+export function progression(n: Neurones): { total: number; depuis: number; vers: number } {
+  return { total: n.total, depuis: n.paliers * PALIER_BONUS, vers: (n.paliers + 1) * PALIER_BONUS };
+}
 
 /**
  * Gain d'une fiche jouée : 10 × son cran si une réussite l'a fait progresser (inconnue → en cours,
@@ -54,24 +64,16 @@ export function gainFiche(avant: Etat | null, apres: Etat, cran: CranDifficulte 
   return apres !== avant && apres !== 'decouverte' ? NEURONES_PAR_CRAN * (cran ?? 2) : 0;
 }
 
-/** Donne la pochette bonus du jour si la jauge atteint 100 et qu'aucune n'a été gagnée ce jour-là. */
-function franchirPalier(n: Neurones, jour: number): boolean {
-  if (jauge(n) < PALIER_BONUS || n.dernierJourBonus === jour) return false;
-  n.bonus++;
-  n.dernierJourBonus = jour;
-  return true;
-}
-
-/** Ajoute des neurones ; renvoie l'état à jour et si une pochette bonus vient d'être gagnée. */
-export function ajouterNeurones(gain: number, jour: number): { neurones: Neurones; bonusGagnee: boolean } {
+/** Ajoute des neurones ; chaque palier franchi donne une pochette bonus. Renvoie l'état et le nombre de pochettes gagnées. */
+export function ajouterNeurones(gain: number): { neurones: Neurones; bonusGagnees: number } {
   const n = lireNeurones();
   n.total += Math.max(0, gain);
-  const bonusGagnee = franchirPalier(n, jour);
+  const bonusGagnees = Math.max(0, atteints(n.total) - n.paliers);
+  n.paliers += bonusGagnees;
+  n.bonus += bonusGagnees;
   ecrire(n);
-  return { neurones: n, bonusGagnee };
+  return { neurones: n, bonusGagnees };
 }
 
-/** À l'arrivée du joueur : les neurones gardés de la veille donnent la pochette bonus du jour. */
-export function verifierPalier(jour: number): { neurones: Neurones; bonusGagnee: boolean } {
-  return ajouterNeurones(0, jour);
-}
+/** Au chargement : un palier atteint mais pas encore payé (ancienne règle, une par jour) donne sa pochette bonus. */
+export const reglerPaliers = () => ajouterNeurones(0);
