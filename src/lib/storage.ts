@@ -1,10 +1,8 @@
-import type { Mecanique, ResultatQuestion, VarianteScore } from './types';
+import type { ResultatQuestion } from './types';
 import { cleJoueur } from './joueurs';
 
 export interface PartieDuJour {
   numero: number;
-  meca: Mecanique;
-  variante: VarianteScore;
   resultats: ResultatQuestion[];
   terminee: boolean;
 }

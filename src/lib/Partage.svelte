@@ -1,13 +1,13 @@
 <script lang="ts">
   import QRCode from 'qrcode';
-  import type { Mecanique, VarianteScore } from './types';
+  import type { Mecanique } from './types';
 
   /** Adresse publique du prototype, à scanner pour jouer sur un autre téléphone. */
   const URL_SITE = 'https://hugobqd.github.io/numero/';
 
-  /** Le lien partagé reprend le réglage de test en cours (mécanique × score). */
-  let { meca, variante }: { meca: Mecanique; variante: VarianteScore } = $props();
-  const url = $derived(`${URL_SITE}?meca=${meca}&score=${variante}`);
+  /** Le lien partagé reprend le mode de réponse en cours (le joueur peut le changer sur l'accueil). */
+  let { meca }: { meca: Mecanique } = $props();
+  const url = $derived(`${URL_SITE}?meca=${meca}`);
 
   let ouvert = $state(false);
   let svg = $state('');
@@ -45,7 +45,7 @@
       <p>Scanne ce code avec l'appareil photo du téléphone :</p>
       <div class="qr" aria-label="QR code vers {url}" role="img">{@html svg}</div>
       <p class="url">{url}</p>
-      <p class="reglage">Réglage : <strong>{meca}</strong> · score <strong>{variante}</strong></p>
+      <p class="reglage">Mode de réponse : <strong>{meca}</strong></p>
       <div class="actions">
         <button type="button" onclick={copier}>Copier le lien</button>
         <button type="button" class="principal" onclick={() => (ouvert = false)}>Fermer</button>

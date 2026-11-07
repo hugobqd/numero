@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { Question, ResultatQuestion } from './lib/types';
+  import type { Mecanique, Question, ResultatQuestion } from './lib/types';
   import { defisParCycle, questionsDuDefi, questionsJouables } from './lib/daily';
   import { avecUnite } from './lib/format';
-  import { lireParametres, MECAS, VARIANTES } from './lib/params';
+  import { estMecanique, lireParametres, MECA_PAR_DEFAUT } from './lib/params';
   import { effacerPartie, effacerStats, ecrirePartie, enregistrerFin, lirePartie, lireStats, type PartieDuJour } from './lib/storage';
   import { partager, texteDePartage } from './lib/share';
   import {
@@ -48,14 +48,15 @@
   const nbBrouillons = jouables.filter((q) => q.statut === 'brouillon').length;
   const questions: Question[] = questionsDuDefi(jouables, numero);
 
-  // Une partie enregistrée avec un réglage qui n'existe plus (ex. l'ancienne variante « tolerance ») est ignorée.
-  const enregistree = lirePartie(numero);
-  const reprise =
-    enregistree && MECAS.includes(enregistree.meca) && VARIANTES.includes(enregistree.variante) ? enregistree : null;
-  // Une partie commencée garde ses réglages ; sinon on prend ceux de l'URL.
-  let partie = $state<PartieDuJour>(
-    reprise ?? { numero, meca: params.meca, variante: params.variante, resultats: [], terminee: false },
-  );
+  // Mode de réponse : réglage du joueur (accueil), mémorisé ; ?meca= dans l'URL le change aussi.
+  if (params.meca && joueur) majJoueur(joueur.id, { meca: params.meca });
+  let meca = $state<Mecanique>(params.meca ?? (estMecanique(joueur?.meca) ? joueur.meca : MECA_PAR_DEFAUT));
+  function choisirMeca(m: Mecanique) {
+    meca = m;
+    if (joueur) majJoueur(joueur.id, { meca: m });
+  }
+
+  let partie = $state<PartieDuJour>(lirePartie(numero) ?? { numero, resultats: [], terminee: false });
   type Ecran =
     | 'joueurs'
     | 'tutoIntro'
@@ -191,20 +192,17 @@
   }
 
   async function onPartager() {
-    const r = await partager(texteDePartage(numero, partie.variante, partie.resultats));
+    const r = await partager(texteDePartage(numero, partie.resultats));
     messagePartage = r === 'copie' ? 'Copié dans le presse-papiers' : r === 'echec' ? 'Partage impossible' : '';
   }
 
-  const total = $derived(
-    partie.variante === 'progressif'
-      ? `${partie.resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100} pts`
-      : `${partie.resultats.filter((r) => r.gagne).length} / ${questions.length}`,
-  );
+  const total = $derived(`${partie.resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100} pts`);
   const aRevoir = $derived(nouvellesFiches.filter((id) => !partie.resultats.find((r) => r.id === id)?.gagne).length);
 
-  /** Lien de test avec les réglages voulus (le jour vient du joueur actif). */
-  function lien({ meca = partie.meca, score = partie.variante, brouillons = params.brouillons, reset = false } = {}) {
-    return `?meca=${meca}&score=${score}${reset ? '&reset=1' : ''}${brouillons ? '' : '&brouillons=0'}`;
+  /** Lien de test avec les réglages voulus (le jour et le mode de réponse viennent du joueur actif). */
+  function lien({ brouillons = params.brouillons, reset = false } = {}) {
+    const q = [reset && 'reset=1', !brouillons && 'brouillons=0'].filter(Boolean).join('&');
+    return q ? `?${q}` : location.pathname;
   }
 
   function reinitialiserStats() {
@@ -264,8 +262,7 @@
   {:else if ecran === 'tuto'}
     <Jeu
       questions={questionsTuto}
-      meca={partie.meca}
-      variante={partie.variante}
+      {meca}
       graine={0}
       resultats={tuto.resultats}
       etiquette="Premier défi"
@@ -278,11 +275,9 @@
     <section class="bilan">
       <h2>Premier défi terminé</h2>
       <p class="score">
-        {partie.variante === 'progressif'
-          ? `${tuto.resultats.reduce((s, r) => s + r.points, 0)} / ${questionsTuto.length * 100} pts`
-          : `${tuto.resultats.filter((r) => r.gagne).length} / ${questionsTuto.length}`}
+        {tuto.resultats.reduce((s, r) => s + r.points, 0)} / {questionsTuto.length * 100} pts
       </p>
-      <Recap questions={questionsTuto} resultats={tuto.resultats} afficherPoints={partie.variante === 'progressif'} />
+      <Recap questions={questionsTuto} resultats={tuto.resultats} />
       <div class="gain">
         <p><strong class="gain-nombre">+{questionsTuto.length}</strong> fiches dans ta collection.</p>
         <p class="conseil">Les fiches ratées sont « à revoir » : elles passeront en premier dans tes révisions.</p>
@@ -302,6 +297,8 @@
       nbTotal={stock.length}
       nbARevoir={nbARevoirTotal}
       {nbMaitrisees}
+      {meca}
+      onmeca={choisirMeca}
       onjouer={() => (ecran = 'defi')}
       onbilan={() => (ecran = 'bilan')}
       onreviser={reviser}
@@ -310,8 +307,7 @@
   {:else if ecran === 'defi'}
     <Jeu
       {questions}
-      meca={partie.meca}
-      variante={partie.variante}
+      {meca}
       graine={numero}
       resultats={partie.resultats}
       onresultat={resultatDefi}
@@ -321,7 +317,7 @@
   {:else if ecran === 'bilan'}
     <section class="bilan">
       <p class="score">{total}</p>
-      <Recap {questions} resultats={partie.resultats} afficherPoints={partie.variante === 'progressif'} />
+      <Recap {questions} resultats={partie.resultats} />
 
       <div class="gain">
         {#if nouvellesFiches.length}
@@ -364,8 +360,7 @@
   {:else if ecran === 'revision' && revision}
     <Jeu
       questions={revision.questions}
-      meca={partie.meca}
-      variante={partie.variante}
+      {meca}
       graine={revision.graine}
       resultats={revision.resultats}
       etiquette="Révision"
@@ -378,7 +373,7 @@
     <section class="bilan">
       <h2>Révision terminée</h2>
       <p class="score">{revision.resultats.filter((r) => r.gagne).length} / {revision.questions.length}</p>
-      <Recap questions={revision.questions} resultats={revision.resultats} afficherPoints={partie.variante === 'progressif'} />
+      <Recap questions={revision.questions} resultats={revision.resultats} />
       <p class="demain">Une fiche réussie gagne une étoile de maîtrise ; une erreur ne t'en retire aucune.</p>
       <div class="actions">
         <button type="button" class="principal" onclick={reviser}>Encore une révision</button>
@@ -390,7 +385,7 @@
 
 </main>
 
-<footer class="version"><Partage meca={partie.meca} variante={partie.variante} /> · v{__VERSION__} · {__COMMIT__}</footer>
+<footer class="version"><Partage {meca} /> · v{__VERSION__} · {__COMMIT__}</footer>
 
 <!-- Outils de test : repliés derrière un petit ⚙ en bas à droite ; panneau latéral (ou en bas sur mobile). -->
 <button
@@ -429,27 +424,6 @@
         </div>
       </section>
     {/if}
-
-    <section>
-      <h3>Mécanique × score</h3>
-      <table>
-        <thead><tr><th></th>{#each VARIANTES as v}<th>{v}</th>{/each}</tr></thead>
-        <tbody>
-          {#each MECAS as m}
-            <tr>
-              <th>{m}</th>
-              {#each VARIANTES as v}
-                <td>
-                  <a href={lien({ meca: m, score: v, reset: true })} class:actif={m === partie.meca && v === partie.variante}
-                    >{m === partie.meca && v === partie.variante ? '●' : '○'}</a
-                  >
-                </td>
-              {/each}
-            </tr>
-          {/each}
-        </tbody>
-      </table>
-    </section>
 
     <section>
       <h3>Question en cours</h3>
@@ -577,24 +551,9 @@
   .dev button:disabled {
     opacity: 0.4;
   }
-  .dev table {
-    border-collapse: collapse;
-  }
-  .dev th,
-  .dev td {
-    padding: 0.15rem 0.35rem;
-    text-align: left;
-    font-weight: 400;
-  }
-  .dev td {
-    text-align: center;
-  }
   .dev a {
     color: var(--accent);
     text-decoration: none;
-  }
-  .dev a.actif {
-    font-weight: 700;
   }
   header {
     display: flex;

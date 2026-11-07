@@ -13,7 +13,7 @@ npm run dev
 
 ## Réglages de test
 
-`?meca=palier|slider|qcm|plusmoins&score=progressif|exact` (par défaut : palier, progressif) — `&reset=1` efface la partie du jour. Les joueurs et les jours sont simulés : bouton « Nouveau joueur », puis « Simuler le jour suivant » ou ← / → dans le panneau de test.
+`?meca=palier|qcm|plusmoins` change le mode de réponse du joueur (aussi réglable sur l'accueil ; par défaut : palier) — `&reset=1` efface la partie du jour. Les joueurs et les jours sont simulés : bouton « Nouveau joueur », puis « Simuler le jour suivant » ou ← / → dans le panneau de test.
 Le petit bouton ⚙ en bas à droite ouvre les outils de test, qui permettent de changer de jour simulé, de rejouer le défi, de changer de joueur, de revoir le tuto, d’effacer les stats ou la collection, et de lancer les 8 combinaisons.
 
 ## Contenu

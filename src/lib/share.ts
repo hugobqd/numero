@@ -1,17 +1,13 @@
 import { caseEmoji } from './score';
-import type { ResultatQuestion, VarianteScore } from './types';
+import type { ResultatQuestion } from './types';
 
 export function texteDePartage(
   numero: number,
-  variante: VarianteScore,
   resultats: ResultatQuestion[],
   url = location.origin + location.pathname,
 ): string {
   const cases = resultats.map((r) => caseEmoji(r.points, r.gagne)).join('');
-  const total =
-    variante === 'progressif'
-      ? `${resultats.reduce((s, r) => s + r.points, 0)}/${resultats.length * 100} pts`
-      : `${resultats.filter((r) => r.gagne).length}/${resultats.length}`;
+  const total = `${resultats.reduce((s, r) => s + r.points, 0)}/${resultats.length * 100} pts`;
   return `Numero #${numero} — ${total}\n${cases}\n${url}`;
 }
 

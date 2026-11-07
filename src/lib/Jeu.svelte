@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { themePrincipal, type Mecanique, type Question, type Reponse, type ResultatQuestion, type VarianteScore } from './types';
+  import { themePrincipal, type Mecanique, type Question, type Reponse, type ResultatQuestion } from './types';
   import { noter } from './score';
-  import Slider from './mechanics/Slider.svelte';
   import Qcm from './mechanics/Qcm.svelte';
   import Palier from './mechanics/Palier.svelte';
   import PlusMoins from './mechanics/PlusMoins.svelte';
@@ -16,7 +15,6 @@
   let {
     questions,
     meca,
-    variante,
     graine,
     resultats,
     etiquette = '',
@@ -27,8 +25,8 @@
     onfin,
   }: {
     questions: Question[];
+    /** Mode de réponse : réglage du joueur, appliqué dès la question suivante s'il change. */
     meca: Mecanique;
-    variante: VarianteScore;
     /** Graine des propositions (numéro du défi, ou tirage au hasard en révision). */
     graine: number;
     resultats: ResultatQuestion[];
@@ -46,7 +44,6 @@
   let enRevelation = $state(false);
 
   const AIDES: Record<Mecanique, string> = {
-    slider: 'Fais glisser le curseur jusqu’à la valeur voulue, au chiffre près, puis valide.',
     palier: 'Choisis un cran sur le curseur (ou touche une valeur), puis valide.',
     qcm: 'Touche la valeur qui te semble juste.',
     plusmoins:
@@ -64,7 +61,7 @@
 
   function repondre(r: Reponse) {
     const q = questions[resultats.length];
-    const { points, gagne } = noter(q, r, meca, variante);
+    const { points, gagne } = noter(q, r);
     onresultat({ id: q.id, reponse: r.valeur, points, gagne, erreur: r.erreur }, q);
     enRevelation = true;
   }
@@ -79,7 +76,6 @@
   <Revelation
     question={courante}
     resultat={dernierResultat}
-    afficherPoints={variante === 'progressif'}
     onsuivante={suivante}
     dernier={resultats.length >= questions.length}
   />
@@ -97,7 +93,7 @@
           {#each questions as _, i}<li class:fait={i < resultats.length} class:courant={i === resultats.length}></li>{/each}
         </ol>
         <!-- Le statut brouillon n'est pas montré aux joueurs (il reste visible dans les outils de test). -->
-        {#if difficulte(courante) !== 'normale' && meca !== 'slider'}
+        {#if difficulte(courante) !== 'normale'}
           <p class="badges">
             <span class="badge niveau">{difficulte(courante) === 'decouverte' ? 'niveau découverte' : 'niveau expert'}</span>
           </p>
@@ -107,9 +103,7 @@
     <h2>{courante.enonce}</h2>
     {#if aide}<p class="aide"><strong>Comment jouer :</strong> {AIDES[meca]}</p>{/if}
     {#key courante.id}
-      {#if meca === 'slider'}
-        <Slider question={courante} onrepondre={repondre} />
-      {:else if meca === 'palier'}
+      {#if meca === 'palier'}
         <Palier question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
       {:else if meca === 'qcm'}
         <Qcm question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />

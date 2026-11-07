@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Question, Reponse } from '../types';
   import { grand } from '../format';
-  import { propositionsQcm, type Difficulte } from '../propositions';
+  import { propositions, type Difficulte } from '../propositions';
 
   let {
     question,
@@ -10,8 +10,8 @@
     onrepondre,
   }: { question: Question; numero: number; difficulte?: Difficulte; onrepondre: (r: Reponse) => void } = $props();
 
-  // 4 propositions, triées du plus petit au plus grand.
-  const choix = propositionsQcm(question, numero, difficulte);
+  // Les 5 propositions, triées du plus petit au plus grand (les mêmes qu'au palier).
+  const choix = propositions(question, numero, difficulte);
 </script>
 
 <div class="choix">

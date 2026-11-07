@@ -73,8 +73,8 @@ export interface Question {
   langue: string;
 }
 
-export type Mecanique = 'slider' | 'palier' | 'qcm' | 'plusmoins';
-export type VarianteScore = 'exact' | 'progressif';
+/** Mode de réponse, choisi par le joueur (réglage de l'accueil). */
+export type Mecanique = 'palier' | 'qcm' | 'plusmoins';
 
 /** Ce qu'une mécanique remonte une fois la question jouée. */
 export interface Reponse {
