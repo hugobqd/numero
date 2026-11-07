@@ -1,14 +1,15 @@
 <script lang="ts">
-  /** Écran principal du joueur : le défi du jour, sa progression, ses révisions. Volontairement sobre. */
+  /** Écran principal du joueur : la pochette du jour, sa progression, ses révisions. Volontairement sobre. */
   let {
     pseudo,
     jour,
-    defi,
+    pochette,
     serie,
     nbFiches,
     nbTotal,
     nbAReviser,
     nbAcquises,
+    onouvrir,
     onjouer,
     onbilan,
     onreviser,
@@ -16,13 +17,19 @@
   }: {
     pseudo: string;
     jour: number;
-    /** État du défi du jour. */
-    defi: { faites: number; total: number; terminee: boolean; score: string };
+    /**
+     * Pochette du jour : à ouvrir, ouverte (défi en cours ou terminé), ou plus aucune fiche à récupérer.
+     */
+    pochette:
+      | { etat: 'toutes-les-fiches' }
+      | { etat: 'a-ouvrir'; fiches: number }
+      | { etat: 'ouverte'; faites: number; total: number; terminee: boolean; score: string };
     serie: number;
     nbFiches: number;
     nbTotal: number;
     nbAReviser: number;
     nbAcquises: number;
+    onouvrir: () => void;
     onjouer: () => void;
     onbilan: () => void;
     onreviser: () => void;
@@ -41,22 +48,25 @@
   </div>
 
   <article class="defi">
-    <h3>Défi du jour</h3>
-    {#if defi.terminee}
-      <p class="etat"><strong class="chiffres">{defi.score}</strong></p>
-      <p class="note">Terminé. Prochain défi demain.</p>
+    <h3>Pochette du jour</h3>
+    {#if pochette.etat === 'toutes-les-fiches'}
+      <p class="etat">Tu as toutes les fiches, révise-les</p>
+      <button type="button" class="principal" onclick={onreviser}>Réviser</button>
+    {:else if pochette.etat === 'a-ouvrir'}
+      <p class="etat"><strong class="chiffres">{pochette.fiches}</strong> nombre{pochette.fiches > 1 ? 's' : ''} à retenir au chiffre près</p>
+      <button type="button" class="principal" onclick={onouvrir}>Ouvrir</button>
+    {:else if pochette.terminee}
+      <p class="etat"><strong class="chiffres">{pochette.score}</strong></p>
+      <p class="note">Terminée. Prochaine pochette demain.</p>
       <button type="button" onclick={onbilan}>Voir le bilan</button>
-    {:else if defi.faites > 0}
-      <p class="etat"><strong class="chiffres">{defi.faites} / {defi.total}</strong> questions jouées</p>
-      <button type="button" class="principal" onclick={onjouer}>Reprendre</button>
     {:else}
-      <p class="etat"><strong class="chiffres">{defi.total}</strong> nombres à retenir au chiffre près</p>
-      <button type="button" class="principal" onclick={onjouer}>Jouer</button>
+      <p class="etat"><strong class="chiffres">{pochette.faites} / {pochette.total}</strong> questions jouées</p>
+      <button type="button" class="principal" onclick={onjouer}>Reprendre</button>
     {/if}
   </article>
 
   {#if nbFiches}
-    <!-- Révision en accès direct, juste sous le défi : un geste pour lancer 5 fiches. -->
+    <!-- Révision en accès direct, juste sous la pochette du jour : un geste pour lancer 5 fiches. -->
     <article class="revision">
       <div>
         <h3>Révision</h3>
@@ -132,7 +142,7 @@
   .note {
     margin: 0;
   }
-  /* Le défi du jour : un aplat terracotta, avec une trame Ben-Day dans le coin. */
+  /* La pochette du jour : un aplat terracotta, avec une trame Ben-Day dans le coin. */
   .defi {
     position: relative;
     display: grid;

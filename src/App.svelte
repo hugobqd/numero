@@ -1,9 +1,19 @@
 <script lang="ts">
   import type { Mecanique, Question, ResultatQuestion } from './lib/types';
-  import { defisParCycle, questionsDuDefi, questionsJouables } from './lib/daily';
+  import {
+    FICHES_OFFERTES,
+    FICHES_PAR_POCHETTE,
+    ecrirePochette,
+    effacerPochette,
+    idPochetteDuJour,
+    lirePochette,
+    ouvrirPochetteDuJour,
+    questionsJouables,
+    type Pochette,
+  } from './lib/pochettes';
   import { avecUnite } from './lib/format';
   import { estMecanique, lireParametres, MECA_PAR_DEFAUT } from './lib/params';
-  import { effacerPartie, effacerStats, ecrirePartie, enregistrerFin, lirePartie, lireStats, type PartieDuJour } from './lib/storage';
+  import { effacerStats, enregistrerOuverture, lireStats, migrerStats, serieDuJour } from './lib/storage';
   import { partager, texteDePartage } from './lib/share';
   import {
     choisirRevision,
@@ -12,6 +22,7 @@
     fichesPossedees,
     gagnerFiche,
     lireCollection,
+    migrerCollection,
     toutGagner,
   } from './lib/collection';
   import Jeu from './lib/Jeu.svelte';
@@ -34,19 +45,22 @@
   } from './lib/joueurs';
 
   const params = lireParametres();
+  // Données locales au format actuel dès le chargement : anciennes parties supprimées, collection et stats réécrites.
   nettoyerAnciennesDonnees();
-  // Comptes simulés : le défi du jour est le jour simulé du joueur actif.
+  migrerCollection();
+  migrerStats();
+  // Comptes simulés : le jour est le jour simulé du joueur actif.
   const joueur = joueurActif();
   const joueurs = lireJoueurs();
   const numero = joueur?.jour ?? 1;
-  if (params.reset) effacerPartie(numero);
+  if (params.reset) effacerPochette(idPochetteDuJour(numero));
 
   // Toutes les fiches de src/data/*.json (un fichier par thématique ou par lot).
   const fichiers = import.meta.glob<Question[]>('./data/*.json', { eager: true, import: 'default' });
   const stock: Question[] = Object.values(fichiers).flat();
   const jouables = questionsJouables(stock, params.brouillons);
   const nbBrouillons = jouables.filter((q) => q.statut === 'brouillon').length;
-  const questions: Question[] = questionsDuDefi(jouables, numero);
+  const parId = (ids: string[]) => ids.map((id) => stock.find((q) => q.id === id)).filter((q): q is Question => !!q);
 
   // Mode de réponse : réglage du joueur (Mes réglages), mémorisé ; ?meca= dans l'URL le change aussi.
   if (params.meca && joueur) majJoueur(joueur.id, { meca: params.meca });
@@ -56,7 +70,10 @@
     if (joueur) majJoueur(joueur.id, { meca: m });
   }
 
-  let partie = $state<PartieDuJour>(lirePartie(numero) ?? { numero, resultats: [], terminee: false });
+  // Pochette du jour : null tant qu'elle n'est pas ouverte ; ses fiches sont tirées à l'ouverture.
+  let pochette = $state<Pochette | null>(lirePochette(idPochetteDuJour(numero)));
+  const questions = $derived(pochette ? parId(pochette.fiches) : []);
+  const resultats = $derived(pochette?.resultats ?? []);
   type Ecran =
     | 'joueurs'
     | 'tutoIntro'
@@ -78,7 +95,7 @@
   );
   let stats = $state(lireStats());
   // Série en cours : remise à zéro si le joueur a manqué un jour.
-  const serie = $derived(stats.dernierNumero !== null && stats.dernierNumero >= numero - 1 ? stats.serie : 0);
+  const serie = $derived(serieDuJour(stats, numero));
 
   // Navigation : pendant un défi, le tuto ou une révision, l'en-tête se réduit à un ✕ et la barre du bas disparaît.
   const enJeu = $derived(ecran === 'tuto' || ecran === 'defi' || ecran === 'revision');
@@ -110,10 +127,22 @@
   const possedees = $derived(fichesPossedees(collection, stock));
   const nbAReviserTotal = $derived(possedees.filter((q) => collection[q.id].etat === 'decouverte').length);
   const nbAcquises = $derived(possedees.filter((q) => collection[q.id].etat === 'acquise').length);
+  // Fiches que le joueur n'a pas encore : le tirage des pochettes se fait parmi elles.
+  const aRecuperer = $derived(jouables.filter((q) => !collection[q.id]));
+
+  /** Ouvre la pochette du jour : tirage, série, puis le défi de ses fiches aussitôt. */
+  function ouvrirPochette() {
+    if (!pochette && aRecuperer.length) {
+      pochette = ouvrirPochetteDuJour(numero, aRecuperer);
+      stats = enregistrerOuverture(numero);
+    }
+    ecran = 'defi';
+  }
 
   function resultatDefi(res: ResultatQuestion) {
-    partie.resultats.push(res);
-    ecrirePartie($state.snapshot(partie));
+    if (!pochette) return;
+    pochette.resultats.push(res);
+    ecrirePochette($state.snapshot(pochette));
     // Toutes les fiches jouées rejoignent la collection ; les découvertes passent en priorité en révision.
     if (gagnerFiche(res.id, numero, res.gagne)) {
       nouvellesFiches.push(res.id);
@@ -122,20 +151,20 @@
   }
 
   function finDefi() {
-    partie.terminee = true;
-    ecrirePartie($state.snapshot(partie));
-    stats = enregistrerFin(numero);
+    if (pochette) {
+      pochette.terminee = true;
+      ecrirePochette($state.snapshot(pochette));
+    }
     ecran = 'bilan';
   }
 
-  // Premier défi (tuto) : 5 questions connues, avec le mode d'emploi, avant le défi du jour.
-  const TUTO = ['corps-os-adulte', 'terre-everest', 'astro-terre-lune', 'corps-dents-adulte', 'humanite-tour-eiffel-hauteur'];
-  const questionsTuto = TUTO.map((id) => stock.find((q) => q.id === id)).filter((q): q is Question => !!q);
+  // Pochette offerte (premier défi) : 5 fiches connues, avec le mode d'emploi, avant la pochette du jour.
+  const questionsTuto = parId(FICHES_OFFERTES);
   let tuto = $state<{ resultats: ResultatQuestion[] }>({ resultats: [] });
 
   function resultatTuto(res: ResultatQuestion) {
     tuto.resultats.push(res);
-    // Fiches du premier défi : défi n°0.
+    // Fiches de la pochette offerte : jour 0.
     gagnerFiche(res.id, 0, res.gagne);
     collection = lireCollection();
   }
@@ -195,8 +224,9 @@
     majJoueur(joueur.id, { jour: n });
     recharger();
   }
-  function rejouerDefi() {
-    effacerPartie(numero);
+  /** Test : oublie la pochette du jour pour en ouvrir une autre (les fiches déjà jouées restent acquises). */
+  function nouvellePochette() {
+    effacerPochette(idPochetteDuJour(numero));
     recharger();
   }
 
@@ -217,12 +247,19 @@
   }
 
   async function onPartager() {
-    const r = await partager(texteDePartage(numero, partie.resultats));
+    const r = await partager(texteDePartage(numero, resultats));
     messagePartage = r === 'copie' ? 'Copié dans le presse-papiers' : r === 'echec' ? 'Partage impossible' : '';
   }
 
-  const total = $derived(`${partie.resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100} pts`);
-  const aReviser = $derived(nouvellesFiches.filter((id) => !partie.resultats.find((r) => r.id === id)?.gagne).length);
+  const total = $derived(`${resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100} pts`);
+  const aReviser = $derived(nouvellesFiches.filter((id) => !resultats.find((r) => r.id === id)?.gagne).length);
+  const etatPochette = $derived(
+    pochette
+      ? { etat: 'ouverte' as const, faites: resultats.length, total: questions.length, terminee: pochette.terminee, score: total }
+      : aRecuperer.length
+        ? { etat: 'a-ouvrir' as const, fiches: Math.min(FICHES_PAR_POCHETTE, aRecuperer.length) }
+        : { etat: 'toutes-les-fiches' as const },
+  );
 
   /** Lien de test avec les réglages voulus (le jour et le mode de réponse viennent du joueur actif). */
   function lien({ brouillons = params.brouillons, reset = false } = {}) {
@@ -287,7 +324,7 @@
       <h2>Bienvenue {joueur.pseudo} !</h2>
       <p>Numero, c'est <strong>5 nombres par jour</strong> à retenir <strong>au chiffre près</strong> : la distance Terre-Lune, le nombre d'os du corps humain, l'âge de la Terre…</p>
       <p>Chaque question jouée devient une <strong>fiche de ta collection</strong>. Celles que tu ne trouves pas du premier coup sont « à réviser » : tu les retrouves en révision jusqu'à les avoir acquises.</p>
-      <p>Pour commencer, voici ton <strong>premier défi</strong> : {questionsTuto.length} questions, avec le mode d'emploi.</p>
+      <p>Pour commencer, voici ta <strong>première pochette</strong>, offerte : {questionsTuto.length} questions, avec le mode d'emploi. Ensuite, une nouvelle pochette chaque jour.</p>
       <button type="button" class="principal" onclick={() => (ecran = 'tuto')}>C'est parti</button>
     </section>
   {:else if ecran === 'tuto'}
@@ -316,18 +353,23 @@
           <button type="button" class="secondaire" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
         </div>
       </div>
-      <button type="button" class="principal" onclick={() => (ecran = 'defi')}>Jouer le défi du jour</button>
+      {#if aRecuperer.length}
+        <button type="button" class="principal" onclick={ouvrirPochette}>Ouvrir la pochette du jour</button>
+      {:else}
+        <button type="button" class="principal" onclick={() => (ecran = 'accueil')}>Accueil</button>
+      {/if}
     </section>
   {:else if ecran === 'accueil'}
     <Accueil
       pseudo={joueur?.pseudo ?? ''}
       jour={numero}
-      defi={{ faites: partie.resultats.length, total: questions.length, terminee: partie.terminee, score: total }}
+      pochette={etatPochette}
       {serie}
       nbFiches={possedees.length}
       nbTotal={stock.length}
       nbAReviser={nbAReviserTotal}
       {nbAcquises}
+      onouvrir={ouvrirPochette}
       onjouer={() => (ecran = 'defi')}
       onbilan={() => (ecran = 'bilan')}
       onreviser={reviser}
@@ -337,8 +379,8 @@
     <Jeu
       {questions}
       {meca}
-      graine={numero}
-      resultats={partie.resultats}
+      graine={pochette?.graine ?? numero}
+      {resultats}
       onresultat={resultatDefi}
       onfin={finDefi}
       bind:enCours
@@ -346,7 +388,7 @@
   {:else if ecran === 'bilan'}
     <section class="bilan">
       <p class="score">{total}</p>
-      <Recap {questions} resultats={partie.resultats} />
+      <Recap {questions} {resultats} />
 
       <div class="gain">
         {#if nouvellesFiches.length}
@@ -357,7 +399,7 @@
           </p>
           {#if aReviser}<p class="conseil">Les fiches à réviser passent en premier dans tes révisions.</p>{/if}
         {:else}
-          <p>Les fiches de ce défi sont dans ta collection ({possedees.length} / {stock.length}).</p>
+          <p>Les fiches de cette pochette sont dans ta collection ({possedees.length} / {stock.length}).</p>
         {/if}
         <div class="actions">
           {#if possedees.length}<button type="button" class="principal" onclick={reviser}>Réviser</button>{/if}
@@ -369,14 +411,14 @@
       <button type="button" onclick={() => (ecran = 'accueil')}>← Accueil</button>
       {#if messagePartage}<p class="message">{messagePartage}</p>{/if}
       <dl class="stats">
-        <div><dt>Joués</dt><dd>{stats.jouees}</dd></div>
+        <div><dt>Pochettes</dt><dd>{stats.ouvertes}</dd></div>
         <div><dt>Série</dt><dd>{stats.serie}</dd></div>
         <div><dt>Record</dt><dd>{stats.meilleureSerie}</dd></div>
       </dl>
-      <p class="demain">Prochain défi demain à minuit (heure de Paris).</p>
+      <p class="demain">Prochaine pochette demain à minuit (heure de Paris).</p>
       <div class="actions centre">
         <button type="button" onclick={() => allerAuJour(numero + 1)}>Simuler le jour suivant →</button>
-        <button type="button" onclick={rejouerDefi}>↻ Rejouer ce défi (test)</button>
+        <button type="button" onclick={nouvellePochette}>↻ Autre pochette du jour (test)</button>
       </div>
     </section>
   {:else if ecran === 'collection'}
@@ -472,7 +514,7 @@
         <div class="boutons">
           <button type="button" onclick={() => allerAuJour(numero - 1)} disabled={numero <= 1}>← {numero - 1}</button>
           <button type="button" onclick={() => allerAuJour(numero + 1)}>{numero + 1} →</button>
-          <button type="button" onclick={rejouerDefi}>↻ Rejouer</button>
+          <button type="button" onclick={nouvellePochette} title="Oublie la pochette du jour pour en ouvrir une autre">↻ Pochette</button>
         </div>
       </section>
     {/if}
@@ -489,7 +531,7 @@
     <section>
       <h3>Contenu</h3>
       <p>
-        {jouables.length} questions ({nbBrouillons} brouillons) · {defisParCycle(jouables)} défis avant répétition
+        {jouables.length} questions ({nbBrouillons} brouillons) · {aRecuperer.length} à récupérer
       </p>
       <a href={lien({ brouillons: !params.brouillons })}>{params.brouillons ? 'Exclure' : 'Inclure'} les brouillons</a>
     </section>

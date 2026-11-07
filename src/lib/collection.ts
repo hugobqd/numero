@@ -2,7 +2,7 @@ import type { Question } from './types';
 import { cleJoueur } from './joueurs';
 
 /**
- * Collection du joueur : toutes les fiches jouées en défi, réussies ou non, qu'il peut ensuite réviser.
+ * Collection du joueur : toutes les fiches jouées dans le défi d'une pochette, réussies ou non, qu'il peut ensuite réviser.
  * Chaque fiche a un état (découverte, en cours, acquise) qui ne fait que progresser.
  * Stockée dans le navigateur (localStorage), comme le reste du prototype.
  */
@@ -24,8 +24,8 @@ export const LIBELLES_ETAT: Record<Etat, string> = {
 };
 
 export interface EntreeCollection {
-  /** Numéro du défi où la fiche a été obtenue. */
-  obtenueAuDefi: number;
+  /** Jour (simulé) de la pochette où la fiche a été obtenue ; 0 pour la pochette offerte. */
+  obtenueLeJour: number;
   etat: Etat;
   obtenueLe: string;
   revisions: number;
@@ -35,7 +35,14 @@ export interface EntreeCollection {
 export type Collection = Record<string, EntreeCollection>;
 
 /** Entrée telle qu'elle a pu être enregistrée avant les états (étoiles de 0 à 3, ou compteur plus ancien). */
-type EntreeStockee = Omit<EntreeCollection, 'etat'> & { etat?: Etat; etoiles?: number; reussitesDeSuite?: number };
+type EntreeStockee = Omit<EntreeCollection, 'etat' | 'obtenueLeJour'> & {
+  etat?: Etat;
+  obtenueLeJour?: number;
+  /** Avant les pochettes : numéro du défi du parcours commun (0 pour le premier défi). */
+  obtenueAuDefi?: number;
+  etoiles?: number;
+  reussitesDeSuite?: number;
+};
 
 // Clé propre au joueur actif (comptes simulés).
 const cle = () => cleJoueur('collection');
@@ -50,7 +57,7 @@ function normaliser(e: EntreeStockee): EntreeCollection {
   // Entrées d'avant les étoiles : 1 étoile + révisions réussies d'affilée.
   const etat = e.etat ?? etatDepuisEtoiles(e.etoiles ?? Math.min(3, 1 + (e.reussitesDeSuite ?? 0)));
   return {
-    obtenueAuDefi: e.obtenueAuDefi,
+    obtenueLeJour: e.obtenueLeJour ?? e.obtenueAuDefi ?? 0,
     etat,
     obtenueLe: e.obtenueLe,
     revisions: e.revisions ?? 0,
@@ -64,6 +71,15 @@ export function lireCollection(): Collection {
     return Object.fromEntries(Object.entries(brut).map(([id, e]) => [id, normaliser(e)]));
   } catch {
     return {};
+  }
+}
+
+/** Réécrit la collection enregistrée au format actuel (états, jour d'obtention), si elle existe. */
+export function migrerCollection(): void {
+  try {
+    if (localStorage.getItem(cle()) !== null) ecrire(lireCollection());
+  } catch {
+    /* rien */
   }
 }
 
@@ -93,14 +109,14 @@ export function progresser(etat: Etat, reussie: boolean): Etat {
 export const estTrouvee = (e: EntreeCollection) => e.etat !== 'decouverte';
 
 /**
- * Ajoute une fiche jouée en défi : en cours si la question est réussie, découverte sinon.
+ * Ajoute une fiche jouée dans le défi d'une pochette : en cours si la question est réussie, découverte sinon.
  * Renvoie true si elle est nouvelle.
  */
-export function gagnerFiche(id: string, numeroDefi: number, reussie: boolean): boolean {
+export function gagnerFiche(id: string, jour: number, reussie: boolean): boolean {
   const c = lireCollection();
   if (c[id]) return false;
   c[id] = {
-    obtenueAuDefi: numeroDefi,
+    obtenueLeJour: jour,
     obtenueLe: new Date().toISOString(),
     etat: progresser('decouverte', reussie),
     revisions: 0,
@@ -117,7 +133,7 @@ export function toutGagner(stock: { id: string }[]): void {
     if (c[id]) c[id].etat = 'acquise';
     else
       c[id] = {
-        obtenueAuDefi: 0,
+        obtenueLeJour: 0,
         obtenueLe: new Date().toISOString(),
         etat: 'acquise',
         revisions: 0,
