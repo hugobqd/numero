@@ -57,5 +57,8 @@ Sources d'origine en 2000 × 2000 px, réduites à 600 px (JPEG) pour le mobile.
 | `color_accent_rust` | `#A64023` | Rouille foncé | Variante dense : ombrages, texte d'accent |
 | `color_accent_ochre` | `#C88E3E` | Ocre moutarde | Accent lumineux : rayons, orbites, découpes |
 | `color_line_technical` | `#8A6B43` | Brun technique | Cercles concentriques, lignes fines, repères de diagramme |
+| `color_verdict_win` | `#3CCF9A` | Vert menthe | Pastille « Pile ! » (texte pétrole) |
+| `color_verdict_close` | `#F5B82E` | Jaune soleil | Pastille « Presque » (texte pétrole) |
+| `color_verdict_miss` | `#FF7A52` | Corail | Pastille « Raté » (texte pétrole) |
 
 Les couleurs sont déclarées en variables CSS dans `src/app.css`.

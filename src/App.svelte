@@ -401,18 +401,25 @@
   <span class="nom-marque">Numero</span>
 {/snippet}
 
+{#snippet gainFiches(nombre: number, detail: string)}
+  <!-- Fiches gagnées : tout le bloc mène à Ma collection. -->
+  <button type="button" class="bloc gain-fiches" onclick={() => (ecran = 'collection')}>
+    <span>
+      <span><strong class="gain-nombre">+{nombre}</strong> fiche{nombre > 1 ? 's' : ''} dans ta collection</span>
+      <span class="conseil">{detail}</span>
+    </span>
+    <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+  </button>
+{/snippet}
+
 {#snippet gainNeurones(gain: number, dontBonus = 0)}
   <!-- Neurones gagnés et jauge vers la prochaine pochette bonus (une tous les 100, une par jour au plus). -->
   {@const j = jauge(neurones)}
-  <div class="neurones">
-    {#if gain}
-      <p>
-        <strong class="gain-nombre">+{gain}</strong> neurone{gain > 1 ? 's' : ''}
-        {#if dontBonus}<span class="conseil">· dont {dontBonus} de bonus pour une révision parfaite</span>{/if}
-      </p>
-    {:else}
-      <p>Pas de neurone cette fois : chaque fiche réussie en rapporte.</p>
-    {/if}
+  <div class="bloc neurones">
+    <p class="ligne-gain">
+      <span><strong class="gain-nombre">+{gain}</strong> neurone{gain > 1 ? 's' : ''}{#if dontBonus}<span class="conseil"> · dont {dontBonus} de révision parfaite</span>{/if}</span>
+      <span class="conseil">{#if j >= PALIER_BONUS}Pochette bonus demain{:else}Pochette bonus {j} / {PALIER_BONUS}{/if}</span>
+    </p>
     <div
       class="jauge"
       role="progressbar"
@@ -423,9 +430,6 @@
     >
       <span style:width="{(Math.min(j, PALIER_BONUS) / PALIER_BONUS) * 100}%"></span>
     </div>
-    <p class="conseil">
-      {#if j >= PALIER_BONUS}Jauge pleine : ta prochaine pochette bonus arrive demain.{:else}{j} / {PALIER_BONUS} vers la prochaine pochette bonus{/if}
-    </p>
     {#if bonusRecente}<p class="bonus-gagnee">Pochette bonus gagnée ! Elle t'attend sur l'accueil.</p>{/if}
   </div>
 {/snippet}
@@ -489,14 +493,8 @@
         {resultatsTuto.reduce((s, r) => s + r.points, 0)} / {questionsTuto.length * 100} pts
       </p>
       <Recap questions={questionsTuto} resultats={resultatsTuto} />
-      <div class="gain">
-        <p><strong class="gain-nombre">+{questionsTuto.length}</strong> fiches dans ta collection.</p>
-        <p class="conseil">Les fiches pas encore trouvées sont « à réviser » : elles passeront en premier dans tes révisions.</p>
-        {@render gainNeurones(sommeNeurones(resultatsTuto))}
-        <div class="actions">
-          <button type="button" class="secondaire" onclick={() => (ecran = 'collection')}>Voir ma collection</button>
-        </div>
-      </div>
+      {@render gainFiches(questionsTuto.length, 'Les fiches pas encore trouvées passeront en premier dans tes révisions.')}
+      {@render gainNeurones(sommeNeurones(resultatsTuto))}
       <button type="button" class="principal" onclick={() => (ecran = 'accueil')}>Retour à l'accueil</button>
     </section>
   {:else if ecran === 'accueil'}
@@ -533,23 +531,11 @@
       <p class="score">{total}</p>
       <Recap {questions} {resultats} />
 
-      <div class="gain">
-        {#if nouvellesFiches.length}
-          <p>
-            <strong class="gain-nombre">+{nouvellesFiches.length}</strong> fiche{nouvellesFiches.length > 1 ? 's' : ''}
-            dans ta collection ({possedees.length} / {stock.length})
-            {#if aReviser}· dont <strong>{aReviser} à réviser</strong>{/if}
-          </p>
-          {#if aReviser}<p class="conseil">Les fiches à réviser passent en premier dans tes révisions.</p>{/if}
-        {:else}
-          <p>Les fiches de cette pochette sont dans ta collection ({possedees.length} / {stock.length}).</p>
-        {/if}
-        {@render gainNeurones(sommeNeurones(resultats))}
-        <div class="actions">
-          {#if possedees.length}<button type="button" class="principal" onclick={reviser}>Réviser</button>{/if}
-          <button type="button" class="secondaire" onclick={() => (ecran = 'collection')}>Ma collection</button>
-        </div>
-      </div>
+      {@render gainFiches(
+        nouvellesFiches.length || questions.length,
+        `${possedees.length} / ${stock.length} fiches${aReviser ? ` · ${aReviser} à réviser` : ''}`,
+      )}
+      {@render gainNeurones(sommeNeurones(resultats))}
 
       {#if pochette?.origine === 'jour'}
         <button type="button" class="principal" onclick={onPartager}>Partager mon résultat</button>
@@ -591,7 +577,7 @@
       <h2>Révision terminée</h2>
       <p class="score">{revision.resultats.filter((r) => r.gagne).length} / {revision.questions.length}</p>
       <Recap questions={revision.questions} resultats={revision.resultats} />
-      <div class="gain">{@render gainNeurones(sommeNeurones(revision.resultats) + revision.bonus, revision.bonus)}</div>
+      {@render gainNeurones(sommeNeurones(revision.resultats) + revision.bonus, revision.bonus)}
       <p class="demain">Une fiche réussie progresse (découverte, en cours, acquise) ; une erreur ne lui retire rien.</p>
       <div class="actions">
         <button type="button" class="principal" onclick={reviser}>Encore une révision</button>
@@ -1012,40 +998,66 @@
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  .gain {
+  /* Blocs de gain au bilan (fiches, neurones) : compacts, sur fond crème. */
+  .bloc {
     display: grid;
-    gap: 0.5rem;
-    padding: 1rem 1.1rem;
+    gap: 0.35rem;
+    padding: 0.7rem 0.9rem;
     background: var(--surface);
     border-radius: var(--rayon-carte);
   }
-  .gain p {
+  .bloc p {
     margin: 0;
   }
-  .gain .secondaire {
-    background: var(--surface-2);
+  .ligne-gain {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0 0.75rem;
   }
   .gain-nombre {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 900;
     font-stretch: 72%;
+    line-height: 1.1;
     color: var(--accent-texte);
-    margin-right: 0.2rem;
+    margin-right: 0.15rem;
+  }
+  /* Le bloc des fiches est un lien vers Ma collection : texte à gauche, chevron à droite. */
+  button.gain-fiches {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    border: none;
+    color: inherit;
+    font: inherit;
+    font-weight: 400;
+    text-align: left;
+  }
+  .gain-fiches > span {
+    display: grid;
+  }
+  .gain-fiches:hover {
+    background: var(--surface-2);
+  }
+  .chevron {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
   .conseil {
     color: var(--muted);
     font-size: 0.85rem;
   }
-  .neurones {
-    display: grid;
-    gap: 0.4rem;
-  }
-  .neurones p {
-    margin: 0;
-  }
   /* Jauge vers la prochaine pochette bonus : un trait terracotta sur fond crème foncé. */
   .jauge {
-    height: 0.5rem;
+    height: 0.4rem;
     border-radius: 1rem;
     background: var(--surface-2);
     overflow: hidden;

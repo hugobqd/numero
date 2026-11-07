@@ -30,7 +30,12 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 0.5rem;
+    /* Un seul bloc : les fiches se suivent, séparées par un filet. */
+    border-radius: var(--rayon-carte);
+    overflow: hidden;
+  }
+  li + li {
+    border-top: 1px solid var(--bg);
   }
   li {
     display: grid;
@@ -38,7 +43,6 @@
     gap: 0.15rem 0.75rem;
     padding: 0.55rem 0.75rem;
     border-left: 4px solid var(--perdu);
-    border-radius: var(--rayon-petit);
     background: var(--surface);
   }
   li.gagne {

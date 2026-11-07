@@ -30,6 +30,11 @@
   --gagne: var(--sarcelle);
   --presque: var(--ocre);
   --perdu: var(--rouille);
+  /* Pastilles de verdict à la révélation : vives et joyeuses, texte pétrole, identiques en clair et en sombre. */
+  --verdict-gagne: #3ccf9a;
+  --verdict-presque: #f5b82e;
+  --verdict-perdu: #ff7a52;
+  --verdict-texte: var(--petrole);
 
   /* Arrondis : les cartes un peu plus que les boutons. */
   --rayon-carte: 14px;

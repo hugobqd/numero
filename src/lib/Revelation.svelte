@@ -74,20 +74,18 @@
   .pastille {
     padding: 0.3rem 0.7rem;
     border-radius: var(--rayon-petit);
-    background: var(--perdu);
-    color: var(--ivoire);
+    background: var(--verdict-perdu);
+    color: var(--verdict-texte);
     font-size: 1.3rem;
     font-stretch: 72%;
     text-transform: uppercase;
     letter-spacing: 0.02em;
   }
   .presque .pastille {
-    background: var(--presque);
-    color: var(--petrole);
+    background: var(--verdict-presque);
   }
   .gagne .pastille {
-    background: var(--gagne);
-    color: var(--ivoire);
+    background: var(--verdict-gagne);
   }
   .points {
     font-size: 1.3rem;
