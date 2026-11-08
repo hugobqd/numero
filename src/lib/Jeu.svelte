@@ -56,6 +56,12 @@
   const index = $derived(enRevelation ? resultats.length - 1 : resultats.length);
   const courante = $derived(questions[index]);
 
+  // Une fermeture pendant la dernière révélation a déjà enregistré toutes les réponses.
+  // À la reprise, il reste seulement à terminer la série et à afficher son bilan.
+  $effect(() => {
+    if (!enRevelation && questions.length > 0 && resultats.length >= questions.length) onfin();
+  });
+
   $effect(() => {
     enCours = courante ? { question: courante, graine, difficulte: difficulte(courante) } : null;
     return () => (enCours = null);

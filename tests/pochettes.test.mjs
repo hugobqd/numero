@@ -8,7 +8,7 @@ import ts from 'typescript';
 
 // Charger les vrais modules TypeScript avec la dépendance déjà utilisée par le projet.
 const dossier = mkdtempSync(join(tmpdir(), 'numero-revision-'));
-let ouvrirPochetteDuJour, ouvrirPochetteBonus, ouvrirPochetteOfferte, lirePochette, effacerPochette;
+let ouvrirPochetteDuJour, ouvrirPochetteBonus, ouvrirPochetteOfferte, lirePochette, effacerPochette, pochettesEnCours, ecrirePochette;
 try {
   for (const nom of ['joueurs', 'types', 'pochettes']) {
     const source = readFileSync(new URL(`../src/lib/${nom}.ts`, import.meta.url), 'utf8');
@@ -17,7 +17,7 @@ try {
     });
     writeFileSync(join(dossier, `${nom}.js`), outputText);
   }
-  ({ ouvrirPochetteDuJour, ouvrirPochetteBonus, ouvrirPochetteOfferte, lirePochette, effacerPochette } = createRequire(import.meta.url)(join(dossier, 'pochettes.js')));
+  ({ ouvrirPochetteDuJour, ouvrirPochetteBonus, ouvrirPochetteOfferte, lirePochette, effacerPochette, pochettesEnCours, ecrirePochette } = createRequire(import.meta.url)(join(dossier, 'pochettes.js')));
 } finally {
   rmSync(dossier, { recursive: true, force: true });
 }
@@ -99,4 +99,21 @@ test('des tags variés ne remplacent pas un thème manquant dans une pochette', 
   const pochette = ouvrirPochetteDuJour(1, candidates);
   assert.equal(pochette.fiches.length, 5);
   assert.equal(new Set(pochette.fiches).size, 5);
+}));
+
+
+test('les pochettes à reprendre incluent les jours précédents, le bonus et la pochette offerte, dans l’ordre', () => scenario((candidates, donnees) => {
+  donnees.set('numero:joueurActif', JSON.stringify('alice'));
+  const jour3 = ouvrirPochetteDuJour(3, candidates);
+  const jour1 = { ...jour3, id: 'jour-1', jour: 1 };
+  ecrirePochette(jour1);
+  ecrirePochette({ ...jour3, id: 'offerte', origine: 'offerte', jour: 0 });
+  ecrirePochette({ ...jour3, id: 'bonus-1', origine: 'bonus', jour: 2 });
+  ecrirePochette({ ...jour3, id: 'jour-2', jour: 2, terminee: true });
+  donnees.set('numero:alice:pochette:illisible', '{');
+  donnees.set('numero:bob:pochette:jour-1', JSON.stringify(jour1));
+  assert.deepEqual(pochettesEnCours().map(p => p.id), ['offerte', 'jour-1', 'bonus-1', 'jour-3']);
+  assert.deepEqual(lirePochette('jour-1'), jour1);
+  ecrirePochette({ ...jour1, terminee: true });
+  assert.equal(pochettesEnCours().some(p => p.id === 'jour-1'), false);
 }));

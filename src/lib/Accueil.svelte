@@ -5,11 +5,9 @@
     pseudo,
     jour,
     pochette,
-    serie,
     nbFiches,
     nbTotal,
     nbAReviser,
-    nbAcquises,
     bonus,
     neurones,
     onouvrir,
@@ -18,6 +16,8 @@
     onbonus,
     onreviser,
     oncollection,
+    anciennesPochettes,
+    onreprendre,
   }: {
     pseudo: string;
     jour: number;
@@ -29,11 +29,9 @@
       | { etat: 'fiches-reservees' }
       | { etat: 'a-ouvrir'; fiches: number }
       | { etat: 'ouverte'; faites: number; total: number; terminee: boolean; score: string };
-    serie: number;
     nbFiches: number;
     nbTotal: number;
     nbAReviser: number;
-    nbAcquises: number;
     /**
      * Pochettes bonus gagnées avec les neurones et pas encore terminées : celle commencée (faites / total)
      * et le nombre à ouvrir ; null s'il n'y en a pas (ou plus de fiches à récupérer).
@@ -47,6 +45,8 @@
     onbonus: () => void;
     onreviser: () => void;
     oncollection: () => void;
+    anciennesPochettes: { id: string; jour: number; offerte: boolean; faites: number; total: number }[];
+    onreprendre: (id: string) => void;
   } = $props();
 </script>
 
@@ -106,6 +106,21 @@
     </article>
   {/if}
 
+  {#if anciennesPochettes.length}
+    <section class="pochettes-en-cours" aria-labelledby="pochettes-en-cours">
+      <h3 id="pochettes-en-cours">Pochettes à reprendre</h3>
+      {#each anciennesPochettes as p (p.id)}
+        <article class="pochette-ancienne">
+          <div>
+            <h4>{p.offerte ? 'Pochette offerte' : `Pochette du jour ${p.jour}`}</h4>
+            <p class="etat"><strong class="chiffres">{p.faites} / {p.total}</strong> questions jouées</p>
+          </div>
+          <button type="button" onclick={() => onreprendre(p.id)} aria-label={`Reprendre ${p.offerte ? 'la pochette offerte' : `la pochette du jour ${p.jour}`}`}>Reprendre</button>
+        </article>
+      {/each}
+    </section>
+  {/if}
+
   {#if nbFiches}
     <!-- Révision en accès direct, juste sous la pochette du jour : un geste pour lancer 5 fiches. -->
     <article class="revision">
@@ -127,9 +142,7 @@
   {/if}
 
   <dl class="compteurs">
-    <div><dt>Série</dt><dd class="chiffres">{serie}</dd></div>
     <div><dt>Fiches</dt><dd class="chiffres">{nbFiches}<small> / {nbTotal}</small></dd></div>
-    <div><dt>Acquises</dt><dd class="chiffres">{nbAcquises}</dd></div>
   </dl>
 
 </section>
@@ -140,8 +153,13 @@
     gap: 1.25rem;
     padding-top: 0.5rem;
   }
+  .pochettes-en-cours { display: grid; gap: 0.75rem; }
+  .pochette-ancienne { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 1rem; background: var(--surface); border-radius: var(--rayon-carte); }
+  .pochette-ancienne h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+  .pochette-ancienne .chiffres { font-size: 1.5rem; }
   .tete {
     position: relative;
+    overflow: hidden;
     padding: 1.5rem 0 0.5rem;
   }
   .salut {
@@ -233,7 +251,7 @@
   }
   .compteurs {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     margin: 0;
     padding: 0.25rem 0;
   }
