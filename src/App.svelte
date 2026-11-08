@@ -663,6 +663,7 @@
 
     <section>
       <h3>Contenu</h3>
+      <a href="?admin=fiches" target="_blank" rel="noopener">Consulter les fiches (tableau)</a>
       <p>
         {jouables.length} questions ({nbBrouillons} brouillons) · {aRecuperer.length} à récupérer
       </p>
