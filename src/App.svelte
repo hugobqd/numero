@@ -3,6 +3,7 @@
   import {
     ID_POCHETTE_OFFERTE,
     FICHES_PAR_POCHETTE,
+    fichesNonReservees,
     ecrirePochette,
     effacerPochette,
     etatPochettesBonus,
@@ -167,11 +168,18 @@
   // Fiches que le joueur n'a pas encore : le tirage des pochettes se fait parmi elles.
   const aRecuperer = $derived(jouables.filter((q) => !collection[q.id]));
 
+  const disponibles = $derived.by(() => {
+    void versionPochettes;
+    return fichesNonReservees(aRecuperer);
+  });
+
   /** Ouvre la pochette du jour : tirage, série, puis le défi de ses fiches aussitôt. */
   function ouvrirPochette() {
     if (pochetteDuJour) return jouer(pochetteDuJour);
     if (!aRecuperer.length) return;
-    jouer(ouvrirPochetteDuJour(numero, aRecuperer));
+    const ouverte = ouvrirPochetteDuJour(numero, disponibles);
+    if (!ouverte) return;
+    jouer(ouverte);
     stats = enregistrerOuverture(numero);
   }
 
@@ -179,7 +187,10 @@
   function ouvrirBonus() {
     if (!bonus) return;
     if (bonus.commencee) jouer(bonus.commencee);
-    else if (aRecuperer.length) jouer(ouvrirPochetteBonus(bonus.rang, numero, aRecuperer));
+    else if (disponibles.length) {
+      const ouverte = ouvrirPochetteBonus(bonus.rang, numero, disponibles);
+      if (ouverte) jouer(ouverte);
+    }
   }
 
   /** Lance (ou reprend) le défi d'une pochette ; une pochette qui vient d'être ouverte repart d'un bilan vierge. */
@@ -229,7 +240,9 @@
 
   function commencerTuto() {
     if (!offerte) offerte = ouvrirPochetteOfferte(numero, aRecuperer);
+    if (!offerte) return;
     bonusRecente = false;
+    versionPochettes++;
     ecran = 'tuto';
   }
 
@@ -363,15 +376,17 @@
           terminee: pochetteDuJour.terminee,
           score: `${pochetteDuJour.resultats.reduce((s, r) => s + r.points, 0)} / ${pochetteDuJour.fiches.length * 100} pts`,
         }
-      : aRecuperer.length
-        ? { etat: 'a-ouvrir' as const, fiches: Math.min(FICHES_PAR_POCHETTE, aRecuperer.length) }
-        : { etat: 'toutes-les-fiches' as const },
+      : disponibles.length
+        ? { etat: 'a-ouvrir' as const, fiches: Math.min(FICHES_PAR_POCHETTE, disponibles.length) }
+        : aRecuperer.length
+          ? { etat: 'fiches-reservees' as const }
+          : { etat: 'toutes-les-fiches' as const },
   );
   // Pochettes bonus sur l'accueil : celle commencée, ou le nombre à ouvrir s'il reste des fiches à récupérer.
   const etatBonus = $derived(
     bonus?.commencee
       ? { aOuvrir: bonus.aOuvrir, faites: bonus.commencee.resultats.length, total: bonus.commencee.fiches.length }
-      : bonus && aRecuperer.length
+      : bonus && disponibles.length
         ? { aOuvrir: bonus.aOuvrir, faites: null, total: null }
         : null,
   );
