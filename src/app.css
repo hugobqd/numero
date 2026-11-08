@@ -201,3 +201,14 @@ body.avec-barre .dev-bouton {
     right: 21rem;
   }
 }
+
+/* Les changements d'écran accompagnent le geste sans retarder les contrôles. */
+main > section, main > article { animation: ecran-entrer 240ms ease-out both; }
+@keyframes ecran-entrer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  main > section, main > article { animation: ecran-fondu 160ms both; }
+}
+@keyframes ecran-fondu { from { opacity: 0; } to { opacity: 1; } }

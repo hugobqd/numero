@@ -39,6 +39,9 @@
     toutGagner,
   } from './lib/collection';
   import Jeu from './lib/Jeu.svelte';
+  import CompteurAnime from './lib/CompteurAnime.svelte';
+  import { untrack } from 'svelte';
+  import OuverturePochette from './lib/OuverturePochette.svelte';
   import CollectionVue from './lib/CollectionVue.svelte';
   import JoueursVue from './lib/JoueursVue.svelte';
   import Accueil from './lib/Accueil.svelte';
@@ -123,16 +126,20 @@
     | 'tuto'
     | 'tutoBilan'
     | 'accueil'
+    | 'ouverture'
+    | 'ouvertureTuto'
     | 'defi'
     | 'bilan'
     | 'collection'
     | 'revision'
     | 'bilanRevision'
     | 'reglages';
+  // L'introduction ne revient pas après l'ouverture du premier défi, même inachevé.
+  // « Revoir le tuto » efface explicitement cette pochette pour retrouver la bienvenue.
   let ecran = $state<Ecran>(
     !joueur
       ? 'joueurs'
-      : !joueur.tutoFait
+      : !joueur.tutoFait && !lirePochette(ID_POCHETTE_OFFERTE)
         ? 'tutoIntro'
         : 'accueil',
   );
@@ -141,7 +148,7 @@
   const serie = $derived(serieDuJour(stats, numero));
 
   // Navigation : pendant un défi, le tuto ou une révision, l'en-tête se réduit à un ✕ et la barre du bas disparaît.
-  const enJeu = $derived(ecran === 'tuto' || ecran === 'defi' || ecran === 'revision');
+  const enJeu = $derived(ecran === 'tuto' || ecran === 'defi' || ecran === 'revision' || ecran === 'ouverture' || ecran === 'ouvertureTuto');
   const avecBarre = $derived(!!joueur && !enJeu && ecran !== 'tutoIntro');
   const ongletActif = $derived(
     ecran === 'accueil' || ecran === 'bilan'
@@ -168,6 +175,8 @@
   let collection = $state(lireCollection());
   let nouvellesFiches = $state<string[]>([]);
   const possedees = $derived(fichesPossedees(collection, stock));
+  // Dernières valeurs vues : gardées pendant le quiz, où le bandeau est démonté.
+  const compteursVus = $state(untrack(() => ({ serie, neurones: neurones.total, fiches: possedees.length })));
   const nbAReviserTotal = $derived(possedees.filter((q) => collection[q.id].etat === 'decouverte').length);
   // Fiches que le joueur n'a pas encore : le tirage des pochettes se fait parmi elles.
   const aRecuperer = $derived(jouables.filter((q) => !collection[q.id]));
@@ -177,13 +186,13 @@
     return fichesNonReservees(aRecuperer);
   });
 
-  /** Ouvre la pochette du jour : tirage, série, puis le défi de ses fiches aussitôt. */
+  /** Ouvre la pochette du jour : tirage, série, puis l'écran de découverte de ses fiches. */
   function ouvrirPochette() {
     if (pochetteDuJour) return jouer(pochetteDuJour);
     if (!aRecuperer.length) return;
     const ouverte = ouvrirPochetteDuJour(numero, disponibles);
     if (!ouverte) return;
-    jouer(ouverte);
+    jouer(ouverte, true);
     stats = enregistrerOuverture(numero);
   }
 
@@ -193,17 +202,17 @@
     if (bonus.commencee) jouer(bonus.commencee);
     else if (disponibles.length) {
       const ouverte = ouvrirPochetteBonus(bonus.rang, numero, disponibles);
-      if (ouverte) jouer(ouverte);
+      if (ouverte) jouer(ouverte, true);
     }
   }
 
   /** Lance (ou reprend) le défi d'une pochette ; une pochette qui vient d'être ouverte repart d'un bilan vierge. */
-  function jouer(p: Pochette) {
+  function jouer(p: Pochette, decouvrir = false) {
     if (pochette?.id !== p.id) nouvellesFiches = [];
     pochette = p;
     bonusRecente = false;
     versionPochettes++;
-    ecran = p.terminee ? 'bilan' : 'defi';
+    ecran = p.terminee ? 'bilan' : decouvrir ? 'ouverture' : 'defi';
   }
 
   /**
@@ -252,7 +261,7 @@
     }
     bonusRecente = false;
     versionPochettes++;
-    ecran = 'tuto';
+    ecran = offerte.resultats.length ? 'tuto' : 'ouvertureTuto';
   }
 
   function resultatTuto(res: ResultatQuestion, q: Question) {
@@ -459,15 +468,15 @@
   {#if !enJeu}
     <header>
       <h1>
-        {#if joueur?.tutoFait}
+        {#if joueur && ecran !== 'tutoIntro'}
           <button type="button" class="titre" onclick={() => (ecran = 'accueil')}>{@render marque()}</button>
         {:else}{@render marque()}{/if}
       </h1>
       {#if joueur}
         <div class="pastilles">
-          <p class="pastille" aria-label="Série : {serie} jour{serie > 1 ? 's' : ''} d'affilée">Série <span class="chiffres">{serie}</span></p>
-          <p class="pastille">Neurones <span class="chiffres">{neurones.total}</span></p>
-          <p class="pastille" aria-label="Collection : {possedees.length} fiches sur {stock.length}">Fiches <span class="chiffres">{possedees.length}</span></p>
+          <p class="pastille" aria-label="Série : {serie} jour{serie > 1 ? 's' : ''} d'affilée">Série <CompteurAnime valeur={serie} depuis={compteursVus.serie} onaffiche={(n) => (compteursVus.serie = n)} /></p>
+          <p class="pastille" aria-label={`Neurones : ${neurones.total}`}>Neurones <CompteurAnime valeur={neurones.total} depuis={compteursVus.neurones} onaffiche={(n) => (compteursVus.neurones = n)} /></p>
+          <p class="pastille" aria-label="Collection : {possedees.length} fiches sur {stock.length}">Fiches <CompteurAnime valeur={possedees.length} depuis={compteursVus.fiches} onaffiche={(n) => (compteursVus.fiches = n)} /></p>
         </div>
       {/if}
     </header>
@@ -490,6 +499,15 @@
       <p>Pour commencer, voici ta <strong>première pochette</strong>, offerte : {FICHES_PAR_POCHETTE} questions, avec le mode d'emploi. Ensuite, une nouvelle pochette chaque jour.</p>
       <button type="button" class="principal" onclick={commencerTuto}>{resultatsTuto.length ? 'Reprendre' : "C'est parti"}</button>
     </section>
+  {:else if ecran === 'ouverture' || ecran === 'ouvertureTuto'}
+    {#key ecran}
+      <OuverturePochette
+        questions={ecran === 'ouvertureTuto' ? questionsTuto : questions}
+        titre={ecran === 'ouvertureTuto' ? 'Ta pochette offerte' : pochette?.origine === 'bonus' ? 'Ta pochette bonus' : 'Ta pochette du jour'}
+        onjouer={() => (ecran = ecran === 'ouvertureTuto' ? 'tuto' : 'defi')}
+        onfermer={fermerJeu}
+      />
+    {/key}
   {:else if ecran === 'tuto'}
     <Jeu
       onfermer={fermerJeu}
@@ -905,7 +923,7 @@
     font-stretch: 72%;
     white-space: nowrap;
   }
-  .pastille .chiffres {
+  .pastille :global(.chiffres) {
     font-size: 1.05rem;
     font-weight: 900;
     margin-left: 0.15rem;
@@ -937,7 +955,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.01em;
     }
-    .pastille .chiffres {
+    .pastille :global(.chiffres) {
       font-size: 0.75rem;
       margin-left: 0.1rem;
     }

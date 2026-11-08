@@ -48,3 +48,12 @@ const ILLUSTRATIONS: Record<string, IllustrationTheme> = {
 export function illustration(theme: string): IllustrationTheme | null {
   return Object.hasOwn(ILLUSTRATIONS, theme) ? ILLUSTRATIONS[theme] : null;
 }
+
+/** Accents prélevés dans les illustrations, réservés aux objets de leur thème. */
+const COULEURS_THEMES: Record<string, string> = {
+  'Astronomie': '#5a93b5', 'Corps humain': '#df806f', 'Animaux': '#d69b3f',
+  'Géographie': '#619ca4', 'Terre et géologie': '#ca7356', 'Physique et chimie': '#66a99e',
+  'Constructions et transports': '#6b9da9', 'Histoire': '#c18458', 'Arts et culture': '#c17686',
+  'Sport et jeux': '#828bb2', 'Nombres et mesures': '#779ba9', 'Nature et climat': '#81a369',
+};
+export const couleurTheme = (theme: string): string => COULEURS_THEMES[theme] ?? '#619ca4';

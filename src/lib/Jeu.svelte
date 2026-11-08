@@ -6,8 +6,8 @@
   import PlusMoins from './mechanics/PlusMoins.svelte';
   import Revelation from './Revelation.svelte';
   import type { Difficulte } from './propositions';
-  import { illustration } from './themes';
-  import { fade } from 'svelte/transition';
+  import { couleurTheme, illustration } from './themes';
+  import { fade, fly } from 'svelte/transition';
 
   /**
    * Déroulé d'une série de questions (défi d'une pochette ou révision) : question, puis révélation,
@@ -75,6 +75,14 @@
     enRevelation = true;
   }
 
+  function apparitionFace(node: Element) {
+    const reduire = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Un seul mouvement par transition : résultat stable, question suivante légèrement glissée.
+    return enRevelation || reduire
+      ? fade(node, { duration: 180 })
+      : fly(node, { y: 10, duration: 240 });
+  }
+
   function suivante() {
     enRevelation = false;
     if (resultats.length >= questions.length) onfin();
@@ -83,7 +91,7 @@
 
 {#if courante}
   {@const ill = illustration(themePrincipal(courante))}
-  <article class="carte-jeu palette-fiche" class:retournee={enRevelation} aria-label={`Fiche ${themePrincipal(courante)}`}>
+  <article class="carte-jeu palette-fiche" style={`--theme: ${couleurTheme(themePrincipal(courante))}`} aria-label={`Fiche ${themePrincipal(courante)}`}>
     <div class="entete">
       {#if ill}<img class="vignette" src={ill.icone} alt="" width="24" height="24" />{:else}<span class="vignette sans-illustration" aria-hidden="true"></span>{/if}
       <div>
@@ -107,7 +115,7 @@
     </div>
     <h1>{courante.enonce}</h1>
     {#key `${courante.id}-${enRevelation}`}
-      <div class="face" in:fade={{ duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 160 }}>
+      <div class="face" in:apparitionFace>
         {#if enRevelation && dernierResultat}
           <Revelation
             question={courante}
@@ -138,6 +146,7 @@
     padding: clamp(1.1rem, 4vw, 2rem);
     border-radius: 24px;
     background: var(--carte-fond);
+    border-top: 3px solid var(--theme);
     color: var(--fg);
     box-shadow: 0 14px 36px -20px var(--carte-ombre), 0 3px 0 var(--surface-2);
     container-type: inline-size;
@@ -147,13 +156,6 @@
     gap: 1.25rem;
     min-width: 0;
   }
-  .retournee .face {
-    animation: retourner 220ms ease-out;
-  }
-  @keyframes retourner {
-    from { transform: perspective(900px) rotateY(-10deg); }
-    to { transform: perspective(900px) rotateY(0); }
-  }
   .carte-jeu :global(button.principal:hover) {
     background: var(--accent-texte);
     color: var(--action-texte);
@@ -161,9 +163,6 @@
   .carte-jeu :global(button:focus-visible),
   .carte-jeu :global(a:focus-visible) {
     outline-color: var(--accent);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .carte-jeu .face { animation: none; }
   }
   .entete {
     display: grid;
@@ -212,6 +211,7 @@
     height: 0.3rem;
     border-radius: 1rem;
     background: var(--border);
+    transition: background-color 240ms;
   }
   .segments li.fait {
     background: var(--petrole);
