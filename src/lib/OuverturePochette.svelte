@@ -1,5 +1,6 @@
 <script lang="ts">
-  import type { Question } from './types';
+  import { themePrincipal, type Question } from './types';
+  import { illustration } from './themes';
 
   let { questions, titre, onjouer, onfermer }: {
     questions: Question[]; titre: string; onjouer: () => void; onfermer: () => void;
@@ -24,8 +25,11 @@
     {#if ouverte}
       <ol class="pile" aria-label={`${questions.length} fiches face cachée`}>
         {#each questions as q, i (q.id)}
-          <li class="dos palette-fiche" aria-label={`Fiche ${i + 1}, face cachée`}
-            style={`--i: ${i}; --decalage: ${(i - (questions.length - 1) / 2) * 11}px; --angle: ${(i - (questions.length - 1) / 2) * 4}deg`}></li>
+          {@const motif = illustration(themePrincipal(q))}
+          <li class="dos palette-fiche" aria-label={`Fiche ${i + 1}, ${themePrincipal(q)}, face cachée`}
+            style={`--i: ${i}; --decalage: ${(i - (questions.length - 1) / 2) * 11}px; --angle: ${(i - (questions.length - 1) / 2) * 4}deg`}>
+            {#if motif}<img class="motif" src={motif.icone} alt="" width="112" height="112" />{/if}
+          </li>
         {/each}
       </ol>
     {/if}
@@ -55,7 +59,8 @@
   .ouverte .pochette { transform: translateY(70px) rotate(-9deg) scale(.9); z-index: -1; animation: descendre 800ms both; }
   .ouverte .rabat { transform: rotateX(170deg); opacity: 0; }
   .pile { list-style: none; padding: 0; margin: 0; position: absolute; inset: 0; }
-  .dos { position: absolute; top: 28px; left: calc(50% - 90px); width: 180px; aspect-ratio: 2 / 3; box-sizing: border-box; border-radius: 14px; background: var(--carte-fond); border: 1px solid var(--border); box-shadow: 0 3px 5px #142d340d, 0 10px 22px -14px #142d343d; transform: translateX(var(--decalage)) rotate(var(--angle)); animation: sortir 650ms cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(80ms + var(--i) * 70ms); }
+  .dos { display: grid; place-items: center; position: absolute; top: 28px; left: calc(50% - 90px); width: 180px; aspect-ratio: 2 / 3; box-sizing: border-box; border-radius: 14px; background: var(--carte-fond); border: 1px solid var(--border); box-shadow: 0 3px 5px #142d340d, 0 10px 22px -14px #142d343d; transform: translateX(var(--decalage)) rotate(var(--angle)); animation: sortir 650ms cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(80ms + var(--i) * 70ms); }
+  .motif { width: 64%; height: auto; aspect-ratio: 1; object-fit: contain; pointer-events: none; }
   @keyframes sortir {
     from { opacity: 0; transform: translateY(135px) rotate(-8deg) scale(.8); }
     55% { opacity: 1; transform: translate(var(--decalage), -20px) rotate(var(--angle)); }
