@@ -1,0 +1,134 @@
+[
+  {
+    "theme": "Astronomie",
+    "slug": "astronomie",
+    "subject": "Télescope",
+    "icon": "icons/astronomie-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-f/recherche-sans-traits.png",
+    "panel": 0,
+    "panels": 3,
+    "sourceWidth": 2172,
+    "sourceHeight": 724
+  },
+  {
+    "theme": "Corps humain",
+    "slug": "corps-humain",
+    "subject": "Main et cœur",
+    "icon": "icons/corps-humain-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-g/corps-humain.png",
+    "panel": 1,
+    "panels": 2,
+    "sourceWidth": 1774,
+    "sourceHeight": 887
+  },
+  {
+    "theme": "Animaux",
+    "slug": "animaux",
+    "subject": "Léopard",
+    "icon": "icons/animaux-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-f/recherche-sans-traits.png",
+    "panel": 1,
+    "panels": 3,
+    "sourceWidth": 2172,
+    "sourceHeight": 724
+  },
+  {
+    "theme": "Géographie",
+    "slug": "geographie",
+    "subject": "Globe",
+    "icon": "icons/geographie-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-g/geographie.png",
+    "panel": 1,
+    "panels": 2,
+    "sourceWidth": 1774,
+    "sourceHeight": 887
+  },
+  {
+    "theme": "Terre et géologie",
+    "slug": "terre-geologie",
+    "subject": "Terre en coupe",
+    "icon": "icons/terre-geologie-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-f/recherche-sans-traits.png",
+    "panel": 2,
+    "panels": 3,
+    "sourceWidth": 2172,
+    "sourceHeight": 724
+  },
+  {
+    "theme": "Physique et chimie",
+    "slug": "physique-chimie",
+    "subject": "Prisme",
+    "icon": "icons/physique-chimie-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-g/physique-chimie.png",
+    "panel": 1,
+    "panels": 2,
+    "sourceWidth": 1774,
+    "sourceHeight": 887
+  },
+  {
+    "theme": "Constructions et transports",
+    "slug": "constructions-transports",
+    "subject": "Train",
+    "icon": "icons/constructions-transports-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-g/constructions-transports.png",
+    "panel": 0,
+    "panels": 2,
+    "sourceWidth": 1774,
+    "sourceHeight": 887
+  },
+  {
+    "theme": "Histoire",
+    "slug": "histoire",
+    "subject": "Amphore",
+    "icon": "icons/histoire-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-g/histoire.png",
+    "panel": 0,
+    "panels": 2,
+    "sourceWidth": 1774,
+    "sourceHeight": 887
+  },
+  {
+    "theme": "Arts et culture",
+    "slug": "arts-culture",
+    "subject": "Casque et synthétiseur",
+    "icon": "icons/arts-culture-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-h/arts-culture-modernes.png",
+    "panel": 1,
+    "panels": 2,
+    "sourceWidth": 1774,
+    "sourceHeight": 887
+  },
+  {
+    "theme": "Sport et jeux",
+    "slug": "sport-jeux",
+    "subject": "Cavalier",
+    "icon": "icons/sport-jeux-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-g/sport-jeux.png",
+    "panel": 1,
+    "panels": 2,
+    "sourceWidth": 1774,
+    "sourceHeight": 887
+  },
+  {
+    "theme": "Nombres et mesures",
+    "slug": "nombres-mesures",
+    "subject": "Compas et équerre",
+    "icon": "icons/nombres-mesures-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-g/nombres-mesures.png",
+    "panel": 0,
+    "panels": 2,
+    "sourceWidth": 1774,
+    "sourceHeight": 887
+  },
+  {
+    "theme": "Nature et climat",
+    "slug": "nature-climat",
+    "subject": "Arbre",
+    "icon": "icons/nature-climat-24.svg",
+    "source": "docs/design/illustrations-themes/recherche-h/nature-arbre.png",
+    "panel": 0,
+    "panels": 1,
+    "sourceWidth": 1254,
+    "sourceHeight": 1254
+  }
+]

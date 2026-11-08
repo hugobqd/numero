@@ -1,5 +1,6 @@
 <script lang="ts">
   import { tick } from 'svelte';
+  import { illustration } from './themes';
   import { CRANS_DIFFICULTE, type Question } from './types';
   import { avecUnite, entier } from './format';
   import { indexerCatalogue, selectionnerFiches, compterOptions, filtresVides, libelleLot, cleLot, manqueRelecture, type FicheCatalogue, type ColonneTri, type OrdreTri } from './catalogue';
@@ -103,7 +104,7 @@
           <tr>
             <td class="identite"><button class="ouvrir" type="button" onclick={() => ouvrir(ligne)}>{q.enonce}</button><small>{q.id}</small></td>
             <td class="nombre valeur">{avecUnite(q.valeur_a_retenir, q.unite, q.precision)}</td>
-            <td><span class="pastille" style={couleurTheme(q.theme)}>{q.theme}</span></td><td class="tags">{q.tags.join(' · ') || '—'}</td>
+            <td><span class="pastille theme-pastille" style={couleurTheme(q.theme)}>{#if illustration(q.theme)}<img src={illustration(q.theme)!.icone} alt="" width="24" height="24" />{/if}{q.theme}</span></td><td class="tags">{q.tags.join(' · ') || '—'}</td>
             <td>{#if q.difficulte}<span class="pastille cran-{q.difficulte.cran}">{q.difficulte.cran} · {CRANS_DIFFICULTE[q.difficulte.cran]}</span>{:else}<span class="pastille">Non renseignée</span>{/if}</td>
             <td><span class="pastille statut-{q.statut}">{q.statut === 'valide' ? 'Validée' : 'Brouillon'}</span>{#if manqueRelecture(q)}<small>À compléter</small>{/if}</td>
             <td class="lot">{libelleLot(ligne.lot)}</td>
@@ -126,7 +127,7 @@
       <div><dt>Valeur source</dt><dd>{avecUnite(q.valeur, q.unite)}</dd></div>
       <div><dt>Précision</dt><dd>{avecUnite(q.precision, q.unite)}</dd></div>
       <div><dt>Statut</dt><dd><span class="pastille statut-{q.statut}">{q.statut === 'valide' ? 'Validée' : 'Brouillon'}</span></dd></div>
-      <div><dt>Thème</dt><dd><span class="pastille" style={couleurTheme(q.theme)}>{q.theme}</span></dd></div><div><dt>Tags internes</dt><dd>{q.tags.join(' · ') || '—'}</dd></div>
+      <div><dt>Thème</dt><dd><span class="pastille theme-pastille" style={couleurTheme(q.theme)}>{#if illustration(q.theme)}<img src={illustration(q.theme)!.icone} alt="" width="24" height="24" />{/if}{q.theme}</span></dd></div><div><dt>Tags internes</dt><dd>{q.tags.join(' · ') || '—'}</dd></div>
       <div><dt>Difficulté</dt><dd>{#if q.difficulte}<span class="pastille cran-{q.difficulte.cran}">{q.difficulte.cran} · {CRANS_DIFFICULTE[q.difficulte.cran]}</span>{:else}<span class="pastille">Non renseignée</span>{/if}</dd></div>
       <div><dt>Langue</dt><dd>{q.langue}</dd></div>
     </dl>
@@ -146,6 +147,8 @@
 </dialog>
 
 <style>
+  .theme-pastille { display: inline-flex; align-items: center; gap: 6px; }
+  .theme-pastille img { flex: none; width: 24px; height: 24px; }
   .admin { --fg: #171717; --muted: #595959; --surface: #fff; --surface-2: #eee; --accent: #171717; --accent-texte: #171717; --police: system-ui, sans-serif; color: var(--fg); background: #f8f8f8; color-scheme: light; font: 14px/1.45 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
   main.admin { min-height: 100dvh; padding: 24px; }
   header { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }

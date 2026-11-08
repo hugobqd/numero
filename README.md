@@ -39,17 +39,17 @@ Le site est publié sur GitHub Pages par `.github/workflows/deploy.yml` à chaqu
 
 ## Direction artistique
 
-Style : International Typographic Style (Swiss Style), constructivisme et illustration éditoriale Mid-Century « Atomic Age ». Aplats de couleur, fines lignes techniques, trajectoires en pointillés, cercles concentriques, trames Ben-Day et rendu risographie sur papier ancien.
+Les douze thèmes utilisent la famille **Atomic Age 1950–1960** validée le 8 novembre 2026 : silhouettes expressives, courbes boomerang, aplats, contours noirs, fonds clairs peu jaunes et accents vifs. Pas de trame ajoutée ni de groupes de trois traits en éventail. Une dominante par thème ; les miniatures gardent le sujet principal et suppriment les détails secondaires.
 
-### Prompt des illustrations de thématiques
+### Illustrations et icônes des thématiques
 
-Les illustrations de `src/assets/themes/` ont été générées avec ce prompt, en remplaçant les trois éléments entre crochets :
+- `src/assets/themes/selection/illustrations/` : douze WebP carrés de 600 × 600 px, extraits des panneaux approuvés puis optimisés pour le mobile (qualité 84, environ 292 Ko au total).
+- `src/assets/themes/selection/icons/` : douze SVG natifs de 24 × 24, fond transparent (environ 8 Ko au total).
+- `src/lib/themes.ts` : correspondance des douze thèmes avec leur illustration, leur icône et leur texte alternatif. Une thématique inconnue retourne `null`.
+- `src/assets/themes/selection/manifest.json` : provenance des illustrations et panneau sélectionné.
+- `docs/design/illustrations-themes/selection/` : planches de validation et détails de simplification ; recherches et briefs dans les dossiers voisins.
 
-```text
-Square 2D graphic design illustration of [SUJET PRINCIPAL], accompanied by [ÉLÉMENT SECONDAIRE] and [ÉLÉMENT TERTIAIRE]. Style: International Typographic Style (Swiss Style), Constructivism, and 1950s Mid-Century Modern Atomic Age editorial art, inspired by Josef Müller-Brockmann, Saul Bass, and Charley Harper. Clean minimalist poster aesthetic with bold graphic silhouettes and sharp geometric cutouts. Visually structured with a mix of solid flat color blocks, fine thin technical diagram lines, delicate dashed trajectories, concentric circular rings, and coarse Ben-Day halftone screen-print dots. Limited muted retro palette: aged warm cream paper background, burnt terracotta orange, deep petrol teal, and mustard ochre. Balanced asymmetrical layout, generous negative space, textured risograph print finish, strictly 2D vector, no 3D rendering, no photorealism.
-```
-
-Sources d'origine en 2000 × 2000 px, réduites à 600 px (JPEG) pour le mobile.
+Les illustrations sont utilisées dans la mosaïque d’accueil et la collection ; les icônes sont affichées à 24 pixels dans l’en-tête des fiches de jeu et les pastilles de l’outil de consultation. Les anciens JPEG et les pistes écartées sont conservés comme archives, sans être importés par le jeu.
 
 ### Palette
 

@@ -11,7 +11,7 @@
     onretour,
   }: { collection: Collection; stock: Question[]; onreviser: () => void; onretour: () => void } = $props();
 
-  // Chaque thème est illustré (src/assets/themes, prompt dans le README).
+  // Les douze thèmes utilisent les illustrations validées et optimisées pour le mobile.
 
   const themes = $derived(
     [...new Set(stock.map(themePrincipal))].sort().map((theme) => {
@@ -130,7 +130,7 @@
 
 <style>
   .collection {
-    --fond-illustration: #f1dfc3;
+    --fond-illustration: #f8f7f1;
     display: grid;
     gap: 1.25rem;
   }
@@ -165,11 +165,12 @@
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
   }
   /* Carte de thème : l'illustration en grand, puis le nom et la quantité. */
   .carte {
+    min-width: 0;
     width: 100%;
     height: 100%;
     display: grid;
@@ -237,6 +238,7 @@
     font-weight: 800;
     font-stretch: 72%;
     line-height: 1.1;
+    overflow-wrap: anywhere;
   }
   .quantite {
     font-size: 0.85rem;
@@ -245,6 +247,13 @@
   }
   .quantite strong {
     color: var(--fg);
+  }
+  @media (max-width: 480px) {
+    .cartes { gap: 0.5rem; }
+    .carte > :not(.illustration) { margin-inline: 0.4rem; }
+    .carte > .jauge { width: calc(100% - 0.8rem); }
+    .nom { font-size: 1rem; }
+    .quantite { font-size: 0.75rem; }
   }
   .jauge {
     width: 100%;
