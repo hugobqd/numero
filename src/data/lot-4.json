@@ -1,0 +1,1512 @@
+[
+  {
+    "id": "nature-saffir-simpson-categories",
+    "enonce": "Combien de catégories compte l’échelle de Saffir-Simpson des ouragans ?",
+    "valeur": 5,
+    "valeur_a_retenir": 5,
+    "precision": 1,
+    "unite": "catégories",
+    "perimetre": "Échelle opérationnelle du National Hurricane Center, de 1 à 5 ; hors propositions de catégorie 6, dépressions et tempêtes tropicales.",
+    "ancrage": "Elle classe les ouragans selon la force de leurs vents, de la catégorie 1 à la catégorie 5.",
+    "source": {
+      "url": "https://www.nhc.noaa.gov/aboutsshws.php",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.weather.gov.hk/en/education/tropical-cyclone/classification-naming-characteristics/00445-typhoon-and-hurricane.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Météo",
+      "Cyclones",
+      "Échelles"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Échelle souvent citée dans l’actualité et accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 6,
+        "type": "erreur_frequente",
+        "note": "Ajout hypothétique d’une catégorie zéro aux cinq catégories, alors que l’échelle commence à 1 ; 5 + 1. Source : https://www.nhc.noaa.gov/aboutsshws.php"
+      },
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "Première catégorie d’un ouragan dit majeur, pas le nombre de catégories ; NHC. Source : https://www.nhc.noaa.gov/aboutsshws.php"
+      },
+      {
+        "valeur": 4,
+        "type": "erreur_frequente",
+        "note": "Nombre d’intervalles entre les cinq numéros : 5 − 1 ; confusion entre bornes et intervalles. Source : https://www.nhc.noaa.gov/aboutsshws.php"
+      },
+      {
+        "valeur": 2,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nature-ouragan-seuil-vent",
+    "enonce": "À partir de quelle vitesse de vent soutenu un cyclone est-il classé comme ouragan par le NHC ?",
+    "valeur": 119,
+    "valeur_a_retenir": 119,
+    "precision": 1,
+    "unite": "km/h",
+    "perimetre": "Seuil publié de 119 km/h, vent maximal soutenu moyenné sur une minute près de la surface ; classification NHC, pas les moyennes sur dix minutes d’autres organismes.",
+    "ancrage": "Le même seuil se lit 64 nœuds ou 74 miles par heure dans les bulletins américains.",
+    "source": {
+      "url": "https://www.nhc.noaa.gov/aboutgloss.shtml",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.weather.gov.hk/en/education/tropical-cyclone/classification-naming-characteristics/00445-typhoon-and-hurricane.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Météo",
+      "Cyclones",
+      "Vent",
+      "Vitesse"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère météorologique de culture générale ; les unités sont explicitées dans la révélation."
+    },
+    "leurres": [
+      {
+        "valeur": 64,
+        "type": "autre_unite",
+        "note": "Valeur du seuil en nœuds, confondue avec des km/h. Source : https://www.nhc.noaa.gov/aboutgloss.shtml"
+      },
+      {
+        "valeur": 74,
+        "type": "autre_unite",
+        "note": "Valeur du seuil en miles par heure, confondue avec des km/h. Source : https://www.nhc.noaa.gov/aboutgloss.shtml"
+      },
+      {
+        "valeur": 153,
+        "type": "autre_perimetre",
+        "note": "Borne supérieure publiée de la catégorie 1, au lieu du seuil d’entrée ; HKO. Source : https://www.weather.gov.hk/en/education/tropical-cyclone/classification-naming-characteristics/00445-typhoon-and-hurricane.html"
+      },
+      {
+        "valeur": 96,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 132,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 145,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nature-brouillard-visibilite",
+    "enonce": "Sous quelle distance de visibilité parle-t-on de brouillard en météorologie ?",
+    "valeur": 1000,
+    "valeur_a_retenir": 1000,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "Brouillard dû à des gouttelettes en suspension, visibilité horizontale strictement inférieure au seuil ; définition météorologique, hors fumée et poussières.",
+    "ancrage": "Le seuil est un kilomètre : au-delà, on parle plutôt de brume si les gouttelettes restent en cause.",
+    "source": {
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/fog",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/aviation/aviation-hazards-low-visibility-and-low-cloud",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Météo",
+      "Brouillard",
+      "Visibilité"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère concret de météorologie et conversion kilomètre-mètre accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 100,
+        "type": "autre_perimetre",
+        "note": "Seuil utilisé pour le brouillard dense dans une explication du Met Office, pas pour tout brouillard. Source : https://www.metoffice.gov.uk/blog/2026/why-the-uk-sees-fewer-warnings-for-fog-than-wind-or-rain"
+      },
+      {
+        "valeur": 1609,
+        "type": "autre_unite",
+        "note": "Un mile international converti en mètres et arrondi à l’entier : 1609,344 ≈ 1609, confondu avec un kilomètre. Source : https://www.nist.gov/pml/us-surveyfoot/revised-unit-conversion-factors"
+      },
+      {
+        "valeur": 2000,
+        "type": "erreur_frequente",
+        "note": "Distance doublée à tort : 1000 × 2 ; pas le seuil demandé. Source : https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/fog"
+      },
+      {
+        "valeur": 500,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 750,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 1500,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "sport-handball-joueurs",
+    "enonce": "Combien de joueurs une équipe complète de handball peut-elle avoir sur le terrain ?",
+    "valeur": 7,
+    "valeur_a_retenir": 7,
+    "precision": 1,
+    "unite": "joueurs",
+    "perimetre": "Handball en salle, maximum simultané selon la règle 4:1, gardien compris ; hors remplaçants.",
+    "ancrage": "L’équipe habituelle réunit six joueurs de champ et un gardien.",
+    "source": {
+      "url": "https://www.federhandball.it/wp-content/uploads/2025/07/Regolamento-tecnico-di-giuoco-2025-inglese.pdf",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://en.wikipedia.org/wiki/Handball",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Sport et jeux",
+    "tags": [
+      "Handball",
+      "Règles",
+      "Effectifs"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Effectif d’un sport courant rencontré en EPS dès le primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Joueurs de champ seuls dans la formation avec un gardien ; 7 − 1. Source : https://www.federhandball.it/wp-content/uploads/2025/07/Regolamento-tecnico-di-giuoco-2025-inglese.pdf"
+      },
+      {
+        "valeur": 14,
+        "type": "erreur_frequente",
+        "note": "Effectif total des deux équipes complètes : 7 × 2. Source : https://www.federhandball.it/wp-content/uploads/2025/07/Regolamento-tecnico-di-giuoco-2025-inglese.pdf"
+      },
+      {
+        "valeur": 8,
+        "type": "erreur_frequente",
+        "note": "Ajout du gardien aux sept alors que le maximum le comprend déjà : 7 + 1. Source : https://www.federhandball.it/wp-content/uploads/2025/07/Regolamento-tecnico-di-giuoco-2025-inglese.pdf"
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 9,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "sport-tennis-longueur-court",
+    "enonce": "Quelle est la longueur réglementaire d’un court de tennis ?",
+    "valeur": 2377,
+    "valeur_a_retenir": 2377,
+    "precision": 1,
+    "unite": "cm",
+    "perimetre": "Distance entre les faces extérieures des lignes de fond, court adulte ITF, simple ou double ; 23,77 m exprimés en centimètres pour conserver un entier.",
+    "ancrage": "Le terrain mesure presque vingt-quatre mètres de long ; sa longueur reste la même en simple et en double.",
+    "source": {
+      "url": "https://www.itftennis.com/en/about-us/organisation/tennis-glossary/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://m.itftennis.com/media/7221/2025-rules-of-tennis-english.pdf",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Sport et jeux",
+    "tags": [
+      "Tennis",
+      "Règles",
+      "Terrains",
+      "Dimensions"
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "La dimension exacte relève de la culture sportive ; le centimètre permet de conserver la précision réglementaire."
+    },
+    "leurres": [
+      {
+        "valeur": 1189,
+        "type": "erreur_frequente",
+        "note": "Distance du filet à une ligne de fond : moitié de la longueur, 2377 / 2 = 1188,5 cm, arrondie à 1189. Source : https://www.itftennis.com/en/about-us/organisation/tennis-glossary/"
+      },
+      {
+        "valeur": 823,
+        "type": "autre_perimetre",
+        "note": "Largeur en simple : 8,23 m, soit 823 cm ; leurre éloigné. Source : https://www.itftennis.com/en/about-us/organisation/tennis-glossary/"
+      },
+      {
+        "valeur": 4754,
+        "type": "erreur_frequente",
+        "note": "Deux longueurs de court au lieu d’une : 2377 × 2. Source : https://www.itftennis.com/en/about-us/organisation/tennis-glossary/"
+      },
+      {
+        "valeur": 2187,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 2437,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 2677,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "arts-alphabet-francais-lettres",
+    "enonce": "Combien de lettres compte l’alphabet français actuel ?",
+    "valeur": 26,
+    "valeur_a_retenir": 26,
+    "precision": 1,
+    "unite": "lettres",
+    "perimetre": "Alphabet de A à Z ; lettres accentuées, cédille et ligatures ne sont pas comptées comme des lettres alphabétiques supplémentaires.",
+    "ancrage": "A ouvre la liste et Z la termine à la vingt-sixième place.",
+    "source": {
+      "url": "https://www.dictionnaire-academie.fr/article/A9Z0001",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://salleovale.bnf.fr/fr/selections-thematiques/alphabart-les-lettres-cachees-dans-lart-anne-guery-olivier-dussutour",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Arts et culture",
+    "tags": [
+      "Langues",
+      "Français",
+      "Alphabet"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "L’alphabet et son décompte relèvent de l’école primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 13,
+        "type": "erreur_frequente",
+        "note": "Moitié de l’alphabet A–Z : 26 / 2, par exemple en ne comptant que A à M. Source : https://www.dictionnaire-academie.fr/article/A9Z0001"
+      },
+      {
+        "valeur": 52,
+        "type": "erreur_frequente",
+        "note": "Décompte des majuscules et des minuscules comme lettres différentes : 26 × 2. Source : https://www.dictionnaire-academie.fr/article/A9Z0001"
+      },
+      {
+        "valeur": 25,
+        "type": "erreur_frequente",
+        "note": "Oubli hypothétique d’une lettre dans la liste A–Z : 26 − 1. Source : https://www.dictionnaire-academie.fr/article/A9Z0001"
+      },
+      {
+        "valeur": 24,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 27,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 28,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "arts-iliade-chants",
+    "enonce": "En combien de chants l’Iliade est-elle traditionnellement divisée ?",
+    "valeur": 24,
+    "valeur_a_retenir": 24,
+    "precision": 1,
+    "unite": "chants",
+    "perimetre": "Découpage traditionnel du poème attribué à Homère ; les chants ne sont pas des volumes d’une édition particulière.",
+    "ancrage": "Le dernier chant porte le numéro XXIV : c’est le vingt-quatrième.",
+    "source": {
+      "url": "https://multimedia-ext.bnf.fr/pdf/Homere1.pdf",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://catalogue.bnf.fr/ark%3A/12148/cb476289845",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Arts et culture",
+    "tags": [
+      "Littérature",
+      "Grèce",
+      "Antiquité",
+      "Épopées"
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Le décompte exact d’une œuvre antique relève de la culture littéraire plutôt que d’un acquis scolaire obligatoire."
+    },
+    "leurres": [
+      {
+        "valeur": 12,
+        "type": "erreur_frequente",
+        "note": "Nombre de chants obtenu en ne prenant que la moitié du poème : 24 / 2. Source : https://multimedia-ext.bnf.fr/pdf/Homere1.pdf"
+      },
+      {
+        "valeur": 48,
+        "type": "autre_perimetre",
+        "note": "Addition des vingt-quatre chants de l’Iliade et des vingt-quatre de l’Odyssée, également mentionnés dans la fiche BnF. Source : https://multimedia-ext.bnf.fr/pdf/Homere1.pdf"
+      },
+      {
+        "valeur": 23,
+        "type": "erreur_frequente",
+        "note": "Rang du chant avant le dernier : mauvaise lecture de XXIV comme XXIII, décompte diminué de un. Source : https://multimedia-ext.bnf.fr/pdf/Homere1.pdf"
+      },
+      {
+        "valeur": 18,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 25,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 28,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nombres-kilometre-metres",
+    "enonce": "Combien de mètres contient un kilomètre ?",
+    "valeur": 1000,
+    "valeur_a_retenir": 1000,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "Conversion exacte du préfixe SI kilo appliqué au mètre.",
+    "ancrage": "Kilo signifie mille : un kilomètre vaut mille mètres, comme un kilogramme vaut mille grammes.",
+    "source": {
+      "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.nist.gov/pml/owm/writing-si-metric-system-units",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Nombres et mesures",
+    "tags": [
+      "Unités",
+      "Conversions",
+      "Distance"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Conversion de longueur enseignée à l’école primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 100,
+        "type": "autre_perimetre",
+        "note": "Facteur du préfixe hecto, confondu avec kilo ; tableau NIST. Source : https://www.nist.gov/pml/owm/metric-si-prefixes"
+      },
+      {
+        "valeur": 1609,
+        "type": "autre_perimetre",
+        "note": "Longueur d’un mile international en mètres, arrondie à l’entier : 1609,344 ≈ 1609. Source : https://www.nist.gov/pml/us-surveyfoot/revised-unit-conversion-factors"
+      },
+      {
+        "valeur": 1852,
+        "type": "autre_perimetre",
+        "note": "Longueur exacte d’un mille marin en mètres, pas d’un kilomètre. Source : https://oceanservice.noaa.gov/facts/nautical-mile-knot.html"
+      },
+      {
+        "valeur": 500,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 750,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 1500,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nombres-litre-centimetres-cubes",
+    "enonce": "Combien de centimètres cubes contient un litre ?",
+    "valeur": 1000,
+    "valeur_a_retenir": 1000,
+    "precision": 1,
+    "unite": "cm³",
+    "perimetre": "Conversion exacte : 1 L = 1 dm³ = 1000 cm³ ; pas des centilitres.",
+    "ancrage": "Un cube de dix centimètres de côté contient un litre : 10 × 10 × 10 = 1000 cm³.",
+    "source": {
+      "url": "https://www.nist.gov/pml/owm/si-units-volume",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.legislation.gov.uk/ukpga/1985/72/schedule/1/2023-05-03/data.xht",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Nombres et mesures",
+    "tags": [
+      "Unités",
+      "Conversions",
+      "Volume"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Le passage des unités de longueur aux volumes est étudié au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 100,
+        "type": "autre_perimetre",
+        "note": "Confusion avec cent centilitres dans un litre ; tableau NIST. Source : https://www.nist.gov/pml/owm/si-units-volume"
+      },
+      {
+        "valeur": 500,
+        "type": "erreur_frequente",
+        "note": "Volume d’un demi-litre : 1000 / 2, confondu avec celui d’un litre. Source : https://www.nist.gov/pml/owm/si-units-volume"
+      },
+      {
+        "valeur": 2000,
+        "type": "erreur_frequente",
+        "note": "Volume de deux litres, pas d’un seul : 1000 × 2. Source : https://www.nist.gov/pml/owm/si-units-volume"
+      },
+      {
+        "valeur": 1250,
+        "type": "proche",
+        "note": "Valeur voisine proposée ; aucune conversion de référence. Source : https://www.nist.gov/pml/owm/si-units-volume"
+      },
+      {
+        "valeur": 750,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 1500,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-groupes-sanguins-abo",
+    "enonce": "Combien de groupes distingue le système sanguin ABO ?",
+    "valeur": 4,
+    "valeur_a_retenir": 4,
+    "precision": 1,
+    "unite": "groupes",
+    "perimetre": "Système ABO seul : A, B, AB et O ; sans combiner avec le facteur RhD positif ou négatif, ni les autres systèmes sanguins.",
+    "ancrage": "A, B, AB et O : quatre noms, avant d’ajouter le signe plus ou moins du Rhésus.",
+    "source": {
+      "url": "https://www.blood.co.uk/why-give-blood/blood-types/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.nhs.uk/tests-and-treatments/blood-groups/",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Corps humain",
+    "tags": [
+      "Sang",
+      "Groupes sanguins",
+      "Classification"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Le système ABO est un repère courant de biologie accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "Combinaisons ABO et RhD : quatre groupes × deux signes, NHS. Source : https://www.nhs.uk/tests-and-treatments/blood-groups/"
+      },
+      {
+        "valeur": 3,
+        "type": "erreur_frequente",
+        "note": "Oublier O en ne gardant que A, B et AB : 4 − 1. Source : https://www.blood.co.uk/why-give-blood/blood-types/"
+      },
+      {
+        "valeur": 2,
+        "type": "erreur_frequente",
+        "note": "Ne compter que les deux lettres A et B au lieu des quatre groupes du système. Source : https://www.blood.co.uk/why-give-blood/blood-types/"
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 6,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "animaux-pieuvre-coeurs",
+    "enonce": "Combien de cœurs possède une pieuvre ?",
+    "valeur": 3,
+    "valeur_a_retenir": 3,
+    "precision": 1,
+    "unite": "cœurs",
+    "perimetre": "Organisation anatomique des pieuvres : deux cœurs branchiaux et un cœur systémique.",
+    "ancrage": "Deux cœurs envoient le sang vers les branchies ; le troisième l’envoie vers le reste du corps.",
+    "source": {
+      "url": "https://www.nhm.ac.uk/discover/octopuses-keep-surprising-us-here-are-eight-examples-how.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.sheddaquarium.org/stories/eight-strange-and-wonderful-facts-about-octopuses",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Animaux",
+    "tags": [
+      "Mollusques",
+      "Céphalopodes",
+      "Anatomie",
+      "Circulation"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Particularité animale mémorable accessible au collège, avec explication simple."
+    },
+    "leurres": [
+      {
+        "valeur": 2,
+        "type": "autre_perimetre",
+        "note": "Cœurs branchiaux seuls, en oubliant le cœur systémique. Source : https://www.nhm.ac.uk/discover/octopuses-keep-surprising-us-here-are-eight-examples-how.html"
+      },
+      {
+        "valeur": 1,
+        "type": "autre_perimetre",
+        "note": "Cœur systémique seul, sans les deux pompes branchiales. Source : https://www.nhm.ac.uk/discover/octopuses-keep-surprising-us-here-are-eight-examples-how.html"
+      },
+      {
+        "valeur": 6,
+        "type": "erreur_frequente",
+        "note": "Double comptage des trois pompes : 3 × 2, hypothèse de confusion. Source : https://www.nhm.ac.uk/discover/octopuses-keep-surprising-us-here-are-eight-examples-how.html"
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "animaux-papillon-ailes",
+    "enonce": "Combien d’ailes possède normalement un papillon adulte ?",
+    "valeur": 4,
+    "valeur_a_retenir": 4,
+    "precision": 1,
+    "unite": "ailes",
+    "perimetre": "Papillon adulte non mutilé : deux ailes antérieures et deux postérieures, et non deux ailes au total.",
+    "ancrage": "À gauche comme à droite, une aile avant et une aile arrière se superposent.",
+    "source": {
+      "url": "https://gardens.si.edu/learn/for-educators/cultivating-habitat/butterfly-gardening/about-butterflies/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://australian.museum/learn/species-identification/ask-an-expert/what-do-butterflies-moths-and-skippers-look-like/",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Animaux",
+    "tags": [
+      "Insectes",
+      "Papillons",
+      "Anatomie"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Observation d’un animal familier accessible dès l’école primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 2,
+        "type": "autre_perimetre",
+        "note": "Nombre de paires, pas d’ailes ; Smithsonian Gardens. Source : https://gardens.si.edu/learn/for-educators/cultivating-habitat/butterfly-gardening/about-butterflies/"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre de pattes, sur le même schéma anatomique du Smithsonian. Source : https://gardens.si.edu/learn/for-educators/cultivating-habitat/butterfly-gardening/about-butterflies/"
+      },
+      {
+        "valeur": 8,
+        "type": "erreur_frequente",
+        "note": "Double comptage des deux faces de chacune des quatre ailes : 4 × 2. Source : https://gardens.si.edu/learn/for-educators/cultivating-habitat/butterfly-gardening/about-butterflies/"
+      },
+      {
+        "valeur": 3,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "geo-italie-regions",
+    "enonce": "Combien de régions compte l’Italie ?",
+    "valeur": 20,
+    "valeur_a_retenir": 20,
+    "precision": 1,
+    "unite": "régions",
+    "perimetre": "Régions de la République italienne, dont les régions à statut spécial ; organisation consultée en novembre 2026.",
+    "ancrage": "La Sicile et la Sardaigne font partie des vingt régions : les îles ne sont pas à ajouter après le compte.",
+    "source": {
+      "url": "https://www.ice.it/en/invest/regions",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.senato.it/node/228/printable/print",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Géographie",
+    "tags": [
+      "Europe",
+      "Italie",
+      "Administratif"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Géographie politique d’un voisin européen, accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 18,
+        "type": "erreur_frequente",
+        "note": "Omission des deux régions insulaires Sicile et Sardaigne : 20 − 2 ; liste de l’article 131. Source : https://www.senato.it/node/228/printable/print"
+      },
+      {
+        "valeur": 22,
+        "type": "erreur_frequente",
+        "note": "Ajout des deux régions insulaires alors qu’elles sont déjà dans les vingt : 20 + 2 ; article 131. Source : https://www.senato.it/node/228/printable/print"
+      },
+      {
+        "valeur": 40,
+        "type": "erreur_frequente",
+        "note": "Double comptage des vingt régions : 20 × 2. Source : https://www.ice.it/en/invest/regions"
+      },
+      {
+        "valeur": 16,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 21,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 24,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "geo-australie-etats",
+    "enonce": "Combien d’États fédérés compte l’Australie ?",
+    "valeur": 6,
+    "valeur_a_retenir": 6,
+    "precision": 1,
+    "unite": "États",
+    "perimetre": "États fédérés uniquement ; exclut les territoires, y compris les deux territoires autonomes continentaux. Organisation consultée en novembre 2026.",
+    "ancrage": "La Tasmanie est un des six États ; le Territoire du Nord, malgré sa taille, n’en est pas un.",
+    "source": {
+      "url": "https://peo.gov.au/understand-our-parliament/how-parliament-works/three-levels-of-government/three-levels-of-government-governing-australia",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.australia.com/en-us/facts-and-planning/about-australia/cities-states-and-territories.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Géographie",
+    "tags": [
+      "Océanie",
+      "Australie",
+      "Administratif"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère de géographie politique accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "Six États plus les deux principaux territoires autonomes, souvent montrés sur les cartes. Source : https://peo.gov.au/understand-our-parliament/how-parliament-works/three-levels-of-government/three-levels-of-government-governing-australia"
+      },
+      {
+        "valeur": 5,
+        "type": "erreur_frequente",
+        "note": "Omission de la Tasmanie, seule île parmi les six États : 6 − 1. Source : https://peo.gov.au/understand-our-parliament/how-parliament-works/three-levels-of-government/three-levels-of-government-governing-australia"
+      },
+      {
+        "valeur": 12,
+        "type": "erreur_frequente",
+        "note": "Double comptage des six États : 6 × 2. Source : https://peo.gov.au/understand-our-parliament/how-parliament-works/three-levels-of-government/three-levels-of-government-governing-australia"
+      },
+      {
+        "valeur": 3,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "geo-bresil-etats",
+    "enonce": "Combien d’États fédérés compte le Brésil ?",
+    "valeur": 26,
+    "valeur_a_retenir": 26,
+    "precision": 1,
+    "unite": "États",
+    "perimetre": "États brésiliens uniquement ; le District fédéral de Brasília est exclu. Organisation consultée en novembre 2026.",
+    "ancrage": "Les vingt-six États et le District fédéral forment vingt-sept unités fédératives.",
+    "source": {
+      "url": "https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/19637-divisao-territorial.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.ibge.gov.br/geociencias/todos-os-produtos-geociencias/15816-politico.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Géographie",
+    "tags": [
+      "Amérique du Sud",
+      "Brésil",
+      "Administratif"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Organisation d’un grand pays, accessible au collège une fois le District fédéral distingué."
+    },
+    "leurres": [
+      {
+        "valeur": 27,
+        "type": "autre_perimetre",
+        "note": "Nombre d’unités fédératives en ajoutant le District fédéral : 26 + 1. Source : https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/19637-divisao-territorial.html"
+      },
+      {
+        "valeur": 52,
+        "type": "erreur_frequente",
+        "note": "Double comptage des vingt-six États : 26 × 2. Source : https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/19637-divisao-territorial.html"
+      },
+      {
+        "valeur": 25,
+        "type": "erreur_frequente",
+        "note": "Omission hypothétique d’un État : 26 − 1, distinct de l’exclusion correcte du District fédéral. Source : https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/19637-divisao-territorial.html"
+      },
+      {
+        "valeur": 24,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 28,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 32,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-mohs-quartz",
+    "enonce": "Quelle est la dureté de référence du quartz sur l’échelle de Mohs ?",
+    "valeur": 7,
+    "valeur_a_retenir": 7,
+    "precision": 1,
+    "unite": "sur Mohs",
+    "perimetre": "Quartz, minéral de référence de l’échelle ordinale de résistance à la rayure.",
+    "ancrage": "Le quartz se place entre l’orthose, à 6, et la topaze, à 8.",
+    "source": {
+      "url": "https://www.nps.gov/articles/mohs-hardness-scale.htm",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://pubs.usgs.gov/gip/gemstones/mineral.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Terre et géologie",
+    "tags": [
+      "Minéraux",
+      "Quartz",
+      "Dureté",
+      "Échelles"
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "La dureté d’un minéral particulier relève de la culture scientifique, au-delà du repère général sur le diamant."
+    },
+    "leurres": [
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Dureté de l’orthose ou feldspath de référence, dans la table. Source : https://www.nps.gov/articles/mohs-hardness-scale.htm"
+      },
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "Dureté de la topaze, dans la table. Source : https://www.nps.gov/articles/mohs-hardness-scale.htm"
+      },
+      {
+        "valeur": 9,
+        "type": "autre_perimetre",
+        "note": "Dureté du corindon dans la table de Mohs. Source : https://www.nps.gov/articles/mohs-hardness-scale.htm"
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 11,
+        "type": "proche",
+        "note": "Valeur plausible de la réserve ; aucune référence alternative."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-profondeur-noyau",
+    "enonce": "À quelle profondeur commence le noyau terrestre ?",
+    "valeur": 2900,
+    "valeur_a_retenir": 2900,
+    "precision": 100,
+    "unite": "km",
+    "perimetre": "Limite entre manteau et noyau externe, profondeur sous la surface, arrondie à cent kilomètres ; la source géologique la situe vers 2890–2900 km.",
+    "ancrage": "Le noyau est enfoui sous presque trois mille kilomètres de roches du manteau et de la croûte.",
+    "source": {
+      "url": "https://www.bgs.ac.uk/discovering-geology/earth-hazards/earthquakes/what-causes-earthquakes/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.geolsoc.org.uk/Plate-Tectonics/Chap2-What-is-a-Plate/Chemical-composition-crust-and-mantle.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Terre et géologie",
+    "tags": [
+      "Terre",
+      "Structure interne",
+      "Profondeur"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La structure interne de la Terre est étudiée en SVT au collège ; le pas de cent kilomètres reflète l’ordre de grandeur."
+    },
+    "leurres": [
+      {
+        "valeur": 1800,
+        "type": "autre_unite",
+        "note": "Conversion de 2900 km en miles, arrondie à la centaine : environ 1800 ; confusion d’unité. Source : https://www.bgs.ac.uk/discovering-geology/earth-hazards/earthquakes/what-causes-earthquakes/"
+      },
+      {
+        "valeur": 5800,
+        "type": "erreur_frequente",
+        "note": "Doublement de la profondeur : 2900 × 2, en confondant un trajet depuis la surface avec deux trajets. Source : https://www.bgs.ac.uk/discovering-geology/earth-hazards/earthquakes/what-causes-earthquakes/"
+      },
+      {
+        "valeur": 1500,
+        "type": "erreur_frequente",
+        "note": "Moitié de 2900, arrondie à la centaine supérieure : 1450 ≈ 1500 ; confusion proposée entre profondeur et demi-profondeur. Source : https://www.bgs.ac.uk/discovering-geology/earth-hazards/earthquakes/what-causes-earthquakes/"
+      },
+      {
+        "valeur": 2400,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 3200,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 3600,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "physique-eau-atomes",
+    "enonce": "Combien d’atomes contient une molécule d’eau ?",
+    "valeur": 3,
+    "valeur_a_retenir": 3,
+    "precision": 1,
+    "unite": "atomes",
+    "perimetre": "Molécule H₂O : deux atomes d’hydrogène et un d’oxygène ; il ne s’agit ni d’un nombre d’éléments ni de molécules.",
+    "ancrage": "Le petit 2 de H₂O ne porte que sur l’hydrogène : deux H plus un O font trois atomes.",
+    "source": {
+      "url": "https://science.nasa.gov/astrobiology/learning-resources/alp/water-so-important-for-life/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.esa.int/ESA_Multimedia/Images/2009/10/Molecule_of_water",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Physique et chimie",
+    "tags": [
+      "Chimie",
+      "Eau",
+      "Molécules"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Lecture d’une formule chimique simple, étudiée au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 2,
+        "type": "autre_perimetre",
+        "note": "Nombre d’éléments chimiques différents H et O, ou nombre d’atomes d’hydrogène seuls. Source : https://science.nasa.gov/astrobiology/learning-resources/alp/water-so-important-for-life/"
+      },
+      {
+        "valeur": 1,
+        "type": "autre_perimetre",
+        "note": "Nombre de molécules considérées, pas le nombre d’atomes de cette molécule. Source : https://science.nasa.gov/astrobiology/learning-resources/alp/water-so-important-for-life/"
+      },
+      {
+        "valeur": 4,
+        "type": "erreur_frequente",
+        "note": "Appliquer à tort l’indice 2 à H et à O : 2 + 2. Source : https://science.nasa.gov/astrobiology/learning-resources/alp/water-so-important-for-life/"
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 6,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "physique-tension-domestique",
+    "enonce": "Quelle est la tension nominale d’une prise domestique monophasée en France ?",
+    "valeur": 230,
+    "valeur_a_retenir": 230,
+    "precision": 1,
+    "unite": "V",
+    "perimetre": "Tension efficace nominale phase-neutre du réseau basse tension français ; pas la tension instantanée ni la tension entre deux phases.",
+    "ancrage": "La valeur annoncée est nominale : elle ne signifie pas que la tension réelle reste exactement à 230 V à tout instant.",
+    "source": {
+      "url": "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000021896673",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://fr.electrical-installation.org/frwiki/D%C3%A9finition_des_plages_de_tension",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Physique et chimie",
+    "tags": [
+      "Électricité",
+      "France",
+      "Unités",
+      "Quotidien"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère de physique du quotidien accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 207,
+        "type": "autre_perimetre",
+        "note": "Borne inférieure de la plage autour du nominal : 230 × 0,9 = 207 V ; ce n’est pas le nominal. Source : https://www.sde03.fr/reseaux/renforcement/"
+      },
+      {
+        "valeur": 220,
+        "type": "autre_perimetre",
+        "note": "Ancienne valeur usuelle encore employée par habitude ; table d’évolution de la tension dans le guide Schneider. Source : https://fr.electrical-installation.org/frwiki/D%C3%A9finition_des_plages_de_tension"
+      },
+      {
+        "valeur": 253,
+        "type": "autre_perimetre",
+        "note": "Borne supérieure de la plage autour du nominal : 230 × 1,1 = 253 V ; ce n’est pas le nominal. Source : https://www.sde03.fr/reseaux/renforcement/"
+      },
+      {
+        "valeur": 180,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 240,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 280,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "physique-frequence-reseau",
+    "enonce": "Quelle est la fréquence nominale du réseau électrique en France métropolitaine ?",
+    "valeur": 50,
+    "valeur_a_retenir": 50,
+    "precision": 1,
+    "unite": "Hz",
+    "perimetre": "Fréquence de référence du réseau alternatif terrestre de France métropolitaine ; les petites variations réelles ne changent pas la valeur nominale.",
+    "ancrage": "Cinquante hertz signifient cinquante cycles complets par seconde.",
+    "source": {
+      "url": "https://www.rte-france.com/bases-electricite/systeme-electrique/frequence-electrique-indicateur-equilibre-reseau",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.enedis.fr/faq/prevention-du-risque-electrique/comment-se-fait-lequilibre-du-reseau-electrique",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Physique et chimie",
+    "tags": [
+      "Électricité",
+      "France",
+      "Fréquence",
+      "Quotidien"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La fréquence d’un signal périodique est étudiée au collège ; le repère concerne le quotidien."
+    },
+    "leurres": [
+      {
+        "valeur": 60,
+        "type": "autre_perimetre",
+        "note": "Fréquence nominale utilisée notamment aux États-Unis, pas sur le réseau métropolitain français. Source : https://www.eia.gov/energyexplained/electricity/the-science-of-electricity.php"
+      },
+      {
+        "valeur": 25,
+        "type": "erreur_frequente",
+        "note": "Division par deux de la fréquence, en prenant à tort deux cycles pour une période : 50 / 2. Source : https://www.rte-france.com/bases-electricite/systeme-electrique/frequence-electrique-indicateur-equilibre-reseau"
+      },
+      {
+        "valeur": 49,
+        "type": "autre_perimetre",
+        "note": "Fréquence atteinte dans une partie du réseau lors de l’incident de 2006, pas la référence ; audition RTE au Sénat. Source : https://www.senat.fr/rap/r06-357-2/r06-357-214.html"
+      },
+      {
+        "valeur": 40,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 55,
+        "type": "proche",
+        "note": "Valeur voisine proposée ; aucune fréquence nominale de référence. Source : https://www.rte-france.com/bases-electricite/systeme-electrique/frequence-electrique-indicateur-equilibre-reseau"
+      },
+      {
+        "valeur": 75,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-lune-periode-siderale",
+    "enonce": "Combien de temps la Lune met-elle pour faire le tour de la Terre par rapport aux étoiles ?",
+    "valeur": 655.7198639999999,
+    "valeur_a_retenir": 656,
+    "precision": 1,
+    "unite": "h",
+    "perimetre": "Mois sidéral moyen de 27,321661 jours, soit environ 655,72 heures, arrondi à l’heure ; différent du cycle des phases.",
+    "ancrage": "Cela représente un peu plus de vingt-sept jours ; le cycle de nouvelle lune à nouvelle lune dure, lui, près de trente jours.",
+    "source": {
+      "url": "https://science.nasa.gov/moon/top-moon-questions/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://en.wikipedia.org/wiki/Moon",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Astronomie",
+    "tags": [
+      "Système solaire",
+      "Lune",
+      "Orbites",
+      "Temps"
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Le mouvement est étudié au collège, mais la période exprimée à l’heure près relève de la culture scientifique."
+    },
+    "leurres": [
+      {
+        "valeur": 709,
+        "type": "erreur_frequente",
+        "note": "Cycle des phases : environ 29,53 jours × 24 ≈ 709 heures, pas le mois sidéral. Source : https://science.nasa.gov/moon/top-moon-questions/"
+      },
+      {
+        "valeur": 1312,
+        "type": "erreur_frequente",
+        "note": "Deux orbites : 656 × 2, pas une seule. Source : https://science.nasa.gov/moon/top-moon-questions/"
+      },
+      {
+        "valeur": 328,
+        "type": "erreur_frequente",
+        "note": "Une demi-orbite : 656 / 2. Source : https://science.nasa.gov/moon/top-moon-questions/"
+      },
+      {
+        "valeur": 624,
+        "type": "proche",
+        "note": "Valeur voisine proposée, pas une période de référence. Source : https://science.nasa.gov/moon/top-moon-questions/"
+      },
+      {
+        "valeur": 672,
+        "type": "proche",
+        "note": "Valeur voisine proposée, pas une période de référence. Source : https://science.nasa.gov/moon/top-moon-questions/"
+      },
+      {
+        "valeur": 696,
+        "type": "proche",
+        "note": "Valeur voisine proposée, pas une période de référence. Source : https://science.nasa.gov/moon/top-moon-questions/"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-apollo-marcheurs",
+    "enonce": "Combien d’astronautes ont marché sur la Lune pendant le programme Apollo ?",
+    "valeur": 12,
+    "valeur_a_retenir": 12,
+    "precision": 1,
+    "unite": "astronautes",
+    "perimetre": "Personnes ayant marché sur le sol lunaire lors des missions Apollo, entre 1969 et 1972 ; pas tous les membres des équipages ni les missions ultérieures.",
+    "ancrage": "Six alunissages réussis ont permis à deux astronautes à chaque fois de marcher sur la Lune.",
+    "source": {
+      "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-apollo-program-grades-5-8/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.esa.int/ESA_Multimedia/Images/2021/09/Ten_things_you_did_not_know_about_the_Moon_1._Moonwalkers",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Astronomie",
+    "tags": [
+      "Espace",
+      "Lune",
+      "Apollo",
+      "Exploration"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère connu de l’exploration spatiale, accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre d’alunissages avec équipage, pas de marcheurs ; deux par alunissage. Source : https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-apollo-program-grades-5-8/"
+      },
+      {
+        "valeur": 24,
+        "type": "erreur_frequente",
+        "note": "Double comptage hypothétique des douze marcheurs : 12 × 2. Source : https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-apollo-program-grades-5-8/"
+      },
+      {
+        "valeur": 18,
+        "type": "erreur_frequente",
+        "note": "Trois membres d’équipage par mission appliqués aux six alunissages : 6 × 3 ; le troisième reste en orbite. Source : https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-apollo-program-grades-5-8/"
+      },
+      {
+        "valeur": 11,
+        "type": "proche",
+        "note": "Valeur voisine proposée ; aucun effectif de référence. Source : https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-apollo-program-grades-5-8/"
+      },
+      {
+        "valeur": 14,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 16,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "construction-millau-hauteur",
+    "enonce": "Quelle est la hauteur maximale du viaduc de Millau ?",
+    "valeur": 343,
+    "valeur_a_retenir": 343,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "Hauteur de l’ouvrage jusqu’au sommet du plus haut pylône, depuis son point d’appui ; ne pas confondre avec la hauteur du tablier au-dessus du Tarn.",
+    "ancrage": "Avec ses 343 mètres au sommet, le viaduc dépasse les trois cents mètres.",
+    "source": {
+      "url": "https://www.leviaducdemillau.com/sites/viaducdemillau/accueil-viaduc-de-millau/le-viaduc/les-chiffres-cles.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.explore-millau.com/les-incontournables/viaduc-de-millau/comprendre-le-viaduc-de-millau/construction-et-chiffres-cles-du-viaduc-de-millau/",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Constructions et transports",
+    "tags": [
+      "Europe",
+      "France",
+      "Ponts",
+      "Dimensions"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Ouvrage français emblématique ; repère de culture générale accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 686,
+        "type": "erreur_frequente",
+        "note": "Doublement de la hauteur : 343 × 2, hypothèse de confusion entre deux côtés de l’ouvrage. Source : https://www.leviaducdemillau.com/sites/viaducdemillau/accueil-viaduc-de-millau/le-viaduc/les-chiffres-cles.html"
+      },
+      {
+        "valeur": 172,
+        "type": "erreur_frequente",
+        "note": "Moitié de la hauteur arrondie au mètre : 343 / 2 = 171,5, soit 172 ; pas la dimension demandée. Source : https://www.leviaducdemillau.com/sites/viaducdemillau/accueil-viaduc-de-millau/le-viaduc/les-chiffres-cles.html"
+      },
+      {
+        "valeur": 1125,
+        "type": "autre_unite",
+        "note": "Hauteur convertie en pieds : environ 1125, confondue avec des mètres ; conversion de 343 / 0,3048. Source : https://www.leviaducdemillau.com/sites/viaducdemillau/accueil-viaduc-de-millau/le-viaduc/les-chiffres-cles.html"
+      },
+      {
+        "valeur": 287,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 327,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 367,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "transport-rail-ecartement-standard",
+    "enonce": "Quel est l’écartement standard entre les deux rails d’une voie ferrée ?",
+    "valeur": 1435,
+    "valeur_a_retenir": 1435,
+    "precision": 1,
+    "unite": "mm",
+    "perimetre": "Écartement nominal dit standard ou voie normale, mesuré entre les faces internes des rails ; il existe d’autres écartements.",
+    "ancrage": "La voie normale est un peu plus large que 1,4 m ; ce nombre se retrouve sur la majeure partie du réseau français.",
+    "source": {
+      "url": "https://www.sncf-reseau.com/medias-publics/2023-12/ig02053_etude_d_impacts_v2.pdf",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.sncf-reseau.com/medias-publics/2024-02/version_comparee_drr_2021_v2_et_v3_0.pdf",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Constructions et transports",
+    "tags": [
+      "Rail",
+      "Dimensions",
+      "Unités"
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "La valeur exacte de l’écartement relève de la culture technique, sans calcul difficile."
+    },
+    "leurres": [
+      {
+        "valeur": 1345,
+        "type": "erreur_frequente",
+        "note": "Inversion des chiffres centraux de 1435 en 1345 : hypothèse de mémorisation, pas un écartement de référence. Source : https://www.sncf-reseau.com/medias-publics/2023-12/ig02053_etude_d_impacts_v2.pdf"
+      },
+      {
+        "valeur": 144,
+        "type": "autre_unite",
+        "note": "Même longueur en centimètres, arrondie à l’entier : 143,5 ≈ 144 ; confusion d’unité. Source : https://www.sncf-reseau.com/medias-publics/2023-12/ig02053_etude_d_impacts_v2.pdf"
+      },
+      {
+        "valeur": 718,
+        "type": "erreur_frequente",
+        "note": "Moitié de l’écartement, arrondie à l’entier : 1435 / 2 ≈ 718 ; confusion avec la distance d’un rail à l’axe. Source : https://www.sncf-reseau.com/medias-publics/2023-12/ig02053_etude_d_impacts_v2.pdf"
+      },
+      {
+        "valeur": 1235,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 1535,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 1635,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "histoire-colonies-americaines",
+    "enonce": "Combien de colonies britanniques sont à l’origine des États-Unis ?",
+    "valeur": 13,
+    "valeur_a_retenir": 13,
+    "precision": 1,
+    "unite": "colonies",
+    "perimetre": "Treize colonies devenues les États fondateurs ; pas l’ensemble des possessions britanniques en Amérique ni les États actuels.",
+    "ancrage": "Les treize bandes du drapeau américain rappellent ces treize colonies.",
+    "source": {
+      "url": "https://wwws.loc.gov/exhibits/mapping-a-growing-nation/overview.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://bensguide.gpo.gov/j-american-flag",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 4"
+    },
+    "theme": "Histoire",
+    "tags": [
+      "Amérique du Nord",
+      "États-Unis",
+      "Indépendance"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère de l’indépendance américaine, accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 7,
+        "type": "autre_perimetre",
+        "note": "Nombre de bandes rouges du drapeau, pas de colonies ; Government Publishing Office. Source : https://bensguide.gpo.gov/j-american-flag"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre de bandes blanches du drapeau ; Government Publishing Office. Source : https://bensguide.gpo.gov/j-american-flag"
+      },
+      {
+        "valeur": 26,
+        "type": "erreur_frequente",
+        "note": "Doublement du nombre de colonies : 13 × 2, par exemple en additionnant colonies et États fondateurs comme deux ensembles différents. Source : https://wwws.loc.gov/exhibits/mapping-a-growing-nation/overview.html"
+      },
+      {
+        "valeur": 11,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 12,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 14,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]
