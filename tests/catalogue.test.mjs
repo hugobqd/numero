@@ -7,7 +7,7 @@ import { test } from 'node:test';
 import ts from 'typescript';
 
 const dossier = mkdtempSync(join(tmpdir(), 'numero-catalogue-'));
-let indexerCatalogue, selectionnerFiches, filtresVides;
+let indexerCatalogue, selectionnerFiches, filtresVides, compterOptions;
 try {
   for (const nom of ['catalogue', 'lots-historiques']) {
     const source = readFileSync(new URL(`../src/lib/${nom}.ts`, import.meta.url), 'utf8');
@@ -15,7 +15,7 @@ try {
       compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
     }).outputText);
   }
-  ({ indexerCatalogue, selectionnerFiches, filtresVides } = createRequire(import.meta.url)(join(dossier, 'catalogue.js')));
+  ({ indexerCatalogue, selectionnerFiches, filtresVides, compterOptions } = createRequire(import.meta.url)(join(dossier, 'catalogue.js')));
 } finally {
   rmSync(dossier, { recursive: true, force: true });
 }
@@ -57,4 +57,18 @@ test('trie les nombres sans modifier le stock et conserve les valeurs absentes e
   assert.deepEqual(selectionnerFiches(donnees, filtresVides(), 'valeur', 'desc').map(({ fiche }) => fiche.id), ['b', 'a']);
   for (const ordre of ['asc', 'desc']) assert.equal(selectionnerFiches(donnees, filtresVides(), 'difficulte', ordre).at(-1).fiche.id, 'b');
   assert.deepEqual(donnees, avant);
+});
+
+test('les effectifs des options tiennent compte des autres filtres sans masquer les alternatives', () => {
+  const filtres = { ...filtresVides(), theme: 'Géographie' };
+  const themes = compterOptions(catalogue, filtres, 'theme');
+  assert.equal(themes.total, 150);
+  assert.equal(themes.nombres.get('Astronomie'), 16);
+  assert.equal(themes.nombres.get('Géographie'), 25);
+  const lots = compterOptions(catalogue, filtres, 'lot');
+  assert.equal(lots.total, 25);
+  assert.equal([...lots.nombres.values()].reduce((a, b) => a + b, 0), 25);
+  const aucun = compterOptions(catalogue, { ...filtres, recherche: 'aucune-fiche-xyz' }, 'theme');
+  assert.equal(aucun.total, 0);
+  assert.equal(aucun.nombres.size, 0);
 });

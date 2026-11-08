@@ -2,7 +2,7 @@
   import { tick } from 'svelte';
   import { CRANS_DIFFICULTE, type Question } from './types';
   import { avecUnite, entier } from './format';
-  import { indexerCatalogue, selectionnerFiches, filtresVides, libelleLot, cleLot, manqueRelecture, type FicheCatalogue, type ColonneTri, type OrdreTri } from './catalogue';
+  import { indexerCatalogue, selectionnerFiches, compterOptions, filtresVides, libelleLot, cleLot, manqueRelecture, type FicheCatalogue, type ColonneTri, type OrdreTri } from './catalogue';
 
   const fichiers = import.meta.glob<Question[]>('../data/*.json', { eager: true, import: 'default' });
   const catalogue = indexerCatalogue(fichiers);
@@ -20,6 +20,12 @@
   let selection = $state<FicheCatalogue | null>(null);
   let dialogue: HTMLDialogElement;
   const resultat = $derived(selectionnerFiches(catalogue, filtres, colonne, ordre));
+  const comptesThemes = $derived(compterOptions(catalogue, filtres, 'theme'));
+  const comptesTags = $derived(compterOptions(catalogue, filtres, 'tag'));
+  const comptesCrans = $derived(compterOptions(catalogue, filtres, 'cran'));
+  const comptesStatuts = $derived(compterOptions(catalogue, filtres, 'statut'));
+  const comptesLots = $derived(compterOptions(catalogue, filtres, 'lot'));
+  const comptesUnites = $derived(compterOptions(catalogue, filtres, 'unite'));
   const nbPages = $derived(Math.max(1, Math.ceil(resultat.length / taille)));
   const pageCourante = $derived(Math.min(page, nbPages));
   const debut = $derived((pageCourante - 1) * taille);
@@ -70,12 +76,12 @@
     <label class="recherche">Rechercher
       <input type="search" bind:value={filtres.recherche} placeholder="Énoncé, identifiant, tag, nombre, source…" />
     </label>
-    <label>Thème<select bind:value={filtres.theme}><option value="">Tous les thèmes</option>{#each themes as theme}<option>{theme}</option>{/each}</select></label>
-    <label>Tag interne<select bind:value={filtres.tag}><option value="">Tous les tags</option>{#each tags as tag}<option>{tag}</option>{/each}</select></label>
-    <label>Difficulté<select bind:value={filtres.cran}><option value="">Toutes les difficultés</option>{#each Object.entries(CRANS_DIFFICULTE) as [cran, nom]}<option value={cran}>{cran} · {nom}</option>{/each}<option value="inconnue">Non renseignée</option></select></label>
-    <label>Statut<select bind:value={filtres.statut}><option value="">Tous les statuts</option><option value="brouillon">Brouillon</option><option value="valide">Validée</option></select></label>
-    <label>Lot<select bind:value={filtres.lot}><option value="">Tous les lots</option>{#each lots as lot}<option value={cleLot(lot)}>{libelleLot(lot)}</option>{/each}</select></label>
-    <label>Unité<select bind:value={filtres.unite}><option value="">Toutes les unités</option>{#each unites as unite}<option>{unite}</option>{/each}</select></label>
+    <label>Thème<select bind:value={filtres.theme}><option value="">Tous les thèmes ({comptesThemes.total})</option>{#each themes as theme}<option value={theme}>{theme} ({comptesThemes.nombres.get(theme) ?? 0})</option>{/each}</select></label>
+    <label>Tag interne<select bind:value={filtres.tag}><option value="">Tous les tags ({comptesTags.total})</option>{#each tags as tag}<option value={tag}>{tag} ({comptesTags.nombres.get(tag) ?? 0})</option>{/each}</select></label>
+    <label>Difficulté<select bind:value={filtres.cran}><option value="">Toutes les difficultés ({comptesCrans.total})</option>{#each Object.entries(CRANS_DIFFICULTE) as [cran, nom]}<option value={cran}>{cran} · {nom} ({comptesCrans.nombres.get(cran) ?? 0})</option>{/each}<option value="inconnue">Non renseignée ({comptesCrans.nombres.get('inconnue') ?? 0})</option></select></label>
+    <label>Statut<select bind:value={filtres.statut}><option value="">Tous les statuts ({comptesStatuts.total})</option><option value="brouillon">Brouillon ({comptesStatuts.nombres.get('brouillon') ?? 0})</option><option value="valide">Validée ({comptesStatuts.nombres.get('valide') ?? 0})</option></select></label>
+    <label>Lot<select bind:value={filtres.lot}><option value="">Tous les lots ({comptesLots.total})</option>{#each lots as lot}<option value={cleLot(lot)}>{libelleLot(lot)} ({comptesLots.nombres.get(cleLot(lot)) ?? 0})</option>{/each}</select></label>
+    <label>Unité<select bind:value={filtres.unite}><option value="">Toutes les unités ({comptesUnites.total})</option>{#each unites as unite}<option value={unite}>{unite} ({comptesUnites.nombres.get(unite) ?? 0})</option>{/each}</select></label>
     <label class="case"><input type="checkbox" bind:checked={filtres.aCompleter} /> Sources ou justification à compléter</label>
     <button type="button" onclick={reinitialiser}>Réinitialiser</button>
   </form>

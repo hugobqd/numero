@@ -90,3 +90,19 @@ export function selectionnerFiches(
     return c * (ordre === 'asc' ? 1 : -1) || comparaison.compare(a.fiche.id, b.fiche.id);
   });
 }
+
+export type ChampFiltre = 'theme' | 'tag' | 'cran' | 'statut' | 'lot' | 'unite';
+
+/** Effectifs tenant compte des autres critères, sans restreindre le filtre lui-même. */
+export function compterOptions(catalogue: FicheCatalogue[], filtres: FiltresCatalogue, champ: ChampFiltre) {
+  const fiches = selectionnerFiches(catalogue, { ...filtres, [champ]: '' }, 'enonce', 'asc');
+  const nombres = new Map<string, number>();
+  for (const { fiche: q, lot } of fiches) {
+    const valeurs = champ === 'tag' ? [...new Set(q.tags)] : [
+      champ === 'theme' ? q.theme : champ === 'cran' ? String(q.difficulte?.cran ?? 'inconnue') :
+      champ === 'statut' ? q.statut : champ === 'lot' ? cleLot(lot) : q.unite,
+    ];
+    for (const valeur of valeurs) nombres.set(valeur, (nombres.get(valeur) ?? 0) + 1);
+  }
+  return { total: fiches.length, nombres };
+}
