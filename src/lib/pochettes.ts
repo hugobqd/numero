@@ -98,6 +98,23 @@ export function effacerPochette(id: string): void {
   }
 }
 
+/** Pochettes inachevées du joueur actif, des plus anciennes aux plus récentes. */
+export function pochettesEnCours(): Pochette[] {
+  const pochettes: Pochette[] = [];
+  const prefixe = cleJoueur('pochette:');
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const cle = localStorage.key(i);
+      if (!cle?.startsWith(prefixe)) continue;
+      try {
+        const p = lirePochette(cle.slice(prefixe.length));
+        if (p && !p.terminee) pochettes.push(p);
+      } catch { /* Une entrée illisible ne masque pas les autres pochettes. */ }
+    }
+  } catch { /* stockage indisponible */ }
+  return pochettes.sort((a, b) => a.jour - b.jour || a.id.localeCompare(b.id, undefined, { numeric: true }));
+}
+
 /** Les fiches d’une pochette commencée sont réservées, même avant leur première réponse. */
 export function fichesNonReservees(candidates: Question[]): Question[] {
   const reservees = new Set<string>();

@@ -13,6 +13,7 @@
     ouvrirPochetteDuJour,
     ouvrirPochetteOfferte,
     questionsJouables,
+    pochettesEnCours,
     type Pochette,
   } from './lib/pochettes';
   import {
@@ -108,6 +109,10 @@
     void versionPochettes;
     return etatPochettesBonus(neurones.bonus);
   });
+  const anciennesPochettes = $derived.by(() => {
+    void versionPochettes;
+    return pochettesEnCours().filter((p) => p.origine === 'offerte' || (p.origine === 'jour' && p.jour < numero));
+  });
   // Pochette jouée en défi et montrée au bilan : celle du jour ou une pochette bonus.
   let pochette = $state<Pochette | null>(lirePochette(idPochetteDuJour(numero)));
   const questions = $derived(pochette ? parId(pochette.fiches) : []);
@@ -164,7 +169,6 @@
   let nouvellesFiches = $state<string[]>([]);
   const possedees = $derived(fichesPossedees(collection, stock));
   const nbAReviserTotal = $derived(possedees.filter((q) => collection[q.id].etat === 'decouverte').length);
-  const nbAcquises = $derived(possedees.filter((q) => collection[q.id].etat === 'acquise').length);
   // Fiches que le joueur n'a pas encore : le tirage des pochettes se fait parmi elles.
   const aRecuperer = $derived(jouables.filter((q) => !collection[q.id]));
 
@@ -217,7 +221,7 @@
 
   function resultatDefi(res: ResultatQuestion, q: Question) {
     if (!pochette) return;
-    if (enregistrerFicheDefi(res, q, numero)) nouvellesFiches.push(res.id);
+    if (enregistrerFicheDefi(res, q, pochette.jour)) nouvellesFiches.push(res.id);
     pochette.resultats.push(res);
     ecrirePochette($state.snapshot(pochette));
     versionPochettes++;
@@ -257,15 +261,24 @@
     enregistrerFicheDefi(res, q, 0);
     offerte.resultats.push(res);
     ecrirePochette($state.snapshot(offerte));
+    versionPochettes++;
   }
 
   function finTuto() {
     if (offerte) {
       offerte.terminee = true;
       ecrirePochette($state.snapshot(offerte));
+      versionPochettes++;
     }
     if (joueur) majJoueur(joueur.id, { tutoFait: true });
     ecran = 'tutoBilan';
+  }
+
+  function reprendrePochette(p: Pochette) {
+    if (p.origine === 'offerte') {
+      offerte = p;
+      ecran = 'tuto';
+    } else jouer(p);
   }
 
   // Joueurs et jours simulés : chaque changement recharge la page avec les données du joueur.
@@ -366,7 +379,7 @@
   }
 
   async function onPartager() {
-    const r = await partager(texteDePartage(numero, resultats));
+    const r = await partager(texteDePartage(pochette?.jour ?? numero, resultats));
     messagePartage = r === 'copie' ? 'Copié dans le presse-papiers' : r === 'echec' ? 'Partage impossible' : '';
   }
 
@@ -506,12 +519,12 @@
       pseudo={joueur?.pseudo ?? ''}
       jour={numero}
       pochette={etatPochette}
-      {serie}
       nbFiches={possedees.length}
       nbTotal={stock.length}
       nbAReviser={nbAReviserTotal}
-      {nbAcquises}
       bonus={etatBonus}
+      anciennesPochettes={anciennesPochettes.map((p) => ({ id: p.id, jour: p.jour, offerte: p.origine === 'offerte', faites: p.resultats.length, total: p.fiches.length }))}
+      onreprendre={(id) => { const p = lirePochette(id); if (p) reprendrePochette(p); }}
       neurones={progression(neurones)}
       onouvrir={ouvrirPochette}
       onjouer={ouvrirPochette}
