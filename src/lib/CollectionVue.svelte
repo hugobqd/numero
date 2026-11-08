@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { themePrincipal, type Question } from './types';
+  import { CRANS_DIFFICULTE, themePrincipal, type CranDifficulte, type Question } from './types';
   import { estTrouvee, LIBELLES_ETAT, type Collection } from './collection';
   import { grand } from './format';
   import { illustration } from './themes';
@@ -17,7 +17,8 @@
     [...new Set(stock.map(themePrincipal))].sort().map((theme) => {
       const toutes = stock.filter((q) => themePrincipal(q) === theme);
       const possedees = toutes.filter((q) => collection[q.id]);
-      return { theme, total: toutes.length, possedees };
+      const trouvees = possedees.filter((q) => estTrouvee(collection[q.id])).length;
+      return { theme, total: toutes.length, possedees, trouvees };
     }),
   );
 
@@ -28,6 +29,11 @@
   // Vue d'ensemble par thème ; un thème touché affiche le détail de ses fiches.
   let themeOuvert = $state<string | null>(null);
   const detail = $derived(themes.find((t) => t.theme === themeOuvert));
+  const groupes = $derived(
+    ([1, 2, 3, 4] as CranDifficulte[])
+      .map((cran) => ({ cran, fiches: detail?.possedees.filter((q) => (q.difficulte?.cran ?? 2) === cran) ?? [] }))
+      .filter((groupe) => groupe.fiches.length > 0),
+  );
 
   const nbPossedees = $derived(themes.reduce((s, t) => s + t.possedees.length, 0));
   const nbAObtenir = $derived(stock.length - nbPossedees);
@@ -56,8 +62,11 @@
         <h3>{detail.theme} <span class="compte">{detail.possedees.length} / {detail.total}</span></h3>
       </div>
       {#if detail.possedees.length}
-        <ul class="fiches">
-          {#each detail.possedees as q}
+        {#each groupes as groupe (groupe.cran)}
+        <section class="groupe" aria-labelledby={`cran-${groupe.cran}`}>
+          <h4 id={`cran-${groupe.cran}`}>{CRANS_DIFFICULTE[groupe.cran][0].toUpperCase() + CRANS_DIFFICULTE[groupe.cran].slice(1)} <span class="compte">{groupe.fiches.length} fiche{groupe.fiches.length > 1 ? 's' : ''}</span></h4>
+          <ul class="fiches">
+          {#each groupe.fiches as q (q.id)}
             {@const g = grand(q.valeur_a_retenir, q.unite, q.precision)}
             {@const e = collection[q.id]}
             <li class="etat-{e.etat}">
@@ -87,6 +96,8 @@
             </li>
           {/each}
         </ul>
+        </section>
+        {/each}
         {#if detail.total > detail.possedees.length}
           {@const reste = detail.total - detail.possedees.length}
           <p class="reste">Encore {reste} fiche{reste > 1 ? 's' : ''} à récupérer</p>
@@ -105,6 +116,7 @@
             {#if ill}<img class="illustration" src={ill.src} alt="" width="600" height="600" loading="lazy" />{:else}<span class="illustration sans-illustration" aria-hidden="true"></span>{/if}
             <span class="nom">{t.theme}</span>
             <span class="quantite"><strong>{t.possedees.length}</strong> / {t.total} fiches</span>
+            <span class="trouvees">{t.trouvees} trouvée{t.trouvees > 1 ? 's' : ''}</span>
             <span class="jauge" aria-hidden="true"><span style:width="{(100 * t.possedees.length) / t.total}%"></span></span>
           </button>
         </li>
@@ -174,7 +186,7 @@
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
     align-content: start;
     gap: 0.4rem;
     justify-items: start;
@@ -248,12 +260,14 @@
   .quantite strong {
     color: var(--fg);
   }
+  .trouvees { font-size: 0.85rem; color: var(--fg); }
   @media (max-width: 480px) {
     .cartes { gap: 0.5rem; }
     .carte > :not(.illustration) { margin-inline: 0.4rem; }
     .carte > .jauge { width: calc(100% - 0.8rem); }
     .nom { font-size: 1rem; }
     .quantite { font-size: 0.75rem; }
+    .trouvees { font-size: 0.75rem; }
   }
   .jauge {
     width: 100%;
@@ -299,6 +313,9 @@
     display: grid;
     gap: 0.5rem;
   }
+  .groupe { display: grid; gap: 0.65rem; margin-top: 1.25rem; }
+  .groupe h4 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; margin: 0; font-size: 0.85rem; font-weight: 500; color: var(--muted); }
+  .groupe .compte { font-size: 0.75rem; }
   h3 {
     margin: 0;
     font-size: 1rem;
