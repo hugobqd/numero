@@ -1,0 +1,1502 @@
+[
+  {
+    "id": "nature-nuages-genres",
+    "enonce": "Combien de grands genres de nuages distingue l’Atlas international des nuages ?",
+    "valeur": 10,
+    "valeur_a_retenir": 10,
+    "precision": 1,
+    "unite": "genres",
+    "perimetre": "Dix genres de l’Atlas de l’OMM ; ne pas confondre genres, espèces et variétés.",
+    "ancrage": "Cirrus, cumulus et stratus appartiennent à cette famille de dix grands genres.",
+    "source": {
+      "url": "https://public.wmo.int/world-meteorological-day-2017/classifying-clouds",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/clouds",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Météo",
+      "Nuages",
+      "Classification"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La distinction des principales formes de nuages est accessible au collège ; le décompte se mémorise sans notion spécialisée."
+    },
+    "leurres": [
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "Confusion avec les trois étages de nuages : bas, moyens et hauts. Source : https://public.wmo.int/world-meteorological-day-2017/classifying-clouds"
+      },
+      {
+        "valeur": 12,
+        "type": "autre_perimetre",
+        "note": "Maximum de l’échelle de Beaufort, confondu avec un décompte des genres de nuages. Source : https://weather.metoffice.gov.uk/guides/coast-and-sea/beaufort-scale"
+      },
+      {
+        "valeur": 5,
+        "type": "autre_perimetre",
+        "note": "Nombre de catégories d’ouragans sur l’échelle de Saffir-Simpson. Source : https://www.weather.gov.hk/en/education/tropical-cyclone/classification-naming-characteristics/00445-typhoon-and-hurricane.html"
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 14,
+        "type": "proche",
+        "note": "Valeur voisine proposée ; aucune classification de référence. Source : https://public.wmo.int/world-meteorological-day-2017/classifying-clouds"
+      },
+      {
+        "valeur": 15,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nature-beaufort-maximum",
+    "enonce": "Quel est le degré maximal de l’échelle de Beaufort usuelle ?",
+    "valeur": 12,
+    "valeur_a_retenir": 12,
+    "precision": 1,
+    "unite": "degrés",
+    "perimetre": "Échelle usuelle de 0 à 12, utilisée dans les prévisions marines ; pas les extensions historiques.",
+    "ancrage": "Le calme est au degré 0 : de 0 à 12, l’échelle compte donc treize degrés.",
+    "source": {
+      "url": "https://weather.metoffice.gov.uk/guides/coast-and-sea/beaufort-scale",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.weather.gov/boi/beaufort",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Météo",
+      "Vent",
+      "Échelles"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère de météorologie courante, compréhensible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 13,
+        "type": "erreur_frequente",
+        "note": "Nombre de degrés en comptant aussi le zéro, au lieu du numéro maximal ; calcul 12 − 0 + 1. Source : https://weather.metoffice.gov.uk/guides/coast-and-sea/beaufort-scale"
+      },
+      {
+        "valeur": 11,
+        "type": "autre_perimetre",
+        "note": "Degré de la violente tempête, juste avant la force ouragan. Source : https://weather.metoffice.gov.uk/guides/coast-and-sea/beaufort-scale"
+      },
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "Degré du coup de vent dans la table de Beaufort. Source : https://weather.metoffice.gov.uk/guides/coast-and-sea/beaufort-scale"
+      },
+      {
+        "valeur": 9,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 15,
+        "type": "proche",
+        "note": "Valeur plausible de la réserve ; aucune référence alternative."
+      },
+      {
+        "valeur": 14,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nature-trefle-folioles",
+    "enonce": "Combien de folioles porte normalement une feuille de trèfle blanc ?",
+    "valeur": 3,
+    "valeur_a_retenir": 3,
+    "precision": 1,
+    "unite": "folioles",
+    "perimetre": "Trifolium repens, feuille normale ; hors mutations à quatre folioles ou davantage. Une foliole est une partie de la feuille composée.",
+    "ancrage": "Le trèfle porte bien une feuille composée de trois folioles : le fameux trèfle à quatre folioles est l’exception.",
+    "source": {
+      "url": "https://endeavour.kew.org/sites/endeavour/files/documents/2024-06/Kew-KS4-Tree-of-life-species-guide.pdf",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://plants.ces.ncsu.edu/plants/trifolium-repens/",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Végétaux",
+      "Botanique",
+      "Trèfle"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Le trèfle à trois feuilles est un repère familier dès l’école primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 4,
+        "type": "autre_perimetre",
+        "note": "Nombre de folioles du trèfle porte-bonheur exceptionnel, mentionné par Kew. Source : https://endeavour.kew.org/sites/endeavour/files/documents/2024-06/Kew-KS4-Tree-of-life-species-guide.pdf"
+      },
+      {
+        "valeur": 6,
+        "type": "erreur_frequente",
+        "note": "Double comptage des trois folioles, par exemple en comptant leurs deux faces ; calcul 3 × 2, hypothèse de confusion. Source : https://endeavour.kew.org/sites/endeavour/files/documents/2024-06/Kew-KS4-Tree-of-life-species-guide.pdf"
+      },
+      {
+        "valeur": 1,
+        "type": "erreur_frequente",
+        "note": "Nombre de feuilles composées que l’on regarde, au lieu du nombre de folioles ; Kew les distingue. Source : https://endeavour.kew.org/sites/endeavour/files/documents/2024-06/Kew-KS4-Tree-of-life-species-guide.pdf"
+      },
+      {
+        "valeur": 2,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nature-cristal-neige-branches",
+    "enonce": "Combien de branches principales possède un cristal de neige en étoile simple ?",
+    "valeur": 6,
+    "valeur_a_retenir": 6,
+    "precision": 1,
+    "unite": "branches",
+    "perimetre": "Cristal individuel de forme étoilée à symétrie hexagonale ; pas un amas de cristaux ni une forme double.",
+    "ancrage": "Ses six branches prolongent les six directions de la structure hexagonale de la glace.",
+    "source": {
+      "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/snow/snowflake",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.nesdis.noaa.gov/about/k-12-education/ice-snow/how-do-snowflakes-form",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Météo",
+      "Neige",
+      "Géométrie"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "La forme à six branches est observable et accessible dès l’école primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 12,
+        "type": "erreur_frequente",
+        "note": "Doublement des six branches : correspond à deux étoiles superposées, pas à l’étoile simple demandée ; calcul 6 × 2. Source : https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/snow/snowflake"
+      },
+      {
+        "valeur": 3,
+        "type": "erreur_frequente",
+        "note": "Comptage des axes reliant deux branches opposées, au lieu des branches ; calcul 6 / 2. Source : https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/snow/snowflake"
+      },
+      {
+        "valeur": 5,
+        "type": "erreur_frequente",
+        "note": "Confusion proposée avec une étoile dessinée à cinq pointes ; la source montre une symétrie à six directions. Source : https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/snow/snowflake"
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nature-normale-climatique-duree",
+    "enonce": "Sur combien d’années calcule-t-on une normale climatique standard ?",
+    "valeur": 30,
+    "valeur_a_retenir": 30,
+    "precision": 1,
+    "unite": "ans",
+    "perimetre": "Période standard de l’OMM, actualisée par décennies ; ne pas confondre longueur de période et fréquence d’actualisation.",
+    "ancrage": "La référence 1991–2020 couvre trente ans, et non le temps qu’il a fait une seule année.",
+    "source": {
+      "url": "https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/climate-services/wmo-climatological-normals",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://climate.copernicus.eu/temperature-qas",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Climat",
+      "Temps",
+      "Statistiques"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "La différence entre météo et climat est étudiée au collège ; le repère de trente ans est accessible."
+    },
+    "leurres": [
+      {
+        "valeur": 10,
+        "type": "autre_perimetre",
+        "note": "Fréquence de renouvellement des normales, tous les dix ans ; Copernicus. Source : https://climate.copernicus.eu/temperature-qas"
+      },
+      {
+        "valeur": 29,
+        "type": "erreur_frequente",
+        "note": "Soustraction 2020 − 1991 sans compter les deux années extrêmes : oubli du caractère inclusif. Source : https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/climate-services/wmo-climatological-normals"
+      },
+      {
+        "valeur": 60,
+        "type": "erreur_frequente",
+        "note": "Double comptage hypothétique de deux périodes de trente ans ; calcul 30 × 2. Source : https://community.wmo.int/site/knowledge-hub/programmes-and-initiatives/climate-services/wmo-climatological-normals"
+      },
+      {
+        "valeur": 20,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 25,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 40,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "sport-volleyball-joueurs",
+    "enonce": "Combien de joueurs d’une équipe de volley-ball en salle sont sur le terrain ?",
+    "valeur": 6,
+    "valeur_a_retenir": 6,
+    "precision": 1,
+    "unite": "joueurs",
+    "perimetre": "Volley-ball en salle à six, effectif complet simultanément en jeu, remplaçants exclus.",
+    "ancrage": "Deux équipes de six se font face : douze joueurs occupent le terrain au total.",
+    "source": {
+      "url": "https://www.fivb.com/volleyball/the-game/basic-rules/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://usavolleyball.org/play/rules-of-volleyball/",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Sport et jeux",
+    "tags": [
+      "Volley-ball",
+      "Règles",
+      "Effectifs"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Effectif d’un sport courant, observable en EPS dès l’école primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 12,
+        "type": "erreur_frequente",
+        "note": "Effectif total des deux équipes : 2 × 6. Source : https://www.fivb.com/volleyball/the-game/basic-rules/"
+      },
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "Nombre de joueurs d’une seule ligne, avant ou arrière ; FIVB, positions. Source : https://www.fivb.com/volleyball/the-game/basic-rules/"
+      },
+      {
+        "valeur": 2,
+        "type": "autre_perimetre",
+        "note": "Effectif d’une équipe de beach-volley. Source : https://usavolleyball.org/play/rules-of-volleyball/"
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "sport-basketball-joueurs",
+    "enonce": "Combien de joueurs d’une équipe de basket-ball sont sur le terrain ?",
+    "valeur": 5,
+    "valeur_a_retenir": 5,
+    "precision": 1,
+    "unite": "joueurs",
+    "perimetre": "Basket-ball à cinq selon les règles FIBA, effectif complet simultané, remplaçants exclus.",
+    "ancrage": "Un cinq de départ pour chaque équipe : dix joueurs se partagent le terrain.",
+    "source": {
+      "url": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaches-manual-eng.pdf",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://assets.fiba.basketball/image/upload/documents-corporate-wabc-start-coaching-eng-facilitator-handbook.pdf",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Sport et jeux",
+    "tags": [
+      "Basket-ball",
+      "Règles",
+      "Effectifs"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Effectif très connu d’un sport pratiqué dès l’école primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 7,
+        "type": "autre_perimetre",
+        "note": "Effectif sur le terrain d’une équipe complète de handball, gardien compris. Source : https://www.federhandball.it/wp-content/uploads/2025/07/Regolamento-tecnico-di-giuoco-2025-inglese.pdf"
+      },
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "Confusion avec la variante du basket 3 × 3. Source : https://fiba3x3.com/docs/fiba-3x3-basketball-rules-interpretations-yellow-version.pdf"
+      },
+      {
+        "valeur": 4,
+        "type": "erreur_frequente",
+        "note": "Oubli hypothétique d’un des cinq joueurs : 5 − 1 ; ce n’est pas un autre effectif réglementaire. Source : https://assets.fiba.basketball/image/upload/documents-corporate-wabc-coaches-manual-eng.pdf"
+      },
+      {
+        "valeur": 6,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 9,
+        "type": "proche",
+        "note": "Valeur plausible de la réserve ; aucune référence alternative."
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "sport-rugby-quinze-joueurs",
+    "enonce": "Combien de joueurs une équipe complète de rugby à XV aligne-t-elle sur le terrain ?",
+    "valeur": 15,
+    "valeur_a_retenir": 15,
+    "precision": 1,
+    "unite": "joueurs",
+    "perimetre": "Rugby à XV, effectif complet simultané selon la règle 3 ; hors remplaçants et exclusions.",
+    "ancrage": "Le nom donne le repère : XV est l’écriture romaine de quinze.",
+    "source": {
+      "url": "https://passport.world.rugby/laws-of-the-game/laws-by-number/3-team/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://passport.world.rugby/media/dafo2cbl/2501en-world-rugby-laws-2025-compressed.pdf",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Sport et jeux",
+    "tags": [
+      "Rugby",
+      "Règles",
+      "Effectifs"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Le nombre est contenu dans le nom courant du sport et accessible dès le primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "Nombre d’avants seulement dans une équipe de rugby à XV. Source : https://www.world.rugby/the-game/beginners-guide/positions?lang=fr"
+      },
+      {
+        "valeur": 7,
+        "type": "autre_perimetre",
+        "note": "Effectif de la variante du rugby à sept. Source : https://passport.world.rugby/laws-of-the-game/variations-7s-10s-u19-game-on/sevens/3-team/"
+      },
+      {
+        "valeur": 14,
+        "type": "erreur_frequente",
+        "note": "Effectif d’une équipe de quinze privée d’un joueur ; calcul 15 − 1. Source : https://passport.world.rugby/laws-of-the-game/laws-by-number/3-team/"
+      },
+      {
+        "valeur": 12,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 16,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 18,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "arts-violon-cordes",
+    "enonce": "Combien de cordes possède un violon classique ?",
+    "valeur": 4,
+    "valeur_a_retenir": 4,
+    "precision": 1,
+    "unite": "cordes",
+    "perimetre": "Violon orchestral standard, hors modèles à cinq cordes et instruments expérimentaux.",
+    "ancrage": "Ses cordes à vide se nomment sol, ré, la et mi.",
+    "source": {
+      "url": "https://www.yamaha.com/en/musical_instrument_guide/violin/mechanism/mechanism002.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://pad.philharmoniedeparis.fr/histoires-d-instruments-le-violon.aspx?_lg=fr-FR",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Arts et culture",
+    "tags": [
+      "Musique",
+      "Instruments",
+      "Violon"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Instrument familier ; quatre cordes faciles à compter dès le primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 8,
+        "type": "erreur_frequente",
+        "note": "Double comptage hypothétique des quatre cordes en comptant leurs deux extrémités ; 4 × 2. Source : https://www.yamaha.com/en/musical_instrument_guide/violin/mechanism/mechanism002.html"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre de cordes d’une guitare standard. Source : https://europe.yamaha.com/en/musical-instruments/guitars-basses-amps/explore/musical-instrument-guide/acoustic-guitar/structure002.html"
+      },
+      {
+        "valeur": 3,
+        "type": "erreur_frequente",
+        "note": "Oubli hypothétique d’une corde : 4 − 1 ; la liste de Yamaha comporte bien quatre cordes. Source : https://www.yamaha.com/en/musical_instrument_guide/violin/mechanism/mechanism002.html"
+      },
+      {
+        "valeur": 2,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "arts-guitare-cordes",
+    "enonce": "Combien de cordes possède une guitare classique standard ?",
+    "valeur": 6,
+    "valeur_a_retenir": 6,
+    "precision": 1,
+    "unite": "cordes",
+    "perimetre": "Guitare classique à six cordes simples ; hors guitares à sept cordes ou douze cordes.",
+    "ancrage": "De la plus grave à la plus aiguë : mi, la, ré, sol, si, mi.",
+    "source": {
+      "url": "https://europe.yamaha.com/en/musical-instruments/guitars-basses-amps/explore/musical-instrument-guide/acoustic-guitar/structure002.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.yamaha.com/en/musical_instrument_guide/acoustic_guitar/trivia/trivia006.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Arts et culture",
+    "tags": [
+      "Musique",
+      "Instruments",
+      "Guitare"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Instrument très familier dont les six cordes sont accessibles au primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 4,
+        "type": "autre_perimetre",
+        "note": "Nombre de cordes d’un violon ou d’un ukulélé, comparés dans le guide Yamaha. Source : https://www.yamaha.com/en/musical_instrument_guide/acoustic_guitar/trivia/trivia006.html"
+      },
+      {
+        "valeur": 12,
+        "type": "erreur_frequente",
+        "note": "Doublement hypothétique du nombre standard : six paires au lieu de six cordes simples ; 6 × 2. Source : https://europe.yamaha.com/en/musical-instruments/guitars-basses-amps/explore/musical-instrument-guide/acoustic-guitar/structure002.html"
+      },
+      {
+        "valeur": 5,
+        "type": "erreur_frequente",
+        "note": "Oubli hypothétique d’une corde : 6 − 1, notamment parce que mi apparaît deux fois. Source : https://europe.yamaha.com/en/musical-instruments/guitars-basses-amps/explore/musical-instrument-guide/acoustic-guitar/structure002.html"
+      },
+      {
+        "valeur": 3,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "arts-octave-demi-tons",
+    "enonce": "Combien de demi-tons égaux séparent deux notes distantes d’une octave ?",
+    "valeur": 12,
+    "valeur_a_retenir": 12,
+    "precision": 1,
+    "unite": "demi-tons",
+    "perimetre": "Tempérament égal à douze divisions de l’octave, courant dans la musique occidentale ; il s’agit d’intervalles, pas du nombre de touches bornes incluses.",
+    "ancrage": "Sur le clavier, douze pas d’un demi-ton ramènent au même nom de note, plus aigu.",
+    "source": {
+      "url": "https://collectionsdumusee.philharmoniedeparis.fr/vers-la-gamme-a-temperament-egal.aspx?_lg=fr-FR",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://en.wikipedia.org/wiki/Equal_temperament",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Arts et culture",
+    "tags": [
+      "Musique",
+      "Solfège",
+      "Intervalles"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Le repère relève du solfège élémentaire et reste accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 6,
+        "type": "autre_unite",
+        "note": "Nombre de tons entiers dans douze demi-tons : 12 / 2 ; confusion d’unité. Source : https://collectionsdumusee.philharmoniedeparis.fr/vers-la-gamme-a-temperament-egal.aspx?_lg=fr-FR"
+      },
+      {
+        "valeur": 13,
+        "type": "erreur_frequente",
+        "note": "Nombre de positions parcourues si l’on compte à la fois la note de départ et la note d’arrivée ; 12 + 1. Source : https://collectionsdumusee.philharmoniedeparis.fr/vers-la-gamme-a-temperament-egal.aspx?_lg=fr-FR"
+      },
+      {
+        "valeur": 24,
+        "type": "erreur_frequente",
+        "note": "Nombre de demi-tons dans deux octaves : 12 × 2. Source : https://collectionsdumusee.philharmoniedeparis.fr/vers-la-gamme-a-temperament-egal.aspx?_lg=fr-FR"
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 11,
+        "type": "proche",
+        "note": "Valeur voisine proposée ; aucune convention musicale alternative.  Source : https://collectionsdumusee.philharmoniedeparis.fr/vers-la-gamme-a-temperament-egal.aspx?_lg=fr-FR"
+      },
+      {
+        "valeur": 14,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nombres-tour-complet-degres",
+    "enonce": "Quelle mesure d’angle correspond à un tour complet ?",
+    "valeur": 360,
+    "valeur_a_retenir": 360,
+    "precision": 1,
+    "unite": "°",
+    "perimetre": "Mesure en degrés d’une révolution complète, dans la convention usuelle de géométrie.",
+    "ancrage": "Quatre angles droits de 90° forment un tour complet.",
+    "source": {
+      "url": "https://downloads.bbc.co.uk/skillswise/maths/ma33angl/factsheet/ma33angl-e3-f-right-angles.pdf",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.ncetm.org.uk/media/hwfluxcs/ncetm_ks3_cc_6_1.pdf",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Nombres et mesures",
+    "tags": [
+      "Géométrie",
+      "Angles",
+      "Unités"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Repère de géométrie enseigné à l’école primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 180,
+        "type": "autre_perimetre",
+        "note": "Mesure du demi-tour ; BBC Skillswise. Source : https://downloads.bbc.co.uk/skillswise/maths/ma33angl/factsheet/ma33angl-e3-f-right-angles.pdf"
+      },
+      {
+        "valeur": 90,
+        "type": "autre_perimetre",
+        "note": "Mesure du quart de tour, angle droit ; BBC Skillswise. Source : https://downloads.bbc.co.uk/skillswise/maths/ma33angl/factsheet/ma33angl-e3-f-right-angles.pdf"
+      },
+      {
+        "valeur": 540,
+        "type": "erreur_frequente",
+        "note": "Angle parcouru en un tour et demi : 360 × 1,5, confondu avec un tour. Source : https://downloads.bbc.co.uk/skillswise/maths/ma33angl/factsheet/ma33angl-e3-f-right-angles.pdf"
+      },
+      {
+        "valeur": 270,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 330,
+        "type": "proche",
+        "note": "Valeur voisine proposée ; aucune mesure de référence. Source : https://downloads.bbc.co.uk/skillswise/maths/ma33angl/factsheet/ma33angl-e3-f-right-angles.pdf"
+      },
+      {
+        "valeur": 450,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nombres-triangle-somme-angles",
+    "enonce": "Quelle est la somme des trois angles intérieurs d’un triangle dessiné dans un plan ?",
+    "valeur": 180,
+    "valeur_a_retenir": 180,
+    "precision": 1,
+    "unite": "°",
+    "perimetre": "Géométrie euclidienne du plan ; pas un triangle tracé sur une sphère.",
+    "ancrage": "Les trois angles mis bout à bout forment un angle plat, soit un demi-tour.",
+    "source": {
+      "url": "https://www.amsi.org.au/ESA_middle_years/Year7/Year7_2cS/Year7_2cS_R2_pg2.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://openstax.org/books/prealgebra/pages/9-3-use-properties-of-angles-triangles-and-the-pythagorean-theorem",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Nombres et mesures",
+    "tags": [
+      "Géométrie",
+      "Triangles",
+      "Angles"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Propriété classique de géométrie étudiée au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 360,
+        "type": "autre_perimetre",
+        "note": "Somme des angles extérieurs d’un triangle, ou deux demi-tours ; NCETM. Source : https://www.ncetm.org.uk/media/hwfluxcs/ncetm_ks3_cc_6_1.pdf"
+      },
+      {
+        "valeur": 90,
+        "type": "autre_perimetre",
+        "note": "Mesure d’un seul angle droit, pas de la somme des angles. Source : https://downloads.bbc.co.uk/skillswise/maths/ma33angl/factsheet/ma33angl-e3-f-right-angles.pdf"
+      },
+      {
+        "valeur": 60,
+        "type": "erreur_frequente",
+        "note": "Mesure de chacun des angles d’un triangle équilatéral : 180 / 3. Source : https://www.amsi.org.au/ESA_middle_years/Year7/Year7_2cS/Year7_2cS_R2_pg2.html"
+      },
+      {
+        "valeur": 120,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 150,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 210,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nombres-cube-aretes",
+    "enonce": "Combien d’arêtes possède un cube ?",
+    "valeur": 12,
+    "valeur_a_retenir": 12,
+    "precision": 1,
+    "unite": "arêtes",
+    "perimetre": "Cube géométrique ; les arêtes sont les segments où se rencontrent deux faces, pas les diagonales.",
+    "ancrage": "Quatre arêtes en haut, quatre en bas et quatre verticales : douze.",
+    "source": {
+      "url": "https://www.cambridge.org/gb/download_file/1000740/129924/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://en.wikipedia.org/wiki/Cube",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Nombres et mesures",
+    "tags": [
+      "Géométrie",
+      "Solides",
+      "Cube"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Les faces, sommets et arêtes du cube sont étudiés au primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre de faces du cube, dans le tableau Cambridge. Source : https://www.cambridge.org/gb/download_file/1000740/129924/"
+      },
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "Nombre de sommets du cube, dans le tableau Cambridge. Source : https://www.cambridge.org/gb/download_file/1000740/129924/"
+      },
+      {
+        "valeur": 24,
+        "type": "erreur_frequente",
+        "note": "Somme des quatre côtés de chacune des six faces : chaque arête est alors comptée deux fois ; 6 × 4. Source : https://www.cambridge.org/gb/download_file/1000740/129924/"
+      },
+      {
+        "valeur": 11,
+        "type": "proche",
+        "note": "Valeur voisine proposée ; aucun solide de référence. Source : https://www.cambridge.org/gb/download_file/1000740/129924/"
+      },
+      {
+        "valeur": 14,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 16,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-coeur-cavites",
+    "enonce": "Combien de cavités possède le cœur humain ?",
+    "valeur": 4,
+    "valeur_a_retenir": 4,
+    "precision": 1,
+    "unite": "cavités",
+    "perimetre": "Cœur humain à anatomie habituelle : deux oreillettes et deux ventricules.",
+    "ancrage": "Deux cavités à droite et deux à gauche : le cœur forme une double pompe.",
+    "source": {
+      "url": "https://www.nhlbi.nih.gov/health/heart/anatomy",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.bhf.org.uk/informationsupport/how-a-healthy-heart-works",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Corps humain",
+    "tags": [
+      "Anatomie",
+      "Cœur",
+      "Circulation"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "L’organisation du cœur et la circulation sanguine sont étudiées en SVT au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 2,
+        "type": "autre_perimetre",
+        "note": "Nombre de ventricules seuls, ou d’oreillettes seules ; NHLBI. Source : https://www.nhlbi.nih.gov/health/heart/anatomy"
+      },
+      {
+        "valeur": 8,
+        "type": "erreur_frequente",
+        "note": "Double comptage des quatre cavités en les comptant à l’entrée puis à la sortie ; calcul 4 × 2. Source : https://www.nhlbi.nih.gov/health/heart/anatomy"
+      },
+      {
+        "valeur": 3,
+        "type": "erreur_frequente",
+        "note": "Décompte incomplet hypothétique : deux oreillettes et un seul ventricule, alors que le schéma montre une paire de chaque. Source : https://www.nhlbi.nih.gov/health/heart/anatomy"
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 6,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "corps-dents-lait",
+    "enonce": "Combien de dents compte une denture de lait complète ?",
+    "valeur": 20,
+    "valeur_a_retenir": 20,
+    "precision": 1,
+    "unite": "dents",
+    "perimetre": "Denture temporaire complète de l’enfant, avant remplacement par les dents permanentes ; sans anomalie dentaire.",
+    "ancrage": "Dix dents en haut et dix en bas ; les molaires permanentes viendront ensuite.",
+    "source": {
+      "url": "https://www.nhsinform.scot/healthy-living/dental-health/your-teeth/everything-you-need-to-know-about-teeth",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.kentcht.nhs.uk/leaflet/looking-after-your-babys-mouth-and-teeth/",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Corps humain",
+    "tags": [
+      "Anatomie",
+      "Dents",
+      "Enfance"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Repère familier de l’enfance accessible au primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 32,
+        "type": "autre_perimetre",
+        "note": "Nombre de dents d’une denture adulte complète, sagesse comprise ; NHS inform. Source : https://www.nhsinform.scot/healthy-living/dental-health/your-teeth/everything-you-need-to-know-about-teeth"
+      },
+      {
+        "valeur": 10,
+        "type": "autre_perimetre",
+        "note": "Nombre de dents de lait sur une seule mâchoire ; 20 / 2, NHS. Source : https://www.ashfordstpeters.nhs.uk/images/depts/ChildHealth.pdf"
+      },
+      {
+        "valeur": 40,
+        "type": "erreur_frequente",
+        "note": "Double comptage des deux mâchoires : prendre vingt dents par mâchoire au lieu de vingt au total ; 20 × 2. Source : https://www.nhsinform.scot/healthy-living/dental-health/your-teeth/everything-you-need-to-know-about-teeth"
+      },
+      {
+        "valeur": 16,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 24,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 28,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "animaux-insecte-pattes",
+    "enonce": "Combien de pattes possède normalement un insecte adulte ?",
+    "valeur": 6,
+    "valeur_a_retenir": 6,
+    "precision": 1,
+    "unite": "pattes",
+    "perimetre": "Plan d’organisation habituel d’un insecte adulte, avec trois paires de pattes thoraciques ; hors larves et individus mutilés.",
+    "ancrage": "Trois paires de pattes, une par segment du thorax : c’est un bon indice pour reconnaître un insecte.",
+    "source": {
+      "url": "https://mdc.mo.gov/wildlife/wildlife-facts/insect-spider-and-kin-facts",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.nps.gov/kaww/learn/nature/insects.htm",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Animaux",
+    "tags": [
+      "Arthropodes",
+      "Insectes",
+      "Anatomie"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Critère de reconnaissance des insectes enseigné dès le primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "Nombre de pattes d’une araignée, qui n’est pas un insecte ; Missouri Department of Conservation. Source : https://mdc.mo.gov/wildlife/wildlife-facts/insect-spider-and-kin-facts"
+      },
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "Nombre de paires, pas de pattes ; NPS. Source : https://www.nps.gov/kaww/learn/nature/insects.htm"
+      },
+      {
+        "valeur": 12,
+        "type": "erreur_frequente",
+        "note": "Doublement erroné des six pattes, comme si la source donnait six paires : 6 × 2. Source : https://mdc.mo.gov/wildlife/wildlife-facts/insect-spider-and-kin-facts"
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "animaux-araignee-pattes",
+    "enonce": "Combien de pattes possède normalement une araignée adulte ?",
+    "valeur": 8,
+    "valeur_a_retenir": 8,
+    "precision": 1,
+    "unite": "pattes",
+    "perimetre": "Quatre paires de pattes locomotrices, sans compter les pédipalpes ni les chélicères ; individu non mutilé.",
+    "ancrage": "Quatre paires pour l’araignée, contre trois chez un insecte.",
+    "source": {
+      "url": "https://australian.museum/learn/species-identification/ask-an-expert/what-is-a-spiders/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://extension.umn.edu/garden-and-home/home-maintenance/household-insects/spiders",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Animaux",
+    "tags": [
+      "Arthropodes",
+      "Arachnides",
+      "Anatomie"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Critère de distinction des araignées et des insectes accessible au primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 4,
+        "type": "autre_perimetre",
+        "note": "Nombre de paires au lieu du nombre de pattes ; Australian Museum. Source : https://australian.museum/learn/species-identification/ask-an-expert/what-is-a-spiders/"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre de pattes d’un insecte ; University of Minnesota. Source : https://extension.umn.edu/garden-and-home/home-maintenance/household-insects/spiders"
+      },
+      {
+        "valeur": 16,
+        "type": "erreur_frequente",
+        "note": "Doublement hypothétique de huit pattes prises à tort pour huit paires : 8 × 2. Source : https://australian.museum/learn/species-identification/ask-an-expert/what-is-a-spiders/"
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 9,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 12,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "geo-canada-provinces",
+    "enonce": "Combien de provinces compte le Canada ?",
+    "valeur": 10,
+    "valeur_a_retenir": 10,
+    "precision": 1,
+    "unite": "provinces",
+    "perimetre": "Provinces canadiennes, en excluant les trois territoires ; organisation consultée en novembre 2026.",
+    "ancrage": "Le Canada comprend dix provinces et trois territoires, soit treize grandes unités au total.",
+    "source": {
+      "url": "https://www.canada.ca/en/intergovernmental-affairs/services/provinces-territories.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.canada.ca/en/immigration-refugees-citizenship/services/settle-canada/land-climate.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Géographie",
+    "tags": [
+      "Amérique du Nord",
+      "Canada",
+      "Administratif"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère de géographie politique accessible au collège, sans détail des capitales."
+    },
+    "leurres": [
+      {
+        "valeur": 13,
+        "type": "autre_perimetre",
+        "note": "Provinces et territoires réunis : 10 + 3. Source : https://www.canada.ca/en/intergovernmental-affairs/services/provinces-territories.html"
+      },
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "Nombre de territoires, pas de provinces. Source : https://www.canada.ca/en/intergovernmental-affairs/services/provinces-territories.html"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre d’États fédérés australiens, pas de provinces canadiennes. Source : https://peo.gov.au/understand-our-parliament/how-parliament-works/three-levels-of-government/three-levels-of-government-governing-australia"
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 11,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 12,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "geo-allemagne-lander",
+    "enonce": "Combien de Länder composent l’Allemagne ?",
+    "valeur": 16,
+    "valeur_a_retenir": 16,
+    "precision": 1,
+    "unite": "Länder",
+    "perimetre": "États fédérés de la République fédérale d’Allemagne réunifiée ; organisation consultée en novembre 2026.",
+    "ancrage": "Chaque Land possède son propre gouvernement : l’Allemagne est une fédération de seize États.",
+    "source": {
+      "url": "https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Glossar/bundeslaender.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.bundestag.de/en/parliament/function/legislation/competencies-245700",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Géographie",
+    "tags": [
+      "Europe",
+      "Allemagne",
+      "Administratif"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Organisation d’un grand voisin européen, accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 13,
+        "type": "autre_perimetre",
+        "note": "Nombre de régions de France métropolitaine, pas de Länder allemands. Source : https://www.legifrance.gouv.fr/loda/id/JORFTEXT000030109622"
+      },
+      {
+        "valeur": 26,
+        "type": "autre_perimetre",
+        "note": "Nombre d’États fédérés du Brésil, pas de Länder allemands. Source : https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/19637-divisao-territorial.html"
+      },
+      {
+        "valeur": 15,
+        "type": "erreur_frequente",
+        "note": "Oubli hypothétique de Berlin, qui figure comme Land à part entière dans la liste de Destatis. Source : https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/Glossar/bundeslaender.html"
+      },
+      {
+        "valeur": 12,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 17,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 18,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-mohs-diamant",
+    "enonce": "Quelle est la dureté de référence du diamant sur l’échelle de Mohs ?",
+    "valeur": 10,
+    "valeur_a_retenir": 10,
+    "precision": 1,
+    "unite": "sur Mohs",
+    "perimetre": "Échelle de résistance à la rayure, ordinale de 1 à 10 ; elle ne mesure pas la résistance aux chocs.",
+    "ancrage": "Le diamant ferme l’échelle de Mohs : il peut rayer les neuf minéraux de référence qui le précèdent.",
+    "source": {
+      "url": "https://www.nps.gov/articles/mohs-hardness-scale.htm",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://pubs.usgs.gov/gip/gemstones/mineral.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Terre et géologie",
+    "tags": [
+      "Minéraux",
+      "Dureté",
+      "Échelles"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère de minéralogie simple, relié à une propriété connue du diamant."
+    },
+    "leurres": [
+      {
+        "valeur": 9,
+        "type": "autre_perimetre",
+        "note": "Dureté du corindon, niveau juste inférieur dans la table. Source : https://www.nps.gov/articles/mohs-hardness-scale.htm"
+      },
+      {
+        "valeur": 7,
+        "type": "autre_perimetre",
+        "note": "Dureté du quartz dans la table. Source : https://www.nps.gov/articles/mohs-hardness-scale.htm"
+      },
+      {
+        "valeur": 8,
+        "type": "autre_perimetre",
+        "note": "Dureté de la topaze dans la table. Source : https://www.nps.gov/articles/mohs-hardness-scale.htm"
+      },
+      {
+        "valeur": 6,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 11,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 12,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-roches-familles",
+    "enonce": "En combien de grandes familles classe-t-on les roches selon leur formation ?",
+    "valeur": 3,
+    "valeur_a_retenir": 3,
+    "precision": 1,
+    "unite": "familles",
+    "perimetre": "Classification génétique usuelle : magmatiques, sédimentaires et métamorphiques.",
+    "ancrage": "Solidification d’un magma, dépôt de sédiments ou transformation d’une roche : trois grandes histoires possibles.",
+    "source": {
+      "url": "https://www.nps.gov/subjects/geology/how-rocks-are-classified.htm",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://floridadep.gov/fgs/geologic-topics/content/all-about-rocks",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Terre et géologie",
+    "tags": [
+      "Roches",
+      "Géologie",
+      "Classification"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Les trois familles de roches sont un repère de SVT au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 4,
+        "type": "erreur_frequente",
+        "note": "Compter séparément les roches volcaniques et plutoniques tout en conservant les deux autres familles : 2 + 1 + 1 ; le NPS les réunit parmi les roches magmatiques. Source : https://www.nps.gov/subjects/geology/how-rocks-are-classified.htm"
+      },
+      {
+        "valeur": 2,
+        "type": "erreur_frequente",
+        "note": "Oublier les roches métamorphiques et ne conserver que magmatiques et sédimentaires : 3 − 1. Source : https://www.nps.gov/subjects/geology/how-rocks-are-classified.htm"
+      },
+      {
+        "valeur": 6,
+        "type": "erreur_frequente",
+        "note": "Doubler à tort chacune des trois familles : 3 × 2, hypothèse de classification. Source : https://www.nps.gov/subjects/geology/how-rocks-are-classified.htm"
+      },
+      {
+        "valeur": 1,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "physique-carbone-protons",
+    "enonce": "Combien de protons contient le noyau d’un atome de carbone ?",
+    "valeur": 6,
+    "valeur_a_retenir": 6,
+    "precision": 1,
+    "unite": "protons",
+    "perimetre": "Tout isotope du carbone ; le nombre de protons est le numéro atomique, pas le nombre de nucléons.",
+    "ancrage": "Carbone-12 ou carbone-14 : le nombre après le nom peut changer, mais les six protons restent.",
+    "source": {
+      "url": "https://periodic-table.rsc.org/element/6/Carbon",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://pubchem.ncbi.nlm.nih.gov/element/C",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Physique et chimie",
+    "tags": [
+      "Chimie",
+      "Éléments",
+      "Atomes"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Le lien entre élément chimique et numéro atomique est étudié au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 12,
+        "type": "autre_perimetre",
+        "note": "Nombre de nucléons du carbone-12, pas de protons. Source : https://periodic-table.rsc.org/element/6/Carbon"
+      },
+      {
+        "valeur": 14,
+        "type": "autre_perimetre",
+        "note": "Nombre de nucléons du carbone-14, isotope cité par la RSC. Source : https://periodic-table.rsc.org/element/6/Carbon"
+      },
+      {
+        "valeur": 4,
+        "type": "autre_perimetre",
+        "note": "Nombre d’électrons de valence du carbone : configuration [He] 2s² 2p², deux plus deux. Source : https://periodic-table.rsc.org/element/6/Carbon"
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "physique-oxygene-protons",
+    "enonce": "Combien de protons contient le noyau d’un atome d’oxygène ?",
+    "valeur": 8,
+    "valeur_a_retenir": 8,
+    "precision": 1,
+    "unite": "protons",
+    "perimetre": "Tout isotope de l’oxygène ; numéro atomique Z = 8, sans additionner neutrons ou électrons.",
+    "ancrage": "C’est la présence de huit protons qui fait d’un atome un atome d’oxygène.",
+    "source": {
+      "url": "https://periodic-table.rsc.org/element/8/oxygen",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://pubchem.ncbi.nlm.nih.gov/element/O",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Physique et chimie",
+    "tags": [
+      "Chimie",
+      "Éléments",
+      "Atomes"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Lecture du numéro atomique et structure de l’atome étudiées au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 16,
+        "type": "autre_perimetre",
+        "note": "Nombre de nucléons de l’oxygène-16, isotope majoritaire ; table RSC. Source : https://periodic-table.rsc.org/element/8/oxygen"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre d’électrons de valence : configuration [He] 2s² 2p⁴, deux plus quatre ; RSC. Source : https://periodic-table.rsc.org/element/8/oxygen"
+      },
+      {
+        "valeur": 4,
+        "type": "autre_perimetre",
+        "note": "Nombre d’électrons du sous-niveau 2p, pas de protons ; configuration 2p⁴, RSC. Source : https://periodic-table.rsc.org/element/8/oxygen"
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 9,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 12,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-age-soleil",
+    "enonce": "Quel est l’âge du Soleil ?",
+    "valeur": 4600000000,
+    "valeur_a_retenir": 4600000000,
+    "precision": 100000000,
+    "unite": "ans",
+    "perimetre": "Âge estimé de formation du Soleil, arrondi à cent millions d’années ; pas sa durée de vie totale.",
+    "ancrage": "Le Soleil s’est formé avec le système solaire il y a environ 4,6 milliards d’années.",
+    "source": {
+      "url": "https://science.nasa.gov/sun/facts/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://en.wikipedia.org/wiki/Sun",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 3"
+    },
+    "theme": "Astronomie",
+    "tags": [
+      "Système solaire",
+      "Soleil",
+      "Temps"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Âge du système solaire, repère de sciences accessible au collège ; le pas évite une précision illusoire."
+    },
+    "leurres": [
+      {
+        "valeur": 2300000000,
+        "type": "erreur_frequente",
+        "note": "Moitié de l’âge indiqué : 4,6 milliards / 2 ; confusion proposée entre âge total et moitié d’une durée. Source : https://science.nasa.gov/sun/facts/"
+      },
+      {
+        "valeur": 9200000000,
+        "type": "erreur_frequente",
+        "note": "Double de l’âge : 4,6 milliards × 2 ; confusion proposée avec une durée totale, sans prétendre donner la durée de vie solaire. Source : https://science.nasa.gov/sun/facts/"
+      },
+      {
+        "valeur": 500000000,
+        "type": "erreur_frequente",
+        "note": "Confusion d’un facteur dix : 4,6 milliards / 10 = 460 millions, arrondis à cent millions donnent 500 millions. Source : https://science.nasa.gov/sun/facts/"
+      },
+      {
+        "valeur": 3500000000,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5200000000,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 6800000000,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]
