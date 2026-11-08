@@ -98,7 +98,25 @@ export function effacerPochette(id: string): void {
   }
 }
 
-function ouvrir(id: string, origine: Pochette['origine'], jour: number, fiches: Question[]): Pochette {
+/** Les fiches d’une pochette commencée sont réservées, même avant leur première réponse. */
+export function fichesNonReservees(candidates: Question[]): Question[] {
+  const reservees = new Set<string>();
+  const prefixe = cleJoueur('pochette:');
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const cle = localStorage.key(i);
+      if (!cle?.startsWith(prefixe)) continue;
+      const p = JSON.parse(localStorage.getItem(cle) ?? 'null') as Pochette | null;
+      if (p && !p.terminee) for (const id of p.fiches) reservees.add(id);
+    }
+  } catch {
+    // Même tolérance au stockage indisponible que pour les pochettes.
+  }
+  return candidates.filter((q) => !reservees.has(q.id));
+}
+
+function ouvrir(id: string, origine: Pochette['origine'], jour: number, fiches: Question[]): Pochette | null {
+  if (!fiches.length) return null;
   const p: Pochette = {
     id,
     origine,
@@ -113,23 +131,24 @@ function ouvrir(id: string, origine: Pochette['origine'], jour: number, fiches: 
 }
 
 /** Ouvre la pochette du jour : tire ses fiches parmi celles que le joueur n'a pas encore et l'enregistre. */
-export function ouvrirPochetteDuJour(jour: number, candidates: Question[]): Pochette {
-  return ouvrir(idPochetteDuJour(jour), 'jour', jour, tirerPochette(candidates));
+export function ouvrirPochetteDuJour(jour: number, candidates: Question[]): Pochette | null {
+  return ouvrir(idPochetteDuJour(jour), 'jour', jour, tirerPochette(fichesNonReservees(candidates)));
 }
 
 /**
  * Ouvre la pochette offerte : 5 fiches tout public tirées au hasard (au moins 3 thèmes) parmi celles
  * que le joueur n'a pas encore ; s'il en reste moins de 5 dans ce cran, le tirage se fait dans tout le stock restant.
  */
-export function ouvrirPochetteOfferte(jour: number, candidates: Question[]): Pochette {
+export function ouvrirPochetteOfferte(jour: number, candidates: Question[]): Pochette | null {
+  candidates = fichesNonReservees(candidates);
   const faciles = candidates.filter((q) => q.difficulte?.cran === CRAN_OFFERT);
   const urne = faciles.length >= FICHES_PAR_POCHETTE ? faciles : candidates;
   return ouvrir(ID_POCHETTE_OFFERTE, 'offerte', jour, tirerPochette(urne));
 }
 
 /** Ouvre la pochette bonus de ce rang, tirée comme la pochette du jour. */
-export function ouvrirPochetteBonus(rang: number, jour: number, candidates: Question[]): Pochette {
-  return ouvrir(idPochetteBonus(rang), 'bonus', jour, tirerPochette(candidates));
+export function ouvrirPochetteBonus(rang: number, jour: number, candidates: Question[]): Pochette | null {
+  return ouvrir(idPochetteBonus(rang), 'bonus', jour, tirerPochette(fichesNonReservees(candidates)));
 }
 
 /**

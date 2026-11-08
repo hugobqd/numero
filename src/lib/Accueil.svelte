@@ -26,6 +26,7 @@
      */
     pochette:
       | { etat: 'toutes-les-fiches' }
+      | { etat: 'fiches-reservees' }
       | { etat: 'a-ouvrir'; fiches: number }
       | { etat: 'ouverte'; faites: number; total: number; terminee: boolean; score: string };
     serie: number;
@@ -75,6 +76,8 @@
     {#if pochette.etat === 'toutes-les-fiches'}
       <p class="etat">Tu as toutes les fiches, révise-les</p>
       <button type="button" class="principal" onclick={onreviser}>Réviser</button>
+    {:else if pochette.etat === 'fiches-reservees'}
+      <p class="etat">Tes dernières fiches sont dans tes pochettes en cours.</p>
     {:else if pochette.etat === 'a-ouvrir'}
       <p class="etat"><strong class="chiffres">{pochette.fiches}</strong> nombre{pochette.fiches > 1 ? 's' : ''} à retenir au chiffre près</p>
       <button type="button" class="principal" onclick={onouvrir}>Ouvrir</button>
