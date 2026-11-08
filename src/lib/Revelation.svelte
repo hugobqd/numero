@@ -68,7 +68,8 @@
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
     font-weight: 800;
   }
   .pastille {
@@ -95,8 +96,6 @@
     margin-left: auto;
     font-size: 1.1rem;
     font-stretch: 72%;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
     color: var(--accent-texte);
   }
   .vraie {
@@ -106,7 +105,8 @@
     flex-wrap: wrap;
   }
   .vraie .chiffres {
-    font-size: clamp(3.5rem, 19vw, 5.5rem);
+    font-size: clamp(2.75rem, 17cqi, 5.5rem);
+    color: var(--accent-texte);
     font-weight: 900;
     font-variant-numeric: tabular-nums;
     line-height: 0.9;

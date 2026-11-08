@@ -63,7 +63,7 @@
   }
   /* La valeur en cours : le plus gros élément de l'écran. */
   .chiffres {
-    font-size: clamp(4rem, 22vw, 6rem);
+    font-size: clamp(2.75rem, 20cqi, 6rem);
     font-weight: 900;
     line-height: 0.95;
     letter-spacing: -0.02em;

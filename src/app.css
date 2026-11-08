@@ -70,6 +70,38 @@
   }
 }
 
+
+/* Palette commune aux cartes de jeu, albums et listes de fiches. */
+.palette-fiche {
+  --surface: #f0e6d3;
+  --surface-2: #e2d8c3;
+  --fg: #1d3540;
+  --muted: #486066;
+  --border: #d5c9b1;
+  --accent: #137e78;
+  --accent-texte: #116d68;
+  --action: #137e78;
+  --action-texte: #fff8e8;
+  --carte-fond: #fff8e8;
+  --carte-ombre: #142d3429;
+}
+
+@media (prefers-color-scheme: dark) {
+  .palette-fiche {
+    --carte-fond: #182e35;
+    --carte-ombre: #091c24a6;
+    --surface: #29434a;
+    --surface-2: #38565d;
+    --fg: #f4ead4;
+    --muted: #bdcecc;
+    --border: #48666b;
+    --accent: #65dec6;
+    --accent-texte: #81ead5;
+    --action: #65dec6;
+    --action-texte: #182e35;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
