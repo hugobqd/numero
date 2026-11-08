@@ -71,8 +71,8 @@ export const NB_PROPOSITIONS = 5;
  * triées par ordre croissant. Le tirage dépend de la question **et du numéro du défi** :
  * identique pour tous les joueurs un jour donné, différent d'un défi à l'autre.
  *
- * 1. On tire d'abord le **rang de la bonne réponse** (0 à 4, uniforme) : elle est la plus petite
- *    1 fois sur 5 et la plus grande 1 fois sur 5, on ne peut donc pas éliminer d'office les extrémités.
+ * 1. On tire d'abord le **rang de la bonne réponse** parmi les rangs réalisables, uniformément.
+ *    Avec assez de valeurs plus petites de même forme, les cinq rangs sont possibles.
  *    Le piège est ensuite choisi parmi ceux qui ont de la place de leur côté.
  * 2. On place ensuite r leurres en dessous et 4 − r au-dessus. De chaque côté, dans l'ordre :
  *    - le piège de la fiche (`erreur_frequente`, `autre_unite`, `autre_perimetre`) s'il est de ce côté ;
@@ -175,8 +175,13 @@ export function propositions(q: Question, numero: number, difficulte: Difficulte
     return false;
   };
 
-  // 1. Rang de la bonne réponse, uniforme : 1 chance sur 5 d'être la plus petite, idem la plus grande.
-  const rang = Math.floor(hasard() * NB_PROPOSITIONS);
+  // Une réponse de 3 n'a que deux entiers positifs sous elle ; une réponse de 10
+  // n'a aucune valeur plus petite avec le même nombre de zéros finaux.
+  // Éviter les rangs impossibles plutôt que de laisser des propositions manquantes.
+  const unitesSousReponse = Math.round(reponse / pas) - 1;
+  const valeursSousReponse = unitesSousReponse - Math.floor(unitesSousReponse / 10);
+  const rangMax = Math.min(NB_PROPOSITIONS - 1, valeursSousReponse);
+  const rang = Math.floor(hasard() * (rangMax + 1));
 
   // Piège : tiré parmi ceux qui ont de la place de leur côté (aucun en dessous si la réponse est la plus petite).
   // En difficulté experte, les leurres de la fiche trop éloignés (âge de l'Univers…) sont écartés.
