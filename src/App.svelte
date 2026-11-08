@@ -39,6 +39,8 @@
     toutGagner,
   } from './lib/collection';
   import Jeu from './lib/Jeu.svelte';
+  import CompteurAnime from './lib/CompteurAnime.svelte';
+  import { untrack } from 'svelte';
   import OuverturePochette from './lib/OuverturePochette.svelte';
   import CollectionVue from './lib/CollectionVue.svelte';
   import JoueursVue from './lib/JoueursVue.svelte';
@@ -173,6 +175,8 @@
   let collection = $state(lireCollection());
   let nouvellesFiches = $state<string[]>([]);
   const possedees = $derived(fichesPossedees(collection, stock));
+  // Dernières valeurs vues : gardées pendant le quiz, où le bandeau est démonté.
+  const compteursVus = $state(untrack(() => ({ serie, neurones: neurones.total, fiches: possedees.length })));
   const nbAReviserTotal = $derived(possedees.filter((q) => collection[q.id].etat === 'decouverte').length);
   // Fiches que le joueur n'a pas encore : le tirage des pochettes se fait parmi elles.
   const aRecuperer = $derived(jouables.filter((q) => !collection[q.id]));
@@ -470,9 +474,9 @@
       </h1>
       {#if joueur}
         <div class="pastilles">
-          <p class="pastille" aria-label="Série : {serie} jour{serie > 1 ? 's' : ''} d'affilée">Série <span class="chiffres">{serie}</span></p>
-          <p class="pastille">Neurones <span class="chiffres">{neurones.total}</span></p>
-          <p class="pastille" aria-label="Collection : {possedees.length} fiches sur {stock.length}">Fiches <span class="chiffres">{possedees.length}</span></p>
+          <p class="pastille" aria-label="Série : {serie} jour{serie > 1 ? 's' : ''} d'affilée">Série <CompteurAnime valeur={serie} depuis={compteursVus.serie} onaffiche={(n) => (compteursVus.serie = n)} /></p>
+          <p class="pastille" aria-label={`Neurones : ${neurones.total}`}>Neurones <CompteurAnime valeur={neurones.total} depuis={compteursVus.neurones} onaffiche={(n) => (compteursVus.neurones = n)} /></p>
+          <p class="pastille" aria-label="Collection : {possedees.length} fiches sur {stock.length}">Fiches <CompteurAnime valeur={possedees.length} depuis={compteursVus.fiches} onaffiche={(n) => (compteursVus.fiches = n)} /></p>
         </div>
       {/if}
     </header>
@@ -919,7 +923,7 @@
     font-stretch: 72%;
     white-space: nowrap;
   }
-  .pastille .chiffres {
+  .pastille :global(.chiffres) {
     font-size: 1.05rem;
     font-weight: 900;
     margin-left: 0.15rem;
@@ -951,7 +955,7 @@
       font-size: 0.65rem;
       letter-spacing: 0.01em;
     }
-    .pastille .chiffres {
+    .pastille :global(.chiffres) {
       font-size: 0.75rem;
       margin-left: 0.1rem;
     }
