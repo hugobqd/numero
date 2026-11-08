@@ -72,6 +72,9 @@
     inset: 0 auto 0 0;
     border-radius: inherit;
     background: var(--accent);
+    transition: width 550ms cubic-bezier(.2,.8,.2,1);
+    animation: remplir 600ms ease-out both;
+    transform-origin: left;
   }
   /* Repères tous les quarts du palier : un trait fin de la couleur du fond. */
   .repere {
@@ -87,4 +90,6 @@
     color: var(--muted);
     font-variant-numeric: tabular-nums;
   }
+  @keyframes remplir { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) { .remplie { animation: none; } }
 </style>

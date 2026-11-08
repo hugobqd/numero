@@ -92,7 +92,10 @@
     font-size: 1.3rem;
     font-stretch: 72%;
   }
+  .gagne .pastille { animation: tampon 380ms ease-out; }
+  .vraie { animation: decouvrir 350ms ease-out both; }
   .neurones {
+    animation: decouvrir 400ms 150ms ease-out both;
     margin-left: auto;
     font-size: 1.1rem;
     font-stretch: 72%;
@@ -153,5 +156,17 @@
   }
   .principal {
     margin-top: 0.75rem;
+  }
+  @keyframes tampon {
+    0% { transform: scale(1.2) rotate(-5deg); opacity: 0; }
+    65% { transform: scale(.96) rotate(1deg); opacity: 1; }
+    100% { transform: none; }
+  }
+  @keyframes decouvrir {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gagne .pastille, .vraie, .neurones { animation: none; }
   }
 </style>

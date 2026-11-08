@@ -13,7 +13,7 @@
   {#each resultats as r, i}
     {@const q = questions[i]}
     {#if q}
-      <li class={etat(r)}>
+      <li class={etat(r)} style={`--rang: ${i}`}>
         <span class="enonce">{q.enonce}</span>
         <strong class="valeur">{avecUnite(q.valeur_a_retenir, q.unite, q.precision)}</strong>
         <span class="verdict">
@@ -38,6 +38,8 @@
     border-top: 1px solid var(--bg);
   }
   li {
+    animation: ranger 320ms ease-out both;
+    animation-delay: calc(var(--rang) * 55ms);
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 0.15rem 0.75rem;
@@ -77,4 +79,9 @@
       color: var(--ocre);
     }
   }
+  @keyframes ranger {
+    from { opacity: 0; transform: translateX(-12px); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { li { animation: none; } }
 </style>

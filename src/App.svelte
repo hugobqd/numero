@@ -39,6 +39,7 @@
     toutGagner,
   } from './lib/collection';
   import Jeu from './lib/Jeu.svelte';
+  import OuverturePochette from './lib/OuverturePochette.svelte';
   import CollectionVue from './lib/CollectionVue.svelte';
   import JoueursVue from './lib/JoueursVue.svelte';
   import Accueil from './lib/Accueil.svelte';
@@ -123,6 +124,8 @@
     | 'tuto'
     | 'tutoBilan'
     | 'accueil'
+    | 'ouverture'
+    | 'ouvertureTuto'
     | 'defi'
     | 'bilan'
     | 'collection'
@@ -141,7 +144,7 @@
   const serie = $derived(serieDuJour(stats, numero));
 
   // Navigation : pendant un défi, le tuto ou une révision, l'en-tête se réduit à un ✕ et la barre du bas disparaît.
-  const enJeu = $derived(ecran === 'tuto' || ecran === 'defi' || ecran === 'revision');
+  const enJeu = $derived(ecran === 'tuto' || ecran === 'defi' || ecran === 'revision' || ecran === 'ouverture' || ecran === 'ouvertureTuto');
   const avecBarre = $derived(!!joueur && !enJeu && ecran !== 'tutoIntro');
   const ongletActif = $derived(
     ecran === 'accueil' || ecran === 'bilan'
@@ -177,13 +180,13 @@
     return fichesNonReservees(aRecuperer);
   });
 
-  /** Ouvre la pochette du jour : tirage, série, puis le défi de ses fiches aussitôt. */
+  /** Ouvre la pochette du jour : tirage, série, puis l'écran de découverte de ses fiches. */
   function ouvrirPochette() {
     if (pochetteDuJour) return jouer(pochetteDuJour);
     if (!aRecuperer.length) return;
     const ouverte = ouvrirPochetteDuJour(numero, disponibles);
     if (!ouverte) return;
-    jouer(ouverte);
+    jouer(ouverte, true);
     stats = enregistrerOuverture(numero);
   }
 
@@ -193,17 +196,17 @@
     if (bonus.commencee) jouer(bonus.commencee);
     else if (disponibles.length) {
       const ouverte = ouvrirPochetteBonus(bonus.rang, numero, disponibles);
-      if (ouverte) jouer(ouverte);
+      if (ouverte) jouer(ouverte, true);
     }
   }
 
   /** Lance (ou reprend) le défi d'une pochette ; une pochette qui vient d'être ouverte repart d'un bilan vierge. */
-  function jouer(p: Pochette) {
+  function jouer(p: Pochette, decouvrir = false) {
     if (pochette?.id !== p.id) nouvellesFiches = [];
     pochette = p;
     bonusRecente = false;
     versionPochettes++;
-    ecran = p.terminee ? 'bilan' : 'defi';
+    ecran = p.terminee ? 'bilan' : decouvrir ? 'ouverture' : 'defi';
   }
 
   /**
@@ -252,7 +255,7 @@
     }
     bonusRecente = false;
     versionPochettes++;
-    ecran = 'tuto';
+    ecran = offerte.resultats.length ? 'tuto' : 'ouvertureTuto';
   }
 
   function resultatTuto(res: ResultatQuestion, q: Question) {
@@ -490,6 +493,15 @@
       <p>Pour commencer, voici ta <strong>première pochette</strong>, offerte : {FICHES_PAR_POCHETTE} questions, avec le mode d'emploi. Ensuite, une nouvelle pochette chaque jour.</p>
       <button type="button" class="principal" onclick={commencerTuto}>{resultatsTuto.length ? 'Reprendre' : "C'est parti"}</button>
     </section>
+  {:else if ecran === 'ouverture' || ecran === 'ouvertureTuto'}
+    {#key ecran}
+      <OuverturePochette
+        questions={ecran === 'ouvertureTuto' ? questionsTuto : questions}
+        titre={ecran === 'ouvertureTuto' ? 'Ta pochette offerte' : pochette?.origine === 'bonus' ? 'Ta pochette bonus' : 'Ta pochette du jour'}
+        onjouer={() => (ecran = ecran === 'ouvertureTuto' ? 'tuto' : 'defi')}
+        onfermer={fermerJeu}
+      />
+    {/key}
   {:else if ecran === 'tuto'}
     <Jeu
       onfermer={fermerJeu}

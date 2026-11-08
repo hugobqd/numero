@@ -6,8 +6,8 @@
   import PlusMoins from './mechanics/PlusMoins.svelte';
   import Revelation from './Revelation.svelte';
   import type { Difficulte } from './propositions';
-  import { illustration } from './themes';
-  import { fade } from 'svelte/transition';
+  import { couleurTheme, illustration } from './themes';
+  import { fly } from 'svelte/transition';
 
   /**
    * Déroulé d'une série de questions (défi d'une pochette ou révision) : question, puis révélation,
@@ -83,7 +83,7 @@
 
 {#if courante}
   {@const ill = illustration(themePrincipal(courante))}
-  <article class="carte-jeu palette-fiche" class:retournee={enRevelation} aria-label={`Fiche ${themePrincipal(courante)}`}>
+  <article class="carte-jeu palette-fiche" class:retournee={enRevelation} style={`--theme: ${couleurTheme(themePrincipal(courante))}`} aria-label={`Fiche ${themePrincipal(courante)}`}>
     <div class="entete">
       {#if ill}<img class="vignette" src={ill.icone} alt="" width="24" height="24" />{:else}<span class="vignette sans-illustration" aria-hidden="true"></span>{/if}
       <div>
@@ -107,7 +107,7 @@
     </div>
     <h1>{courante.enonce}</h1>
     {#key `${courante.id}-${enRevelation}`}
-      <div class="face" in:fade={{ duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 160 }}>
+      <div class="face" in:fly={{ y: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 14, duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 160 : 280 }}>
         {#if enRevelation && dernierResultat}
           <Revelation
             question={courante}
@@ -138,6 +138,7 @@
     padding: clamp(1.1rem, 4vw, 2rem);
     border-radius: 24px;
     background: var(--carte-fond);
+    border-top: 3px solid var(--theme);
     color: var(--fg);
     box-shadow: 0 14px 36px -20px var(--carte-ombre), 0 3px 0 var(--surface-2);
     container-type: inline-size;
@@ -148,7 +149,7 @@
     min-width: 0;
   }
   .retournee .face {
-    animation: retourner 220ms ease-out;
+    animation: retourner 320ms ease-out;
   }
   @keyframes retourner {
     from { transform: perspective(900px) rotateY(-10deg); }
@@ -212,6 +213,7 @@
     height: 0.3rem;
     border-radius: 1rem;
     background: var(--border);
+    transition: background-color 240ms;
   }
   .segments li.fait {
     background: var(--petrole);
