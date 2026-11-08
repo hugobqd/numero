@@ -1,0 +1,972 @@
+[
+  {
+    "id": "nature-tulipe-tepales",
+    "enonce": "Combien de pièces colorées, appelées tépales, possède une fleur de tulipe simple ?",
+    "valeur": 6,
+    "valeur_a_retenir": 6,
+    "precision": 1,
+    "unite": "tépales",
+    "perimetre": "Organisation habituelle d’une fleur simple de Tulipa, hors variétés doubles : deux verticilles de trois tépales.",
+    "ancrage": "Trois tépales à l’extérieur et trois à l’intérieur composent la fleur simple.",
+    "source": {
+      "url": "https://plants.ces.ncsu.edu/plants/tulipa/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://en.wikipedia.org/wiki/Tulip",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Végétaux",
+      "Botanique",
+      "Fleurs",
+      "Tulipes"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Observation de botanique accessible au collège, le mot technique étant expliqué dans l’énoncé."
+    },
+    "leurres": [
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "Nombre de tépales dans un seul verticille : 6 / 2 ; organisation en deux séries. Source : https://en.wikipedia.org/wiki/Tulip"
+      },
+      {
+        "valeur": 12,
+        "type": "erreur_frequente",
+        "note": "Double comptage des six tépales en comptant les deux faces : 6 × 2. Source : https://plants.ces.ncsu.edu/plants/tulipa/"
+      },
+      {
+        "valeur": 5,
+        "type": "autre_perimetre",
+        "note": "Nombre de pétales d’une fleur d’églantier, pas d’une tulipe. Source : https://climbers.lsa.umich.edu/rosa-canina/"
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "nature-eglantier-petales",
+    "enonce": "Combien de pétales possède normalement une fleur d’églantier ?",
+    "valeur": 5,
+    "valeur_a_retenir": 5,
+    "precision": 1,
+    "unite": "pétales",
+    "perimetre": "Rosa canina, fleur simple habituelle, hors fleurs anormales et roses horticoles doubles.",
+    "ancrage": "Une rose sauvage simple montre cinq pétales ; les roses de jardin peuvent en porter bien davantage.",
+    "source": {
+      "url": "https://climbers.lsa.umich.edu/rosa-canina/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.rsb.org.uk/images/2-Biology-Week-2018-Artwork/flower_poll/Royal-Society-of-Biology-flower-poll-resources-and-factfiles.pdf",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Nature et climat",
+    "tags": [
+      "Végétaux",
+      "Botanique",
+      "Fleurs",
+      "Roses"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère de botanique simple, accessible au collège avec le périmètre précisé."
+    },
+    "leurres": [
+      {
+        "valeur": 7,
+        "type": "autre_perimetre",
+        "note": "Nombre de folioles possible sur une feuille d’églantier, et non de pétales ; Michigan indique cinq à sept folioles. Source : https://climbers.lsa.umich.edu/rosa-canina/"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre de tépales d’une tulipe simple, pas de pétales d’églantier. Source : https://plants.ces.ncsu.edu/plants/tulipa/"
+      },
+      {
+        "valeur": 4,
+        "type": "erreur_frequente",
+        "note": "Oubli hypothétique d’un pétale dans la couronne : 5 − 1. Source : https://climbers.lsa.umich.edu/rosa-canina/"
+      },
+      {
+        "valeur": 3,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 9,
+        "type": "proche",
+        "note": "Valeur voisine proposée, pas un nombre de pétales de référence. Source : https://climbers.lsa.umich.edu/rosa-canina/"
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "arts-divine-comedie-chants",
+    "enonce": "Combien de chants compte la Divine Comédie de Dante ?",
+    "valeur": 100,
+    "valeur_a_retenir": 100,
+    "precision": 1,
+    "unite": "chants",
+    "perimetre": "Poème complet : Enfer, Purgatoire et Paradis, avec le chant d’introduction.",
+    "ancrage": "Un chant d’introduction et trois ensembles de trente-trois chants donnent cent chants.",
+    "source": {
+      "url": "https://expositions.bnf.fr/baudelaire/grand/bau_105.php",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.persee.fr/doc/arzan_1243-3616_2001_num_7_1_899",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Arts et culture",
+    "tags": [
+      "Littérature",
+      "Italie",
+      "Poésie",
+      "Dante"
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Décompte d’une œuvre classique relevant de la culture littéraire."
+    },
+    "leurres": [
+      {
+        "valeur": 99,
+        "type": "erreur_frequente",
+        "note": "Oubli du chant d’introduction : trois fois trente-trois. Source : https://www.persee.fr/doc/arzan_1243-3616_2001_num_7_1_899"
+      },
+      {
+        "valeur": 34,
+        "type": "autre_perimetre",
+        "note": "Nombre de chants de l’Enfer avec son introduction, pas du poème complet. Source : https://www.persee.fr/doc/arzan_1243-3616_2001_num_7_1_899"
+      },
+      {
+        "valeur": 200,
+        "type": "erreur_frequente",
+        "note": "Doublement hypothétique du total : 100 × 2. Source : https://expositions.bnf.fr/baudelaire/grand/bau_105.php"
+      },
+      {
+        "valeur": 80,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 90,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 120,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "geo-royaume-uni-nations",
+    "enonce": "Combien de nations constitutives composent le Royaume-Uni ?",
+    "valeur": 4,
+    "valeur_a_retenir": 4,
+    "precision": 1,
+    "unite": "nations",
+    "perimetre": "Angleterre, Écosse, pays de Galles et Irlande du Nord ; ni la République d’Irlande, ni les dépendances de la Couronne, ni les territoires d’outre-mer.",
+    "ancrage": "L’Irlande du Nord s’ajoute aux trois nations situées sur l’île de Grande-Bretagne.",
+    "source": {
+      "url": "https://commonslibrary.parliament.uk/research-briefings/cbp-10649/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://questions-statements.parliament.uk/written-questions/detail/2025-05-06/hl7177",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Géographie",
+    "tags": [
+      "Europe",
+      "Royaume-Uni",
+      "Administratif"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Distinction entre Royaume-Uni et Grande-Bretagne étudiée au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "Omission de l’Irlande du Nord : les trois nations de Grande-Bretagne seulement. Source : https://commonslibrary.parliament.uk/research-briefings/cbp-10649/"
+      },
+      {
+        "valeur": 5,
+        "type": "erreur_frequente",
+        "note": "Ajout erroné de la République d’Irlande aux quatre nations : 4 + 1. Source : https://commonslibrary.parliament.uk/research-briefings/cbp-10649/"
+      },
+      {
+        "valeur": 8,
+        "type": "erreur_frequente",
+        "note": "Double comptage hypothétique des quatre nations : 4 × 2. Source : https://commonslibrary.parliament.uk/research-briefings/cbp-10649/"
+      },
+      {
+        "valeur": 2,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 6,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "geo-japon-grandes-iles",
+    "enonce": "Combien de grandes îles principales distingue-t-on traditionnellement au Japon ?",
+    "valeur": 4,
+    "valeur_a_retenir": 4,
+    "precision": 1,
+    "unite": "îles",
+    "perimetre": "Décompte géographique traditionnel Hokkaidō, Honshū, Shikoku et Kyūshū, repris par le ministère japonais des Affaires étrangères ; pas toutes les îles de l’archipel.",
+    "ancrage": "Honshū, Hokkaidō, Kyūshū et Shikoku forment ce groupe de quatre grandes îles.",
+    "source": {
+      "url": "https://www.mofa.go.jp/territory/page1we_000006.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.mlit.go.jp/river/basic_info/english/land.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Géographie",
+    "tags": [
+      "Asie",
+      "Japon",
+      "Îles"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère de géographie mondiale accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 3,
+        "type": "erreur_frequente",
+        "note": "Omission hypothétique de Shikoku, la plus petite des quatre dans le groupe traditionnel : 4 − 1. Source : https://www.mofa.go.jp/territory/page1we_000006.html"
+      },
+      {
+        "valeur": 5,
+        "type": "erreur_frequente",
+        "note": "Ajout d’Okinawa aux quatre îles du groupe demandé ; hypothèse de périmètre élargi, pas la convention du ministère. Source : https://www.mofa.go.jp/territory/page1we_000006.html"
+      },
+      {
+        "valeur": 8,
+        "type": "erreur_frequente",
+        "note": "Doublement du groupe de quatre : 4 × 2. Source : https://www.mofa.go.jp/territory/page1we_000006.html"
+      },
+      {
+        "valeur": 2,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 6,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-chicxulub-diametre",
+    "enonce": "Quel est le diamètre de référence du cratère de Chicxulub ?",
+    "valeur": 180,
+    "valeur_a_retenir": 180,
+    "precision": 10,
+    "unite": "km",
+    "perimetre": "Diamètre apparent de la structure d’impact enfouie au Yucatán, valeur d’environ 180 km retenue par le LPI et Impact Earth ; arrondi à dix kilomètres, pas l’anneau de failles extérieur.",
+    "ancrage": "Le cratère s’étend sur près de deux cents kilomètres : l’objet qui l’a creusé était beaucoup plus petit.",
+    "source": {
+      "url": "https://www.lpi.usra.edu/science/kring/Chicxulub/discovery/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://impact.uwo.ca/impact-craters/map/?crater_id=26",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Terre et géologie",
+    "tags": [
+      "Amérique du Nord",
+      "Mexique",
+      "Impacts",
+      "Dimensions"
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "Repère géologique de culture scientifique, associé à un événement connu sans demander une date."
+    },
+    "leurres": [
+      {
+        "valeur": 90,
+        "type": "erreur_frequente",
+        "note": "Rayon obtenu en divisant le diamètre par deux : 180 / 2. Source : https://www.lpi.usra.edu/science/kring/Chicxulub/discovery/"
+      },
+      {
+        "valeur": 240,
+        "type": "autre_perimetre",
+        "note": "Diamètre de l’anneau de failles extérieur, pas du cratère ; LPI. Source : https://www.lpi.usra.edu/features/chicxulub/"
+      },
+      {
+        "valeur": 360,
+        "type": "erreur_frequente",
+        "note": "Doublement du diamètre déjà donné : 180 × 2. Source : https://www.lpi.usra.edu/science/kring/Chicxulub/discovery/"
+      },
+      {
+        "valeur": 140,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 160,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 220,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "terre-grandes-extinctions",
+    "enonce": "Combien de grandes extinctions du passé regroupe-t-on sous le nom de « Big Five » ?",
+    "valeur": 5,
+    "valeur_a_retenir": 5,
+    "precision": 1,
+    "unite": "extinctions",
+    "perimetre": "Les cinq crises majeures traditionnellement identifiées depuis le début du Phanérozoïque ; exclut la crise actuelle et les épisodes moins massifs.",
+    "ancrage": "La disparition des dinosaures non aviens correspond à la dernière de ces cinq grandes crises passées.",
+    "source": {
+      "url": "https://www.nhm.ac.uk/discover/what-is-mass-extinction-and-are-we-facing-a-sixth-one.html",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.amnh.org/explore/ology/ology-cards/031-extinction",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Terre et géologie",
+    "tags": [
+      "Paléontologie",
+      "Biodiversité",
+      "Extinctions"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère de l’histoire de la vie, abordable au collège grâce au périmètre traditionnel explicite."
+    },
+    "leurres": [
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Ajout de la crise actuelle aux cinq crises du passé ; c’est le sens du débat sur une sixième extinction. Source : https://www.nhm.ac.uk/discover/what-is-mass-extinction-and-are-we-facing-a-sixth-one.html"
+      },
+      {
+        "valeur": 4,
+        "type": "erreur_frequente",
+        "note": "Omission hypothétique de la crise de fin du Crétacé : 5 − 1. Source : https://www.nhm.ac.uk/discover/what-is-mass-extinction-and-are-we-facing-a-sixth-one.html"
+      },
+      {
+        "valeur": 3,
+        "type": "autre_perimetre",
+        "note": "Nombre de grandes familles de roches, pas de crises biologiques. Source : https://www.nps.gov/subjects/geology/how-rocks-are-classified.htm"
+      },
+      {
+        "valeur": 9,
+        "type": "proche",
+        "note": "Valeur plausible de la réserve ; aucune liste scientifique de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur voisine proposée ; aucune liste de référence. Source : https://www.nhm.ac.uk/discover/what-is-mass-extinction-and-are-we-facing-a-sixth-one.html"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "physique-ph-neutre",
+    "enonce": "Quel est le pH d’une eau pure neutre à 25 °C ?",
+    "valeur": 7,
+    "valeur_a_retenir": 7,
+    "precision": 1,
+    "unite": "pH",
+    "perimetre": "Eau pure, valeur de neutralité à 25 °C ; la neutralité varie avec la température, l’eau exposée à l’air peut absorber du CO₂.",
+    "ancrage": "À cette température, 7 est le repère entre acide et basique sur l’échelle usuelle.",
+    "source": {
+      "url": "https://pubs.usgs.gov/twri/twri9a6/twri9a64/twri9a_6.4_ver2.0.pdf",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.usgs.gov/water-science-school/science/ph-and-water",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Physique et chimie",
+    "tags": [
+      "Chimie",
+      "Eau",
+      "Acidité"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Repère d’acidité et de basicité étudié au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 14,
+        "type": "autre_perimetre",
+        "note": "Borne supérieure de l’échelle usuelle présentée par l’USGS, pas la neutralité. Source : https://www.usgs.gov/water-science-school/science/ph-and-water"
+      },
+      {
+        "valeur": 6,
+        "type": "erreur_frequente",
+        "note": "Entier sous le repère de neutralité : eau acide à 25 °C selon le critère pH < 7 ; confusion proposée avec une eau légèrement acide. Source : https://www.usgs.gov/water-science-school/science/ph-and-water"
+      },
+      {
+        "valeur": 8,
+        "type": "erreur_frequente",
+        "note": "Entier au-dessus du repère de neutralité : eau basique à 25 °C selon pH > 7 ; confusion proposée avec une eau légèrement basique. Source : https://www.usgs.gov/water-science-school/science/ph-and-water"
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 9,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "astro-lune-vitesse-liberation",
+    "enonce": "Quelle est la vitesse de libération à la surface de la Lune ?",
+    "valeur": 2380,
+    "valeur_a_retenir": 2380,
+    "precision": 10,
+    "unite": "m/s",
+    "perimetre": "Vitesse théorique de départ sans propulsion ultérieure pour échapper à la gravitation lunaire seule, depuis sa surface ; 2,38 km/s, au pas de 10 m/s.",
+    "ancrage": "Sans atmosphère notable à traverser, la Lune demande une vitesse de libération d’environ 2,4 km/s.",
+    "source": {
+      "url": "https://ntrs.nasa.gov/api/citations/20140003573/downloads/20140003573.pdf",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.qrg.northwestern.edu/projects/vss/docs/space-environment/2-whats-escape-velocity.html",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Astronomie",
+    "tags": [
+      "Système solaire",
+      "Lune",
+      "Gravitation",
+      "Vitesse"
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "La gravitation est abordée au lycée ; la valeur lunaire exacte relève de la culture scientifique."
+    },
+    "leurres": [
+      {
+        "valeur": 4760,
+        "type": "erreur_frequente",
+        "note": "Doublement de la vitesse : 2380 × 2 ; confusion hypothétique, pas une autre mesure. Source : https://ntrs.nasa.gov/api/citations/20140003573/downloads/20140003573.pdf"
+      },
+      {
+        "valeur": 1190,
+        "type": "erreur_frequente",
+        "note": "Moitié de la vitesse de libération : 2380 / 2. Source : https://ntrs.nasa.gov/api/citations/20140003573/downloads/20140003573.pdf"
+      },
+      {
+        "valeur": 8570,
+        "type": "autre_unite",
+        "note": "Conversion en km/h arrondie à dix : 2380 × 3,6 ≈ 8570, prise à tort pour des m/s. Source : https://ntrs.nasa.gov/api/citations/20140003573/downloads/20140003573.pdf"
+      },
+      {
+        "valeur": 1980,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 2580,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 3180,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "construction-kheops-hauteur-originale",
+    "enonce": "Quelle était la hauteur originale de la pyramide de Khéops ?",
+    "valeur": 146.5,
+    "valeur_a_retenir": 147,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "Hauteur reconstruite de la pyramide achevée, environ 146,5–146,7 m selon les références, arrondie au mètre ; pas la hauteur actuelle.",
+    "ancrage": "Le sommet d’origine dépassait les cent quarante mètres ; l’édifice a depuis perdu une partie de sa hauteur.",
+    "source": {
+      "url": "https://egymonuments.gov.eg/monuments/the-great-pyramid/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Constructions et transports",
+    "tags": [
+      "Afrique",
+      "Égypte",
+      "Monuments",
+      "Dimensions"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Monument très connu ; la distinction entre hauteur originale et actuelle est explicite."
+    },
+    "leurres": [
+      {
+        "valeur": 294,
+        "type": "erreur_frequente",
+        "note": "Doublement de la hauteur arrondie : 147 × 2. Source : https://egymonuments.gov.eg/monuments/the-great-pyramid/"
+      },
+      {
+        "valeur": 74,
+        "type": "erreur_frequente",
+        "note": "Moitié de la hauteur arrondie au mètre : 147 / 2 ≈ 74. Source : https://egymonuments.gov.eg/monuments/the-great-pyramid/"
+      },
+      {
+        "valeur": 481,
+        "type": "autre_unite",
+        "note": "Hauteur originale exprimée en pieds, environ 481 ; confusion d’unité à partir de 146,6 / 0,3048. Source : https://egymonuments.gov.eg/monuments/the-great-pyramid/"
+      },
+      {
+        "valeur": 127,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 137,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 157,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "construction-golden-gate-longueur",
+    "enonce": "Quelle est la longueur totale du Golden Gate Bridge, accès compris ?",
+    "valeur": 2737,
+    "valeur_a_retenir": 2740,
+    "precision": 10,
+    "unite": "m",
+    "perimetre": "Longueur totale d’une culée à l’autre, accès compris, selon le gestionnaire ; pas la seule travée centrale ni la partie suspendue. Longueur de 2737 m arrondie à dix mètres.",
+    "ancrage": "La longueur totale approche 2,74 km, alors que la seule travée centrale mesure 1,28 km.",
+    "source": {
+      "url": "https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://historicbridges.org/bridges/browser/?bridgebrowser=california/goldengate/",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Constructions et transports",
+    "tags": [
+      "Amérique du Nord",
+      "États-Unis",
+      "Ponts",
+      "Dimensions"
+    ],
+    "difficulte": {
+      "cran": 3,
+      "justification": "La valeur précise et le périmètre de cet ouvrage relèvent de la culture générale."
+    },
+    "leurres": [
+      {
+        "valeur": 1280,
+        "type": "autre_perimetre",
+        "note": "Longueur de la travée centrale, pas du pont complet. Source : https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/"
+      },
+      {
+        "valeur": 1970,
+        "type": "autre_perimetre",
+        "note": "Partie suspendue : 1966 m arrondis à dix mètres, sans les accès. Source : https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/"
+      },
+      {
+        "valeur": 2330,
+        "type": "autre_perimetre",
+        "note": "Longueur d’un câble principal : 2332 m arrondis à dix mètres. Source : https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/"
+      },
+      {
+        "valeur": 2530,
+        "type": "proche",
+        "note": "Valeur voisine proposée, pas une dimension de référence. Source : https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/"
+      },
+      {
+        "valeur": 2830,
+        "type": "proche",
+        "note": "Valeur voisine proposée, pas une dimension de référence. Source : https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/"
+      },
+      {
+        "valeur": 3030,
+        "type": "proche",
+        "note": "Valeur voisine proposée, pas une dimension de référence. Source : https://www.goldengate.org/exhibits/facts-and-figures-about-the-bridge/"
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "transport-a380-envergure",
+    "enonce": "Quelle est l’envergure de l’Airbus A380 ?",
+    "valeur": 79.8,
+    "valeur_a_retenir": 80,
+    "precision": 1,
+    "unite": "m",
+    "perimetre": "A380-800 : distance d’un bout d’aile à l’autre, donnée autour de 79,75–79,8 m par Airbus, arrondie au mètre.",
+    "ancrage": "Ses ailes s’étendent sur environ quatre-vingts mètres, davantage que la longueur de son fuselage.",
+    "source": {
+      "url": "https://www.airbus.com/en/products-services/commercial-aircraft/passenger-aircraft/a380",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.airbus.com/sites/g/files/jlcbta136/files/2025-01/airbus-a380-facts-and-figures-february-2022.pdf",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Constructions et transports",
+    "tags": [
+      "Aviation",
+      "Airbus",
+      "Dimensions"
+    ],
+    "difficulte": {
+      "cran": 2,
+      "justification": "Avion emblématique ; ordre de grandeur accessible au collège."
+    },
+    "leurres": [
+      {
+        "valeur": 73,
+        "type": "autre_perimetre",
+        "note": "Longueur du fuselage donnée par Airbus, pas l’envergure. Source : https://www.airbus.com/en/products-services/commercial-aircraft/passenger-aircraft/a380"
+      },
+      {
+        "valeur": 24,
+        "type": "autre_perimetre",
+        "note": "Hauteur de l’avion donnée par Airbus ; leurre éloigné. Source : https://www.airbus.com/en/products-services/commercial-aircraft/passenger-aircraft/a380"
+      },
+      {
+        "valeur": 160,
+        "type": "erreur_frequente",
+        "note": "Double comptage des deux demi-ailes en prenant 80 m pour une seule : 80 × 2. Source : https://www.airbus.com/en/products-services/commercial-aircraft/passenger-aircraft/a380"
+      },
+      {
+        "valeur": 64,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 88,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 96,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "histoire-premiere-guerre-duree",
+    "enonce": "Combien d’années a duré la Première Guerre mondiale, à l’année près ?",
+    "valeur": 4.29,
+    "valeur_a_retenir": 4,
+    "precision": 1,
+    "unite": "ans",
+    "perimetre": "Du déclenchement en juillet 1914 à l’armistice de novembre 1918, environ quatre ans et trois mois ; arrondi à l’année, pas les traités de paix ultérieurs.",
+    "ancrage": "On retient quatre ans de guerre, même si l’on traverse cinq années du calendrier : 1914 à 1918.",
+    "source": {
+      "url": "https://www.nam.ac.uk/explore/first-world-war",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://airandspace.si.edu/explore/stories/world-war-i",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Histoire",
+    "tags": [
+      "Monde",
+      "Conflits",
+      "Temps",
+      "Première Guerre mondiale"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Durée d’un événement historique majeur connue dès la fin du primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 5,
+        "type": "erreur_frequente",
+        "note": "Nombre d’années calendaires touchées, inclusivement de 1914 à 1918 : 1918 − 1914 + 1. Source : https://www.nam.ac.uk/explore/first-world-war"
+      },
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Durée de référence de la Seconde Guerre mondiale, de 1939 à 1945. Source : https://www.nam.ac.uk/explore/second-world-war"
+      },
+      {
+        "valeur": 8,
+        "type": "erreur_frequente",
+        "note": "Doublement de la durée arrondie, en comptant deux fronts comme deux périodes successives : 4 × 2. Source : https://www.nam.ac.uk/explore/first-world-war"
+      },
+      {
+        "valeur": 2,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 3,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 7,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "histoire-seconde-guerre-duree",
+    "enonce": "Combien d’années a duré la Seconde Guerre mondiale selon le repère 1939–1945 ?",
+    "valeur": 6,
+    "valeur_a_retenir": 6,
+    "precision": 1,
+    "unite": "ans",
+    "perimetre": "Du début du conflit en Europe en septembre 1939 à la capitulation japonaise de septembre 1945 ; repère chronologique usuel, pas les conflits asiatiques antérieurs.",
+    "ancrage": "La guerre se termine en Europe en mai 1945, mais se poursuit jusqu’en septembre dans le Pacifique.",
+    "source": {
+      "url": "https://www.nam.ac.uk/explore/second-world-war",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://www.awm.gov.au/articles/second-world-war",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Histoire",
+    "tags": [
+      "Monde",
+      "Conflits",
+      "Temps",
+      "Seconde Guerre mondiale"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Durée d’un conflit majeur étudié dès la fin du primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 7,
+        "type": "erreur_frequente",
+        "note": "Nombre d’années calendaires touchées de 1939 à 1945 inclus : 1945 − 1939 + 1. Source : https://www.nam.ac.uk/explore/second-world-war"
+      },
+      {
+        "valeur": 4,
+        "type": "autre_perimetre",
+        "note": "Durée arrondie de la Première Guerre mondiale. Source : https://www.nam.ac.uk/explore/first-world-war"
+      },
+      {
+        "valeur": 12,
+        "type": "erreur_frequente",
+        "note": "Double comptage des six ans, en additionnant à tort les durées des théâtres européen et pacifique : 6 × 2. Source : https://www.nam.ac.uk/explore/second-world-war"
+      },
+      {
+        "valeur": 3,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 8,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "histoire-merveilles-antiquite",
+    "enonce": "Combien de monuments comprend la liste traditionnelle des merveilles du monde antique ?",
+    "valeur": 7,
+    "valeur_a_retenir": 7,
+    "precision": 1,
+    "unite": "monuments",
+    "perimetre": "Liste traditionnelle des Sept Merveilles du monde antique, pas les listes modernes ni le nombre de monuments encore debout.",
+    "ancrage": "La pyramide de Khéops est la seule de ces sept merveilles encore largement conservée.",
+    "source": {
+      "url": "https://digitalarchive.rds.ie/items/show/4848",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://education.nationalgeographic.org/resource/seven-wonders-ancient-world/",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Histoire",
+    "tags": [
+      "Antiquité",
+      "Monuments",
+      "Patrimoine"
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Expression très connue et repère de culture générale accessible dès le primaire."
+    },
+    "leurres": [
+      {
+        "valeur": 6,
+        "type": "autre_perimetre",
+        "note": "Nombre de merveilles de la liste qui ne subsistent plus comme monuments complets : 7 − 1. Source : https://education.nationalgeographic.org/resource/seven-wonders-ancient-world/"
+      },
+      {
+        "valeur": 8,
+        "type": "erreur_frequente",
+        "note": "Ajout erroné d’une merveille supplémentaire à la liste de sept : 7 + 1. Source : https://digitalarchive.rds.ie/items/show/4848"
+      },
+      {
+        "valeur": 14,
+        "type": "erreur_frequente",
+        "note": "Addition de deux listes de sept monuments, ancienne et hypothétique moderne : 7 × 2. Source : https://digitalarchive.rds.ie/items/show/4848"
+      },
+      {
+        "valeur": 4,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 5,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 9,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "histoire-code-civil-articles-origine",
+    "enonce": "Combien d’articles comptait le Code civil français à sa promulgation en 1804 ?",
+    "valeur": 2281,
+    "valeur_a_retenir": 2281,
+    "precision": 1,
+    "unite": "articles",
+    "perimetre": "Édition originale de 1804, du premier au dernier article numéroté 2281 ; pas le Code civil contemporain modifié.",
+    "ancrage": "Des milliers de règles sont alors réunies en un même code ; le compte concerne l’édition originale, pas celle d’aujourd’hui.",
+    "source": {
+      "url": "https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/consulat-et-premier-empire/la-codification-juridique",
+      "consulte_le": "2026-11-08",
+      "recoupement": "https://criminocorpus.org/en/landmarks/le-code-civil/versions/1053/2281/pdf/",
+      "idee": "Programme scolaire et culture générale ; diversification prévue par #36 et #38, lot 5"
+    },
+    "theme": "Histoire",
+    "tags": [
+      "Europe",
+      "France",
+      "Droit",
+      "Napoléon"
+    ],
+    "difficulte": {
+      "cran": 4,
+      "justification": "Le décompte exact des articles de l’édition originale est une connaissance spécialisée, hors des attendus scolaires."
+    },
+    "leurres": [
+      {
+        "valeur": 36,
+        "type": "autre_perimetre",
+        "note": "Nombre de lois réunies dans le code d’origine, pas d’articles ; Assemblée nationale.  Source : https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/consulat-et-premier-empire/la-codification-juridique"
+      },
+      {
+        "valeur": 4562,
+        "type": "erreur_frequente",
+        "note": "Double comptage des 2281 articles : 2281 × 2. Source : https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/consulat-et-premier-empire/la-codification-juridique"
+      },
+      {
+        "valeur": 1141,
+        "type": "erreur_frequente",
+        "note": "Moitié du compte, arrondie à l’entier : 2281 / 2 ≈ 1141. Source : https://www.assemblee-nationale.fr/dyn/histoire-et-patrimoine/consulat-et-premier-empire/la-codification-juridique"
+      },
+      {
+        "valeur": 2081,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 2381,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      },
+      {
+        "valeur": 2681,
+        "type": "proche",
+        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+      }
+    ],
+    "statut": "brouillon",
+    "langue": "fr"
+  }
+]
