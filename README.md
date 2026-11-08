@@ -16,6 +16,12 @@ npm run dev
 `?meca=palier|qcm|plusmoins` change le mode de réponse du joueur (aussi réglable sur l'accueil ; par défaut : palier) — `&reset=1` efface la partie du jour. Les joueurs et les jours sont simulés : bouton « Nouveau joueur », puis « Simuler le jour suivant » ou ← / → dans le panneau de test.
 Le petit bouton ⚙ en bas à droite ouvre les outils de test, qui permettent de changer de jour simulé, de rejouer le défi, de changer de joueur, de revoir le tuto, d’effacer les stats ou la collection, et de lancer les 8 combinaisons.
 
+## Consultation des fiches
+
+Dans **Test → Contenu → Consulter les fiches (tableau)**, ouvrir la consultation en lecture seule (`?admin=fiches`). Le tableau affiche tout le stock, même si les brouillons sont exclus du jeu : recherche sans distinction d’accents, filtres combinables (thème, tag, difficulté, statut, lot, unité et sources à compléter), tri par colonne et pagination. Toucher un énoncé ouvre les valeurs, le périmètre, l’ancrage, les sources, la justification de difficulté et les leurres. La vue ne modifie ni les fiches ni les données des joueurs.
+
+Les lots historiques sont indexés dans `src/lib/lots-historiques.ts` d’après les PR #12 et #14 ; les nouveaux fichiers `lot-N.json` donnent leur numéro de lot. Une nouvelle fiche dans un fichier historique doit être ajoutée à cet index pour que son lot soit connu.
+
 ## Contenu
 
 Questions : tous les fichiers `src/data/*.json` (format : `src/lib/types.ts`), les fichiers historiques peuvent contenir plusieurs thèmes : le champ `theme` détermine l’album. Le champ `tags` sert au classement interne. Répartition et objectifs des prochains lots : [thèmes et tags internes](docs/contenu/proposition-reorganisation-themes.md). Dans le prototype, les brouillons sont joués aussi (`?brouillons=0` pour ne garder que les fiches validées).
