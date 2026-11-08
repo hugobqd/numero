@@ -49,7 +49,7 @@ Six chantiers, mais **pas six agents permanents** :
 
 ## Prochaine étape
 
-**2026-11-08 — #26 construite** sur `codex/issue-26-carte` : question et révélation dans une carte commune, ivoire en clair et pétrole profond en sombre (remplace l’ivoire imposé en sombre, décision de Hugo), accent turquoise, en-tête et énoncé conservés à la révélation. Les trois modes restent disponibles ; animation courte désactivée avec la réduction des animations. À relire et merger par Hugo.
+**2026-11-08 — #26 construite** sur `codex/issue-26-carte` : question et révélation dans une carte commune, ivoire en clair et pétrole profond en sombre (remplace l’ivoire imposé en sombre, décision de Hugo), accent turquoise, en-tête et énoncé conservés à la révélation. Même palette partagée avec les blocs de thèmes et les listes de fiches de Ma collection, à la demande de Hugo. Les trois modes restent disponibles ; animation courte désactivée avec la réduction des animations. À relire et merger par Hugo.
 
 **2026-11-08 — #21 construite** sur `codex/issue-21-revision` : révision 3 découvertes / 1 en cours / 1 acquise ; les places de chaque état sont réservées avant de compléter avec l’état le moins avancé disponible. Jamais révisées d’abord, puis les plus anciennes ; sans doublon, même si la collection compte moins de 5 fiches. L’exigence selon l’état, déjà présente, est conservée : la proposition de supprimer les niveaux a été annulée par Hugo. Vérification : `npm test` (9 cas), `npm run check` et `npm run build`. À relire et merger par Hugo ; prochaine construction à choisir dans le GitHub Project. #19 et #20 sont déjà livrées sur `main` (PR #41 et #42), même si #20 reste ouverte.
 

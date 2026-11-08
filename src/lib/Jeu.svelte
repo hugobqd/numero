@@ -77,7 +77,7 @@
 
 {#if courante}
   {@const ill = illustration(themePrincipal(courante))}
-  <article class="carte-jeu" class:retournee={enRevelation} aria-label={`Fiche ${themePrincipal(courante)}`}>
+  <article class="carte-jeu palette-fiche" class:retournee={enRevelation} aria-label={`Fiche ${themePrincipal(courante)}`}>
     <div class="entete">
       {#if ill}<img class="vignette" src={ill.src} alt="" width="600" height="600" />{:else}<span class="vignette sans-illustration" aria-hidden="true"></span>{/if}
       <div>
@@ -127,17 +127,6 @@
 <style>
   /* La carte occupe la colonne existante : sa largeur inclut ses marges intérieures. */
   .carte-jeu {
-    --surface: #f0e6d3;
-    --surface-2: #e2d8c3;
-    --fg: #1d3540;
-    --muted: #486066;
-    --border: #d5c9b1;
-    --accent: #137e78;
-    --accent-texte: #116d68;
-    --action: #137e78;
-    --action-texte: #fff8e8;
-    --carte-fond: #fff8e8;
-    --carte-ombre: #142d3429;
     display: grid;
     gap: 1.5rem;
     padding: clamp(1.1rem, 4vw, 2rem);
@@ -166,21 +155,6 @@
   .carte-jeu :global(button:focus-visible),
   .carte-jeu :global(a:focus-visible) {
     outline-color: var(--accent);
-  }
-  @media (prefers-color-scheme: dark) {
-    .carte-jeu {
-      --carte-fond: #182e35;
-      --carte-ombre: #091c24a6;
-      --surface: #29434a;
-      --surface-2: #38565d;
-      --fg: #f4ead4;
-      --muted: #bdcecc;
-      --border: #48666b;
-      --accent: #65dec6;
-      --accent-texte: #81ead5;
-      --action: #65dec6;
-      --action-texte: #182e35;
-    }
   }
   @media (prefers-reduced-motion: reduce) {
     .carte-jeu .face { animation: none; }

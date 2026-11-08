@@ -34,7 +34,7 @@
   const nbAReviser = $derived(stock.filter((q) => collection[q.id]?.etat === 'decouverte').length);
 </script>
 
-<section class="collection">
+<section class="collection palette-fiche">
   <div class="entete">
     <h2>Ma collection</h2>
     <p class="compteur"><strong>{nbPossedees}</strong> / {stock.length} fiches</p>
@@ -178,9 +178,16 @@
     justify-items: start;
     text-align: left;
     padding: 0 0 0.9rem;
-    background: var(--surface);
+    background: var(--carte-fond);
     border-radius: var(--rayon-carte);
     overflow: hidden;
+  }
+  .carte:hover {
+    background: var(--surface);
+  }
+  .collection > .principal:hover {
+    background: var(--accent-texte);
+    color: var(--action-texte);
   }
   .carte > :not(.illustration) {
     margin-inline: 0.8rem;
@@ -201,14 +208,14 @@
   .sans-illustration {
     display: block;
     aspect-ratio: 1;
-    background: var(--ivoire);
+    background: var(--surface);
   }
   .carte > .jauge {
     width: calc(100% - 1.6rem);
   }
   .encouragement {
     padding: 1rem 1.1rem;
-    background: var(--surface);
+    background: var(--carte-fond);
     border-radius: var(--rayon-carte);
     color: var(--muted);
   }
@@ -300,10 +307,10 @@
     overflow: hidden;
   }
   .fiches li + li {
-    border-top: 1px solid var(--bg);
+    border-top: 1px solid var(--border);
   }
   details {
-    background: var(--surface);
+    background: var(--carte-fond);
     border-left: 4px solid var(--accent);
   }
   summary {
@@ -313,6 +320,13 @@
     padding: 0.6rem 0.75rem;
     cursor: pointer;
     list-style: none;
+  }
+  summary:hover {
+    background: var(--surface);
+  }
+  summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -3px;
   }
   summary::-webkit-details-marker {
     display: none;
