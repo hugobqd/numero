@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { untrack } from 'svelte';
+  import { onMount, untrack } from 'svelte';
 
   let { valeur, depuis, onaffiche }: {
     valeur: number;
@@ -8,8 +8,31 @@
   } = $props();
   let affichee = $state(untrack(() => depuis));
   let anime = $state(false);
+  let element: HTMLSpanElement;
+  let dansLecran = $state(false);
+  let pageVisible = $state(false);
+
+  onMount(() => {
+    const observer = new IntersectionObserver(([entree]) => {
+      dansLecran = entree.isIntersecting && entree.intersectionRatio >= 0.99;
+    }, { threshold: [0, 0.99] });
+    observer.observe(element);
+    const actualiserPage = () => { pageVisible = document.visibilityState === 'visible'; };
+    actualiserPage();
+    document.addEventListener('visibilitychange', actualiserPage);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', actualiserPage);
+    };
+  });
 
   $effect(() => {
+    // Ne pas consommer le gain hors champ ou dans un onglet masqué.
+    // La fermeture de l'effet annule aussi toute animation déjà commencée.
+    if (!dansLecran || !pageVisible) {
+      anime = false;
+      return;
+    }
     const cible = valeur;
     const memoriser = onaffiche;
     const debut = untrack(() => affichee);
@@ -45,7 +68,7 @@
   });
 </script>
 
-<span class="compteur chiffres" aria-hidden="true">
+<span bind:this={element} class="compteur chiffres" aria-hidden="true">
   <span class="reserve">{valeur}</span>
   {#key valeur}<span class="valeur" class:anime>{affichee}</span>{/key}
 </span>
