@@ -423,13 +423,7 @@
 {/snippet}
 
 <main>
-  {#if enJeu}
-    <header class="en-jeu">
-      <button type="button" class="fermer" onclick={fermerJeu} aria-label="Fermer et revenir à l'accueil">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
-      </button>
-    </header>
-  {:else}
+  {#if !enJeu}
     <header>
       <h1>
         {#if joueur?.tutoFait}
@@ -464,6 +458,7 @@
     </section>
   {:else if ecran === 'tuto'}
     <Jeu
+      onfermer={fermerJeu}
       questions={questionsTuto}
       {meca}
       graine={0}
@@ -506,6 +501,7 @@
     />
   {:else if ecran === 'defi'}
     <Jeu
+      onfermer={fermerJeu}
       {questions}
       {meca}
       graine={pochette?.graine ?? numero}
@@ -551,6 +547,7 @@
     />
   {:else if ecran === 'revision' && revision}
     <Jeu
+      onfermer={fermerJeu}
       questions={revision.questions}
       {meca}
       graine={revision.graine}
@@ -899,30 +896,6 @@
     .pastille .chiffres {
       font-size: 0.9rem;
     }
-  }
-  header.en-jeu {
-    justify-content: flex-end;
-    padding: 0;
-  }
-  .fermer {
-    display: grid;
-    place-items: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    padding: 0;
-    background: none;
-    color: var(--fg);
-  }
-  .fermer:hover {
-    background: var(--surface);
-  }
-  .fermer svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
   }
   /* Barre du bas : fixe, sur toute la largeur, contenu centré sur la colonne du jeu. */
   .barre {

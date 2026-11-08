@@ -24,6 +24,7 @@
     enCours = $bindable(null),
     onresultat,
     onfin,
+    onfermer,
   }: {
     questions: Question[];
     /** Mode de réponse : réglage du joueur, appliqué dès la question suivante s'il change. */
@@ -40,6 +41,7 @@
     enCours?: { question: Question; graine: number; difficulte: Difficulte } | null;
     onresultat: (r: ResultatQuestion, q: Question) => void;
     onfin: () => void;
+    onfermer: () => void;
   } = $props();
 
   let enRevelation = $state(false);
@@ -93,6 +95,9 @@
           </p>
         {/if}
       </div>
+      <button type="button" class="fermer" onclick={onfermer} aria-label="Fermer et revenir à l'accueil">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
     </div>
     <h1>{courante.enonce}</h1>
     {#key `${courante.id}-${enRevelation}`}
@@ -182,10 +187,23 @@
   }
   .entete {
     display: grid;
-    grid-template-columns: 3.5rem minmax(0, 1fr);
+    grid-template-columns: 3.5rem minmax(0, 1fr) 2.75rem;
     gap: 0.85rem;
     align-items: center;
   }
+  .fermer {
+    display: grid;
+    place-items: center;
+    align-self: start;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    background: transparent;
+    color: var(--muted);
+    border-radius: 50%;
+  }
+  .fermer:hover { background: var(--surface); color: var(--fg); }
+  .fermer svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
   .vignette {
     border-radius: var(--rayon-petit);
     width: 3.5rem;
