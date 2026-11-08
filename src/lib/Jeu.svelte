@@ -7,6 +7,7 @@
   import Revelation from './Revelation.svelte';
   import type { Difficulte } from './propositions';
   import { illustration } from './themes';
+  import { fade } from 'svelte/transition';
 
   /**
    * Déroulé d'une série de questions (défi d'une pochette ou révision) : question, puis révélation,
@@ -72,25 +73,18 @@
   }
 </script>
 
-{#if enRevelation && courante && dernierResultat}
-  <Revelation
-    question={courante}
-    resultat={dernierResultat}
-    onsuivante={suivante}
-    dernier={resultats.length >= questions.length}
-  />
-{:else if courante}
+{#if courante}
   {@const ill = illustration(themePrincipal(courante))}
-  <section class="question">
+  <article class="carte-jeu" class:retournee={enRevelation} aria-label={`Fiche ${themePrincipal(courante)}`}>
     <div class="entete">
       {#if ill}<img class="vignette" src={ill.src} alt="" width="600" height="600" />{:else}<span class="vignette sans-illustration" aria-hidden="true"></span>{/if}
       <div>
         <p class="progression">
-          {#if etiquette}{`${etiquette} · `}{/if}Question {resultats.length + 1} / {questions.length} · {themePrincipal(courante)}
+          {#if etiquette}{`${etiquette} · `}{/if}Question {index + 1} / {questions.length} · {themePrincipal(courante)}
         </p>
         <!-- Avancement : un segment par question. -->
         <ol class="segments" aria-hidden="true">
-          {#each questions as _, i}<li class:fait={i < resultats.length} class:courant={i === resultats.length}></li>{/each}
+          {#each questions as _, i}<li class:fait={i < resultats.length} class:courant={i === index}></li>{/each}
         </ol>
         <!-- Le statut brouillon n'est pas montré aux joueurs (il reste visible dans les outils de test). -->
         {#if difficulte(courante) !== 'normale'}
@@ -100,28 +94,95 @@
         {/if}
       </div>
     </div>
-    <h2>{courante.enonce}</h2>
-    {#if aide}<p class="aide"><strong>Comment jouer :</strong> {AIDES[meca]}</p>{/if}
-    {#key courante.id}
-      {#if meca === 'palier'}
-        <Palier question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
-      {:else if meca === 'qcm'}
-        <Qcm question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
-      {:else}
-        <PlusMoins question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
-      {/if}
+    <h1>{courante.enonce}</h1>
+    {#key `${courante.id}-${enRevelation}`}
+      <div class="face" in:fade={{ duration: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 160 }}>
+        {#if enRevelation && dernierResultat}
+          <Revelation
+            question={courante}
+            resultat={dernierResultat}
+            onsuivante={suivante}
+            dernier={resultats.length >= questions.length}
+          />
+        {:else}
+          {#if aide}<p class="aide"><strong>Comment jouer :</strong> {AIDES[meca]}</p>{/if}
+          {#if meca === 'palier'}
+            <Palier question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
+          {:else if meca === 'qcm'}
+            <Qcm question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
+          {:else}
+            <PlusMoins question={courante} numero={graine} difficulte={difficulte(courante)} onrepondre={repondre} />
+          {/if}
+        {/if}
+      </div>
     {/key}
-  </section>
+  </article>
 {/if}
 
 <style>
-  .question {
+  /* La carte occupe la colonne existante : sa largeur inclut ses marges intérieures. */
+  .carte-jeu {
+    --surface: #f0e6d3;
+    --surface-2: #e2d8c3;
+    --fg: #1d3540;
+    --muted: #486066;
+    --border: #d5c9b1;
+    --accent: #137e78;
+    --accent-texte: #116d68;
+    --action: #137e78;
+    --action-texte: #fff8e8;
+    --carte-fond: #fff8e8;
+    --carte-ombre: #142d3429;
     display: grid;
-    gap: 1rem;
+    gap: 1.5rem;
+    padding: clamp(1.1rem, 4vw, 2rem);
+    border-radius: 24px;
+    background: var(--carte-fond);
+    color: var(--fg);
+    box-shadow: 0 14px 36px -20px var(--carte-ombre), 0 3px 0 var(--surface-2);
+    container-type: inline-size;
+  }
+  .face {
+    display: grid;
+    gap: 1.25rem;
+    min-width: 0;
+  }
+  .retournee .face {
+    animation: retourner 220ms ease-out;
+  }
+  @keyframes retourner {
+    from { transform: perspective(900px) rotateY(-10deg); }
+    to { transform: perspective(900px) rotateY(0); }
+  }
+  .carte-jeu :global(button.principal:hover) {
+    background: var(--accent-texte);
+    color: var(--action-texte);
+  }
+  .carte-jeu :global(button:focus-visible),
+  .carte-jeu :global(a:focus-visible) {
+    outline-color: var(--accent);
+  }
+  @media (prefers-color-scheme: dark) {
+    .carte-jeu {
+      --carte-fond: #182e35;
+      --carte-ombre: #091c24a6;
+      --surface: #29434a;
+      --surface-2: #38565d;
+      --fg: #f4ead4;
+      --muted: #bdcecc;
+      --border: #48666b;
+      --accent: #65dec6;
+      --accent-texte: #81ead5;
+      --action: #65dec6;
+      --action-texte: #182e35;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .carte-jeu .face { animation: none; }
   }
   .entete {
     display: grid;
-    grid-template-columns: 3.5rem 1fr;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
     gap: 0.85rem;
     align-items: center;
   }
@@ -134,12 +195,12 @@
   }
   /* Thème sans illustration (Sport, Jeux, Musique pour l'instant) : un carré ivoire à sa place. */
   .sans-illustration {
-    background: var(--ivoire);
+    background: var(--surface);
   }
   .progression {
     margin: 0;
     color: var(--muted);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
   .segments {
     list-style: none;
@@ -166,9 +227,9 @@
     }
   }
   /* L'énoncé est une phrase : largeur normale, pas l'étroit des affiches. */
-  h2 {
+  h1 {
     margin: 0.25rem 0 0;
-    font-size: 1.65rem;
+    font-size: clamp(1.35rem, 4.8vw, 1.65rem);
     font-weight: 600;
     font-stretch: 100%;
     line-height: 1.2;
