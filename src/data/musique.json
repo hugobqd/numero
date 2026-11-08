@@ -15,7 +15,8 @@
       "recoupement": "https://www.kawaius.com/faq/how-many-keys-are-on-a-piano",
       "idee": "Culture générale ; musique"
     },
-    "themes": ["Musique", "Humanité"],
+    "theme": "Arts et culture",
+    "tags": ["Musique", "Instruments", "Piano"],
     "leurres": [
       {
         "valeur": 85,

@@ -14,7 +14,8 @@
       "recoupement": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
       "idee": "Stock du prototype ; programme de physique-chimie du cycle 4 (structure de l'Univers et du système solaire, ordres de grandeur des distances astronomiques)"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Terre", "Soleil", "Distance"],
     "leurres": [
       {
         "valeur": 147100000,
@@ -67,7 +68,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Terre",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Terre et géologie",
+    "tags": ["Terre", "Dimensions", "Système solaire"],
     "leurres": [
       {
         "valeur": 6371,
@@ -120,7 +122,8 @@
       "recoupement": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Soleil", "Dimensions"],
     "leurres": [
       {
         "valeur": 870000,
@@ -177,7 +180,8 @@
       "recoupement": "https://en.wikipedia.org/wiki/Mars",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Mars", "Orbites", "Temps"],
     "leurres": [
       {
         "valeur": 669,
@@ -229,7 +233,8 @@
       "recoupement": "https://apod.nasa.gov/apod/ap180722.html",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie"],
+    "theme": "Astronomie",
+    "tags": ["Univers", "Cosmologie", "Temps"],
     "leurres": [
       {
         "valeur": 13500000000,
@@ -286,7 +291,8 @@
       "recoupement": "https://arxiv.org/abs/1510.07674",
       "idee": "Stock du prototype ; programme d'enseignement scientifique de 1re (« Le Soleil, notre source d'énergie »)"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Soleil", "Température"],
     "leurres": [
       {
         "valeur": 5499,
@@ -344,7 +350,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Soleil",
       "idee": "Stock du prototype ; programme de physique-chimie du cycle 4 (vitesse de la lumière, distances astronomiques)"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Lumière", "Distance", "Temps"],
     "leurres": [
       {
         "valeur": 491,
@@ -397,7 +404,8 @@
       "recoupement": "https://www.sci.news/space/jupiter-size-shape-14536.html",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Jupiter", "Dimensions"],
     "leurres": [
       {
         "valeur": 133684,
@@ -450,7 +458,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Terre",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Terre", "Orbites", "Vitesse"],
     "leurres": [
       {
         "valeur": 105400,
@@ -513,7 +522,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Plan%C3%A8te",
       "idee": "Liste de culture générale ; programme de sciences et technologie du cycle 3 (« situer la Terre dans le système solaire »)"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Planètes"],
     "leurres": [
       {
         "valeur": 9,
@@ -567,7 +577,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Ann%C3%A9e_sid%C3%A9rale",
       "idee": "Liste de culture générale ; programme de sciences et technologie du cycle 3 (mouvements de la Terre : rotation et révolution)"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Terre", "Orbites", "Temps"],
     "leurres": [
       {
         "valeur": 354,
@@ -620,7 +631,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Lune",
       "idee": "Liste de culture générale ; ordres de grandeur du système solaire (physique-chimie, cycle 4)"
     },
-    "themes": ["Astronomie", "Système solaire"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Lune", "Dimensions"],
     "leurres": [
       {
         "valeur": 1737,
@@ -680,7 +692,8 @@
       "recoupement": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-5-units-outside-si",
       "idee": "Liste de culture générale ; programme de mathématiques du cycle 3 (conversions de durées)"
     },
-    "themes": ["Astronomie", "Physique"],
+    "theme": "Nombres et mesures",
+    "tags": ["Temps", "Unités", "Conversions"],
     "leurres": [
       {
         "valeur": 88775,

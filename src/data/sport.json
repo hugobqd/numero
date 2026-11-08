@@ -14,7 +14,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Football",
       "idee": "Culture générale sportive"
     },
-    "themes": ["Sport"],
+    "theme": "Sport et jeux",
+    "tags": ["Football", "Règles", "Temps"],
     "leurres": [
       {
         "valeur": 120,
@@ -73,7 +74,8 @@
       "recoupement": "https://www.olympedia.org/results/56369?id=56412",
       "idee": "Culture générale sportive ; épreuve olympique très médiatisée"
     },
-    "themes": ["Sport"],
+    "theme": "Sport et jeux",
+    "tags": ["Athlétisme", "Course", "Distance"],
     "leurres": [
       {
         "valeur": 46145,
@@ -126,7 +128,8 @@
       "recoupement": "https://ak-static.cms.nba.com/wp-content/uploads/sites/4/2024/10/2024-25-Official-NBA-Playing-Rules.pdf",
       "idee": "Culture générale sportive"
     },
-    "themes": ["Sport"],
+    "theme": "Sport et jeux",
+    "tags": ["Basket-ball", "Matériel", "Dimensions"],
     "leurres": [
       {
         "valeur": 244,

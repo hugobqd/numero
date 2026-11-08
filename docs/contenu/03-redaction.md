@@ -22,7 +22,9 @@ Pour chaque nombre validé, écrire une fiche complète au format `Question`, av
 - **`ancrage`** : une comparaison mémorable, vraie et vérifiable.
 - **`mnemo`** : facultatif. Seulement s'il aide vraiment ; mieux vaut rien qu'un moyen bancal.
 - **`source`** : la source primaire (ou Wikipédia si elle la cite), avec la date de consultation ; `recoupement` : l'URL d'une seconde source qui confirme la valeur ; `idee` : où l'on a trouvé le sujet (« Wikipédia, ordres de grandeur », « programme de 5e »…).
-- **`themes`** : liste de thèmes, le premier est le thème principal. Réutiliser un thème existant quand il convient ; un nouveau thème tient en 2 ou 3 mots.
+- **`theme`** : un seul thème visible, choisi dans la liste v1 validée dans `docs/DECISIONS.md`. Respecter les frontières de `docs/contenu/proposition-reorganisation-themes.md`. Une nouvelle ouverture demande un arbitrage de Hugo.
+- **`tags`** : liste de tags internes, non affichés aux joueurs, pour filtrer et reclasser les fiches dans l’outil #9. Réutiliser les libellés existants (Europe, France, Administratif, Records…), sans doublons. Les tags ne participent ni à l’album ni à la diversité des pochettes.
+- **Orientation des prochains lots de #10** : suivre les ajouts indicatifs par thème du document de répartition, en privilégiant Nature et climat et les petits thèmes. Viser surtout tout public et grand public ; ne pas remplir un quota avec un sujet faible.
 - **`difficulte`** : `cran` de 1 à 4 (1 tout public : primaire ou nombre très connu ; 2 grand public : collège ; 3 curieux : lycée ou culture générale ; 4 pointu : hors programme) et une phrase de `justification` qui cite le niveau de programme quand il existe.
 
 ## Leurres : une réserve de 6 à 8

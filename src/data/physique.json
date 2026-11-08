@@ -14,7 +14,8 @@
       "recoupement": "https://en.wikipedia.org/wiki/Speed_of_sound",
       "idee": "Stock du prototype ; programme de physique-chimie (cycle 4, signaux sonores ; seconde, vitesse de propagation d'un signal sonore)"
     },
-    "themes": ["Physique"],
+    "theme": "Physique et chimie",
+    "tags": ["Acoustique", "Air", "Vitesse"],
     "leurres": [
       {
         "valeur": 331,
@@ -68,7 +69,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Kelvin",
       "idee": "Stock du prototype ; culture générale (échelles de température)"
     },
-    "themes": ["Physique"],
+    "theme": "Physique et chimie",
+    "tags": ["Eau", "Température", "Changements d’état", "Unités"],
     "leurres": [
       {
         "valeur": 273,
@@ -120,7 +122,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/%C3%89l%C3%A9ment_chimique",
       "idee": "Stock du prototype ; programme de physique-chimie (tableau périodique, cycle 4 dès la 4e, puis seconde)"
     },
-    "themes": ["Physique", "Chimie"],
+    "theme": "Physique et chimie",
+    "tags": ["Chimie", "Éléments"],
     "leurres": [
       {
         "valeur": 94,
@@ -172,7 +175,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Or",
       "idee": "Stock du prototype ; programme de physique-chimie de cycle 4 (masse volumique)"
     },
-    "themes": ["Physique"],
+    "theme": "Physique et chimie",
+    "tags": ["Métaux", "Or", "Masse volumique"],
     "leurres": [
       {
         "valeur": 22600,
@@ -226,7 +230,8 @@
       "recoupement": "https://pubchem.ncbi.nlm.nih.gov/element/Iron",
       "idee": "Stock du prototype ; programme de physique-chimie de cycle 4 (masse volumique)"
     },
-    "themes": ["Physique"],
+    "theme": "Physique et chimie",
+    "tags": ["Métaux", "Fer", "Masse volumique"],
     "leurres": [
       {
         "valeur": 8960,
@@ -278,7 +283,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Fer",
       "idee": "Stock du prototype ; culture générale (températures de fusion des métaux)"
     },
-    "themes": ["Physique"],
+    "theme": "Physique et chimie",
+    "tags": ["Métaux", "Fer", "Température", "Changements d’état"],
     "leurres": [
       {
         "valeur": 1811,
@@ -332,7 +338,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Tungst%C3%A8ne",
       "idee": "Stock du prototype ; culture générale, records des éléments"
     },
-    "themes": ["Physique", "Records"],
+    "theme": "Physique et chimie",
+    "tags": ["Métaux", "Tungstène", "Température", "Records"],
     "leurres": [
       {
         "valeur": 3695,
@@ -385,7 +392,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Pression_atmosph%C3%A9rique",
       "idee": "Stock du prototype ; culture générale (météo, atmosphère normale)"
     },
-    "themes": ["Physique"],
+    "theme": "Physique et chimie",
+    "tags": ["Atmosphère", "Pression"],
     "leurres": [
       {
         "valeur": 1084,
@@ -442,7 +450,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Vitesse_de_lib%C3%A9ration",
       "idee": "Stock du prototype ; culture générale (conquête spatiale)"
     },
-    "themes": ["Physique", "Astronomie"],
+    "theme": "Physique et chimie",
+    "tags": ["Gravitation", "Terre", "Espace", "Vitesse"],
     "leurres": [
       {
         "valeur": 7900,

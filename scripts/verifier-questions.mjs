@@ -7,7 +7,7 @@ import { join } from 'node:path';
 const DOSSIER = new URL('../src/data/', import.meta.url).pathname;
 const CRANS = { 1: 'tout public', 2: 'grand public', 3: 'curieux', 4: 'pointu' };
 const TYPES = ['erreur_frequente', 'autre_unite', 'autre_perimetre', 'proche'];
-const CHAMPS = ['id', 'enonce', 'valeur', 'valeur_a_retenir', 'precision', 'unite', 'perimetre', 'ancrage', 'source', 'themes', 'leurres', 'statut', 'langue'];
+const CHAMPS = ['id', 'enonce', 'valeur', 'valeur_a_retenir', 'precision', 'unite', 'perimetre', 'ancrage', 'source', 'theme', 'tags', 'leurres', 'statut', 'langue'];
 
 const zerosFinaux = (n) => {
   let z = 0;
@@ -42,13 +42,16 @@ for (const fichier of readdirSync(DOSSIER).filter((f) => f.endsWith('.json')).so
     if (ids.has(q.id)) err(`id en double (déjà dans ${ids.get(q.id)})`);
     ids.set(q.id, fichier);
 
-    // Thèmes : liste non vide, le premier est le thème principal.
-    const themes = Array.isArray(q.themes) ? q.themes : [];
-    if (q.themes !== undefined && !Array.isArray(q.themes)) err('themes doit être une liste');
-    if (themes.some((t) => typeof t !== 'string' || !t.trim())) err('themes : chaque thème doit être un texte non vide');
-    if (new Set(themes).size !== themes.length) err('themes : thème en double');
-    for (const t of themes) if (typeof t === 'string' && t.trim().split(/\s+/).length > 3) avert(`thème « ${t} » : 2 ou 3 mots visés`);
-    if (themes.length) parTheme.set(themes[0], (parTheme.get(themes[0]) ?? 0) + 1);
+    // Le thème visible détermine l’album ; les tags servent uniquement au classement interne.
+    if (typeof q.theme !== 'string' || !q.theme.trim()) err('theme doit être un texte non vide');
+    else parTheme.set(q.theme, (parTheme.get(q.theme) ?? 0) + 1);
+    if (q.themes !== undefined) err('themes retiré : utiliser theme et tags');
+    if (!Array.isArray(q.tags)) err('tags doit être une liste');
+    else {
+      if (q.tags.some((t) => typeof t !== 'string' || !t.trim() || t !== t.trim())) err('tags : chaque tag doit être un texte non vide sans espaces superflus');
+      const normalises = q.tags.filter((t) => typeof t === 'string').map((t) => t.normalize('NFC').toLocaleLowerCase('fr'));
+      if (new Set(normalises).size !== normalises.length) err('tags : tag en double');
+    }
 
     // Difficulté : obligatoire pour une fiche validée.
     if (q.difficulte === undefined) {

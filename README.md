@@ -18,7 +18,7 @@ Le petit bouton ⚙ en bas à droite ouvre les outils de test, qui permettent de
 
 ## Contenu
 
-Questions : tous les fichiers `src/data/*.json` (format : `src/lib/types.ts`), un par thématique. Dans le prototype, les brouillons sont joués aussi (`?brouillons=0` pour ne garder que les fiches validées).
+Questions : tous les fichiers `src/data/*.json` (format : `src/lib/types.ts`), les fichiers historiques peuvent contenir plusieurs thèmes : le champ `theme` détermine l’album. Le champ `tags` sert au classement interne. Répartition et objectifs des prochains lots : [thèmes et tags internes](docs/contenu/proposition-reorganisation-themes.md). Dans le prototype, les brouillons sont joués aussi (`?brouillons=0` pour ne garder que les fiches validées).
 
 ```bash
 npm run verifier   # contrôle les fiches (format, pas, leurres)

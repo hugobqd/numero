@@ -3,7 +3,7 @@
   import { illustration } from './themes';
 
   // Écran d'accueil d'un nouveau venu : les six thèmes en mosaïque.
-  const MOSAIQUE = ['Astronomie', 'Corps humain', 'Terre et géologie', 'Physique', 'Animaux', 'Humanité']
+  const MOSAIQUE = ['Astronomie', 'Corps humain', 'Terre et géologie', 'Physique et chimie', 'Animaux', 'Géographie']
     .map(illustration)
     .filter((i) => i !== null);
 
