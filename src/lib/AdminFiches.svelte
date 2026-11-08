@@ -172,7 +172,7 @@
   .nombre { text-align: right; }
   .valeur, .lot { white-space: nowrap; }
   .identite { width: 34%; min-width: 290px; }
-  .ouvrir { display: block; border: none; padding: 0; border-radius: 0; min-height: auto; background: none; text-align: left; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+  .ouvrir { display: block; border: none; padding: 0; border-radius: 0; min-height: auto; background: none; text-align: left; font-weight: 500; text-decoration: none; }
   .ouvrir:hover { background: none; }
   small { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; }
   .pastille { display: inline-block; padding: 3px 8px; border-radius: 999px; background: var(--pastille-fond, #eee); color: var(--pastille-texte, #555); font-size: 12px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
