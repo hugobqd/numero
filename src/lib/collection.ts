@@ -151,18 +151,33 @@ export function fichesPossedees(c: Collection, stock: Question[]): Question[] {
 }
 
 /**
- * Fiches à réviser : les moins avancées d'abord, puis celles révisées il y a le plus longtemps
- * (ou jamais), avec un peu de hasard entre fiches équivalentes.
+ * Révision : 3 découvertes, 1 en cours, 1 acquise. On réserve d’abord les places de chaque état,
+ * puis on complète les places manquantes avec l’état le moins avancé encore disponible.
+ * Dans chaque état : jamais révisées d’abord, puis les plus anciennes ; hasard à égalité.
  */
 export function choisirRevision(c: Collection, stock: Question[], nombre = FICHES_PAR_REVISION): Question[] {
-  return fichesPossedees(c, stock)
+  const disponibles = fichesPossedees(c, stock)
     .map((q) => ({ q, e: c[q.id], hasard: Math.random() }))
     .sort(
       (a, b) =>
         ETATS.indexOf(a.e.etat) - ETATS.indexOf(b.e.etat) ||
         (a.e.derniereRevision ?? '').localeCompare(b.e.derniereRevision ?? '') ||
         a.hasard - b.hasard,
-    )
-    .slice(0, nombre)
-    .map(({ q }) => q);
+    );
+  const choisies: Question[] = [];
+  const prendre = (etat: Etat): boolean => {
+    const index = disponibles.findIndex(({ e }) => e.etat === etat);
+    if (index === -1) return false;
+    choisies.push(disponibles.splice(index, 1)[0].q);
+    return true;
+  };
+
+  const repartition: Etat[] = ['decouverte', 'decouverte', 'decouverte', 'en-cours', 'acquise'];
+  for (const etat of repartition.slice(0, nombre)) prendre(etat);
+  for (const etat of ETATS) {
+    while (choisies.length < nombre && prendre(etat)) {
+      // Compléter sans prendre les places réservées aux autres états.
+    }
+  }
+  return choisies;
 }
