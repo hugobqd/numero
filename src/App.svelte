@@ -240,7 +240,12 @@
 
   function commencerTuto() {
     if (!offerte) offerte = ouvrirPochetteOfferte(numero, aRecuperer);
-    if (!offerte) return;
+    // Un compte de test peut déjà posséder tout le stock : aucune pochette à tirer.
+    if (!offerte) {
+      if (joueur) majJoueur(joueur.id, { tutoFait: true });
+      ecran = 'accueil';
+      return;
+    }
     bonusRecente = false;
     versionPochettes++;
     ecran = 'tuto';
@@ -449,6 +454,7 @@
         <div class="pastilles">
           <p class="pastille" aria-label="Série : {serie} jour{serie > 1 ? 's' : ''} d'affilée">Série <span class="chiffres">{serie}</span></p>
           <p class="pastille">Neurones <span class="chiffres">{neurones.total}</span></p>
+          <p class="pastille" aria-label="Collection : {possedees.length} fiches sur {stock.length}">Fiches <span class="chiffres">{possedees.length}</span></p>
         </div>
       {/if}
     </header>
@@ -784,6 +790,8 @@
   }
   header {
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     align-items: center;
     justify-content: space-between;
     padding: 0.25rem 0;
@@ -871,7 +879,7 @@
     justify-content: flex-end;
     gap: 0.35rem;
   }
-  /* Série et neurones : pastilles crème, mot et chiffre en capitales étroites. */
+  /* Série, neurones et collection : pastilles crème et chiffres réactifs. */
   .pastille {
     margin: 0;
     padding: 0.3rem 0.75rem;
@@ -889,28 +897,36 @@
     font-weight: 900;
     margin-left: 0.15rem;
   }
-  /* Petit écran : la marque et les deux pastilles tiennent sur une ligne. */
-  @media (max-width: 26rem) {
+  /* Bandeau mobile : marque et trois compteurs sur une seule ligne. */
+  @media (max-width: 30rem) {
+    header {
+      flex-wrap: nowrap;
+      gap: 0.35rem;
+    }
     h1 {
-      font-size: 1.35rem;
+      font-size: 1.15rem;
+      flex: none;
     }
     h1,
     .titre {
-      gap: 0.4rem;
-    }
-    .sigle {
-      width: 1.6rem;
-      height: 1.6rem;
-    }
-    .pastilles {
       gap: 0.25rem;
     }
+    .sigle {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    .pastilles {
+      flex-wrap: nowrap;
+      gap: 0.15rem;
+    }
     .pastille {
-      padding: 0.25rem 0.5rem;
-      font-size: 0.75rem;
+      padding: 0.25rem 0.3rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.01em;
     }
     .pastille .chiffres {
-      font-size: 0.9rem;
+      font-size: 0.75rem;
+      margin-left: 0.1rem;
     }
   }
   /* Barre du bas : fixe, sur toute la largeur, contenu centré sur la colonne du jeu. */

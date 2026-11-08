@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" role="img" aria-labelledby="title"><title id="title">Télescope géométrique bleu pétrole devant une lune ocre</title><rect width="300" height="300" fill="#F4EAD4"/>
+<circle cx="180" cy="113" r="74" fill="#D3DDD2"/>
+<path d="M113 81a74 74 0 0 1 133 1" fill="none" stroke="#608887" stroke-width="1.4"/>
+<circle cx="227" cy="58" r="19" fill="#C88E3E"/>
+<path d="M209 50c8 0 26 10 35 18" fill="none" stroke="#F4EAD4" stroke-width="3"/>
+<path d="M55 90h14m-7-7v14M243 174h10m-5-5v10" stroke="#2A535A" stroke-width="2"/>
+<circle cx="87" cy="56" r="3" fill="#2A535A"/>
+<path d="M60 218h184" stroke="#9DB4AD" stroke-width="1.4"/>
+<path d="M157 173l-35 87h14l30-75 38 75h15l-45-87" fill="#2A535A"/>
+<path d="M166 183v58" stroke="#608887" stroke-width="4"/>
+<g transform="rotate(-32 150 143)">
+<path d="M80 127h133v38H80z" fill="#2A535A"/>
+<path d="M80 127h133v9H80z" fill="#608887"/>
+<path d="M111 127h8v38h-8z" fill="#F4EAD4"/>
+<path d="M200 121h15v50h-15z" fill="#1D3540"/>
+<path d="M65 136h15v20H65z" fill="#1D3540"/>
+<path d="M60 132h7v28h-7z" fill="#C88E3E"/>
+</g>
+<circle cx="162" cy="173" r="13" fill="#1D3540"/>
+<circle cx="162" cy="173" r="5" fill="#C88E3E"/></svg>

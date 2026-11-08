@@ -1,0 +1,98 @@
+[
+  {
+    "theme": "Astronomie",
+    "illustration": "astronomie.svg",
+    "icon": "astronomie-24.svg",
+    "color": "#386882",
+    "accent": "#FA7254",
+    "subject": "Satellite en orbite"
+  },
+  {
+    "theme": "Corps humain",
+    "illustration": "corps-humain.svg",
+    "icon": "corps-humain-24.svg",
+    "color": "#CC7887",
+    "accent": "#EE5069",
+    "subject": "Cœur anatomique simplifié"
+  },
+  {
+    "theme": "Animaux",
+    "illustration": "animaux.svg",
+    "icon": "animaux-24.svg",
+    "color": "#B97959",
+    "accent": "#F35C53",
+    "subject": "Léopard en marche"
+  },
+  {
+    "theme": "Géographie",
+    "illustration": "geographie.svg",
+    "icon": "geographie-24.svg",
+    "color": "#568BB6",
+    "accent": "#FC7052",
+    "subject": "Globe terrestre"
+  },
+  {
+    "theme": "Terre et géologie",
+    "illustration": "terre-geologie.svg",
+    "icon": "terre-geologie-24.svg",
+    "color": "#886E9C",
+    "accent": "#FF7354",
+    "subject": "Volcan en éruption"
+  },
+  {
+    "theme": "Physique et chimie",
+    "illustration": "physique-chimie.svg",
+    "icon": "physique-chimie-24.svg",
+    "color": "#429991",
+    "accent": "#D5ED56",
+    "subject": "Atome et orbites"
+  },
+  {
+    "theme": "Constructions et transports",
+    "illustration": "constructions-transports.svg",
+    "icon": "constructions-transports-24.svg",
+    "color": "#AD825F",
+    "accent": "#EC634C",
+    "subject": "Train de face"
+  },
+  {
+    "theme": "Histoire",
+    "illustration": "histoire.svg",
+    "icon": "histoire-24.svg",
+    "color": "#967263",
+    "accent": "#72C9D6",
+    "subject": "Colonne antique"
+  },
+  {
+    "theme": "Arts et culture",
+    "illustration": "arts-culture.svg",
+    "icon": "arts-culture-24.svg",
+    "color": "#AD628E",
+    "accent": "#FF704F",
+    "subject": "Palette et pinceau"
+  },
+  {
+    "theme": "Sport et jeux",
+    "illustration": "sport-jeux.svg",
+    "icon": "sport-jeux-24.svg",
+    "color": "#7374B5",
+    "accent": "#FF875B",
+    "subject": "Raquette et balle"
+  },
+  {
+    "theme": "Nombres et mesures",
+    "illustration": "nombres-mesures.svg",
+    "icon": "nombres-mesures-24.svg",
+    "color": "#758D9E",
+    "accent": "#F06472",
+    "subject": "Compas de géométrie"
+  },
+  {
+    "theme": "Nature et climat",
+    "illustration": "nature-climat.svg",
+    "icon": "nature-climat-24.svg",
+    "color": "#729263",
+    "accent": "#FF7955",
+    "subject": "Pousse végétale"
+  }
+]

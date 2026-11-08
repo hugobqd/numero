@@ -1,0 +1,74 @@
+[
+  {
+    "theme": "Astronomie",
+    "illustration": "astronomie.svg",
+    "icon": "astronomie-24.svg",
+    "color": "#2A535A"
+  },
+  {
+    "theme": "Corps humain",
+    "illustration": "corps-humain.svg",
+    "icon": "corps-humain-24.svg",
+    "color": "#CB6F71"
+  },
+  {
+    "theme": "Animaux",
+    "illustration": "animaux.svg",
+    "icon": "animaux-24.svg",
+    "color": "#C75936"
+  },
+  {
+    "theme": "Géographie",
+    "illustration": "geographie.svg",
+    "icon": "geographie-24.svg",
+    "color": "#447FAB"
+  },
+  {
+    "theme": "Terre et géologie",
+    "illustration": "terre-geologie.svg",
+    "icon": "terre-geologie-24.svg",
+    "color": "#785775"
+  },
+  {
+    "theme": "Physique et chimie",
+    "illustration": "physique-chimie.svg",
+    "icon": "physique-chimie-24.svg",
+    "color": "#328F89"
+  },
+  {
+    "theme": "Constructions et transports",
+    "illustration": "constructions-transports.svg",
+    "icon": "constructions-transports-24.svg",
+    "color": "#B78436"
+  },
+  {
+    "theme": "Histoire",
+    "illustration": "histoire.svg",
+    "icon": "histoire-24.svg",
+    "color": "#90613F"
+  },
+  {
+    "theme": "Arts et culture",
+    "illustration": "arts-culture.svg",
+    "icon": "arts-culture-24.svg",
+    "color": "#A74F78"
+  },
+  {
+    "theme": "Sport et jeux",
+    "illustration": "sport-jeux.svg",
+    "icon": "sport-jeux-24.svg",
+    "color": "#5967A4"
+  },
+  {
+    "theme": "Nombres et mesures",
+    "illustration": "nombres-mesures.svg",
+    "icon": "nombres-mesures-24.svg",
+    "color": "#6D8799"
+  },
+  {
+    "theme": "Nature et climat",
+    "illustration": "nature-climat.svg",
+    "icon": "nature-climat-24.svg",
+    "color": "#60854D"
+  }
+]

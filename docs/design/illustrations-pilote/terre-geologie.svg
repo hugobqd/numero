@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300" role="img" aria-labelledby="title"><title id="title">Coupe de la Terre prune révélant ses couches et son noyau</title><rect width="300" height="300" fill="#F4EAD4"/>
+<circle cx="150" cy="148" r="92" fill="#785775"/>
+<path d="M60 130l31-30 30 8 8 24-24 19-6 37-28 6a92 92 0 0 1-11-64M133 60l31 20-12 21-20-5-14-24" fill="#B499AB"/>
+<path d="M150 56a92 92 0 0 1 92 92h-92z" fill="#1D3540"/>
+<path d="M150 66a82 82 0 0 1 82 82h-82z" fill="#A6809B"/>
+<path d="M150 84a64 64 0 0 1 64 64h-64z" fill="#C75936"/>
+<path d="M150 109a39 39 0 0 1 39 39h-39z" fill="#C88E3E"/>
+<path d="M150 133a15 15 0 0 1 15 15h-15z" fill="#F4EAD4"/>
+<path d="M150 56v92h92" fill="none" stroke="#F4EAD4" stroke-width="2"/>
+<path d="M80 249h143M63 81h12m-6-6v12" stroke="#785775" stroke-width="1.4"/>
+<g transform="translate(213 204)"><path d="M0 9l11-15 12 15-4 31H4z" fill="#B499AB"/><path d="M11-6l1 20-8 26m8-26 7 26M0 9l12 5 11-5" fill="none" stroke="#785775" stroke-width="1.4"/></g>
+<circle cx="232" cy="65" r="4" fill="#C88E3E"/></svg>

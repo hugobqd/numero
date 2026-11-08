@@ -79,7 +79,7 @@
   {@const ill = illustration(themePrincipal(courante))}
   <article class="carte-jeu palette-fiche" class:retournee={enRevelation} aria-label={`Fiche ${themePrincipal(courante)}`}>
     <div class="entete">
-      {#if ill}<img class="vignette" src={ill.src} alt="" width="600" height="600" />{:else}<span class="vignette sans-illustration" aria-hidden="true"></span>{/if}
+      {#if ill}<img class="vignette" src={ill.icone} alt="" width="24" height="24" />{:else}<span class="vignette sans-illustration" aria-hidden="true"></span>{/if}
       <div>
         <p class="progression">
           {#if etiquette}{`${etiquette} · `}{/if}Question {index + 1} / {questions.length} · {themePrincipal(courante)}
@@ -161,7 +161,7 @@
   }
   .entete {
     display: grid;
-    grid-template-columns: 3.5rem minmax(0, 1fr) 2.75rem;
+    grid-template-columns: 24px minmax(0, 1fr) 2.75rem;
     gap: 0.85rem;
     align-items: center;
   }
@@ -180,12 +180,12 @@
   .fermer svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
   .vignette {
     border-radius: var(--rayon-petit);
-    width: 3.5rem;
-    height: 3.5rem;
-    object-fit: cover;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
     display: block;
   }
-  /* Thème sans illustration (Sport, Jeux, Musique pour l'instant) : un carré ivoire à sa place. */
+  /* Un thème inconnu conserve la place de sa vignette. */
   .sans-illustration {
     background: var(--surface);
   }

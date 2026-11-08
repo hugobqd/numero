@@ -1,0 +1,98 @@
+[
+  {
+    "theme": "Astronomie",
+    "illustration": "astronomie.svg",
+    "icon": "astronomie-24.svg",
+    "color": "#386882",
+    "accent": "#FA7254",
+    "subject": "Fusée et croissant de lune"
+  },
+  {
+    "theme": "Corps humain",
+    "illustration": "corps-humain.svg",
+    "icon": "corps-humain-24.svg",
+    "color": "#CC7887",
+    "accent": "#EE5069",
+    "subject": "Main et repère du corps"
+  },
+  {
+    "theme": "Animaux",
+    "illustration": "animaux.svg",
+    "icon": "animaux-24.svg",
+    "color": "#B97959",
+    "accent": "#F35C53",
+    "subject": "Portrait de léopard"
+  },
+  {
+    "theme": "Géographie",
+    "illustration": "geographie.svg",
+    "icon": "geographie-24.svg",
+    "color": "#568BB6",
+    "accent": "#FC7052",
+    "subject": "Rose des vents"
+  },
+  {
+    "theme": "Terre et géologie",
+    "illustration": "terre-geologie.svg",
+    "icon": "terre-geologie-24.svg",
+    "color": "#886E9C",
+    "accent": "#FF7354",
+    "subject": "Relief en strates géologiques"
+  },
+  {
+    "theme": "Physique et chimie",
+    "illustration": "physique-chimie.svg",
+    "icon": "physique-chimie-24.svg",
+    "color": "#429991",
+    "accent": "#D5ED56",
+    "subject": "Prisme et faisceaux colorés"
+  },
+  {
+    "theme": "Constructions et transports",
+    "illustration": "constructions-transports.svg",
+    "icon": "constructions-transports-24.svg",
+    "color": "#AD825F",
+    "accent": "#EC634C",
+    "subject": "Architecture et skyline"
+  },
+  {
+    "theme": "Histoire",
+    "illustration": "histoire.svg",
+    "icon": "histoire-24.svg",
+    "color": "#967263",
+    "accent": "#72C9D6",
+    "subject": "Sablier"
+  },
+  {
+    "theme": "Arts et culture",
+    "illustration": "arts-culture.svg",
+    "icon": "arts-culture-24.svg",
+    "color": "#AD628E",
+    "accent": "#FF704F",
+    "subject": "Masque de théâtre"
+  },
+  {
+    "theme": "Sport et jeux",
+    "illustration": "sport-jeux.svg",
+    "icon": "sport-jeux-24.svg",
+    "color": "#7374B5",
+    "accent": "#FF875B",
+    "subject": "Cavalier d’échecs"
+  },
+  {
+    "theme": "Nombres et mesures",
+    "illustration": "nombres-mesures.svg",
+    "icon": "nombres-mesures-24.svg",
+    "color": "#758D9E",
+    "accent": "#F06472",
+    "subject": "Boulier"
+  },
+  {
+    "theme": "Nature et climat",
+    "illustration": "nature-climat.svg",
+    "icon": "nature-climat-24.svg",
+    "color": "#729263",
+    "accent": "#FF7955",
+    "subject": "Soleil, nuage et pluie"
+  }
+]
