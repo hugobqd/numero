@@ -132,10 +132,12 @@
     | 'revision'
     | 'bilanRevision'
     | 'reglages';
+  // L'introduction ne revient pas après l'ouverture du premier défi, même inachevé.
+  // « Revoir le tuto » efface explicitement cette pochette pour retrouver la bienvenue.
   let ecran = $state<Ecran>(
     !joueur
       ? 'joueurs'
-      : !joueur.tutoFait
+      : !joueur.tutoFait && !lirePochette(ID_POCHETTE_OFFERTE)
         ? 'tutoIntro'
         : 'accueil',
   );
@@ -462,7 +464,7 @@
   {#if !enJeu}
     <header>
       <h1>
-        {#if joueur?.tutoFait}
+        {#if joueur && ecran !== 'tutoIntro'}
           <button type="button" class="titre" onclick={() => (ecran = 'accueil')}>{@render marque()}</button>
         {:else}{@render marque()}{/if}
       </h1>
