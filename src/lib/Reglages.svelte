@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Mecanique } from './types';
+  import Installation from './Installation.svelte';
   import { MECAS } from './params';
 
   /** Mes réglages : le mode de réponse et le changement de joueur. */
@@ -47,6 +48,7 @@
       <button type="button" onclick={onjoueurs}>Changer de joueur</button>
     </div>
   </div>
+  <Installation />
 </section>
 
 <style>

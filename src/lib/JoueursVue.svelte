@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Installation from './Installation.svelte';
   import { nbFichesDe, type Joueur } from './joueurs';
   import { illustration } from './themes';
 
@@ -74,6 +75,8 @@
       {/each}
     </ul>
   {/if}
+
+  {#if !joueurs.length}<Installation />{/if}
 
   {#if onretour}<button type="button" onclick={onretour}>← Retour</button>{/if}
 </section>
