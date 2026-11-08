@@ -15,7 +15,8 @@
       "recoupement": "https://coolcosmos.ipac.caltech.edu/ask/57-How-large-is-Earth",
       "idee": "Stock du prototype ; programme d'enseignement scientifique de 1re (« La Terre, un astre singulier », mesure de la circonférence par Ératosthène)"
     },
-    "themes": ["Terre et géologie"],
+    "theme": "Terre et géologie",
+    "tags": ["Terre", "Dimensions"],
     "leurres": [
       {
         "valeur": 24901,
@@ -72,7 +73,8 @@
       "recoupement": "https://www.mathworks.com/help/map/ref/wgs84ellipsoid.html",
       "idee": "Stock du prototype ; culture générale (dimensions de la Terre)"
     },
-    "themes": ["Terre et géologie"],
+    "theme": "Terre et géologie",
+    "tags": ["Terre", "Surface"],
     "leurres": [
       {
         "valeur": 362000000,
@@ -124,7 +126,8 @@
       "recoupement": "https://oceanservice.noaa.gov/facts/oceandepth.html",
       "idee": "Stock du prototype ; Wikipédia, records géographiques (points extrêmes de la Terre)"
     },
-    "themes": ["Terre et géologie", "Records"],
+    "theme": "Géographie",
+    "tags": ["Océan Pacifique", "Océans", "Profondeur", "Records"],
     "leurres": [
       {
         "valeur": 11034,
@@ -179,7 +182,8 @@
       "recoupement": "https://fr.euronews.com/2026/10/14/mont-blanc-en-france-le-sommet-gagne-pres-de-2-m-a-4-807-m",
       "idee": "Stock du prototype ; programme de géographie (cycle 3, grands repères géographiques de la France) et actualité des campagnes de mesure"
     },
-    "themes": ["Terre et géologie", "France"],
+    "theme": "Géographie",
+    "tags": ["Europe", "France", "Italie", "Alpes", "Montagnes", "Altitude"],
     "leurres": [
       {
         "valeur": 4748,
@@ -244,7 +248,8 @@
       "recoupement": "https://oceanservice.noaa.gov/facts/oceandepth.html",
       "idee": "Stock du prototype ; culture générale (océans)"
     },
-    "themes": ["Terre et géologie", "Océans"],
+    "theme": "Géographie",
+    "tags": ["Monde", "Océans", "Profondeur"],
     "leurres": [
       {
         "valeur": 3729,
@@ -301,7 +306,8 @@
       "recoupement": "https://www.vliz.be/imisdocs/publications/280249.pdf",
       "idee": "Stock du prototype ; Wikipédia, records géographiques (lacs)"
     },
-    "themes": ["Terre et géologie", "Records"],
+    "theme": "Géographie",
+    "tags": ["Asie", "Russie", "Lacs", "Profondeur", "Records"],
     "leurres": [
       {
         "valeur": 1471,
@@ -354,7 +360,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Loire",
       "idee": "Stock du prototype ; programme de géographie (cycle 3, grands repères géographiques de la France : les fleuves)"
     },
-    "themes": ["Terre et géologie", "France"],
+    "theme": "Géographie",
+    "tags": ["Europe", "France", "Fleuves", "Distance"],
     "leurres": [
       {
         "valeur": 1012,
@@ -412,7 +419,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Seine",
       "idee": "Programme de géographie (cycle 3, grands repères géographiques de la France : les fleuves) ; pendant de la fiche sur la Loire"
     },
-    "themes": ["Terre et géologie", "France"],
+    "theme": "Géographie",
+    "tags": ["Europe", "France", "Fleuves", "Distance"],
     "leurres": [
       {
         "valeur": 1006,

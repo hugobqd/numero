@@ -30,8 +30,12 @@ Ce que mesure exactement le nombre d'une fiche (« chez l'adulte », « distance
 Comparaison mémorable qui accompagne la valeur à retenir à la révélation.
 
 **Thème** :
-Grand domaine qui regroupe des fiches (astronomie, corps humain…). Une fiche peut appartenir à plusieurs thèmes ; le premier est son thème principal.
+Grand domaine visible qui regroupe les fiches dans un album (astronomie, corps humain…). Chaque fiche appartient à un seul thème.
 _Avoid_ : thématique, catégorie
+
+**Tag interne** :
+Mot-clé de classement d’une fiche, invisible au joueur, utilisé pour la retrouver et faciliter les réorganisations. Une fiche peut porter plusieurs tags internes (Europe, France, Administratif…), indépendamment de son thème.
+_Avoid_ : thème secondaire
 
 **Source** :
 Référence citée par une fiche pour prouver sa valeur à retenir, de préférence l'organisme qui mesure le nombre. À distinguer de la source d'idée, où l'on a trouvé le sujet.

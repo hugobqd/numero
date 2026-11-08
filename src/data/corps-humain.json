@@ -15,7 +15,8 @@
       "recoupement": "https://www.msdmanuals.com/fr/accueil/troubles-bucco-dentaires/biologie-de-la-cavit%C3%A9-buccale-et-des-dents/biologie-des-dents",
       "idee": "Stock du prototype ; programme du cycle 2 (Questionner le monde, « modifications de la dentition »)"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Anatomie", "Dents"],
     "leurres": [
       {
         "valeur": 28,
@@ -72,7 +73,8 @@
       "recoupement": "https://www.sciencehistory.org/stories/magazine/joe-hin-tjio-counts-chromosomes/",
       "idee": "Stock du prototype ; programme de SVT du cycle 4 (stabilité génétique des individus, caryotype en 3e)"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Génétique", "Cellules"],
     "leurres": [
       {
         "valeur": 48,
@@ -125,7 +127,8 @@
       "recoupement": "https://my.clevelandclinic.org/health/body/21998-cranial-nerves",
       "idee": "Stock du prototype ; Wikipédia, anatomie humaine"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Anatomie", "Système nerveux"],
     "leurres": [
       {
         "valeur": 13,
@@ -178,7 +181,8 @@
       "recoupement": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system",
       "idee": "Stock du prototype ; Wikipédia, anatomie humaine"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Anatomie", "Système nerveux"],
     "leurres": [
       {
         "valeur": 33,
@@ -231,7 +235,8 @@
       "recoupement": "https://doi.org/10.1186/2041-9139-2-11",
       "idee": "Stock du prototype ; culture générale (la girafe a autant de vertèbres cervicales que nous)"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Anatomie", "Squelette"],
     "leurres": [
       {
         "valeur": 8,
@@ -284,7 +289,8 @@
       "recoupement": "https://www.bmj.com/content/359/bmj.j5468",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Physiologie", "Température"],
     "leurres": [
       {
         "valeur": 98,
@@ -337,7 +343,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Main",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Anatomie", "Squelette", "Main"],
     "leurres": [
       {
         "valeur": 26,
@@ -395,7 +402,8 @@
       "recoupement": "https://www.larousse.fr/encyclopedie/medical/pied/15371",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Anatomie", "Squelette", "Pied"],
     "leurres": [
       {
         "valeur": 28,
@@ -448,7 +456,8 @@
       "recoupement": "https://www.healthline.com/health/bone-health/how-many-ribs-do-men-have",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Anatomie", "Squelette"],
     "leurres": [
       {
         "valeur": 12,
@@ -505,7 +514,8 @@
       "recoupement": "https://en.wikipedia.org/wiki/Blood_volume",
       "idee": "Liste de culture générale ; programme de sciences et technologie du cycle 3 (fonctions de nutrition, circulation sanguine)"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Physiologie", "Sang", "Volume"],
     "leurres": [
       {
         "valeur": 3,
@@ -558,7 +568,8 @@
       "recoupement": "https://en.wikipedia.org/wiki/Robert_Wadlow",
       "idee": "Wikipédia, records ; Guinness World Records"
     },
-    "themes": ["Corps humain", "Records"],
+    "theme": "Corps humain",
+    "tags": ["Croissance", "Dimensions", "Records"],
     "leurres": [
       {
         "valeur": 251,

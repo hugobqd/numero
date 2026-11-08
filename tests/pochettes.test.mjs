@@ -36,7 +36,7 @@ function scenario(faire) {
   Math.random = () => 0;
   try {
     const candidates = Array.from({ length: 12 }, (_, i) => ({
-      id: `fiche-${i}`, themes: [`Thème ${i % 3}`], difficulte: { cran: 1 },
+      id: `fiche-${i}`, theme: `Thème ${i % 3}`, tags: [], difficulte: { cran: 1 },
     }));
     faire(candidates, donnees);
   } finally {
@@ -85,4 +85,18 @@ test('effacer une pochette de test libère ses réservations', () => scenario((c
   const jour = ouvrirPochetteDuJour(1, candidates);
   effacerPochette(jour.id);
   assert.deepEqual(ouvrirPochetteBonus(1, 1, candidates).fiches, jour.fiches);
+}));
+
+test('la diversité des pochettes repose sur les thèmes, même avec des tags identiques', () => scenario((candidates) => {
+  candidates.forEach((q) => { q.tags = ['France', 'Records']; });
+  const pochette = ouvrirPochetteDuJour(1, candidates);
+  const themes = new Set(pochette.fiches.map((id) => candidates.find((q) => q.id === id).theme));
+  assert.equal(themes.size, 3);
+}));
+
+test('des tags variés ne remplacent pas un thème manquant dans une pochette', () => scenario((candidates) => {
+  candidates.forEach((q, i) => { q.theme = 'Géographie'; q.tags = [`Tag ${i}`]; });
+  const pochette = ouvrirPochetteDuJour(1, candidates);
+  assert.equal(pochette.fiches.length, 5);
+  assert.equal(new Set(pochette.fiches).size, 5);
 }));

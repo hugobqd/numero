@@ -14,7 +14,8 @@
       "recoupement": "https://en.wikipedia.org/wiki/Blue_whale",
       "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Mammifères", "Cétacés", "Masse", "Records"],
     "leurres": [
       {
         "valeur": 130,
@@ -71,7 +72,8 @@
       "recoupement": "https://en.wikipedia.org/wiki/Cheetah",
       "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Mammifères", "Félins", "Vitesse", "Records"],
     "leurres": [
       {
         "valeur": 112,
@@ -124,7 +126,8 @@
       "recoupement": "https://www.smithsonianmag.com/air-space-magazine/falling-with-the-falcon-7491768/",
       "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Oiseaux", "Vitesse", "Records"],
     "leurres": [
       {
         "valeur": 403,
@@ -177,7 +180,8 @@
       "recoupement": "https://www.nhm.ac.uk/discover/what-is-the-biggest-bird-in-the-world.html",
       "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Oiseaux", "Dimensions", "Records"],
     "leurres": [
       {
         "valeur": 311,
@@ -231,7 +235,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Girafe",
       "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Mammifères", "Dimensions", "Records"],
     "leurres": [
       {
         "valeur": 550,
@@ -288,7 +293,8 @@
       "recoupement": "https://www.guinnessworldrecords.com/world-records/341455-longest-dive-by-a-mammal",
       "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Mammifères", "Cétacés", "Apnée", "Records"],
     "leurres": [
       {
         "valeur": 138,
@@ -346,7 +352,8 @@
       "recoupement": "https://maritime-executive.com/article/greenland-shark-nearly-four-hundred-years-old",
       "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Poissons", "Longévité", "Records"],
     "leurres": [
       {
         "valeur": 270,
@@ -404,7 +411,8 @@
       "recoupement": "https://en.wikipedia.org/wiki/Polar_bear",
       "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Mammifères", "Masse", "Records"],
     "leurres": [
       {
         "valeur": 751,
@@ -457,7 +465,8 @@
       "recoupement": "https://www.gi.alaska.edu/alaska-science-forum/bowhead-whales-may-be-worlds-oldest-mammals",
       "idee": "Stock du prototype ; Wikipédia, records du monde animal"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Mammifères", "Cétacés", "Longévité", "Records"],
     "leurres": [
       {
         "valeur": 180,
@@ -510,7 +519,8 @@
       "recoupement": "https://placentation.ucsd.edu/elep.html",
       "idee": "Stock du prototype ; culture générale (records du monde animal)"
     },
-    "themes": ["Animaux"],
+    "theme": "Animaux",
+    "tags": ["Mammifères", "Reproduction"],
     "leurres": [
       {
         "valeur": 15,
@@ -568,7 +578,8 @@
       "recoupement": "https://vtx.vt.edu/articles/2022/02/first-true-millipede.html",
       "idee": "Wikipédia, records animaux ; actualité scientifique de 2021"
     },
-    "themes": ["Animaux", "Records"],
+    "theme": "Animaux",
+    "tags": ["Arthropodes", "Anatomie", "Records"],
     "leurres": [
       {
         "valeur": 653,

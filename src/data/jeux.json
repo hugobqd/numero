@@ -15,7 +15,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/%C3%89chiquier",
       "idee": "Culture générale ; jeux de société"
     },
-    "themes": ["Jeux"],
+    "theme": "Sport et jeux",
+    "tags": ["Jeux de société", "Échecs"],
     "leurres": [
       {
         "valeur": 32,
@@ -74,7 +75,8 @@
       "recoupement": "https://www.larousse.fr/encyclopedie/divers/tarot/95959",
       "idee": "Culture générale ; jeux de société"
     },
-    "themes": ["Jeux"],
+    "theme": "Sport et jeux",
+    "tags": ["Jeux de société", "Cartes"],
     "leurres": [
       {
         "valeur": 54,

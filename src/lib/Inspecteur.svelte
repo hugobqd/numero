@@ -23,8 +23,11 @@
   <dt>Fiche</dt>
   <dd><code>{question.id}</code> · {question.statut}</dd>
 
-  <dt>Thèmes</dt>
-  <dd>{question.themes.join(' · ')}</dd>
+  <dt>Thème</dt>
+  <dd>{question.theme}</dd>
+
+  <dt>Tags internes</dt>
+  <dd>{question.tags.join(' · ') || 'Aucun'}</dd>
 
   <dt>Difficulté</dt>
   <dd>

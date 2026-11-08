@@ -13,9 +13,9 @@ const ILLUSTRATIONS: Record<string, { src: string; alt: string }> = {
   Astronomie: { src: astronomie, alt: 'Télescope devant une planète, un satellite et Saturne' },
   'Corps humain': { src: corpsHumain, alt: 'Silhouette humaine, une main et une empreinte digitale' },
   'Terre et géologie': { src: terreGeologie, alt: 'Coupe de la Terre, un cristal et un volcan' },
-  Physique: { src: physique, alt: 'Prisme qui décompose la lumière, ondes et pendule de Newton' },
+  'Physique et chimie': { src: physique, alt: 'Prisme qui décompose la lumière, ondes et pendule de Newton' },
   Animaux: { src: animaux, alt: 'Un renard, un oiseau et un lièvre' },
-  Humanité: { src: humanite, alt: "Une ville sur le globe, un plan de métro et une foule" },
+  Géographie: { src: humanite, alt: "Une ville sur le globe, un plan de métro et une foule" },
 };
 
 export function illustration(theme: string): { src: string; alt: string } | null {

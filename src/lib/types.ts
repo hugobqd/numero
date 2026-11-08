@@ -60,8 +60,10 @@ export interface Question {
     /** Où l'on a trouvé le sujet (source d'idée), pour la relecture (pas affichée en jeu). */
     idee?: string;
   };
-  /** Thèmes de la fiche, au moins un ; le premier est le thème principal (album, composition des défis). */
-  themes: string[];
+  /** Thème visible : album et diversité des pochettes. */
+  theme: string;
+  /** Tags internes de classement, non affichés aux joueurs. */
+  tags: string[];
   /** Attribuée à la rédaction, confirmée à la relecture ; obligatoire pour une fiche `valide`. */
   difficulte?: Difficulte;
   /**
@@ -102,7 +104,7 @@ export interface ResultatQuestion {
   neurones?: number;
 }
 
-/** Thème principal d'une fiche : le premier de sa liste. */
+/** Thème visible d’une fiche. */
 export function themePrincipal(q: Question): string {
-  return q.themes[0];
+  return q.theme;
 }

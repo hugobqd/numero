@@ -14,7 +14,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Organisation_des_Nations_unies",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Humanité"],
+    "theme": "Géographie",
+    "tags": ["Monde", "Institutions", "ONU"],
     "leurres": [
       { "valeur": 192, "type": "erreur_frequente", "note": "nombre de membres de 2006 (Monténégro) à l'admission du Soudan du Sud en 2011 (ONU)" },
       { "valeur": 195, "type": "autre_perimetre", "note": "193 membres + 2 États observateurs (Palestine, Saint-Siège)" },
@@ -45,7 +46,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Union_europ%C3%A9enne",
       "idee": "Stock du prototype ; programme de géographie de 3e (« La France et l'Union européenne »)"
     },
-    "themes": ["Humanité"],
+    "theme": "Géographie",
+    "tags": ["Europe", "Institutions", "Union européenne"],
     "leurres": [
       { "valeur": 28, "type": "erreur_frequente", "note": "nombre de membres avant le Brexit" },
       { "valeur": 21, "type": "autre_perimetre", "note": "pays de la zone euro depuis l'entrée de la Bulgarie le 1er janvier 2026 (BCE)" },
@@ -76,7 +78,8 @@
       "recoupement": "https://www.insee.fr/fr/statistiques/8719824",
       "idee": "Stock du prototype ; organisme (Insee)"
     },
-    "themes": ["Humanité", "France"],
+    "theme": "Géographie",
+    "tags": ["Europe", "France", "Population"],
     "leurres": [
       { "valeur": 68600000, "type": "erreur_frequente", "note": "chiffre très repris en 2025 : première estimation pour le 1er janvier 2025 (68,6 M, Insee Première n° 2033), proche de l'estimation actuelle au 1er janvier 2024 (68 638 milliers)" },
       { "valeur": 66800000, "type": "autre_perimetre", "note": "France métropolitaine seule au 1er janvier 2026 (66 793 milliers, Insee)" },
@@ -108,7 +111,8 @@
       "recoupement": "https://www.ined.fr/fr/presse/huit-milliards-humains-aujourd-hui-combien-demain",
       "idee": "Stock du prototype ; organisme (ONU)"
     },
-    "themes": ["Humanité"],
+    "theme": "Géographie",
+    "tags": ["Monde", "Population"],
     "leurres": [
       { "valeur": 7000000000, "type": "erreur_frequente", "note": "cap symboliquement fixé par l'ONU au 31 octobre 2011, chiffre longtemps répété" },
       { "valeur": 6000000000, "type": "autre_perimetre", "note": "cap symbolique du 12 octobre 1999 (Journée des 6 milliards)" },
@@ -140,7 +144,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Ethnologue,_Languages_of_the_World",
       "idee": "Stock du prototype ; culture générale (Ethnologue)"
     },
-    "themes": ["Humanité"],
+    "theme": "Arts et culture",
+    "tags": ["Langues", "Monde"],
     "leurres": [
       { "valeur": 6909, "type": "erreur_frequente", "note": "16e édition (2009), ancien décompte encore souvent repris" },
       { "valeur": 7243, "type": "proche" },
@@ -171,7 +176,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Tour_Eiffel",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Humanité", "Monuments"],
+    "theme": "Constructions et transports",
+    "tags": ["Europe", "France", "Monuments", "Architecture"],
     "leurres": [
       { "valeur": 324, "type": "erreur_frequente", "note": "hauteur avec antennes mesurée en 2000, valable jusqu'en 2022" },
       { "valeur": 312, "type": "autre_perimetre", "note": "hauteur d'origine en 1889, drapeau compris (312,27 m)" },
@@ -202,7 +208,8 @@
       "recoupement": "https://www.news.cn/2023-12/02/c_1130005251.htm",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Humanité", "Monuments"],
+    "theme": "Constructions et transports",
+    "tags": ["Asie", "Chine", "Monuments", "Architecture"],
     "leurres": [
       { "valeur": 8852, "type": "erreur_frequente", "note": "chiffre officiel d'avril 2009 pour la seule muraille des Ming (8 851,8 km), avant le recensement de 2012 (leurre éloigné)" },
       { "valeur": 13171, "type": "autre_unite", "note": "21 196 km convertis en miles" },
@@ -233,7 +240,8 @@
       "recoupement": "https://www.collectivites-locales.gouv.fr/actualites/bis-195-les-structures-territoriales-au-1er-janvier-2025",
       "idee": "Stock du prototype ; organisme (DGCL, Insee)"
     },
-    "themes": ["Humanité", "France"],
+    "theme": "Géographie",
+    "tags": ["Europe", "France", "Administratif"],
     "leurres": [
       { "valeur": 35416, "type": "erreur_frequente", "note": "ancien chiffre : nombre au 1er janvier 2017 (DGCL)" },
       { "valeur": 38014, "type": "autre_perimetre", "note": "nombre au recensement de 1936" },
@@ -264,7 +272,8 @@
       "recoupement": "https://catalogue.bnf.fr/ark:/12148/cb11938577c",
       "idee": "Stock du prototype ; programme d'histoire de 5e (affirmation de l'État monarchique sous les Capétiens et les Valois)"
     },
-    "themes": ["Humanité"],
+    "theme": "Histoire",
+    "tags": ["Europe", "France", "Moyen Âge", "Conflits"],
     "leurres": [
       { "valeur": 138, "type": "autre_perimetre", "note": "jusqu'au traité de Picquigny (1475), parfois présenté comme la vraie fin du conflit" },
       { "valeur": 79, "type": "erreur_frequente", "note": "durée réelle de la guerre de Quatre-Vingts Ans (23 mai 1568 - 30 janvier 1648) : confusion entre nom et durée" },
@@ -295,7 +304,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/D%C3%A9partement_fran%C3%A7ais",
       "idee": "Stock du prototype ; culture générale"
     },
-    "themes": ["Humanité", "France"],
+    "theme": "Géographie",
+    "tags": ["Europe", "France", "Administratif"],
     "leurres": [
       { "valeur": 96, "type": "autre_perimetre", "note": "départements de France métropolitaine seulement (Insee)" },
       { "valeur": 95, "type": "erreur_frequente", "note": "numéro du dernier département métropolitain (Val-d'Oise) ; la Corse en compte deux (2A et 2B), d'où 96 en métropole" },
@@ -328,7 +338,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Drapeau_europ%C3%A9en",
       "idee": "Liste de culture générale ; drapeau affiché dans chaque salle de classe depuis la loi du 26 juillet 2019 (article L. 111-1-2 du Code de l'éducation)"
     },
-    "themes": ["Humanité"],
+    "theme": "Géographie",
+    "tags": ["Europe", "Symboles", "Institutions"],
     "leurres": [
       { "valeur": 27, "type": "erreur_frequente", "note": "nombre de pays de l'UE : beaucoup croient qu'il y a une étoile par pays, alors que l'UE précise que « le nombre d'étoiles n'est pas lié au nombre de pays » (european-union.europa.eu, page « Le drapeau européen ») ; leurre éloigné" },
       { "valeur": 15, "type": "autre_perimetre", "note": "premier projet de 1953 (Robert Bichet) : un cercle de 15 étoiles, une par membre du Conseil de l'Europe d'alors, abandonné à cause de la Sarre (Wikipédia, « Drapeau européen ») ; c'est aussi le nombre de pays de l'UE en 1995 (Wikipédia, « Élargissement de l'Union européenne »)" },
@@ -360,7 +371,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/R%C3%A9gion_fran%C3%A7aise",
       "idee": "Programme de géographie de 3e (repère du brevet : « les 13 régions métropolitaines », fiche repère de l'académie de Versailles) ; découpage administratif abordé dès le CM1"
     },
-    "themes": ["Humanité", "France"],
+    "theme": "Géographie",
+    "tags": ["Europe", "France", "Administratif"],
     "leurres": [
       { "valeur": 22, "type": "erreur_frequente", "note": "nombre de régions métropolitaines avant le 1er janvier 2016, encore dans beaucoup de mémoires (Acteurs publics, « Les députés PS redessinent une carte à 13 régions » : « de 22 à 13, Corse comprise »)" },
       { "valeur": 18, "type": "autre_perimetre", "note": "régions de toute la France : 13 en métropole et 5 en outre-mer (Guadeloupe, Guyane, Martinique, La Réunion, Mayotte) (Wikipédia, « Région française »)" },
@@ -392,7 +404,8 @@
       "recoupement": "https://insee.fr/fr/statistiques/6436478",
       "idee": "Liste de culture générale ; programme d'EMC du cycle 4 (institutions de la République, le Parlement)"
     },
-    "themes": ["Humanité", "France"],
+    "theme": "Géographie",
+    "tags": ["Europe", "France", "Institutions", "Parlement"],
     "leurres": [
       { "valeur": 348, "type": "autre_perimetre", "note": "nombre de sénateurs : « dont le nombre de membres ne peut excéder trois cent quarante-huit » (Constitution, article 24)" },
       { "valeur": 925, "type": "autre_perimetre", "note": "577 députés + 348 sénateurs : les parlementaires réunis en Congrès à Versailles (Constitution, articles 24 et 89 ; Wikipédia, « Number of parliamentarians in the Fifth French Republic »)" },
@@ -425,7 +438,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/%C3%89tat_des_%C3%89tats-Unis",
       "idee": "Liste de culture générale ; nombre très connu"
     },
-    "themes": ["Humanité"],
+    "theme": "Géographie",
+    "tags": ["Amérique du Nord", "États-Unis", "Administratif"],
     "leurres": [
       { "valeur": 48, "type": "autre_perimetre", "note": "États contigus, sans l'Alaska ni Hawaï : « the 48 adjoining U.S. states » (Wikipédia anglais, « Contiguous United States ») ; c'était aussi le nombre total d'États de 1912 à 1959" },
       { "valeur": 49, "type": "autre_perimetre", "note": "nombre d'États entre l'admission de l'Alaska (3 janvier 1959) et celle d'Hawaï (21 août 1959) ; un drapeau à 49 étoiles a flotté de 1959 à 1960 (Wikipédia, « Drapeau des États-Unis »)" },
@@ -457,7 +471,8 @@
       "recoupement": "https://au.int/en/member_states/countryprofiles2",
       "idee": "Liste de culture générale ; l'Afrique est étudiée en géographie au collège (cycle 4)"
     },
-    "themes": ["Humanité"],
+    "theme": "Géographie",
+    "tags": ["Afrique", "Pays"],
     "leurres": [
       { "valeur": 55, "type": "autre_perimetre", "note": "membres de l'Union africaine, qui compte aussi la République arabe sahraouie démocratique (au.int : « The AU is made up of 55 Member States »)" },
       { "valeur": 53, "type": "erreur_frequente", "note": "nombre d'États africains de l'ONU avant l'admission du Soudan du Sud en 2011 (ONU, « Growth in United Nations membership »)" },
@@ -488,7 +503,8 @@
       "recoupement": "https://www.guinnessworldrecords.com/world-records/tallest-building",
       "idee": "Wikipédia, records ; liste de culture générale"
     },
-    "themes": ["Humanité", "Monuments", "Records"],
+    "theme": "Constructions et transports",
+    "tags": ["Asie", "Émirats arabes unis", "Architecture", "Records"],
     "leurres": [
       { "valeur": 679, "type": "autre_perimetre", "note": "Merdeka 118 (Kuala Lumpur), deuxième plus haut gratte-ciel du monde depuis 2023 : 679 m (CTBUH, skyscrapercenter.com, liste des 100 plus hauts immeubles achevés)" },
       { "valeur": 632, "type": "autre_perimetre", "note": "Shanghai Tower, troisième plus haut gratte-ciel du monde : 632 m (CTBUH, skyscrapercenter.com)" },
@@ -521,7 +537,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Tunnel_sous_la_Manche",
       "idee": "Liste de culture générale ; grands ouvrages français"
     },
-    "themes": ["Humanité", "France"],
+    "theme": "Constructions et transports",
+    "tags": ["Europe", "France", "Royaume-Uni", "Tunnels", "Rail"],
     "leurres": [
       { "valeur": 38, "type": "autre_perimetre", "note": "longueur de la partie sous-marine : 38 km (LeShuttle, filiale de Getlink ; 37,9 km selon Eurostar et l'Encyclopædia Universalis)" },
       { "valeur": 33, "type": "autre_perimetre", "note": "largeur du pas de Calais à son point le plus étroit : 33,3 km (Wikipédia, Pas de Calais)" },
@@ -553,7 +570,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Statue_de_la_Libert%C3%A9",
       "idee": "Liste de culture générale ; monuments célèbres"
     },
-    "themes": ["Humanité", "Monuments"],
+    "theme": "Constructions et transports",
+    "tags": ["Amérique du Nord", "États-Unis", "Monuments", "Sculpture"],
     "leurres": [
       { "valeur": 93, "type": "autre_perimetre", "note": "hauteur du sol à la pointe de la flamme, piédestal compris : 92,99 m (National Park Service, Statue Statistics), leurre éloigné" },
       { "valeur": 47, "type": "autre_perimetre", "note": "hauteur du sol au sommet du piédestal : 46,94 m (National Park Service, Statue Statistics) ; le piédestal est presque aussi haut que la statue" },
@@ -584,7 +602,8 @@
       "recoupement": "https://fr.wikipedia.org/wiki/Record_de_vitesse_sur_rail",
       "idee": "Wikipédia, records ; patrimoine technique français"
     },
-    "themes": ["Humanité", "France", "Records"],
+    "theme": "Constructions et transports",
+    "tags": ["Europe", "France", "Rail", "Vitesse", "Records"],
     "leurres": [
       { "valeur": 515, "type": "erreur_frequente", "note": "ancien record du monde, TGV Atlantique n° 325, 18 mai 1990 : 515,3 km/h (communiqué Alstom du 3 avril 2007)" },
       { "valeur": 603, "type": "autre_perimetre", "note": "record du train à sustentation magnétique L0 (Japon), 21 avril 2015 : 603 km/h (Guinness World Records, Fastest maglev train) ; ce n'est pas un train sur rails" },
@@ -616,7 +635,8 @@
       "recoupement": "https://presse.inserm.fr/en/update-jeanne-calment-the-oldest-woman/59240/",
       "idee": "Wikipédia, records ; culture générale française"
     },
-    "themes": ["Humanité", "France", "Records"],
+    "theme": "Corps humain",
+    "tags": ["Europe", "France", "Longévité", "Records"],
     "leurres": [
       { "valeur": 119, "type": "autre_perimetre", "note": "Kane Tanaka (Japon), deuxième personne la plus âgée de l'histoire : 119 ans et 107 jours (Guinness World Records ; LongeviQuest)" },
       { "valeur": 118, "type": "autre_perimetre", "note": "Lucile Randon, sœur André, Française doyenne de l'humanité jusqu'en 2023 : 118 ans et 340 jours (presse, dont Europe 1, janvier 2023)" },
@@ -648,7 +668,8 @@
       "recoupement": "https://www.service-public.gouv.fr/particuliers/vosdroits/F19460",
       "idee": "Éducation à la sécurité routière au collège (ASSR 1 en 5e, ASSR 2 en 3e) ; nombre très connu"
     },
-    "themes": ["Humanité", "France"],
+    "theme": "Constructions et transports",
+    "tags": ["Europe", "France", "Route", "Réglementation"],
     "leurres": [
       { "valeur": 110, "type": "autre_perimetre", "note": "limite sur autoroute par temps de pluie, et pour les conducteurs en permis probatoire : 110 km/h (Code de la route, R413-2 II ; service-public.gouv.fr, F19460)" },
       { "valeur": 120, "type": "erreur_frequente", "note": "limite sur autoroute en Belgique : 120 km/h (code de la route belge, article 11.2, codedelaroute.be) ; c'est aussi la limite en Espagne" },

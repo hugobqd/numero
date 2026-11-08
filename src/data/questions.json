@@ -13,7 +13,8 @@
       "url": "https://fr.wikipedia.org/wiki/Lune",
       "consulte_le": "2026-11-05"
     },
-    "themes": ["Astronomie"],
+    "theme": "Astronomie",
+    "tags": ["Système solaire", "Terre", "Lune", "Distance"],
     "leurres": [
       {
         "valeur": 356500,
@@ -64,7 +65,8 @@
       "url": "https://fr.wikipedia.org/wiki/Squelette_humain",
       "consulte_le": "2026-11-05"
     },
-    "themes": ["Corps humain"],
+    "theme": "Corps humain",
+    "tags": ["Anatomie", "Squelette"],
     "leurres": [
       {
         "valeur": 300,
@@ -114,7 +116,8 @@
       "url": "https://fr.wikipedia.org/wiki/%C3%82ge_de_la_Terre",
       "consulte_le": "2026-11-05"
     },
-    "themes": ["Terre et géologie"],
+    "theme": "Terre et géologie",
+    "tags": ["Terre", "Formation", "Temps"],
     "leurres": [
       {
         "valeur": 4570000000,
@@ -167,7 +170,8 @@
       "url": "https://fr.wikipedia.org/wiki/Vitesse_de_la_lumi%C3%A8re",
       "consulte_le": "2026-11-05"
     },
-    "themes": ["Physique"],
+    "theme": "Physique et chimie",
+    "tags": ["Lumière", "Vitesse"],
     "leurres": [
       {
         "valeur": 186282,
@@ -218,7 +222,8 @@
       "url": "https://fr.wikipedia.org/wiki/Everest",
       "consulte_le": "2026-11-05"
     },
-    "themes": ["Terre et géologie"],
+    "theme": "Géographie",
+    "tags": ["Asie", "Himalaya", "Montagnes", "Altitude", "Records"],
     "leurres": [
       {
         "valeur": 8611,
