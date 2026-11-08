@@ -25,10 +25,22 @@
   const debut = $derived((pageCourante - 1) * taille);
   const lignes = $derived(resultat.slice(debut, debut + taille));
   const colonnes: { cle: ColonneTri; nom: string; numerique?: boolean }[] = [
-    { cle: 'enonce', nom: 'Fiche' }, { cle: 'theme', nom: 'Thème' }, { cle: 'tags', nom: 'Tags internes' },
+    { cle: 'enonce', nom: 'Fiche' }, { cle: 'valeur', nom: 'Valeur à retenir', numerique: true }, { cle: 'theme', nom: 'Thème' }, { cle: 'tags', nom: 'Tags internes' },
     { cle: 'difficulte', nom: 'Difficulté' }, { cle: 'statut', nom: 'Statut' }, { cle: 'lot', nom: 'Lot' },
-    { cle: 'valeur', nom: 'Valeur à retenir', numerique: true }, { cle: 'consulte_le', nom: 'Source consultée', numerique: true },
+    { cle: 'consulte_le', nom: 'Source consultée', numerique: true },
   ];
+  const couleursThemes: Record<string, [string, string]> = {
+    Astronomie: ['#e8eafd', '#373e80'], 'Corps humain': ['#fce7ef', '#8c2852'],
+    Animaux: ['#e5f2dd', '#355f26'], Géographie: ['#e0eff9', '#205a7b'],
+    'Terre et géologie': ['#f3ead6', '#72531c'], 'Physique et chimie': ['#ddf3f1', '#205e5a'],
+    'Constructions et transports': ['#e6edf5', '#43546d'], Histoire: ['#f3e4da', '#794727'],
+    'Arts et culture': ['#efe4f7', '#70428a'], 'Sport et jeux': ['#fff0da', '#8b570f'],
+    'Nombres et mesures': ['#e9edf2', '#485569'], 'Nature et climat': ['#ddf1e8', '#286445'],
+  };
+  function couleurTheme(theme: string): string {
+    const [fond, texte] = couleursThemes[theme] ?? ['#eeeeee', '#555555'];
+    return `--pastille-fond: ${fond}; --pastille-texte: ${texte}`;
+  }
   const typesLeurre = { erreur_frequente: 'Erreur fréquente', autre_unite: 'Autre unité', autre_perimetre: 'Autre périmètre', proche: 'Proche' };
 
   function trier(cle: ColonneTri) {
@@ -84,11 +96,11 @@
           {@const q = ligne.fiche}
           <tr>
             <td class="identite"><button class="ouvrir" type="button" onclick={() => ouvrir(ligne)}>{q.enonce}</button><small>{q.id}</small></td>
-            <td>{q.theme}</td><td class="tags">{q.tags.join(' · ') || '—'}</td>
-            <td>{q.difficulte ? `${q.difficulte.cran} · ${CRANS_DIFFICULTE[q.difficulte.cran]}` : '—'}</td>
-            <td>{q.statut === 'valide' ? 'Validée' : 'Brouillon'}{#if manqueRelecture(q)}<small>À compléter</small>{/if}</td>
-            <td class="lot">{libelleLot(ligne.lot)}</td>
             <td class="nombre valeur">{avecUnite(q.valeur_a_retenir, q.unite, q.precision)}</td>
+            <td><span class="pastille" style={couleurTheme(q.theme)}>{q.theme}</span></td><td class="tags">{q.tags.join(' · ') || '—'}</td>
+            <td>{#if q.difficulte}<span class="pastille cran-{q.difficulte.cran}">{q.difficulte.cran} · {CRANS_DIFFICULTE[q.difficulte.cran]}</span>{:else}<span class="pastille">Non renseignée</span>{/if}</td>
+            <td><span class="pastille statut-{q.statut}">{q.statut === 'valide' ? 'Validée' : 'Brouillon'}</span>{#if manqueRelecture(q)}<small>À compléter</small>{/if}</td>
+            <td class="lot">{libelleLot(ligne.lot)}</td>
             <td class="nombre">{q.source.consulte_le || '—'}</td>
           </tr>
         {:else}<tr><td colspan={colonnes.length} class="vide">Aucune fiche ne correspond à ces critères. <button type="button" onclick={reinitialiser}>Réinitialiser les filtres</button></td></tr>{/each}
@@ -107,9 +119,9 @@
       <div><dt>Valeur à retenir</dt><dd>{avecUnite(q.valeur_a_retenir, q.unite, q.precision)}</dd></div>
       <div><dt>Valeur source</dt><dd>{avecUnite(q.valeur, q.unite)}</dd></div>
       <div><dt>Précision</dt><dd>{avecUnite(q.precision, q.unite)}</dd></div>
-      <div><dt>Statut</dt><dd>{q.statut === 'valide' ? 'Validée' : 'Brouillon'}</dd></div>
-      <div><dt>Thème</dt><dd>{q.theme}</dd></div><div><dt>Tags internes</dt><dd>{q.tags.join(' · ') || '—'}</dd></div>
-      <div><dt>Difficulté</dt><dd>{q.difficulte ? `${q.difficulte.cran} · ${CRANS_DIFFICULTE[q.difficulte.cran]}` : 'Non renseignée'}</dd></div>
+      <div><dt>Statut</dt><dd><span class="pastille statut-{q.statut}">{q.statut === 'valide' ? 'Validée' : 'Brouillon'}</span></dd></div>
+      <div><dt>Thème</dt><dd><span class="pastille" style={couleurTheme(q.theme)}>{q.theme}</span></dd></div><div><dt>Tags internes</dt><dd>{q.tags.join(' · ') || '—'}</dd></div>
+      <div><dt>Difficulté</dt><dd>{#if q.difficulte}<span class="pastille cran-{q.difficulte.cran}">{q.difficulte.cran} · {CRANS_DIFFICULTE[q.difficulte.cran]}</span>{:else}<span class="pastille">Non renseignée</span>{/if}</dd></div>
       <div><dt>Langue</dt><dd>{q.langue}</dd></div>
     </dl>
     <h3>Périmètre</h3><p>{q.perimetre}</p>
@@ -163,6 +175,11 @@
   .ouvrir { display: block; border: none; padding: 0; border-radius: 0; min-height: auto; background: none; text-align: left; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
   .ouvrir:hover { background: none; }
   small { display: block; font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .pastille { display: inline-block; padding: 3px 8px; border-radius: 999px; background: var(--pastille-fond, #eee); color: var(--pastille-texte, #555); font-size: 12px; font-weight: 500; line-height: 1.5; white-space: nowrap; }
+  .cran-1, .statut-valide { --pastille-fond: #e4f3e7; --pastille-texte: #236032; }
+  .cran-2 { --pastille-fond: #e3eefb; --pastille-texte: #24568b; }
+  .cran-3, .statut-brouillon { --pastille-fond: #fff0d4; --pastille-texte: #805116; }
+  .cran-4 { --pastille-fond: #fbe4e4; --pastille-texte: #922f37; }
   .tags { min-width: 150px; max-width: 230px; }
   tbody tr:hover { background: #fafafa; }
   .vide { padding: 32px; text-align: center; }
