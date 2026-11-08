@@ -130,6 +130,7 @@
 
 <style>
   .collection {
+    --fond-illustration: #f1dfc3;
     display: grid;
     gap: 1.25rem;
   }
@@ -196,6 +197,7 @@
     transform: scale(1.04);
   }
   .illustration {
+    background: var(--fond-illustration);
     display: block;
     width: 100%;
     aspect-ratio: 1;
@@ -204,11 +206,11 @@
     margin-bottom: 0.35rem;
     transition: transform 0.4s ease;
   }
-  /* Thème sans illustration (Sport, Jeux, Musique pour l'instant) : un carré ivoire à sa place. */
+  /* Même fond pour les images et les emplacements sans illustration, dans les deux thèmes. */
   .sans-illustration {
     display: block;
     aspect-ratio: 1;
-    background: var(--surface);
+    background: var(--fond-illustration);
   }
   .carte > .jauge {
     width: calc(100% - 1.6rem);
@@ -271,6 +273,7 @@
   }
   .bandeau img,
   .bandeau .sans-illustration {
+    background: var(--fond-illustration);
     border-radius: var(--rayon-carte);
     width: 100%;
     height: auto;
