@@ -37,6 +37,9 @@ Jeu éducatif pour **retenir des nombres** qui régissent le monde (distance Ter
 
 ## Collection par pochettes (décidé le 2026-11-07, à construire)
 
+_Construit le 2026-11-08 (#22)_ : dans un album, seules les difficultés possédées apparaissent, dans l’ordre Tout public, Grand public, Curieux, Pointu, avec leur effectif. Chaque fiche affiche son état sans survol ; les valeurs des découvertes restent cachées. La vue des thèmes conserve les trois colonnes, le compteur de fiches possédées et la jauge de collection ; elle ajoute le nombre de fiches trouvées (en cours ou acquises), sans moyenne d’étoiles.
+
+
 Mécanique de collection simple à tester, qui remplace le parcours commun, le cycle et les étoiles (ADR 0007, qui remplace l'ADR 0002). Construite par étapes : les lignes marquées _Construit_ sont dans le jeu, et remplacent ce que le tableau ci-dessus en dit ; pour le reste, le tableau ci-dessus décrit encore le jeu.
 
 | Sujet                    | Décision                                                                                                                                                                                                                                                                                                                                                                                                                          |
