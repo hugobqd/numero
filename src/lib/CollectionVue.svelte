@@ -314,7 +314,8 @@
     gap: 0.5rem;
   }
   .groupe { display: grid; gap: 0.65rem; margin-top: 1.25rem; }
-  .groupe h4 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; margin: 0; font-size: 1.15rem; }
+  .groupe h4 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; margin: 0; font-size: 0.85rem; font-weight: 500; color: var(--muted); }
+  .groupe .compte { font-size: 0.75rem; }
   h3 {
     margin: 0;
     font-size: 1rem;
