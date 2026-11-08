@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { pwa } from './scripts/pwa.mjs'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import { execSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
@@ -26,7 +27,7 @@ const version = `${majeur}.${mineur}.${git('rev-list --count HEAD') ?? 0}`
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [svelte()],
+  plugins: [svelte(), pwa()],
   // Chemins relatifs : le site fonctionne aussi dans un sous-dossier (GitHub Pages : /numero/).
   base: './',
   // Numéro de version affiché discrètement en bas de page.

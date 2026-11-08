@@ -68,3 +68,28 @@ Les illustrations sont utilisées dans la mosaïque d’accueil et la collection
 | `color_verdict_miss` | `#FF7A52` | Corail | Pastille « Raté » (texte pétrole) |
 
 Les couleurs sont déclarées en variables CSS dans `src/app.css`.
+
+### Installation mobile (PWA)
+
+Numero peut être ajouté à l’écran d’accueil et s’ouvre alors sans barre de navigateur.
+L’aide à l’installation est accessible dès l’arrivée et dans **Mes réglages** : bouton
+**Installer Numero** lorsque le navigateur le propose ; sur iPhone/iPad, utiliser le menu
+de partage de Safari puis **Sur l’écran d’accueil** (garder **Ouvrir comme app web** activé).
+
+Le build produit `manifest.webmanifest`, les icônes PNG et `sw.js`. Tous les fichiers du
+jeu et les illustrations sont précachés après le premier chargement en ligne réussi.
+Les polices Google restent facultatives : la police système prend le relais hors connexion.
+La progression reste dans le stockage local, sans synchronisation entre navigateurs ou appareils.
+
+Les chemins relatifs permettent un déploiement à la racine ou sous `/numero/`. La PWA
+nécessite HTTPS (ou localhost). Pour tester le mode hors connexion, utiliser `npm run build`
+puis `npm run preview`, attendre l’activation du service worker, couper le réseau et recharger.
+Le serveur de développement n’enregistre pas de service worker.
+
+Les mises à jour se téléchargent en arrière-plan et s’activent après la fermeture de toutes
+les fenêtres/onglets Numero : aucun rechargement forcé au milieu d’un défi. Le cache de
+l’ancienne version est alors nettoyé, sans toucher aux données des joueurs.
+
+Références : [applications installables (MDN)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable),
+[mode autonome (MDN)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/How_to/Create_a_standalone_app),
+[applications sur l’écran d’accueil iOS (WebKit)](https://webkit.org/blog/13878/).

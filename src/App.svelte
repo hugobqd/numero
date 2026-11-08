@@ -722,7 +722,7 @@
   main {
     max-width: 34rem;
     margin: 0 auto;
-    padding: 1rem 1rem 3rem;
+    padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) 3rem max(1rem, env(safe-area-inset-left));
     display: grid;
     gap: 1.5rem;
     align-content: start;
@@ -758,7 +758,7 @@
     right: 0;
     bottom: 0;
     width: 21rem;
-    max-height: 100vh;
+    max-height: 100dvh;
     overflow-y: auto;
     padding: 1rem 1rem 3.5rem;
     font-size: 0.78rem;
@@ -970,7 +970,7 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 8.5rem));
     justify-content: center;
-    padding: 0 0.25rem env(safe-area-inset-bottom);
+    padding: 0 max(0.25rem, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(0.25rem, env(safe-area-inset-left));
     background: var(--bg);
     border-top: 2px solid var(--surface-2);
   }

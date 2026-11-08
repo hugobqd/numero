@@ -212,3 +212,12 @@ main > section, main > article { animation: ecran-entrer 240ms ease-out both; }
   main > section, main > article { animation: ecran-fondu 160ms both; }
 }
 @keyframes ecran-fondu { from { opacity: 0; } to { opacity: 1; } }
+
+/* Confort mobile : encoche, clavier, tap et zoom d'accessibilité. */
+html { min-height: 100%; -webkit-text-size-adjust: 100%; }
+body { min-height: 100vh; min-height: 100dvh; padding-bottom: env(safe-area-inset-bottom); }
+button, a, input, label { touch-action: manipulation; }
+@media (pointer: coarse) {
+  button, input:not([type='radio'], [type='checkbox'], [type='range']), select { min-height: 44px; }
+  input:not([type='radio'], [type='checkbox'], [type='range']), textarea, select { font-size: max(16px, 1em); }
+}
