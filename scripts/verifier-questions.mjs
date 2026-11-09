@@ -72,10 +72,12 @@ for (const fichier of readdirSync(DOSSIER).filter((f) => f.endsWith('.json')).so
 
     const v = q.valeur_a_retenir;
     const p = q.precision;
-    if (!Number.isInteger(v) || v < 1) err(`valeur_a_retenir doit être un entier ≥ 1 (${v})`);
-    if (!(p >= 1 && Number.isInteger(Math.log10(p)))) err(`precision doit être une puissance de 10 ≥ 1 (${p})`);
-    else if (v % p !== 0) err(`valeur_a_retenir (${v}) n'est pas un multiple de precision (${p})`);
-    if (!['brouillon', 'valide'].includes(q.statut)) err(`statut inconnu « ${q.statut} »`);
+    const enPas = (n) => p < 1 ? n * Math.round(1 / p) : n / p;
+    const multipleDuPas = (n) => Math.abs(enPas(n) - Math.round(enPas(n))) < 1e-8;
+    if (!Number.isFinite(v) || v <= 0) err(`valeur_a_retenir doit être un nombre positif (${v})`);
+    if (!(p >= 0.001 && Number.isInteger(Math.log10(p)))) err(`precision doit être une puissance de 10 ≥ 0,001 (${p})`);
+    else if (!multipleDuPas(v)) err(`valeur_a_retenir (${v}) n'est pas un multiple de precision (${p})`);
+    if (!['brouillon', 'valide', 'rejete'].includes(q.statut)) err(`statut inconnu « ${q.statut} »`);
     if (q.source && !/^https?:\/\//.test(q.source.url ?? '')) err('source.url invalide');
     if (q.valeur && Math.abs(q.valeur - v) / v > 0.05) avert(`valeur (${q.valeur}) et valeur_a_retenir (${v}) diffèrent de plus de 5 %`);
 
@@ -91,8 +93,12 @@ for (const fichier of readdirSync(DOSSIER).filter((f) => f.endsWith('.json')).so
       if (!(l.valeur > 0)) err(`leurre ${l.valeur} : doit être positif`);
       if (vus.has(l.valeur)) err(`leurre ${l.valeur} : en double ou égal à la réponse`);
       vus.add(l.valeur);
-      if (l.valeur % p !== 0) avert(`leurre ${l.valeur} : pas un multiple de precision (${p}), il sera retouché`);
-      else if (zerosFinaux(l.valeur / p) > zerosFinaux(v / p)) avert(`leurre ${l.valeur} : plus rond que la réponse, il sera retouché`);
+      if (!multipleDuPas(l.valeur)) {
+        if (l.valeur_fixe) err(`leurre fixe ${l.valeur} : pas un multiple de precision (${p})`);
+        else avert(`leurre ${l.valeur} : pas un multiple de precision (${p}), il sera retouché`);
+      } else if (!l.valeur_fixe && zerosFinaux(Math.round(enPas(l.valeur))) > zerosFinaux(Math.round(enPas(v)))) {
+        avert(`leurre ${l.valeur} : plus rond que la réponse, il sera retouché`);
+      }
       if (Math.abs(l.valeur - v) / v < 0.005) err(`leurre ${l.valeur} : à moins de 0,5 % de la réponse`);
       if (l.valeur < v * 0.5 || l.valeur > v * 2) lointains++;
       if (l.type !== 'proche' && !l.note) avert(`piège ${l.valeur} sans note`);

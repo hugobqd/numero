@@ -76,7 +76,16 @@ const clePochette = (id: string) => cleJoueur(`pochette:${id}`);
 export function lirePochette(id: string): Pochette | null {
   try {
     const brut = localStorage.getItem(clePochette(id));
-    return brut ? (JSON.parse(brut) as Pochette) : null;
+    if (!brut) return null;
+    const pochette = JSON.parse(brut) as Pochette;
+    for (const resultat of pochette.resultats) {
+      if (resultat.id === 'sport-tennis-longueur-court' && resultat.unite === undefined) {
+        resultat.reponse /= 100;
+        if (resultat.erreur) resultat.erreur.seuil /= 100;
+        resultat.unite = 'm';
+      }
+    }
+    return pochette;
   } catch {
     return null;
   }

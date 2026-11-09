@@ -1,4 +1,4 @@
-import type { Question } from './types';
+import type { Leurre, Question } from './types';
 
 /** Arrondi à `chiffres` chiffres significatifs : 192 200 → 190 000 (2 chiffres). */
 export function arrondiSignificatif(n: number, chiffres = 2): number {
@@ -52,7 +52,8 @@ function aLaForme(v: number, q: Question, hasard: () => number): number {
       n = n - decalage > 0 && hasard() < 0.5 ? n - decalage : n + decalage;
     }
   }
-  return n * p;
+  // La division par une puissance de dix évite les résidus binaires de n × 0,01.
+  return p < 1 ? n / Math.round(1 / p) : n * p;
 }
 
 function melange<T>(items: T[], hasard: () => number): T[] {
@@ -154,8 +155,8 @@ export function propositions(q: Question, numero: number, difficulte: Difficulte
   const duBonCote = (l: number, cote: -1 | 1) => (cote < 0 ? l < reponse && l > 0 : l > reponse);
 
   /** Leurre de la fiche : retenu s'il est distinct et du bon côté. */
-  const ajouterFiche = (v: number, cote: -1 | 1) => {
-    const l = aLaForme(v, q, hasard);
+  const ajouterFiche = ({ valeur: v, valeur_fixe }: Leurre, cote: -1 | 1) => {
+    const l = valeur_fixe ? v : aLaForme(v, q, hasard);
     if (retenues.has(l) || !duBonCote(l, cote)) return false;
     // Seul un leurre de la fiche gardé tel quel peut être plus proche que l'écart minimal (0,5 % au moins, voir la consigne) ;
     // un leurre retouché par aLaForme (200 os → 205) respecte l'écart minimal comme un leurre généré.
@@ -199,7 +200,7 @@ export function propositions(q: Question, numero: number, difficulte: Difficulte
     const restants = () => cible - retenues.size;
     const loin = (v: number) => (cote < 0 ? v < reponse * 0.5 : v > reponse * 2);
 
-    if (piege && cotePiege === cote && restants() > 0) ajouterFiche(piege.valeur, cote);
+    if (piege && cotePiege === cote && restants() > 0) ajouterFiche(piege, cote);
 
     // Valeurs éloignées : d'abord un leurre éloigné de la fiche s'il y en a, sinon générées.
     const cle = cote < 0 ? 'bas' : 'haut';
@@ -207,15 +208,15 @@ export function propositions(q: Question, numero: number, difficulte: Difficulte
     for (const [i, plage] of profil.lointains.entries()) {
       if (restants() <= 0) break;
       const f = lointainsFiche[i];
-      if (!(f && ajouterFiche(f.valeur, cote))) ajouterGenere(plage[cle][0], plage[cle][1], cote);
+      if (!(f && ajouterFiche(f, cote))) ajouterGenere(plage[cle][0], plage[cle][1], cote);
     }
 
     const proches = melange(
       [
         ...fiche
           .filter((l) => l !== piege && !loin(l.valeur) && duBonCote(l.valeur, cote))
-          .map((l) => ({ fiche: l.valeur, min: 0, max: 0 })),
-        ...profil.proches.map((plage) => ({ fiche: 0, min: plage[cle][0], max: plage[cle][1] })),
+          .map((l) => ({ fiche: l, min: 0, max: 0 })),
+        ...profil.proches.map((plage) => ({ fiche: null, min: plage[cle][0], max: plage[cle][1] })),
       ],
       hasard,
     );

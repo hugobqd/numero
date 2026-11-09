@@ -1,4 +1,5 @@
-export type Statut = 'brouillon' | 'valide';
+export const STATUTS = { brouillon: 'Brouillon', valide: 'Validée', rejete: 'Rejetée' } as const;
+export type Statut = keyof typeof STATUTS;
 
 /**
  * Nature d'un leurre :
@@ -32,6 +33,8 @@ export interface Difficulte {
 export interface Leurre {
   valeur: number;
   type: TypeLeurre;
+  /** Conserver la valeur d'un piège dont l'arrondi fait partie de l'erreur. */
+  valeur_fixe?: boolean;
   /** Pourquoi ce leurre est plausible (pour la relecture ; pas affiché en jeu). */
   note?: string;
 }
@@ -97,6 +100,8 @@ export interface ErreurPlusMoins {
 export interface ResultatQuestion {
   id: string;
   reponse: number;
+  /** Unité au moment de la réponse. Absente dans les anciennes pochettes. */
+  unite?: string;
   points: number; // 0..100
   gagne: boolean;
   erreur?: ErreurPlusMoins;

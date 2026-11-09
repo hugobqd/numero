@@ -117,3 +117,19 @@ test('les pochettes à reprendre incluent les jours précédents, le bonus et la
   ecrirePochette({ ...jour1, terminee: true });
   assert.equal(pochettesEnCours().some(p => p.id === 'jour-1'), false);
 }));
+
+test('une réponse au tennis en centimètres est convertie une seule fois', () => scenario((candidates) => {
+  const pochette = ouvrirPochetteDuJour(1, candidates);
+  pochette.resultats = [{
+    id: 'sport-tennis-longueur-court', reponse: 2500, points: 0, gagne: false,
+    erreur: { seuil: 2500, choix: 'plus' },
+  }];
+  ecrirePochette(pochette);
+  const convertie = lirePochette(pochette.id);
+  assert.deepEqual(convertie.resultats, [{
+    id: 'sport-tennis-longueur-court', reponse: 25, unite: 'm', points: 0, gagne: false,
+    erreur: { seuil: 25, choix: 'plus' },
+  }]);
+  ecrirePochette(convertie);
+  assert.deepEqual(lirePochette(pochette.id), convertie);
+}));

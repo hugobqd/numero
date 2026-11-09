@@ -1,7 +1,7 @@
 <script lang="ts">
   import { tick } from 'svelte';
   import { illustration } from './themes';
-  import { CRANS_DIFFICULTE, type Question } from './types';
+  import { CRANS_DIFFICULTE, STATUTS, type Question } from './types';
   import { avecUnite, entier } from './format';
   import { indexerCatalogue, selectionnerFiches, compterOptions, filtresVides, libelleLot, cleLot, manqueRelecture, type FicheCatalogue, type ColonneTri, type OrdreTri } from './catalogue';
 
@@ -80,7 +80,7 @@
     <label>Thème<select bind:value={filtres.theme}><option value="">Tous les thèmes ({comptesThemes.total})</option>{#each themes as theme}<option value={theme}>{theme} ({comptesThemes.nombres.get(theme) ?? 0})</option>{/each}</select></label>
     <label>Tag interne<select bind:value={filtres.tag}><option value="">Tous les tags ({comptesTags.total})</option>{#each tags as tag}<option value={tag}>{tag} ({comptesTags.nombres.get(tag) ?? 0})</option>{/each}</select></label>
     <label>Difficulté<select bind:value={filtres.cran}><option value="">Toutes les difficultés ({comptesCrans.total})</option>{#each Object.entries(CRANS_DIFFICULTE) as [cran, nom]}<option value={cran}>{cran} · {nom} ({comptesCrans.nombres.get(cran) ?? 0})</option>{/each}<option value="inconnue">Non renseignée ({comptesCrans.nombres.get('inconnue') ?? 0})</option></select></label>
-    <label>Statut<select bind:value={filtres.statut}><option value="">Tous les statuts ({comptesStatuts.total})</option><option value="brouillon">Brouillon ({comptesStatuts.nombres.get('brouillon') ?? 0})</option><option value="valide">Validée ({comptesStatuts.nombres.get('valide') ?? 0})</option></select></label>
+    <label>Statut<select bind:value={filtres.statut}><option value="">Tous les statuts ({comptesStatuts.total})</option>{#each Object.entries(STATUTS) as [statut, libelle]}<option value={statut}>{libelle} ({comptesStatuts.nombres.get(statut) ?? 0})</option>{/each}</select></label>
     <label>Lot<select bind:value={filtres.lot}><option value="">Tous les lots ({comptesLots.total})</option>{#each lots as lot}<option value={cleLot(lot)}>{libelleLot(lot)} ({comptesLots.nombres.get(cleLot(lot)) ?? 0})</option>{/each}</select></label>
     <label>Unité<select bind:value={filtres.unite}><option value="">Toutes les unités ({comptesUnites.total})</option>{#each unites as unite}<option value={unite}>{unite} ({comptesUnites.nombres.get(unite) ?? 0})</option>{/each}</select></label>
     <label class="case"><input type="checkbox" bind:checked={filtres.aCompleter} /> Sources ou justification à compléter</label>
@@ -104,9 +104,9 @@
           <tr>
             <td class="identite"><button class="ouvrir" type="button" onclick={() => ouvrir(ligne)}>{q.enonce}</button><small>{q.id}</small></td>
             <td class="nombre valeur">{avecUnite(q.valeur_a_retenir, q.unite, q.precision)}</td>
-            <td><span class="pastille theme-pastille" style={couleurTheme(q.theme)}>{#if illustration(q.theme)}<img src={illustration(q.theme)!.icone} alt="" width="24" height="24" />{/if}{q.theme}</span></td><td class="tags">{q.tags.join(' · ') || '—'}</td>
+            <td><span class="pastille theme-pastille" style={couleurTheme(q.theme)}>{#if illustration(q.theme)}<img src={illustration(q.theme)!.icone} alt="" width="16" height="16" />{/if}{q.theme}</span></td><td class="tags">{q.tags.join(' · ') || '—'}</td>
             <td>{#if q.difficulte}<span class="pastille cran-{q.difficulte.cran}">{q.difficulte.cran} · {CRANS_DIFFICULTE[q.difficulte.cran]}</span>{:else}<span class="pastille">Non renseignée</span>{/if}</td>
-            <td><span class="pastille statut-{q.statut}">{q.statut === 'valide' ? 'Validée' : 'Brouillon'}</span>{#if manqueRelecture(q)}<small>À compléter</small>{/if}</td>
+            <td><span class="pastille statut-{q.statut}">{STATUTS[q.statut]}</span>{#if manqueRelecture(q)}<small>À compléter</small>{/if}</td>
             <td class="lot">{libelleLot(ligne.lot)}</td>
             <td class="nombre">{q.source.consulte_le || '—'}</td>
           </tr>
@@ -126,8 +126,8 @@
       <div><dt>Valeur à retenir</dt><dd>{avecUnite(q.valeur_a_retenir, q.unite, q.precision)}</dd></div>
       <div><dt>Valeur source</dt><dd>{avecUnite(q.valeur, q.unite)}</dd></div>
       <div><dt>Précision</dt><dd>{avecUnite(q.precision, q.unite)}</dd></div>
-      <div><dt>Statut</dt><dd><span class="pastille statut-{q.statut}">{q.statut === 'valide' ? 'Validée' : 'Brouillon'}</span></dd></div>
-      <div><dt>Thème</dt><dd><span class="pastille theme-pastille" style={couleurTheme(q.theme)}>{#if illustration(q.theme)}<img src={illustration(q.theme)!.icone} alt="" width="24" height="24" />{/if}{q.theme}</span></dd></div><div><dt>Tags internes</dt><dd>{q.tags.join(' · ') || '—'}</dd></div>
+      <div><dt>Statut</dt><dd><span class="pastille statut-{q.statut}">{STATUTS[q.statut]}</span></dd></div>
+      <div><dt>Thème</dt><dd><span class="pastille theme-pastille" style={couleurTheme(q.theme)}>{#if illustration(q.theme)}<img src={illustration(q.theme)!.icone} alt="" width="16" height="16" />{/if}{q.theme}</span></dd></div><div><dt>Tags internes</dt><dd>{q.tags.join(' · ') || '—'}</dd></div>
       <div><dt>Difficulté</dt><dd>{#if q.difficulte}<span class="pastille cran-{q.difficulte.cran}">{q.difficulte.cran} · {CRANS_DIFFICULTE[q.difficulte.cran]}</span>{:else}<span class="pastille">Non renseignée</span>{/if}</dd></div>
       <div><dt>Langue</dt><dd>{q.langue}</dd></div>
     </dl>
@@ -147,8 +147,8 @@
 </dialog>
 
 <style>
-  .theme-pastille { display: inline-flex; align-items: center; gap: 6px; }
-  .theme-pastille img { flex: none; width: 24px; height: 24px; }
+  .pastille.theme-pastille { display: inline-flex; align-items: center; gap: 4px; }
+  .theme-pastille img { flex: none; }
   .admin { --fg: #171717; --muted: #595959; --surface: #fff; --surface-2: #eee; --accent: #171717; --accent-texte: #171717; --police: system-ui, sans-serif; color: var(--fg); background: #f8f8f8; color-scheme: light; font: 14px/1.45 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
   main.admin { min-height: 100dvh; padding: 24px; }
   header { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }

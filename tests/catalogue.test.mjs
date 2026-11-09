@@ -23,10 +23,10 @@ const fichiers = Object.fromEntries(readdirSync(new URL('../src/data/', import.m
   .map((f) => [f, JSON.parse(readFileSync(new URL(`../src/data/${f}`, import.meta.url), 'utf8'))]));
 const catalogue = indexerCatalogue(fichiers);
 
-test('retrouve les lots des 150 fiches, y compris les lots historiques mélangés entre fichiers', () => {
+test('retrouve les lots historiques mélangés entre fichiers et les fiches hors lot', () => {
   const effectifs = {};
   for (const { lot } of catalogue) effectifs[lot] = (effectifs[lot] ?? 0) + 1;
-  assert.deepEqual(effectifs, { 0: 5, 1: 54, 2: 25, 3: 25, 4: 25, 5: 16 });
+  assert.deepEqual(effectifs, { 0: 5, 1: 54, 2: 25, 3: 25, 4: 25, 5: 16, null: 2 });
   const fiche = catalogue[0].fiche;
   assert.equal(indexerCatalogue({ 'divers.json': [{ ...fiche, id: 'nouvelle-fiche' }] })[0].lot, null);
   assert.equal(indexerCatalogue({ 'lot-7.json': [{ ...fiche, id: 'nouvelle-fiche' }] })[0].lot, 7);
@@ -62,7 +62,7 @@ test('trie les nombres sans modifier le stock et conserve les valeurs absentes e
 test('les effectifs des options tiennent compte des autres filtres sans masquer les alternatives', () => {
   const filtres = { ...filtresVides(), theme: 'Géographie' };
   const themes = compterOptions(catalogue, filtres, 'theme');
-  assert.equal(themes.total, 150);
+  assert.equal(themes.total, catalogue.length);
   assert.equal(themes.nombres.get('Astronomie'), 16);
   assert.equal(themes.nombres.get('Géographie'), 25);
   const lots = compterOptions(catalogue, filtres, 'lot');

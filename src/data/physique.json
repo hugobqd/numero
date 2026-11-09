@@ -47,8 +47,8 @@
       }
     ],
     "difficulte": {
-      "cran": 2,
-      "justification": "La vitesse de propagation du son est au programme de physique-chimie du collège (cycle 4, signaux sonores) puis de seconde ; on y retient souvent l'arrondi 340 m/s, la valeur précise à 20 °C l'est moins."
+      "cran": 3,
+      "justification": "Le collège donne l’ordre de grandeur de 340 m/s. La question demande la valeur à 20 °C au mètre par seconde près."
     },
     "statut": "brouillon",
     "langue": "fr"
@@ -101,8 +101,8 @@
       }
     ],
     "difficulte": {
-      "cran": 3,
-      "justification": "Le kelvin n'est pas au programme du collège ni de seconde (on y travaille en degrés Celsius) ; il n'apparaît qu'en spécialité physique-chimie au lycée. La valeur se retrouve toutefois par le calcul 273 + 100."
+      "cran": 4,
+      "justification": "Le point d’ébullition en degrés Celsius est familier, mais cette question exige de connaître le décalage de l’échelle Kelvin."
     },
     "statut": "brouillon",
     "langue": "fr"
@@ -154,8 +154,8 @@
       }
     ],
     "difficulte": {
-      "cran": 2,
-      "justification": "Le tableau périodique est utilisé dès la 4e en physique-chimie (cycle 4), puis en seconde ; le nombre total d'éléments y est visible mais rarement retenu."
+      "cran": 3,
+      "justification": "Le tableau périodique est étudié au collège, mais mémoriser le nombre total d’éléments demande une connaissance supplémentaire."
     },
     "statut": "brouillon",
     "langue": "fr"
@@ -209,8 +209,8 @@
       }
     ],
     "difficulte": {
-      "cran": 2,
-      "justification": "La masse volumique est au programme de physique-chimie du cycle 4 (relation m = ρ.V, distinguer des matériaux) ; l'or y sert d'exemple de métal très dense, mais sa valeur précise est peu retenue."
+      "cran": 3,
+      "justification": "La masse volumique est étudiée au collège, mais la valeur propre à l’or relève de la culture scientifique."
     },
     "statut": "brouillon",
     "langue": "fr"
@@ -262,8 +262,8 @@
       }
     ],
     "difficulte": {
-      "cran": 2,
-      "justification": "La masse volumique est au programme de physique-chimie du cycle 4 ; le fer est l'exemple de métal le plus courant des exercices, sans que sa valeur précise soit à connaître."
+      "cran": 3,
+      "justification": "Il faut connaître la masse volumique du fer, au-delà de la notion de masse volumique étudiée au collège."
     },
     "statut": "brouillon",
     "langue": "fr"
@@ -317,8 +317,8 @@
       }
     ],
     "difficulte": {
-      "cran": 3,
-      "justification": "Les températures de changement d'état sont au programme du cycle 4 et de seconde, mais celle du fer n'y est pas à connaître : c'est de la culture générale."
+      "cran": 4,
+      "justification": "La température de fusion exacte du fer est une donnée spécialisée, au-delà du principe de changement d’état."
     },
     "statut": "brouillon",
     "langue": "fr"
@@ -429,8 +429,8 @@
       }
     ],
     "difficulte": {
-      "cran": 3,
-      "justification": "La pression d'un fluide n'est étudiée qu'en spécialité physique-chimie de 1re ; la valeur de 1 013 hPa est surtout familière aux lecteurs de bulletins météo."
+      "cran": 4,
+      "justification": "La valeur de référence en hectopascals au niveau de la mer demande un repère de météorologie précis."
     },
     "statut": "brouillon",
     "langue": "fr"
@@ -485,6 +485,126 @@
     "difficulte": {
       "cran": 4,
       "justification": "Hors programme : le lycée étudie la gravitation et le mouvement des satellites (spécialité de terminale), pas la vitesse de libération ; la valeur est surtout connue des passionnés d'espace."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "physique-ebullition-eau-celsius",
+    "enonce": "À quelle température, en degrés Celsius, l’eau bout-elle au niveau de la mer ?",
+    "valeur": 100,
+    "valeur_a_retenir": 100,
+    "precision": 1,
+    "unite": "°C",
+    "perimetre": "Eau pure à la pression atmosphérique normale, au degré près.",
+    "ancrage": "À pression normale, l’eau gèle à 0 °C et bout à 100 °C.",
+    "source": {
+      "url": "https://www.nist.gov/pml/owm/si-units-temperature",
+      "consulte_le": "2026-11-09",
+      "recoupement": "https://webbook.nist.gov/cgi/formula?ID=C7732185&Mask=4&Units=SI",
+      "idee": "Exemple tout public demandé dans l’issue #59"
+    },
+    "theme": "Physique et chimie",
+    "tags": [
+      "Eau",
+      "Température",
+      "Unités"
+    ],
+    "leurres": [
+      {
+        "valeur": 212,
+        "type": "autre_unite",
+        "note": "Température d’ébullition en degrés Fahrenheit."
+      },
+      {
+        "valeur": 90,
+        "type": "autre_perimetre",
+        "note": "En altitude, la pression baisse et l’eau peut bouillir vers 90 °C."
+      },
+      {
+        "valeur": 60,
+        "type": "erreur_frequente",
+        "note": "Confusion entre eau très chaude et eau en ébullition."
+      },
+      {
+        "valeur": 80,
+        "type": "proche",
+        "note": "Valeur plausible."
+      },
+      {
+        "valeur": 110,
+        "type": "proche",
+        "note": "Valeur plausible."
+      },
+      {
+        "valeur": 120,
+        "type": "proche",
+        "note": "Valeur plausible."
+      }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Repère familier de la vie quotidienne, accessible dès l’école primaire."
+    },
+    "statut": "brouillon",
+    "langue": "fr"
+  },
+  {
+    "id": "physique-masse-litre-eau",
+    "enonce": "Quelle est, environ, la masse d’un litre d’eau en grammes ?",
+    "valeur": 1000,
+    "valeur_a_retenir": 1000,
+    "precision": 1,
+    "unite": "g",
+    "perimetre": "Eau liquide à température ambiante, sans compter le récipient.",
+    "ancrage": "Un litre d’eau a une masse d’environ un kilogramme, soit mille grammes.",
+    "source": {
+      "url": "https://www.nist.gov/system/files/documents/calibrations/75-928.pdf",
+      "consulte_le": "2026-11-09",
+      "recoupement": "https://webbook.nist.gov/cgi/cbook.cgi?ID=C7732185&Mask=35&Units=SI",
+      "idee": "Exemple tout public demandé dans l’issue #59"
+    },
+    "theme": "Physique et chimie",
+    "tags": [
+      "Eau",
+      "Masse",
+      "Unités"
+    ],
+    "leurres": [
+      {
+        "valeur": 100,
+        "type": "erreur_frequente",
+        "note": "Un zéro oublié lors de la conversion du kilogramme en grammes."
+      },
+      {
+        "valeur": 500,
+        "type": "autre_perimetre",
+        "note": "Masse approximative d’un demi-litre d’eau."
+      },
+      {
+        "valeur": 2000,
+        "type": "autre_perimetre",
+        "note": "Masse approximative de deux litres d’eau."
+      },
+      {
+        "valeur": 700,
+        "type": "proche",
+        "note": "Valeur plausible."
+      },
+      {
+        "valeur": 1200,
+        "type": "proche",
+        "note": "Valeur plausible."
+      },
+      {
+        "valeur": 1500,
+        "type": "proche",
+        "note": "Valeur plausible."
+      }
+    ],
+    "difficulte": {
+      "cran": 1,
+      "justification": "Repère familier de la vie quotidienne, accessible dès l’école primaire."
     },
     "statut": "brouillon",
     "langue": "fr"
