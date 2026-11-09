@@ -80,7 +80,7 @@ Mécanique où le joueur choisit parmi les 5 propositions, triées du plus petit
 Mécanique où le joueur répond « plus grand » ou « plus petit » à des seuils successifs, en 3 coups au plus ; un mauvais choix fait perdre la question.
 
 **Score** :
-Points d'une question, selon le rang de la réponse parmi les propositions (bonne 100, voisine 50, deux crans plus loin 20) ; c'est l'ancien score progressif, seul conservé.
+Points d'une question : 100 pour une réponse exacte, 50 pour une proposition immédiatement voisine, 0 pour toute autre erreur. En plus/moins, un mauvais choix vaut 0.
 _Avoid_ : score exact (retiré)
 
 **Réussie** :

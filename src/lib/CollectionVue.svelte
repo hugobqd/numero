@@ -17,8 +17,8 @@
     [...new Set(stock.map(themePrincipal))].sort().map((theme) => {
       const toutes = stock.filter((q) => themePrincipal(q) === theme);
       const possedees = toutes.filter((q) => collection[q.id]);
-      const trouvees = possedees.filter((q) => estTrouvee(collection[q.id])).length;
-      return { theme, total: toutes.length, possedees, trouvees };
+      const aReviser = possedees.filter((q) => collection[q.id].etat === 'decouverte').length;
+      return { theme, total: toutes.length, possedees, aReviser };
     }),
   );
 
@@ -41,30 +41,23 @@
 </script>
 
 <section class="collection palette-fiche">
-  <div class="entete">
-    <h2>Ma collection</h2>
-    <p class="compteur"><strong>{nbPossedees}</strong> / {stock.length} fiches</p>
-  </div>
-
-  {#if nbPossedees === 0}
-    <p class="vide">Ouvre ta pochette du jour : chaque question jouée, réussie ou non, rejoint ta collection.</p>
-  {:else}
-    <button type="button" class="principal" onclick={onreviser}>
-      Réviser mes fiches{#if nbAReviser}{` · ${nbAReviser} à réviser`}{/if}
-    </button>
-  {/if}
-
   {#if detail}
     {@const ill = illustration(detail.theme)}
     <div class="theme">
+      <button type="button" class="retour-theme" onclick={() => (themeOuvert = null)} aria-label="Retour à tous les thèmes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6" /></svg>
+      </button>
       <div class="bandeau">
         {#if ill}<img src={ill.src} alt={ill.alt} width="600" height="600" />{:else}<span class="sans-illustration" aria-hidden="true"></span>{/if}
-        <h3>{detail.theme} <span class="compte">{detail.possedees.length} / {detail.total}</span></h3>
+        <div>
+          <h2>{detail.theme}</h2>
+          <p class="compte"><strong>{detail.possedees.length}</strong> / {detail.total} fiches</p>
+        </div>
       </div>
       {#if detail.possedees.length}
         {#each groupes as groupe (groupe.cran)}
         <section class="groupe" aria-labelledby={`cran-${groupe.cran}`}>
-          <h4 id={`cran-${groupe.cran}`}>{CRANS_DIFFICULTE[groupe.cran][0].toUpperCase() + CRANS_DIFFICULTE[groupe.cran].slice(1)} <span class="compte">{groupe.fiches.length} fiche{groupe.fiches.length > 1 ? 's' : ''}</span></h4>
+          <h3 id={`cran-${groupe.cran}`}>{CRANS_DIFFICULTE[groupe.cran][0].toUpperCase() + CRANS_DIFFICULTE[groupe.cran].slice(1)} <span class="compte">{groupe.fiches.length} fiche{groupe.fiches.length > 1 ? 's' : ''}</span></h3>
           <ul class="fiches">
           {#each groupe.fiches as q (q.id)}
             {@const g = grand(q.valeur_a_retenir, q.unite, q.precision)}
@@ -106,8 +99,20 @@
         <p class="vide">Aucune fiche de ce thème pour l'instant. Elles arrivent avec les pochettes.</p>
       {/if}
     </div>
-    <button type="button" onclick={() => (themeOuvert = null)}>← Tous les thèmes</button>
   {:else}
+    <div class="entete">
+      <h2>Ma collection</h2>
+      <p class="compteur"><strong>{nbPossedees}</strong> / {stock.length} fiches</p>
+    </div>
+
+    {#if nbPossedees === 0}
+      <p class="vide">Ouvre ta pochette du jour : chaque question jouée, réussie ou non, rejoint ta collection.</p>
+    {:else}
+      <button type="button" class="principal" onclick={onreviser}>
+        Réviser mes fiches{#if nbAReviser}{` · ${nbAReviser} à réviser`}{/if}
+      </button>
+    {/if}
+
     <ul class="cartes">
       {#each themesCommences as t}
         {@const ill = illustration(t.theme)}
@@ -116,8 +121,7 @@
             {#if ill}<img class="illustration" src={ill.src} alt="" width="600" height="600" loading="lazy" />{:else}<span class="illustration sans-illustration" aria-hidden="true"></span>{/if}
             <span class="nom">{t.theme}</span>
             <span class="quantite"><strong>{t.possedees.length}</strong> / {t.total} fiches</span>
-            <span class="trouvees">{t.trouvees} trouvée{t.trouvees > 1 ? 's' : ''}</span>
-            <span class="jauge" aria-hidden="true"><span style:width="{(100 * t.possedees.length) / t.total}%"></span></span>
+            <span class="a-reviser"><strong class:nonzero={t.aReviser > 0}>{t.aReviser}</strong> à réviser</span>
           </button>
         </li>
       {/each}
@@ -225,9 +229,6 @@
     aspect-ratio: 1;
     background: var(--fond-illustration);
   }
-  .carte > .jauge {
-    width: calc(100% - 1.6rem);
-  }
   .encouragement {
     padding: 1rem 1.1rem;
     background: var(--carte-fond);
@@ -259,27 +260,17 @@
   }
   .quantite strong {
     color: var(--fg);
+    font-size: 1.5rem;
+    line-height: 1;
   }
-  .trouvees { font-size: 0.85rem; color: var(--fg); }
+  .a-reviser { font-size: 0.85rem; color: var(--muted); }
+  .a-reviser .nonzero { color: var(--fg); }
   @media (max-width: 480px) {
     .cartes { gap: 0.5rem; }
     .carte > :not(.illustration) { margin-inline: 0.4rem; }
-    .carte > .jauge { width: calc(100% - 0.8rem); }
     .nom { font-size: 1rem; }
     .quantite { font-size: 0.75rem; }
-    .trouvees { font-size: 0.75rem; }
-  }
-  .jauge {
-    width: 100%;
-    height: 0.35rem;
-    border-radius: 1rem;
-    background: var(--border);
-    overflow: hidden;
-  }
-  .jauge span {
-    display: block;
-    height: 100%;
-    background: var(--accent);
+    .a-reviser { font-size: 0.75rem; }
   }
   /* Sous la liste d'un thème : ce qu'il reste à récupérer dans les pochettes. */
   .reste {
@@ -303,23 +294,41 @@
     aspect-ratio: 1;
     display: block;
   }
-  .bandeau h3 {
+  .bandeau h2 {
+    margin: 0;
     font-size: 1.6rem;
     font-weight: 900;
     font-stretch: 72%;
     line-height: 1;
+  }
+  .bandeau .compte { margin: 0.35rem 0 0; }
+  .bandeau .compte strong { color: var(--fg); font-weight: 800; }
+  .retour-theme {
+    justify-self: start;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: transparent;
+    color: var(--muted);
+  }
+  .retour-theme:hover { background: var(--surface); color: var(--fg); }
+  .retour-theme svg {
+    width: 1.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
   .theme {
     display: grid;
     gap: 0.5rem;
   }
   .groupe { display: grid; gap: 0.65rem; margin-top: 1.25rem; }
-  .groupe h4 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; margin: 0; font-size: 0.85rem; font-weight: 500; color: var(--muted); }
+  .groupe h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; margin: 0; font-size: 0.85rem; font-weight: 500; color: var(--muted); }
   .groupe .compte { font-size: 0.75rem; }
-  h3 {
-    margin: 0;
-    font-size: 1rem;
-  }
   .compte {
     color: var(--muted);
     font-weight: 400;

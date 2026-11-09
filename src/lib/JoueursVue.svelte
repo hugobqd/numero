@@ -34,21 +34,19 @@
 
 <section class="joueurs">
   {#if !joueurs.length}
+    <h2 class="titre-accueil">Les nombres qui régissent le monde</h2>
+    <p class="pitch">Ouvre une pochette par jour et retiens 5 nombres, au chiffre près.</p>
     <div class="mosaique" aria-hidden="true">
       {#each MOSAIQUE as ill}<img src={ill.src} alt="" width="600" height="600" />{/each}
     </div>
-    <h2 class="titre-accueil">Les nombres qui régissent le monde</h2>
-    <p class="pitch">5 nombres par jour, à retenir au chiffre près. Chaque question jouée rejoint ta collection.</p>
   {:else}
     <h2>Joueurs</h2>
   {/if}
-  <p class="aide">Comptes simulés pour tester : chaque joueur a son jour, ses défis et sa collection.</p>
-
   <form onsubmit={creer}>
-    <label for="pseudo">Nouveau joueur</label>
+    <label for="pseudo">{joueurs.length ? 'Nouveau joueur' : 'Ton pseudo'}</label>
     <div class="ligne">
       <input id="pseudo" bind:value={pseudo} placeholder="Pseudo" maxlength="24" autocomplete="off" />
-      <button type="submit" class="principal" disabled={!pseudo.trim()}>Créer</button>
+      <button type="submit" class="principal" disabled={!pseudo.trim()}>{joueurs.length ? 'Créer' : 'Commencer'}</button>
     </div>
   </form>
 
@@ -76,7 +74,12 @@
     </ul>
   {/if}
 
-  {#if !joueurs.length}<Installation />{/if}
+  {#if !joueurs.length}
+    <details class="installer">
+      <summary>Installer Numero</summary>
+      <Installation />
+    </details>
+  {/if}
 
   {#if onretour}<button type="button" onclick={onretour}>← Retour</button>{/if}
 </section>
@@ -102,9 +105,11 @@
     margin: 0;
     font-size: 1.15rem;
   }
+  .installer summary { cursor: pointer; color: var(--muted); }
+  .installer[open] summary { margin-bottom: 0.75rem; }
   .mosaique {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 0.4rem;
   }
   .mosaique img {
@@ -114,7 +119,6 @@
     height: auto;
     aspect-ratio: 1;
   }
-  .aide,
   .meta {
     margin: 0;
     color: var(--muted);
