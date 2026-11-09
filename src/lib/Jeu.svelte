@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { themePrincipal, type Mecanique, type Question, type Reponse, type ResultatQuestion } from './types';
+  import { CRANS_DIFFICULTE, themePrincipal, type Mecanique, type Question, type Reponse, type ResultatQuestion } from './types';
   import { noter } from './score';
   import Qcm from './mechanics/Qcm.svelte';
   import Palier from './mechanics/Palier.svelte';
@@ -71,7 +71,7 @@
   function repondre(r: Reponse) {
     const q = questions[resultats.length];
     const { points, gagne } = noter(q, r);
-    onresultat({ id: q.id, reponse: r.valeur, points, gagne, erreur: r.erreur }, q);
+    onresultat({ id: q.id, reponse: r.valeur, unite: q.unite, points, gagne, erreur: r.erreur }, q);
     enRevelation = true;
   }
 
@@ -96,18 +96,19 @@
       {#if ill}<img class="vignette" src={ill.icone} alt="" width="24" height="24" />{:else}<span class="vignette sans-illustration" aria-hidden="true"></span>{/if}
       <div>
         <p class="progression">
-          {#if etiquette}{`${etiquette} · `}{/if}Question {index + 1} / {questions.length} · {themePrincipal(courante)}
+          {#if etiquette}{`${etiquette} · `}{/if}{index + 1}/{questions.length} · {themePrincipal(courante)}
         </p>
         <!-- Avancement : un segment par question. -->
         <ol class="segments" aria-hidden="true">
           {#each questions as _, i}<li class:fait={i < resultats.length} class:courant={i === index}></li>{/each}
         </ol>
         <!-- Le statut brouillon n'est pas montré aux joueurs (il reste visible dans les outils de test). -->
-        {#if difficulte(courante) !== 'normale'}
-          <p class="badges">
+        <p class="badges">
+          <span class="badge cran">{CRANS_DIFFICULTE[courante.difficulte?.cran ?? 2]}</span>
+          {#if difficulte(courante) !== 'normale'}
             <span class="badge niveau">{difficulte(courante) === 'decouverte' ? 'niveau découverte' : 'niveau expert'}</span>
-          </p>
-        {/if}
+          {/if}
+        </p>
       </div>
       <button type="button" class="fermer" onclick={onfermer} aria-label="Fermer et revenir à l'accueil">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
@@ -243,6 +244,7 @@
   .badges {
     margin: 0.35rem 0 0;
     display: flex;
+    flex-wrap: wrap;
     gap: 0.3rem;
   }
   .badge {
@@ -252,6 +254,7 @@
     font-size: 0.75rem;
     color: var(--muted);
   }
+  .badge.cran::first-letter { text-transform: uppercase; }
   .badge.niveau {
     background: var(--ocre);
     color: var(--petrole);

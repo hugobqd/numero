@@ -242,12 +242,12 @@
   },
   {
     "id": "sport-tennis-longueur-court",
-    "enonce": "Quelle est la longueur réglementaire d’un court de tennis ?",
-    "valeur": 2377,
-    "valeur_a_retenir": 2377,
-    "precision": 1,
-    "unite": "cm",
-    "perimetre": "Distance entre les faces extérieures des lignes de fond, court adulte ITF, simple ou double ; 23,77 m exprimés en centimètres pour conserver un entier.",
+    "enonce": "Quelle est la longueur réglementaire, en mètres, d’un court de tennis ?",
+    "valeur": 23.77,
+    "valeur_a_retenir": 23.77,
+    "precision": 0.01,
+    "unite": "m",
+    "perimetre": "Distance entre les faces extérieures des lignes de fond, court adulte ITF, simple ou double.",
     "ancrage": "Le terrain mesure presque vingt-quatre mètres de long ; sa longueur reste la même en simple et en double.",
     "source": {
       "url": "https://www.itftennis.com/en/about-us/organisation/tennis-glossary/",
@@ -264,36 +264,36 @@
     ],
     "difficulte": {
       "cran": 3,
-      "justification": "La dimension exacte relève de la culture sportive ; le centimètre permet de conserver la précision réglementaire."
+      "justification": "La dimension exacte relève de la culture sportive."
     },
     "leurres": [
       {
-        "valeur": 1189,
+        "valeur": 11.89,
         "type": "erreur_frequente",
-        "note": "Distance du filet à une ligne de fond : moitié de la longueur, 2377 / 2 = 1188,5 cm, arrondie à 1189. Source : https://www.itftennis.com/en/about-us/organisation/tennis-glossary/"
+        "note": "Distance du filet à une ligne de fond : moitié de la longueur, 23,77 m / 2, arrondis à 11,89 m. Source : https://www.itftennis.com/en/about-us/organisation/tennis-glossary/"
       },
       {
-        "valeur": 823,
+        "valeur": 8.23,
         "type": "autre_perimetre",
-        "note": "Largeur en simple : 8,23 m, soit 823 cm ; leurre éloigné. Source : https://www.itftennis.com/en/about-us/organisation/tennis-glossary/"
+        "note": "Largeur en simple : 8,23 m ; leurre éloigné. Source : https://www.itftennis.com/en/about-us/organisation/tennis-glossary/"
       },
       {
-        "valeur": 4754,
+        "valeur": 47.54,
         "type": "erreur_frequente",
-        "note": "Deux longueurs de court au lieu d’une : 2377 × 2. Source : https://www.itftennis.com/en/about-us/organisation/tennis-glossary/"
+        "note": "Deux longueurs de court au lieu d’une : 23,77 m × 2. Source : https://www.itftennis.com/en/about-us/organisation/tennis-glossary/"
       },
       {
-        "valeur": 2187,
+        "valeur": 21.87,
         "type": "proche",
         "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
       },
       {
-        "valeur": 2437,
+        "valeur": 24.37,
         "type": "proche",
         "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
       },
       {
-        "valeur": 2677,
+        "valeur": 26.77,
         "type": "proche",
         "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
       }
@@ -524,14 +524,15 @@
         "note": "Volume de deux litres, pas d’un seul : 1000 × 2. Source : https://www.nist.gov/pml/owm/si-units-volume"
       },
       {
-        "valeur": 1250,
-        "type": "proche",
-        "note": "Valeur voisine proposée ; aucune conversion de référence. Source : https://www.nist.gov/pml/owm/si-units-volume"
+        "valeur": 10000,
+        "type": "erreur_frequente",
+        "valeur_fixe": true,
+        "note": "Un facteur dix de trop dans la conversion du litre en centimètres cubes."
       },
       {
-        "valeur": 750,
-        "type": "proche",
-        "note": "Valeur plausible proposée pour varier la réserve ; ne correspond pas à une mesure de référence."
+        "valeur": 3000,
+        "type": "autre_perimetre",
+        "note": "Volume de trois litres, soit trois cubes de 10 cm de côté."
       },
       {
         "valeur": 1500,

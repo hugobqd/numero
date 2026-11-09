@@ -157,6 +157,7 @@ export function fichesPossedees(c: Collection, stock: Question[]): Question[] {
  */
 export function choisirRevision(c: Collection, stock: Question[], nombre = FICHES_PAR_REVISION): Question[] {
   const disponibles = fichesPossedees(c, stock)
+    .filter((q) => q.statut !== 'rejete')
     .map((q) => ({ q, e: c[q.id], hasard: Math.random() }))
     .sort(
       (a, b) =>

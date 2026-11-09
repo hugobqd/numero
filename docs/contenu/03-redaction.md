@@ -12,7 +12,7 @@ thématiques → sources → **rédaction** → simplification → relecture hum
 
 ## Mission
 
-Pour chaque nombre validé, écrire une fiche complète au format `Question`, avec `"statut": "brouillon"`. Seul un humain passe une fiche à `valide`.
+Pour chaque nombre validé, écrire une fiche complète au format `Question`, avec `"statut": "brouillon"`. Seul un humain passe une fiche à `valide` ou à `rejete`. Une fiche rejetée reste au catalogue et sort des nouveaux tirages et des révisions.
 
 ## Champs à soigner
 
