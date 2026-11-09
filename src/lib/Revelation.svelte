@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Question, ResultatQuestion } from './types';
-  import { ecartRelatif, estExact, verdict as qualifier } from './score';
+  import { ecartRelatif, verdict } from './score';
   import { avecUnite, grand, pourcentage, scientifique } from './format';
 
   let {
@@ -17,45 +17,45 @@
 
   const vraie = $derived(grand(question.valeur_a_retenir, question.unite, question.precision));
   const ecart = $derived(ecartRelatif(question, resultat.reponse));
-  const verdict = $derived(qualifier(question, resultat));
+  const statut = $derived(verdict(resultat));
 </script>
 
-<section class="revelation" class:gagne={resultat.gagne}>
-  <p class="verdict" class:presque={!resultat.gagne && resultat.points > 0}>
-    <span class="pastille">{verdict}</span><span class="points">{resultat.points} pts</span>
-    {#if resultat.neurones}<span class="neurones">+{resultat.neurones} neurones</span>{/if}
-  </p>
-
-  <div class="vraie">
-    <span class="chiffres">{vraie.chiffres}</span>
-    <span class="unite">{vraie.unite}</span>
+<section class="revelation">
+  <div class="comparaison">
+    <div class="vraie">
+      <span class="chiffres">{vraie.chiffres}</span>
+      <span class="unite">{vraie.unite}</span>
+    </div>
+    <div class="retour" class:exact={resultat.gagne} class:presque={statut === 'Presque'}>
+      <p class="verdict">{statut}</p>
+      {#if resultat.erreur}
+        <p class="reponse-joueur">Ta réponse · <strong>{resultat.erreur.choix} de {avecUnite(resultat.erreur.seuil, question.unite)}</strong></p>
+      {:else}
+        <p class="reponse-joueur">Ta réponse · <strong>{avecUnite(resultat.reponse, question.unite, question.precision)}</strong></p>
+      {/if}
+      {#if resultat.neurones}
+        <p class="gain">+{resultat.neurones} neurone{resultat.neurones > 1 ? 's' : ''}</p>
+      {/if}
+    </div>
   </div>
-  {#if question.valeur_a_retenir >= 1e6}
-    <p class="formes">{scientifique(question.valeur_a_retenir)} {question.unite}</p>
+  {#if question.perimetre}<p class="perimetre">{question.perimetre}</p>{/if}
+  {#if resultat.erreur}
+    <p class="perimetre">C’était {resultat.erreur.choix === 'plus' ? 'moins' : 'plus'} de {avecUnite(resultat.erreur.seuil, question.unite)}.</p>
   {/if}
-  <p class="perimetre">{question.perimetre}</p>
-
-  <p class="toi">
-    {#if resultat.erreur}
-      Tu as répondu <strong>« {resultat.erreur.choix} »</strong> à
-      <strong>{avecUnite(resultat.erreur.seuil, question.unite)}</strong>, mais c'était
-      {resultat.erreur.choix === 'plus' ? 'moins' : 'plus'}.
-    {:else}
-      Ta réponse : <strong>{avecUnite(resultat.reponse, question.unite, question.precision)}</strong>
-      {#if !estExact(question, resultat.reponse)}({pourcentage(ecart)}){/if}
-    {/if}
-  </p>
 
   <p class="ancrage">{question.ancrage}</p>
-  {#if question.mnemo}<p class="mnemo"><strong>Astuce :</strong> {question.mnemo}</p>{/if}
-
-  <p class="source">
-    Source : <a href={question.source.url} target="_blank" rel="noopener">{new URL(question.source.url).hostname}</a>
-  </p>
 
   <button type="button" class="principal" onclick={onsuivante}>
-    {dernier ? 'Voir le bilan' : 'Question suivante →'}
+    {dernier ? 'Voir le bilan' : 'Question suivante'}
   </button>
+
+  <details>
+    <summary>Détails</summary>
+    {#if !resultat.gagne && !resultat.erreur}<p>Écart · {pourcentage(ecart)}</p>{/if}
+    {#if question.valeur_a_retenir >= 1e6}<p>{scientifique(question.valeur_a_retenir)} {question.unite}</p>{/if}
+    {#if question.mnemo}<p>{question.mnemo}</p>{/if}
+    <a href={question.source.url} target="_blank" rel="noopener">Source · {new URL(question.source.url).hostname}</a>
+  </details>
 </section>
 
 <style>
@@ -63,74 +63,32 @@
     display: grid;
     gap: 0.75rem;
   }
-  /* Verdict : un aplat de couleur (rouille, ocre ou sarcelle) en capitales étroites. */
-  .verdict {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem 0.75rem;
-    font-weight: 800;
-  }
-  .pastille {
-    padding: 0.3rem 0.7rem;
-    border-radius: var(--rayon-petit);
-    background: var(--verdict-perdu);
-    color: var(--verdict-texte);
-    font-size: 1.3rem;
-    font-stretch: 72%;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-  .presque .pastille {
-    background: var(--verdict-presque);
-  }
-  .gagne .pastille {
-    background: var(--verdict-gagne);
-  }
-  .points {
-    font-size: 1.3rem;
-    font-stretch: 72%;
-  }
-  .neurones {
-    margin-left: auto;
-    font-size: 1.1rem;
-    font-stretch: 72%;
-    color: var(--accent-texte);
+  .comparaison {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(6.5rem, 2fr);
+    align-items: start;
+    gap: 0.75rem;
   }
   .vraie {
     display: flex;
     align-items: baseline;
     gap: 0.5rem;
     flex-wrap: wrap;
+    container-type: inline-size;
   }
   .vraie .chiffres {
-    font-size: clamp(2.75rem, 17cqi, 5.5rem);
+    font-size: clamp(2.25rem, 26cqi, 5.5rem);
     color: var(--accent-texte);
     font-weight: 900;
     font-variant-numeric: tabular-nums;
     line-height: 0.9;
     letter-spacing: -0.02em;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
   .vraie .unite {
     font-size: 1.2rem;
     font-weight: 600;
-  }
-  .unite,
-  .formes,
-  .perimetre {
-    color: var(--muted);
-  }
-  .formes,
-  .perimetre {
-    margin: 0;
-  }
-  .perimetre {
-    font-style: italic;
-  }
-  .toi {
-    margin: 0.5rem 0 0;
-    font-variant-numeric: tabular-nums;
   }
   .ancrage {
     margin: 0.25rem 0 0;
@@ -140,18 +98,38 @@
     background: var(--surface);
     font-size: 1.05rem;
   }
-  .mnemo {
+  .unite, .perimetre, details { color: var(--muted); }
+  .perimetre, .retour p { margin: 0; }
+  .retour {
+    --couleur-verdict: var(--verdict-perdu);
+    display: grid;
+    justify-items: end;
+    gap: 0.5rem;
+    text-align: right;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+  .gain { color: var(--accent-texte); font-weight: 800; }
+  .verdict {
+    transform: rotate(-5deg);
     margin: 0;
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--rayon-petit);
+    background: var(--couleur-verdict);
+    color: var(--verdict-texte);
+    font-weight: 800;
   }
-  .source {
-    margin: 0;
-    font-size: 0.85rem;
-    color: var(--muted);
+  .retour.exact { --couleur-verdict: var(--verdict-gagne); }
+  .retour.presque { --couleur-verdict: var(--verdict-presque); }
+  .reponse-joueur { color: var(--muted); font-weight: 400; }
+  .reponse-joueur strong {
+    color: color-mix(in srgb, var(--couleur-verdict) 40%, var(--fg));
+    font-weight: 600;
   }
-  a {
-    color: var(--accent-texte);
+  @media (prefers-color-scheme: dark) {
+    .reponse-joueur strong { color: var(--couleur-verdict); }
   }
-  .principal {
-    margin-top: 0.75rem;
-  }
+  details { font-size: 0.9rem; }
+  summary { cursor: pointer; }
+  a { color: var(--accent-texte); }
 </style>

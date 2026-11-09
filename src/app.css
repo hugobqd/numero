@@ -31,9 +31,9 @@
   --presque: var(--ocre);
   --perdu: var(--rouille);
   /* Pastilles de verdict à la révélation : vives et joyeuses, texte pétrole, identiques en clair et en sombre. */
-  --verdict-gagne: #3ccf9a;
-  --verdict-presque: #f5b82e;
-  --verdict-perdu: #ff7a52;
+  --verdict-gagne: #49e86d;
+  --verdict-presque: #ffa04d;
+  --verdict-perdu: #f479aa;
   --verdict-texte: var(--petrole);
 
   /* Arrondis : les cartes un peu plus que les boutons. */
@@ -197,7 +197,7 @@ body.avec-barre .dev-bouton {
   bottom: calc(var(--hauteur-barre) + env(safe-area-inset-bottom) + 0.75rem);
 }
 @media (min-width: 52rem) {
-  body.dev-ouvert .barre {
+  body.dev-ouvert nav.barre {
     right: 21rem;
   }
 }
@@ -221,3 +221,17 @@ button, a, input, label { touch-action: manipulation; }
   button, input:not([type='radio'], [type='checkbox'], [type='range']), select { min-height: 44px; }
   input:not([type='radio'], [type='checkbox'], [type='range']), textarea, select { font-size: max(16px, 1em); }
 }
+
+.fermer-jeu {
+  display: grid;
+  place-items: center;
+  align-self: start;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 50%;
+}
+.fermer-jeu:hover { background: var(--surface); color: var(--fg); }
+.fermer-jeu svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }

@@ -18,7 +18,7 @@
 <div class="jauge-neurones">
   <p class="tete">
     <span>{@render titre()}</span>
-    <span class="valeur"><strong>{total}</strong> / {vers}</span>
+    <span class="valeur"><strong>{total}</strong> / {vers} neurones</span>
   </p>
   <div
     class="barre"
@@ -33,7 +33,7 @@
   </div>
   <p class="bornes">
     <span>{depuis}</span>
-    <span>{vers} : une pochette bonus</span>
+    <span>{vers}</span>
   </p>
 </div>
 

@@ -1,4 +1,4 @@
-import { caseEmoji } from './score';
+import { caseEmoji, pointsDuResultat } from './score';
 import type { ResultatQuestion } from './types';
 
 export function texteDePartage(
@@ -6,8 +6,8 @@ export function texteDePartage(
   resultats: ResultatQuestion[],
   url = location.origin + location.pathname,
 ): string {
-  const cases = resultats.map((r) => caseEmoji(r.points, r.gagne)).join('');
-  const total = `${resultats.reduce((s, r) => s + r.points, 0)}/${resultats.length * 100} pts`;
+  const cases = resultats.map(caseEmoji).join('');
+  const total = `${resultats.reduce((s, r) => s + pointsDuResultat(r), 0)}/${resultats.length * 100} pts`;
   return `Numero #${numero} — ${total}\n${cases}\n${url}`;
 }
 

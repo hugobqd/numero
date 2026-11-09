@@ -2,7 +2,6 @@
   import type { Mecanique, Question, ResultatQuestion } from './lib/types';
   import {
     ID_POCHETTE_OFFERTE,
-    FICHES_PAR_POCHETTE,
     fichesNonReservees,
     ecrirePochette,
     effacerPochette,
@@ -46,10 +45,11 @@
   import JoueursVue from './lib/JoueursVue.svelte';
   import Accueil from './lib/Accueil.svelte';
   import Reglages from './lib/Reglages.svelte';
+  import JaugeNeurones from './lib/JaugeNeurones.svelte';
+  import { pointsDuResultat, verdict } from './lib/score';
   import Recap from './lib/Recap.svelte';
   import Inspecteur from './lib/Inspecteur.svelte';
   import Partage from './lib/Partage.svelte';
-  import JaugeNeurones from './lib/JaugeNeurones.svelte';
   import type { Difficulte } from './lib/propositions';
   import {
     choisirJoueur,
@@ -122,7 +122,6 @@
   const resultats = $derived(pochette?.resultats ?? []);
   type Ecran =
     | 'joueurs'
-    | 'tutoIntro'
     | 'tuto'
     | 'tutoBilan'
     | 'accueil'
@@ -134,22 +133,14 @@
     | 'revision'
     | 'bilanRevision'
     | 'reglages';
-  // L'introduction ne revient pas après l'ouverture du premier défi, même inachevé.
-  // « Revoir le tuto » efface explicitement cette pochette pour retrouver la bienvenue.
-  let ecran = $state<Ecran>(
-    !joueur
-      ? 'joueurs'
-      : !joueur.tutoFait && !lirePochette(ID_POCHETTE_OFFERTE)
-        ? 'tutoIntro'
-        : 'accueil',
-  );
+  let ecran = $state<Ecran>(joueur ? 'accueil' : 'joueurs');
   let stats = $state(lireStats());
   // Série en cours : remise à zéro si le joueur a manqué un jour.
   const serie = $derived(serieDuJour(stats, numero));
 
   // Navigation : pendant un défi, le tuto ou une révision, l'en-tête se réduit à un ✕ et la barre du bas disparaît.
-  const enJeu = $derived(ecran === 'tuto' || ecran === 'defi' || ecran === 'revision' || ecran === 'ouverture' || ecran === 'ouvertureTuto');
-  const avecBarre = $derived(!!joueur && !enJeu && ecran !== 'tutoIntro');
+  const enJeu = $derived(ecran === 'tuto' || ecran === 'defi' || ecran === 'revision' || ecran === 'ouverture' || ecran === 'ouvertureTuto' || ecran === 'bilan' || ecran === 'tutoBilan' || ecran === 'bilanRevision');
+  const avecBarre = $derived(!!joueur && !enJeu);
   const ongletActif = $derived(
     ecran === 'accueil' || ecran === 'bilan'
       ? 'accueil'
@@ -173,10 +164,10 @@
 
   // Collection : fiches gagnées en défi, à réviser.
   let collection = $state(lireCollection());
-  let nouvellesFiches = $state<string[]>([]);
   const possedees = $derived(fichesPossedees(collection, stock));
   // Dernières valeurs vues : gardées pendant le quiz, où le bandeau est démonté.
   const compteursVus = $state(untrack(() => ({ serie, neurones: neurones.total, fiches: possedees.length })));
+  const nbAcquises = $derived(possedees.filter((q) => collection[q.id].etat === 'acquise').length);
   const nbAReviserTotal = $derived(possedees.filter((q) => collection[q.id].etat === 'decouverte').length);
   // Fiches que le joueur n'a pas encore : le tirage des pochettes se fait parmi elles.
   const aRecuperer = $derived(jouables.filter((q) => !collection[q.id]));
@@ -208,7 +199,6 @@
 
   /** Lance (ou reprend) le défi d'une pochette ; une pochette qui vient d'être ouverte repart d'un bilan vierge. */
   function jouer(p: Pochette, decouvrir = false) {
-    if (pochette?.id !== p.id) nouvellesFiches = [];
     pochette = p;
     bonusRecente = false;
     versionPochettes++;
@@ -221,16 +211,15 @@
    */
   function enregistrerFicheDefi(res: ResultatQuestion, q: Question, jour: number) {
     const avant = collection[res.id]?.etat ?? null;
-    const nouvelle = gagnerFiche(res.id, jour, res.gagne);
+    gagnerFiche(res.id, jour, res.gagne);
     collection = lireCollection();
     res.neurones = gainFiche(avant, collection[res.id]?.etat ?? 'decouverte', q.difficulte?.cran);
     gagnerNeurones(res.neurones);
-    return nouvelle;
   }
 
   function resultatDefi(res: ResultatQuestion, q: Question) {
     if (!pochette) return;
-    if (enregistrerFicheDefi(res, q, pochette.jour)) nouvellesFiches.push(res.id);
+    enregistrerFicheDefi(res, q, pochette.jour);
     pochette.resultats.push(res);
     ecrirePochette($state.snapshot(pochette));
     versionPochettes++;
@@ -246,7 +235,7 @@
   }
 
   // Pochette offerte (premier défi) : 5 fiches tout public tirées au hasard, avec le mode d'emploi,
-  // avant la pochette du jour. Enregistrée comme les autres : un rechargement reprend où on en était.
+  // Enregistrée comme les autres : un rechargement reprend où on en était.
   let offerte = $state<Pochette | null>(lirePochette(ID_POCHETTE_OFFERTE));
   const questionsTuto = $derived(offerte ? parId(offerte.fiches) : []);
   const resultatsTuto = $derived(offerte?.resultats ?? []);
@@ -286,7 +275,7 @@
   function reprendrePochette(p: Pochette) {
     if (p.origine === 'offerte') {
       offerte = p;
-      ecran = 'tuto';
+      commencerTuto();
     } else jouer(p);
   }
 
@@ -351,6 +340,7 @@
     questions: Question[];
     resultats: ResultatQuestion[];
     graine: number;
+    fichesProgressees: number;
     /** Neurones de bonus pour une révision parfaite (0 sinon). */
     bonus: number;
   } | null>(null);
@@ -358,7 +348,7 @@
   function reviser() {
     const qs = choisirRevision(collection, stock);
     if (!qs.length) return;
-    revision = { questions: qs, resultats: [], graine: 1000 + Math.floor(Math.random() * 1_000_000), bonus: 0 };
+    revision = { questions: qs, resultats: [], graine: 1000 + Math.floor(Math.random() * 1_000_000), bonus: 0, fichesProgressees: 0 };
     bonusRecente = false;
     ecran = 'revision';
   }
@@ -370,7 +360,10 @@
     const apres = collection[res.id]?.etat;
     res.neurones = avant && apres ? gainFiche(avant, apres, q.difficulte?.cran) : 0;
     gagnerNeurones(res.neurones);
-    revision?.resultats.push(res);
+    if (revision) {
+      if (avant && apres && avant !== apres) revision.fichesProgressees++;
+      revision.resultats.push(res);
+    }
   }
 
   /** Fin de révision : une révision parfaite (5 / 5) rapporte un bonus de neurones. */
@@ -392,8 +385,6 @@
     messagePartage = r === 'copie' ? 'Copié dans le presse-papiers' : r === 'echec' ? 'Partage impossible' : '';
   }
 
-  const total = $derived(`${resultats.reduce((s, r) => s + r.points, 0)} / ${questions.length * 100} pts`);
-  const aReviser = $derived(nouvellesFiches.filter((id) => !resultats.find((r) => r.id === id)?.gagne).length);
   const etatPochette = $derived(
     pochetteDuJour
       ? {
@@ -401,10 +392,9 @@
           faites: pochetteDuJour.resultats.length,
           total: pochetteDuJour.fiches.length,
           terminee: pochetteDuJour.terminee,
-          score: `${pochetteDuJour.resultats.reduce((s, r) => s + r.points, 0)} / ${pochetteDuJour.fiches.length * 100} pts`,
         }
       : disponibles.length
-        ? { etat: 'a-ouvrir' as const, fiches: Math.min(FICHES_PAR_POCHETTE, disponibles.length) }
+        ? { etat: 'a-ouvrir' as const }
         : aRecuperer.length
           ? { etat: 'fiches-reservees' as const }
           : { etat: 'toutes-les-fiches' as const },
@@ -443,40 +433,91 @@
   <span class="nom-marque">Numero</span>
 {/snippet}
 
-{#snippet gainFiches(nombre: number, detail: string)}
-  <!-- Fiches gagnées : tout le bloc mène à Ma collection. -->
-  <button type="button" class="bloc gain-fiches" onclick={() => (ecran = 'collection')}>
-    <span>
-      <span><strong class="gain-nombre">+{nombre}</strong> fiche{nombre > 1 ? 's' : ''} dans ta collection</span>
-      <span class="conseil">{detail}</span>
-    </span>
-    <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
-  </button>
+{#snippet bilanPartie(titre: string, questions: Question[], resultats: ResultatQuestion[], revision: { bonus: number; fichesProgressees: number } | null = null, partage = false)}
+  {@const gain = sommeNeurones(resultats) + (revision?.bonus ?? 0)}
+  {@const reussies = resultats.filter((r) => verdict(r) === 'Gagné').length}
+  {@const presque = resultats.filter((r) => verdict(r) === 'Presque').length}
+  <section class="bilan palette-fiche" aria-labelledby="titre-bilan">
+    <div class="entete-bilan">
+      <h2 id="titre-bilan">{titre}</h2>
+      <button type="button" class="fermer fermer-jeu" onclick={fermerJeu} aria-label="Fermer le bilan et revenir à l’accueil">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+    </div>
+    <p class="progression-bilan">
+      {reussies} réussie{reussies > 1 ? 's' : ''}{#if presque} · {presque} presque{/if} · {resultats.length - reussies - presque} à revoir
+    </p>
+    {#if revision}
+      <p class="progression-bilan">
+        {#if revision.fichesProgressees}
+          {revision.fichesProgressees} fiche{revision.fichesProgressees > 1 ? 's ont' : ' a'} progressé
+        {:else}
+          {resultats.filter((r) => r.gagne).length} sur {questions.length} trouvés
+        {/if}
+      </p>
+    {/if}
+    <div class="gains" class:deux-gains={!revision}>
+      {#if !revision}
+        <p><strong>+{resultats.length}</strong> fiche{resultats.length > 1 ? 's' : ''} gagnée{resultats.length > 1 ? 's' : ''}</p>
+      {/if}
+      <p><strong>+{gain}</strong> neurone{gain > 1 ? 's' : ''}{#if revision?.bonus}<small>dont {revision.bonus} de bonus</small>{/if}</p>
+    </div>
+    {#if gain}
+      <JaugeNeurones {...progression(neurones)}>
+        {#snippet titre()}Prochaine pochette bonus{/snippet}
+      </JaugeNeurones>
+    {/if}
+    {#if bonusRecente}<p class="bonus-gagnee">Pochette bonus gagnée !</p>{/if}
+    {#if revision && possedees.length}
+      <button type="button" class="principal" onclick={reviser}>Réviser encore</button>
+    {/if}
+    <details class="details-bilan">
+      <summary>Voir mes réponses</summary>
+      {#if !revision}
+        <p class="message">{resultats.reduce((s, r) => s + pointsDuResultat(r), 0)} / {questions.length * 100} pts</p>
+      {/if}
+      <Recap {questions} {resultats} />
+    </details>
+    {#if (bonusRecente && etatBonus) || revision || partage}
+      <div class="actions">
+        {#if bonusRecente && etatBonus}
+          <button type="button" onclick={ouvrirBonus}>Ouvrir une pochette bonus</button>
+        {/if}
+        {#if revision}<button type="button" onclick={() => (ecran = 'collection')}>Ma collection</button>{/if}
+        {#if partage}<button type="button" onclick={onPartager}>Partager</button>{/if}
+      </div>
+    {/if}
+    {#if partage && messagePartage}<p class="message" role="status">{messagePartage}</p>{/if}
+    {#if !revision}<button type="button" class="principal" onclick={fermerJeu}>Retour à l’accueil</button>{/if}
+  </section>
 {/snippet}
 
-{#snippet gainNeurones(gain: number, dontBonus = 0)}
-  <!-- Neurones gagnés et jauge vers la prochaine pochette bonus (une à chaque palier de 250). -->
-  <div class="bloc neurones">
-    <JaugeNeurones {...progression(neurones)}>
-      {#snippet titre()}<strong class="gain-nombre">+{gain}</strong> neurone{gain > 1 ? 's' : ''}{#if dontBonus}<span class="conseil"> · dont {dontBonus} de révision parfaite</span>{/if}{/snippet}
-    </JaugeNeurones>
-    {#if bonusRecente}<p class="bonus-gagnee">Pochette bonus gagnée ! Elle t'attend sur l'accueil.</p>{/if}
-  </div>
-{/snippet}
+<svelte:window onkeydown={(event) => {
+  if (event.key === 'Escape' && (ecran === 'bilan' || ecran === 'tutoBilan' || ecran === 'bilanRevision')) fermerJeu();
+}} />
 
 <main>
   {#if !enJeu}
     <header>
       <h1>
-        {#if joueur && ecran !== 'tutoIntro'}
+        {#if joueur}
           <button type="button" class="titre" onclick={() => (ecran = 'accueil')}>{@render marque()}</button>
         {:else}{@render marque()}{/if}
       </h1>
       {#if joueur}
+        {@const palier = progression(neurones)}
         <div class="pastilles">
           <p class="pastille" aria-label="Série : {serie} jour{serie > 1 ? 's' : ''} d'affilée">Série <CompteurAnime valeur={serie} depuis={compteursVus.serie} onaffiche={(n) => (compteursVus.serie = n)} /></p>
-          <p class="pastille" aria-label={`Neurones : ${neurones.total}`}>Neurones <CompteurAnime valeur={neurones.total} depuis={compteursVus.neurones} onaffiche={(n) => (compteursVus.neurones = n)} /></p>
-          <p class="pastille" aria-label="Collection : {possedees.length} fiches sur {stock.length}">Fiches <CompteurAnime valeur={possedees.length} depuis={compteursVus.fiches} onaffiche={(n) => (compteursVus.fiches = n)} /></p>
+          <div class="pastille pastille-neurones">
+            <span>Neurones <CompteurAnime valeur={neurones.total} depuis={compteursVus.neurones} onaffiche={(n) => (compteursVus.neurones = n)} /></span>
+            <progress
+              aria-label="Progression vers la prochaine pochette bonus"
+              aria-valuetext={`${palier.total} neurones sur ${palier.vers}`}
+              value={palier.total - palier.depuis}
+              max={palier.vers - palier.depuis}
+            ></progress>
+          </div>
+          <button type="button" onclick={() => (ecran = 'collection')} class="pastille pastille-fiches" aria-label="Ouvrir Ma collection : {possedees.length} fiches sur {stock.length}">Fiches <CompteurAnime valeur={possedees.length} depuis={compteursVus.fiches} onaffiche={(n) => (compteursVus.fiches = n)} /></button>
         </div>
       {/if}
     </header>
@@ -491,14 +532,6 @@
       onsupprimer={retirerJoueur}
       onretour={joueur ? () => (ecran = 'reglages') : undefined}
     />
-  {:else if ecran === 'tutoIntro' && joueur}
-    <section class="accueil">
-      <h2>Bienvenue {joueur.pseudo} !</h2>
-      <p>Numero, c'est <strong>5 nombres par jour</strong> à retenir <strong>au chiffre près</strong> : la distance Terre-Lune, le nombre d'os du corps humain, l'âge de la Terre…</p>
-      <p>Chaque question jouée devient une <strong>fiche de ta collection</strong>. Celles que tu ne trouves pas du premier coup sont « à réviser » : tu les retrouves en révision jusqu'à les avoir acquises.</p>
-      <p>Pour commencer, voici ta <strong>première pochette</strong>, offerte : {FICHES_PAR_POCHETTE} questions, avec le mode d'emploi. Ensuite, une nouvelle pochette chaque jour.</p>
-      <button type="button" class="principal" onclick={commencerTuto}>{resultatsTuto.length ? 'Reprendre' : "C'est parti"}</button>
-    </section>
   {:else if ecran === 'ouverture' || ecran === 'ouvertureTuto'}
     {#key ecran}
       <OuverturePochette
@@ -522,25 +555,16 @@
       bind:enCours
     />
   {:else if ecran === 'tutoBilan'}
-    <section class="bilan">
-      <h2>Premier défi terminé</h2>
-      <p class="score">
-        {resultatsTuto.reduce((s, r) => s + r.points, 0)} / {questionsTuto.length * 100} pts
-      </p>
-      <Recap questions={questionsTuto} resultats={resultatsTuto} />
-      {@render gainFiches(questionsTuto.length, 'Les fiches pas encore trouvées passeront en premier dans tes révisions.')}
-      {@render gainNeurones(sommeNeurones(resultatsTuto))}
-      <button type="button" class="principal" onclick={() => (ecran = 'accueil')}>Retour à l'accueil</button>
-    </section>
+    {@render bilanPartie('Premier défi terminé !', questionsTuto, resultatsTuto)}
   {:else if ecran === 'accueil'}
     <Accueil
-      pseudo={joueur?.pseudo ?? ''}
       jour={numero}
       pochette={etatPochette}
       nbFiches={possedees.length}
-      nbTotal={stock.length}
       nbAReviser={nbAReviserTotal}
+      {nbAcquises}
       bonus={etatBonus}
+      onouvrirOfferte={joueur && !joueur.tutoFait && !offerte && disponibles.length ? commencerTuto : undefined}
       anciennesPochettes={anciennesPochettes.map((p) => ({ id: p.id, jour: p.jour, offerte: p.origine === 'offerte', faites: p.resultats.length, total: p.fiches.length }))}
       onreprendre={(id) => { const p = lirePochette(id); if (p) reprendrePochette(p); }}
       neurones={progression(neurones)}
@@ -563,33 +587,7 @@
       bind:enCours
     />
   {:else if ecran === 'bilan'}
-    <section class="bilan">
-      {#if pochette?.origine === 'bonus'}<h2>Pochette bonus</h2>{/if}
-      <p class="score">{total}</p>
-      <Recap {questions} {resultats} />
-
-      {@render gainFiches(
-        nouvellesFiches.length || questions.length,
-        `${possedees.length} / ${stock.length} fiches${aReviser ? ` · ${aReviser} à réviser` : ''}`,
-      )}
-      {@render gainNeurones(sommeNeurones(resultats))}
-
-      {#if pochette?.origine === 'jour'}
-        <button type="button" class="principal" onclick={onPartager}>Partager mon résultat</button>
-      {/if}
-      <button type="button" onclick={() => (ecran = 'accueil')}>← Accueil</button>
-      {#if messagePartage}<p class="message">{messagePartage}</p>{/if}
-      <dl class="stats">
-        <div><dt>Pochettes</dt><dd>{stats.ouvertes}</dd></div>
-        <div><dt>Série</dt><dd>{stats.serie}</dd></div>
-        <div><dt>Record</dt><dd>{stats.meilleureSerie}</dd></div>
-      </dl>
-      <p class="demain">Prochaine pochette demain à minuit (heure de Paris).</p>
-      <div class="actions centre">
-        <button type="button" onclick={() => allerAuJour(numero + 1)}>Simuler le jour suivant →</button>
-        <button type="button" onclick={nouvellePochette}>↻ Autre pochette du jour (test)</button>
-      </div>
-    </section>
+    {@render bilanPartie(pochette?.origine === 'bonus' ? 'Pochette bonus terminée !' : 'Pochette terminée !', questions, resultats, null, pochette?.origine === 'jour')}
   {:else if ecran === 'collection'}
     <CollectionVue
       {collection}
@@ -611,18 +609,7 @@
       bind:enCours
     />
   {:else if ecran === 'bilanRevision' && revision}
-    <section class="bilan">
-      <h2>Révision terminée</h2>
-      <p class="score">{revision.resultats.filter((r) => r.gagne).length} / {revision.questions.length}</p>
-      <Recap questions={revision.questions} resultats={revision.resultats} />
-      {@render gainNeurones(sommeNeurones(revision.resultats) + revision.bonus, revision.bonus)}
-      <p class="demain">Une fiche réussie progresse (découverte, en cours, acquise) ; une erreur ne lui retire rien.</p>
-      <div class="actions">
-        <button type="button" class="principal" onclick={reviser}>Encore une révision</button>
-        <button type="button" onclick={() => (ecran = 'collection')}>Ma collection</button>
-        <button type="button" onclick={() => (ecran = 'accueil')}>← Accueil</button>
-      </div>
-    </section>
+    {@render bilanPartie('Révision terminée !', revision.questions, revision.resultats, revision)}
   {:else if ecran === 'reglages' && joueur}
     <Reglages pseudo={joueur.pseudo} {meca} onmeca={choisirMeca} onjoueurs={() => (ecran = 'joueurs')} />
   {/if}
@@ -672,6 +659,7 @@
         <p><strong>{joueur.pseudo}</strong> · jour {numero}</p>
         <div class="boutons">
           <button type="button" onclick={() => (ecran = 'joueurs')}>Changer</button>
+          <button type="button" onclick={() => gagnerNeurones(100)}>+100 neurones</button>
           <button type="button" onclick={() => { majJoueur(joueur.id, { tutoFait: false }); effacerPochette(ID_POCHETTE_OFFERTE); recharger(); }}>Revoir le tuto</button>
         </div>
       {:else}
@@ -850,11 +838,6 @@
     height: 1.9rem;
     flex: none;
   }
-  .accueil {
-    display: grid;
-    gap: 1.5rem;
-    padding-top: 3rem;
-  }
   button.titre {
     font: inherit;
     padding: 0;
@@ -869,45 +852,44 @@
   }
   .bilan {
     display: grid;
-    gap: 1rem;
+    gap: 1.25rem;
+    padding: clamp(1.1rem, 4vw, 2rem);
+    border-radius: 24px;
+    border-top: 3px solid var(--accent);
+    background: var(--carte-fond);
+    box-shadow: 0 14px 36px -20px var(--carte-ombre), 0 3px 0 var(--surface-2);
   }
-  .score {
-    margin: 0;
-    font-size: clamp(3.5rem, 18vw, 5rem);
-    font-weight: 900;
-    line-height: 0.95;
-    font-stretch: 72%;
-    letter-spacing: -0.02em;
-    font-variant-numeric: tabular-nums;
-    text-align: center;
-  }
-  .message,
-  .demain {
-    margin: 0;
-    text-align: center;
-    color: var(--muted);
-  }
-  .stats {
+  .entete-bilan { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 0.75rem; }
+  .gains { display: grid; gap: 0.6rem; }
+  .deux-gains { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gains p {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     margin: 0;
-    text-align: center;
+    padding: 0.8rem;
+    border-radius: var(--rayon-carte);
+    background: var(--surface);
+    font-weight: 700;
   }
-  .stats dt {
+  .gains strong { font-size: clamp(2rem, 9vw, 3.5rem); line-height: 1; color: var(--accent-texte); }
+  .gains small { font-weight: 400; }
+  .progression-bilan,
+  .message {
+    margin: 0;
     color: var(--muted);
-    font-size: 0.8rem;
   }
-  .stats dd {
-    margin: 0;
-    font-size: 2.2rem;
-    font-weight: 800;
-    font-stretch: 72%;
-    line-height: 1.05;
+  .details-bilan {
+    display: grid;
+    padding: 0.75rem 1rem;
+    background: var(--surface);
+    border-radius: var(--rayon-carte);
   }
+  .details-bilan summary { cursor: pointer; font-weight: 700; }
+  .details-bilan :global(.recap), .details-bilan .message { margin-top: 0.75rem; }
   .pastilles {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+    align-items: center;
     gap: 0.35rem;
   }
   /* Série, neurones et collection : pastilles crème et chiffres réactifs. */
@@ -928,6 +910,30 @@
     font-weight: 900;
     margin-left: 0.15rem;
   }
+  .pastille-neurones {
+    display: grid;
+    gap: 0.1rem;
+  }
+  .pastille-neurones progress {
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    border: 0;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--border);
+    color: var(--accent-texte);
+  }
+  .pastille-neurones progress::-webkit-progress-bar { background: var(--border); }
+  .pastille-neurones progress::-webkit-progress-value { background: currentColor; }
+  .pastille-neurones progress::-moz-progress-bar { background: currentColor; }
+  .pastille-fiches {
+    background: var(--sarcelle);
+    color: var(--ivoire);
+    padding-inline: 0.85rem;
+  }
+  .pastille-fiches:hover { background: var(--petrole); }
+  .pastille-fiches :global(.chiffres) { font-size: 1.3rem; }
   /* Bandeau mobile : marque et trois compteurs sur une seule ligne. */
   @media (max-width: 30rem) {
     header {
@@ -959,6 +965,10 @@
       font-size: 0.75rem;
       margin-left: 0.1rem;
     }
+  }
+  @media (max-width: 30rem) {
+    .pastille-fiches { padding-inline: 0.5rem; }
+    .pastille-fiches :global(.chiffres) { font-size: 0.95rem; }
   }
   /* Barre du bas : fixe, sur toute la largeur, contenu centré sur la colonne du jeu. */
   .barre {
@@ -1023,56 +1033,6 @@
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-  /* Blocs de gain au bilan (fiches, neurones) : compacts, sur fond crème. */
-  .bloc {
-    display: grid;
-    gap: 0.35rem;
-    padding: 0.7rem 0.9rem;
-    background: var(--surface);
-    border-radius: var(--rayon-carte);
-  }
-  .bloc p {
-    margin: 0;
-  }
-  .gain-nombre {
-    font-size: 1.4rem;
-    font-weight: 900;
-    font-stretch: 72%;
-    line-height: 1.1;
-    color: var(--accent-texte);
-    margin-right: 0.15rem;
-  }
-  /* Le bloc des fiches est un lien vers Ma collection : texte à gauche, chevron à droite. */
-  button.gain-fiches {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 0.75rem;
-    width: 100%;
-    border: none;
-    color: inherit;
-    font: inherit;
-    font-weight: 400;
-    text-align: left;
-  }
-  .gain-fiches > span {
-    display: grid;
-  }
-  .gain-fiches:hover {
-    background: var(--surface-2);
-  }
-  .chevron {
-    width: 1.25rem;
-    height: 1.25rem;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .conseil {
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
   .bonus-gagnee {
     font-weight: 700;
     color: var(--accent-texte);
@@ -1081,18 +1041,5 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-  }
-  .bilan h2 {
-    margin: 0;
-    text-align: center;
-  }
-  .centre {
-    justify-content: center;
-  }
-  .accueil h2 {
-    margin: 0;
-  }
-  .accueil p {
-    margin: 0;
   }
 </style>

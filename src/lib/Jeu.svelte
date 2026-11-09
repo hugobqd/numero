@@ -50,7 +50,7 @@
     palier: 'Choisis un cran sur le curseur (ou touche une valeur), puis valide.',
     qcm: 'Touche la valeur qui te semble juste.',
     plusmoins:
-      'Le jeu propose une valeur : dis si la bonne est plus grande ou plus petite. 3 coups au plus, et une seule erreur fait perdre la question.',
+      'Le jeu propose une valeur : dis si la bonne est plus grande ou plus petite. La réponse se révèle après une erreur ou au bout de 3 coups.',
   };
 
   const index = $derived(enRevelation ? resultats.length - 1 : resultats.length);
@@ -110,7 +110,7 @@
           {/if}
         </p>
       </div>
-      <button type="button" class="fermer" onclick={onfermer} aria-label="Fermer et revenir à l'accueil">
+      <button type="button" class="fermer fermer-jeu" onclick={onfermer} aria-label="Fermer et revenir à l'accueil">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
       </button>
     </div>
@@ -171,19 +171,6 @@
     gap: 0.85rem;
     align-items: center;
   }
-  .fermer {
-    display: grid;
-    place-items: center;
-    align-self: start;
-    width: 2.75rem;
-    height: 2.75rem;
-    padding: 0;
-    background: transparent;
-    color: var(--muted);
-    border-radius: 50%;
-  }
-  .fermer:hover { background: var(--surface); color: var(--fg); }
-  .fermer svg { width: 1.25rem; height: 1.25rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
   .vignette {
     border-radius: var(--rayon-petit);
     width: 24px;

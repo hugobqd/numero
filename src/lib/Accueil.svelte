@@ -2,12 +2,12 @@
   import JaugeNeurones from './JaugeNeurones.svelte';
   /** Écran principal du joueur : la pochette du jour, sa progression, ses révisions. Volontairement sobre. */
   let {
-    pseudo,
     jour,
     pochette,
     nbFiches,
-    nbTotal,
     nbAReviser,
+    nbAcquises,
+    oncollection,
     bonus,
     neurones,
     onouvrir,
@@ -15,11 +15,10 @@
     onbilan,
     onbonus,
     onreviser,
-    oncollection,
     anciennesPochettes,
     onreprendre,
+    onouvrirOfferte,
   }: {
-    pseudo: string;
     jour: number;
     /**
      * Pochette du jour : à ouvrir, ouverte (défi en cours ou terminé), ou plus aucune fiche à récupérer.
@@ -27,11 +26,12 @@
     pochette:
       | { etat: 'toutes-les-fiches' }
       | { etat: 'fiches-reservees' }
-      | { etat: 'a-ouvrir'; fiches: number }
-      | { etat: 'ouverte'; faites: number; total: number; terminee: boolean; score: string };
+      | { etat: 'a-ouvrir' }
+      | { etat: 'ouverte'; faites: number; total: number; terminee: boolean };
     nbFiches: number;
-    nbTotal: number;
     nbAReviser: number;
+    nbAcquises: number;
+    oncollection: () => void;
     /**
      * Pochettes bonus gagnées avec les neurones et pas encore terminées : celle commencée (faites / total)
      * et le nombre à ouvrir ; null s'il n'y en a pas (ou plus de fiches à récupérer).
@@ -44,107 +44,117 @@
     onbilan: () => void;
     onbonus: () => void;
     onreviser: () => void;
-    oncollection: () => void;
     anciennesPochettes: { id: string; jour: number; offerte: boolean; faites: number; total: number }[];
+    onouvrirOfferte?: () => void;
     onreprendre: (id: string) => void;
   } = $props();
+
+  const pochettesAReprendre = $derived([...anciennesPochettes].sort((a, b) => Number(b.offerte) - Number(a.offerte)));
+  const aucunePochetteDisponible = $derived(
+    (pochette.etat === 'fiches-reservees' || (pochette.etat === 'ouverte' && pochette.terminee))
+      && !onouvrirOfferte && !bonus && !pochettesAReprendre.length,
+  );
 </script>
 
-<section class="accueil">
-  <div class="tete">
-    <p class="salut">Bonjour {pseudo}</p>
-    <h2 class="jour">Jour {jour}</h2>
-    <!-- Motif : cercles concentriques en traits techniques, comme dans les illustrations. -->
-    <svg class="anneaux" viewBox="0 0 200 200" aria-hidden="true">
-      {#each [96, 84, 72, 60, 48, 36, 24] as r}<circle cx="100" cy="100" {r} />{/each}
-    </svg>
-  </div>
+{#snippet visuelPochette()}
+  <span class="mini-pochette" aria-hidden="true"><span>Numero</span><span>↗</span></span>
+{/snippet}
 
-  {#if pochette.etat === 'ouverte' && pochette.terminee}
-    <!-- Pochette du jour jouée : elle passe au second plan, en bloc discret. -->
-    <article class="defi-joue">
-      <div>
-        <h3>Pochette du jour</h3>
-        <p class="etat"><strong class="chiffres">{pochette.score}</strong></p>
-        <p class="note">Prochaine pochette demain</p>
-      </div>
-      <button type="button" onclick={onbilan}>Voir le bilan</button>
-    </article>
-  {:else}
-  <article class="defi">
-    <h3>Pochette du jour</h3>
-    {#if pochette.etat === 'toutes-les-fiches'}
-      <p class="etat">Tu as toutes les fiches, révise-les</p>
-      <button type="button" class="principal" onclick={onreviser}>Réviser</button>
-    {:else if pochette.etat === 'fiches-reservees'}
-      <p class="etat">Tes dernières fiches sont dans tes pochettes en cours.</p>
-    {:else if pochette.etat === 'a-ouvrir'}
-      <p class="etat"><strong class="chiffres">{pochette.fiches}</strong> nombre{pochette.fiches > 1 ? 's' : ''} à retenir au chiffre près</p>
-      <button type="button" class="principal" onclick={onouvrir}>Ouvrir</button>
-    {:else}
-      <p class="etat"><strong class="chiffres">{pochette.faites} / {pochette.total}</strong> questions jouées</p>
-      <button type="button" class="principal" onclick={onjouer}>Reprendre</button>
-    {/if}
-  </article>
-  {/if}
-
-  {#if bonus}
-    <!-- Pochettes bonus (provisoire, en attendant la liste « Pochettes à ouvrir » de l'accueil, #24). -->
-    <article class="bonus">
-      <div>
-        <h3>Pochettes bonus</h3>
-        <p class="etat">
-          {#if bonus.faites !== null}
-            <strong class="chiffres">{bonus.faites} / {bonus.total}</strong> questions jouées
-          {:else}
-            <strong class="chiffres">{bonus.aOuvrir}</strong> à ouvrir
+  {#snippet carteRevision()}
+    {#if nbFiches}
+      <article class="revision palette-fiche">
+        <div>
+          <h3>Révision</h3>
+          {#if nbAReviser}
+            <p class="etat"><strong class="chiffres">{nbAReviser}</strong> fiche{nbAReviser > 1 ? 's' : ''} à réviser</p>
           {/if}
-        </p>
-        {#if bonus.faites !== null && bonus.aOuvrir}<p class="note">Puis {bonus.aOuvrir} autre{bonus.aOuvrir > 1 ? 's' : ''} à ouvrir</p>{/if}
-      </div>
-      <button type="button" class="principal" onclick={onbonus}>{bonus.faites !== null ? 'Reprendre' : 'Ouvrir'}</button>
-    </article>
-  {/if}
+          <p class="etat">{nbAcquises} sur {nbFiches} acquises</p>
+          <button type="button" class="lien" onclick={oncollection}>Ma collection</button>
+        </div>
+        <button type="button" class="principal" onclick={onreviser}>Réviser</button>
+      </article>
+    {/if}
+  {/snippet}
+<section class="accueil">
+  <section class="pochettes-en-cours" aria-label="Pochettes">
+    {#if pochette.etat === 'ouverte' && pochette.terminee}
+      <!-- Pochette du jour jouée : elle passe au second plan, en bloc discret. -->
+      <article class="defi-joue palette-fiche">
+        {@render visuelPochette()}
+        <div>
+          <h3>Pochette du jour · Jour {jour}</h3>
+          <p class="note">Défi joué · prochaine pochette demain</p>
+        </div>
+        <button type="button" onclick={onbilan}>Voir le bilan</button>
+      </article>
+    {:else if pochette.etat !== 'fiches-reservees'}
+      <article class="defi">
+        {@render visuelPochette()}
+        <h3>Pochette du jour · Jour {jour}</h3>
+        {#if pochette.etat === 'toutes-les-fiches'}
+          <p class="etat">Collection complète !</p>
+        {:else if pochette.etat === 'a-ouvrir'}
+          <button type="button" class="principal" onclick={onouvrir}>Ouvrir</button>
+        {:else}
+          <p class="etat"><strong class="chiffres">{pochette.faites} sur {pochette.total}</strong></p>
+          <button type="button" class="principal" onclick={onjouer}>Reprendre</button>
+        {/if}
+      </article>
+    {/if}
 
-  {#if anciennesPochettes.length}
-    <section class="pochettes-en-cours" aria-labelledby="pochettes-en-cours">
-      <h3 id="pochettes-en-cours">Pochettes à reprendre</h3>
-      {#each anciennesPochettes as p (p.id)}
-        <article class="pochette-ancienne">
-          <div>
-            <h4>{p.offerte ? 'Pochette offerte' : `Pochette du jour ${p.jour}`}</h4>
-            <p class="etat"><strong class="chiffres">{p.faites} / {p.total}</strong> questions jouées</p>
-          </div>
-          <button type="button" onclick={() => onreprendre(p.id)} aria-label={`Reprendre ${p.offerte ? 'la pochette offerte' : `la pochette du jour ${p.jour}`}`}>Reprendre</button>
-        </article>
-      {/each}
-    </section>
-  {/if}
+    {#if onouvrirOfferte}
+      <article class="pochette-ancienne palette-fiche">
+        {@render visuelPochette()}
+        <div><h4>Pochette offerte</h4></div>
+        <button type="button" onclick={onouvrirOfferte} aria-label="Ouvrir la pochette offerte">Ouvrir</button>
+      </article>
+    {/if}
 
-  {#if nbFiches}
-    <!-- Révision en accès direct, juste sous la pochette du jour : un geste pour lancer 5 fiches. -->
-    <article class="revision">
-      <div>
-        <h3>Révision</h3>
-        <p class="etat">
-          {#if nbAReviser}<strong class="chiffres">{nbAReviser}</strong> fiche{nbAReviser > 1 ? 's' : ''} à réviser{:else}Aucune fiche à réviser{/if}
-        </p>
-        <button type="button" class="discret" onclick={oncollection}>Ma collection →</button>
-      </div>
-      <button type="button" class="principal" onclick={onreviser}>Réviser</button>
-      <!-- Neurones : la jauge vers la prochaine pochette bonus (une à chaque palier). -->
+    {#each pochettesAReprendre as p (p.id)}
+      <article class="pochette-ancienne palette-fiche">
+        {@render visuelPochette()}
+        <div>
+          <h4>{p.offerte ? 'Pochette offerte' : `Pochette du jour ${p.jour}`}</h4>
+          <p class="note progression-pochette" aria-label={`${p.faites} questions sur ${p.total} jouées`}>{p.faites}/{p.total}</p>
+        </div>
+        <button type="button" class:principal={pochette.etat === 'fiches-reservees' && !bonus && p.id === pochettesAReprendre[0]?.id} onclick={() => onreprendre(p.id)} aria-label={`Reprendre ${p.offerte ? 'la pochette offerte' : `la pochette du jour ${p.jour}`}`}>Reprendre</button>
+      </article>
+    {/each}
+
+    {#if bonus}
+      <article class="bonus palette-fiche">
+        {@render visuelPochette()}
+        <div>
+          <h4>Pochettes bonus</h4>
+          <p class="etat">
+            {#if bonus.faites !== null}
+              <strong class="chiffres">{bonus.faites} sur {bonus.total}</strong>
+            {:else}
+              <strong class="chiffres">{bonus.aOuvrir}</strong> à ouvrir
+            {/if}
+          </p>
+          {#if bonus.faites !== null && bonus.aOuvrir}<p class="note">Puis {bonus.aOuvrir} autre{bonus.aOuvrir > 1 ? 's' : ''} à ouvrir</p>{/if}
+        </div>
+        <button type="button" class:principal={pochette.etat === 'fiches-reservees'} onclick={onbonus}>{bonus.faites !== null ? 'Reprendre' : 'Ouvrir'}</button>
+      </article>
+    {/if}
+
+    {#if nbFiches}
+      {#if aucunePochetteDisponible}
+        <aside class="conseil-bonus palette-fiche">
+          {@render visuelPochette()}
+          <p><strong>À toi la prochaine pochette !</strong> Révise tes fiches pour gagner des neurones et débloquer des pochettes bonus.</p>
+        </aside>
+      {/if}
       <div class="neurones">
         <JaugeNeurones {...neurones}>
-          {#snippet titre()}Neurones{/snippet}
+          {#snippet titre()}Prochaine pochette bonus{/snippet}
         </JaugeNeurones>
       </div>
-    </article>
-  {/if}
+    {/if}
+  </section>
 
-  <dl class="compteurs">
-    <div><dt>Fiches</dt><dd class="chiffres">{nbFiches}<small> / {nbTotal}</small></dd></div>
-  </dl>
-
+  {@render carteRevision()}
 </section>
 
 <style>
@@ -154,41 +164,9 @@
     padding-top: 0.5rem;
   }
   .pochettes-en-cours { display: grid; gap: 0.75rem; }
-  .pochette-ancienne { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 1rem; background: var(--surface); border-radius: var(--rayon-carte); }
-  .pochette-ancienne h4 { margin: 0 0 0.25rem; font-size: 1rem; }
-  .pochette-ancienne .chiffres { font-size: 1.5rem; }
-  .tete {
-    position: relative;
-    overflow: hidden;
-    padding: 1.5rem 0 0.5rem;
-  }
-  .salut {
-    margin: 0;
-    font-size: 1.05rem;
-    color: var(--muted);
-  }
-  .jour {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    font-size: clamp(4.5rem, 24vw, 7.5rem);
-    font-weight: 900;
-    line-height: 0.85;
-    letter-spacing: -0.03em;
-    word-spacing: 0.12em;
-  }
-  .anneaux {
-    position: absolute;
-    right: -2.5rem;
-    top: -1.5rem;
-    width: 13rem;
-    height: 13rem;
-    fill: none;
-    stroke: var(--accent);
-    stroke-width: 0.8;
-    opacity: 0.7;
-    pointer-events: none;
-  }
+  .pochette-ancienne { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 1rem; background: var(--carte-fond); border-radius: var(--rayon-carte); }
+  .bonus h4, .pochette-ancienne h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+  .progression-pochette { color: var(--muted); font-size: 0.8rem; }
   h3 {
     margin: 0;
     font-size: 1rem;
@@ -229,6 +207,39 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Ccircle cx='4' cy='4' r='1.6' fill='%23a64023'/%3E%3C/svg%3E");
     pointer-events: none;
   }
+  .mini-pochette {
+    position: relative;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.15rem;
+    width: 3.2rem;
+    aspect-ratio: 4 / 5;
+    border-radius: 4px 4px 9px 9px;
+    background: var(--terracotta);
+    color: var(--ivoire);
+    box-shadow: 0 3px 0 var(--rouille), 0 8px 12px -6px #142d3466;
+    transform: rotate(-7deg);
+    font-size: 0.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .mini-pochette::before { content: ''; position: absolute; inset: 17% 0 auto; border-top: 1px dashed currentColor; }
+  .mini-pochette span:last-child { font-size: 1rem; }
+  .defi .mini-pochette {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: center;
+    width: clamp(3.8rem, 17vw, 5.25rem);
+    background: var(--ivoire);
+    color: var(--petrole);
+    font-size: 0.78rem;
+    box-shadow: 0 3px 0 var(--rouille), 0 8px 12px -6px #142d3466;
+  }
+  .defi { grid-template-columns: minmax(0, 1fr) auto; column-gap: 1.1rem; }
+  .defi > :not(.mini-pochette) { grid-column: 1; }
+  .bonus .mini-pochette { background: var(--petrole); box-shadow: 0 3px 0 var(--sarcelle); }
+  .defi-joue > div, .bonus > div, .pochette-ancienne > div { flex: 1 1 8rem; }
   .defi > * {
     position: relative;
     z-index: 1;
@@ -248,30 +259,6 @@
   }
   .defi button:hover {
     background: var(--sarcelle);
-  }
-  .compteurs {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 0;
-    padding: 0.25rem 0;
-  }
-  .compteurs div {
-    display: grid;
-  }
-  .compteurs dt {
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-  .compteurs dd {
-    margin: 0;
-    font-size: 2.4rem;
-    font-weight: 800;
-    line-height: 1;
-  }
-  .compteurs small {
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--muted);
   }
   /* Pochettes bonus : même gabarit que la révision, liseré terracotta pour rappeler la pochette du jour. */
   .bonus {
@@ -294,7 +281,7 @@
     justify-content: space-between;
     gap: 0.75rem;
     padding: 0.9rem 1rem 0.9rem 1.2rem;
-    background: var(--surface);
+    background: var(--carte-fond);
     border-radius: var(--rayon-carte);
   }
   .revision > div,
@@ -304,26 +291,28 @@
     gap: 0.2rem;
     justify-items: start;
   }
+  .revision {
+    border-inline-start: 4px solid var(--accent);
+    box-shadow: 0 3px 0 var(--surface-2);
+  }
+  .revision .etat .chiffres { color: var(--accent-texte); font-size: 1.5rem; }
   .revision .etat {
     font-size: 0.95rem;
   }
-  .revision .etat .chiffres {
-    font-size: 1.5rem;
-    color: var(--accent-texte);
-  }
-  /* Jauge de neurones, sur toute la largeur du bloc Révision. */
-  .revision > .neurones {
-    flex-basis: 100%;
-    justify-items: stretch;
+  .lien { padding: 0.25rem 0; background: none; border: 0; text-decoration: underline; }
+  .conseil-bonus {
     display: grid;
-    gap: 0.3rem;
-    padding-top: 0.6rem;
-    border-top: 1px solid var(--bg);
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    border-radius: var(--rayon-carte);
+    border-inline-start: 4px solid var(--accent);
+    background: var(--carte-fond);
   }
-  /* Pochette du jour jouée : discrète, le score en petit. */
-  .defi-joue .etat .chiffres {
-    font-size: 1.3rem;
-  }
+  .conseil-bonus p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+  .conseil-bonus strong { display: block; margin-bottom: 0.2rem; color: var(--fg); }
+  .neurones { padding: 0.75rem 1rem; }
   .defi-joue .note {
     font-size: 0.85rem;
     color: var(--muted);
@@ -336,15 +325,5 @@
   .bonus .principal {
     flex: none;
     min-width: 7.5rem;
-  }
-  .discret {
-    background: none;
-    padding: 0.2rem 0;
-    color: var(--accent-texte);
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-  .discret:hover {
-    text-decoration: underline;
   }
 </style>
