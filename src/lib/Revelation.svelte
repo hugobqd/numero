@@ -28,10 +28,12 @@
     </div>
     <div class="retour" class:exact={resultat.gagne} class:presque={statut === 'Presque'}>
       <p class="verdict">{statut}</p>
-      {#if resultat.erreur}
-        <p class="reponse-joueur">Ta réponse · <strong>{resultat.erreur.choix} de {avecUnite(resultat.erreur.seuil, question.unite)}</strong></p>
-      {:else}
-        <p class="reponse-joueur">Ta réponse · <strong>{avecUnite(resultat.reponse, question.unite, question.precision)}</strong></p>
+      {#if !resultat.gagne}
+        {#if resultat.erreur}
+          <p class="reponse-joueur">Ta réponse · <strong>{resultat.erreur.choix} de {avecUnite(resultat.erreur.seuil, question.unite)}</strong></p>
+        {:else}
+          <p class="reponse-joueur">Ta réponse · <strong>{avecUnite(resultat.reponse, question.unite, question.precision)}</strong></p>
+        {/if}
       {/if}
       {#if resultat.neurones}
         <p class="gain">+{resultat.neurones} neurone{resultat.neurones > 1 ? 's' : ''}</p>
